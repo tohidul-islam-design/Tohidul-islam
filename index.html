@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tohidul Islam | Sr. UI/UX Designer</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts: Indivisible (Primary) & Outfit (Fallback) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Swiper CSS & JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- GSAP & Lenis -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"indivisible"', '"Outfit"', 'sans-serif'],
+                        display: ['"indivisible"', '"Outfit"', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-black': '#050505',
+                        'brand-yellow': '#FFD100',
+                        'brand-orange': '#FF5733',
+                        'brand-link-red': '#E85C41',
+                        'brand-gray-light': '#F4F4F4',
+                        'brand-footer-dark': '#1d1d1b',
+                    },
+                    fontSize: {
+                        'giant': 'clamp(3.5rem, 9vw, 7.5rem)',
+                        'mega': 'clamp(2.5rem, 5vw, 4.5rem)',
+                    },
+                    letterSpacing: {
+                        'tightest': '-0.03em',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Core Setup */
+        body {
+            background-color: #ffffff;
+            color: #050505;
+            font-family: "indivisible", "Outfit", sans-serif;
+            cursor: default;
+        }
+
+        /* Lenis Smooth Scroll */
+        html.lenis, html.lenis body { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto !important; }
+        .lenis.lenis-stopped { overflow: hidden; }
+
+        /* Custom Utilities */
+        .img-zoom-container { overflow: hidden; }
+        .img-zoom-container img { transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
+        .group:hover .img-zoom-container img { transform: scale(1.05); }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: #959390;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Modern Clean Buttons */
+        .btn-arrow-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px; /* Slightly larger for clearer circle */
+            height: 32px;
+            background-color: #FFD100;
+            border-radius: 50%; /* Circle shape */
+            margin-left: 16px;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); /* Bouncy transition */
+            color: #050505;
+        }
+        .btn-hover:hover .btn-arrow-box {
+            transform: translateX(4px) rotate(-45deg); /* Move and tilt for modern feel */
+        }
+        
+        /* Navbar specific arrow adjustment */
+        .nav-btn-hover .btn-arrow-box {
+            width: 24px;
+            height: 24px;
+            margin-left: 10px;
+            border-radius: 50%;
+        }
+        .nav-btn-hover:hover .btn-arrow-box {
+             transform: translateX(2px);
+        }
+        
+        /* Card Hover Arrow */
+        .card-link i {
+            transition: transform 0.3s ease;
+        }
+        .group:hover .card-link i {
+            transform: translateX(5px);
+        }
+
+        /* Scroll Reveal Utility */
+        .section-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        /* Recent Work Drag Slider Styles */
+        .recent-work-swiper {
+            overflow: visible !important;
+            padding: 14px 0 24px 0 !important;
+            touch-action: pan-y pinch-zoom;
+        }
+
+        .recent-work-swiper .swiper-slide {
+            width: 84vw;
+            max-width: 520px;
+            min-width: 280px;
+            display: flex;
+            transition: opacity 0.4s ease;
+        }
+
+        @media (min-width: 640px) {
+            .recent-work-swiper .swiper-slide {
+                width: 64vw;
+                max-width: 540px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .recent-work-swiper .swiper-slide {
+                width: 52vw;
+                max-width: 580px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .recent-work-swiper .swiper-slide {
+                width: 44vw;
+                max-width: 620px;
+            }
+        }
+
+        @media (min-width: 1440px) {
+            .recent-work-swiper .swiper-slide {
+                width: 38vw;
+                max-width: 660px;
+            }
+        }
+
+        .work-card-inner {
+            width: 100%;
+            transform-origin: center center;
+            transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.45s ease, box-shadow 0.45s ease, filter 0.45s ease;
+            transform: scale(0.93);
+            opacity: 0.72;
+            filter: grayscale(10%);
+        }
+
+        .recent-work-swiper .swiper-slide-active .work-card-inner,
+        .work-card-inner.active-card {
+            transform: scale(1) !important;
+            opacity: 1 !important;
+            filter: grayscale(0%) !important;
+            box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(255, 209, 0, 0.5) !important;
+        }
+
+        .recent-work-swiper .swiper-slide:not(.swiper-slide-active) {
+            cursor: pointer;
+        }
+
+        /* Custom Drag Progress Bar */
+        .slider-progress-track {
+            position: relative;
+            width: 160px;
+            height: 4px;
+            background: rgba(0, 0, 0, 0.08);
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+
+        .slider-progress-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            background: #050505;
+            border-radius: 9999px;
+            transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="overflow-hidden">
+            <h1 class="text-xl font-bold uppercase tracking-widest text-white animate-pulse">Tohidul Islam.</h1>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 top-0 left-0 transition-all duration-500 pt-6" id="navbar">
+        <div class="container mx-auto px-6 md:px-12 flex justify-between items-center p-4 rounded-full transition-all duration-500" id="nav-container">
+            <!-- Logo -->
+            <a href="#" class="text-2xl font-bold tracking-tight text-white flex items-center gap-2" id="nav-logo">
+                <div class="w-8 h-8 bg-brand-yellow flex items-center justify-center rounded-full text-black font-black text-sm">TI</div>
+                <span>Tohidul Islam</span>
+            </a>
+            
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-white" id="nav-links">
+                <a href="our-services.html" class="hover:text-brand-yellow transition-colors">Services</a>
+                <a href="approach.html" class="hover:text-brand-yellow transition-colors">Approach</a>
+                <a href="case-studies.html" class="hover:text-brand-yellow transition-colors">My works</a>
+                <a href="about-us.html" class="hover:text-brand-yellow transition-colors">About me</a>
+                
+                <!-- Contact Button (Updated to Pill Shape) -->
+                <a href="contact-us.html" class="nav-btn-hover flex items-center px-6 py-2.5 border border-white/50 rounded-full text-xs font-bold uppercase tracking-wide hover:bg-white hover:text-black transition-all group" id="nav-btn">
+                    Contact us
+                    <div class="btn-arrow-box">
+                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Mobile Toggle -->
+            <button class="md:hidden text-white text-xl" id="nav-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 1. HERO SECTION -->
+    <header class="relative min-h-screen flex flex-col justify-center items-center text-center px-6 overflow-hidden">
+        
+        <!-- Video Background -->
+        <video autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1558655146-d09347e0c766?q=80&w=2070&auto=format&fit=crop" class="absolute top-0 left-0 w-full h-full object-cover z-0">
+            <source src="./assets/video/0_Asian_Male_1920x1080.mp4" type="video/mp4">
+        </video>
+
+        <!-- Dark Overlay -->
+        <div class="absolute inset-0 bg-black/40 z-0"></div>
+        
+        <!-- Content -->
+        <div class="max-w-5xl mx-auto mt-20 md:mt-0 relative z-10 px-4">
+            <h1 class="font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] xl:text-[4.75rem] leading-[1.12] md:leading-[1.08] tracking-tight text-white mb-6 md:mb-8 hero-anim opacity-0 translate-y-10 drop-shadow-[0_4px_24px_rgba(0,0,0,0.5)]">
+                Crafting Intuitive Design <br class="hidden sm:inline"> Solutions for Every Challenge<span class="text-brand-yellow">.</span>
+            </h1>
+            <p class="text-lg sm:text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-10 md:mb-12 font-medium leading-relaxed hero-anim opacity-0 translate-y-10 drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]">
+                Crafting scalable design systems and intuitive interfaces used by millions of users across the world.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center hero-anim opacity-0 translate-y-10">
+                <!-- Updated Button Styles: Rounded Full -->
+                <a href="#work" class="btn-hover bg-white text-brand-black pl-8 pr-2 py-2 rounded-full font-bold text-sm flex items-center shadow-lg hover:shadow-xl transition-transform hover:-translate-y-1">
+                    View My Approach
+                    <span class="btn-arrow-box"><i class="fa-solid fa-arrow-right text-[12px]"></i></span>
+                </a>
+                <a href="#services" class="btn-hover bg-white text-brand-black pl-8 pr-2 py-2 rounded-full font-bold text-sm flex items-center shadow-lg hover:shadow-xl transition-transform hover:-translate-y-1">
+                    Services
+                    <span class="btn-arrow-box"><i class="fa-solid fa-arrow-right text-[12px]"></i></span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Dots -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+            <div class="w-2 h-2 bg-white rounded-full opacity-100"></div>
+            <div class="w-2 h-2 bg-white rounded-full opacity-40"></div>
+            <div class="w-2 h-2 bg-white rounded-full opacity-40"></div>
+        </div>
+    </header>
+
+    <!-- 2. THE APPROACH (Yellow) -->
+    <section id="approach" class="bg-brand-yellow text-brand-black py-24 md:py-32 section-reveal-trigger">
+        <div class="container mx-auto px-6">
+            <div class="max-w-5xl mb-24 section-reveal">
+                <p class="text-3xl md:text-5xl font-bold leading-tight">
+                    Using the latest design tools, my own industry expertise, and access to global design standards, I deliver interfaces that go deeper than ever before.
+                </p>
+            </div>
+
+            <h2 class="text-sm md:text-base font-extrabold uppercase tracking-[0.2em] text-brand-black mb-10 section-reveal flex items-center gap-2.5">
+                <span class="w-6 h-[2px] bg-brand-black"></span>
+                Approach
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-12 mb-16 section-reveal">
+                <div class="pr-6">
+                    <h3 class="text-2xl font-bold mb-4">User-Centric Focus</h3>
+                    <p class="text-base font-medium leading-relaxed">
+                        With tailor-made designs bespoke to your business, I bring insights from verified user research, simplifying data so you can act on it.
+                    </p>
+                </div>
+                <div class="md:border-l-2 border-brand-black md:pl-10 pr-6">
+                    <h3 class="text-2xl font-bold mb-4">Scalable Systems</h3>
+                    <p class="text-base font-medium leading-relaxed">
+                        Whether you need a simple landing page or a complex design system, I manage your design architecture from atoms to pages.
+                    </p>
+                </div>
+                <div class="md:border-l-2 border-brand-black md:pl-10">
+                     <h3 class="text-2xl font-bold mb-4">Data-Driven Results</h3>
+                     <p class="text-base font-medium leading-relaxed">
+                        My reputation depends on the quality of my research and designs. At every stage, I ensure I deliver precise interfaces you can depend on.
+                     </p>
+                </div>
+            </div>
+
+            <a href="#about" class="section-reveal btn-hover inline-flex items-center bg-black text-white pl-8 pr-2 py-2 rounded-full font-bold text-sm transition-transform hover:-translate-y-1">
+                More about my approach
+                <div class="btn-arrow-box bg-brand-yellow text-black">
+                    <i class="fa-solid fa-arrow-right text-[12px]"></i>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- 3. MY RECENT WORK (DRAG SLIDER) -->
+    <section class="py-20 md:py-28 bg-white border-b border-gray-100 overflow-hidden section-reveal-trigger" id="recent-works">
+        <div class="container mx-auto px-6 mb-8 md:mb-10">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 section-reveal">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-yellow/25 text-brand-black font-bold text-xs uppercase tracking-wider mb-4 border border-brand-yellow/50">
+                        <span class="w-2 h-2 rounded-full bg-brand-yellow animate-pulse"></span> Selected Projects
+                    </div>
+                    <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight text-brand-black mb-4">My Recent Work.</h2>
+                    <p class="text-gray-500 max-w-xl text-base md:text-lg font-medium leading-relaxed">
+                        A curated showcase of high-impact enterprise SaaS platforms, AI copilots, mobile super-apps, and scalable design systems.
+                    </p>
+                </div>
+                
+                <div class="flex items-center gap-4 self-start lg:self-end">
+                    <a href="case-studies.html" class="inline-flex items-center font-bold text-sm text-brand-black hover:text-brand-link-red transition-colors mr-2 group">
+                        <span>All Case Studies</span>
+                        <i class="fa-solid fa-arrow-right ml-2 text-xs transition-transform group-hover:translate-x-1 text-brand-link-red"></i>
+                    </a>
+                    <div class="flex items-center gap-2">
+                        <button id="recent-work-prev" class="w-12 h-12 rounded-full border border-gray-200 bg-white hover:bg-brand-black hover:border-brand-black hover:text-white transition-all duration-300 flex items-center justify-center shadow-sm active:scale-95 text-brand-black" aria-label="Previous Slide">
+                            <i class="fa-solid fa-arrow-left text-sm"></i>
+                        </button>
+                        <button id="recent-work-next" class="w-12 h-12 rounded-full border border-gray-200 bg-white hover:bg-brand-black hover:border-brand-black hover:text-white transition-all duration-300 flex items-center justify-center shadow-sm active:scale-95 text-brand-black" aria-label="Next Slide">
+                            <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Drag Slider Swiper Container (Left-aligned with container) -->
+        <div class="container mx-auto px-6 section-reveal select-none" id="recent-work-wrapper">
+            <div class="swiper recent-work-swiper">
+                <div class="swiper-wrapper items-center">
+                    
+                    <!-- Slide 1: 3Gem Digital Platform -->
+                    <div class="swiper-slide">
+                        <a href="work-3gem.html" class="block group relative work-card-inner rounded-3xl overflow-hidden h-[430px] md:h-[500px] bg-brand-black shadow-md">
+                            <img src="./assets/image/works/3gem.jpg" alt="3Gem Digital Platform" class="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/10 transition-opacity duration-300"></div>
+                            
+                            <!-- Badges (Top) -->
+                            <div class="absolute top-6 left-6 right-6 flex items-center justify-between z-10">
+                                <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/25 text-white text-xs font-bold tracking-wide">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-yellow"></span>
+                                    Enterprise / SaaS
+                                </div>
+                                <span class="px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white/90 text-xs font-semibold">
+                                    Tailwind & Custom UI
+                                </span>
+                            </div>
+
+                            <!-- Content Overlay (Bottom) -->
+                            <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-10">
+                                <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2 tracking-tight group-hover:text-brand-yellow transition-colors">
+                                    3Gem Digital Platform
+                                </h3>
+                                <p class="text-white/80 text-sm md:text-base leading-relaxed line-clamp-2 mb-6 max-w-lg">
+                                    Enterprise digital transformation platform streamlining corporate operations and collaborative governance.
+                                </p>
+                                <div class="inline-flex items-center btn-hover text-xs md:text-sm font-bold tracking-wide text-white bg-white/15 hover:bg-white hover:text-black border border-white/25 backdrop-blur-md pl-6 pr-2 py-2 rounded-full transition-all duration-300">
+                                    <span>Explore Case Study</span>
+                                    <div class="btn-arrow-box bg-brand-yellow text-black">
+                                        <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Slide 2: ED AI Admissions Copilot -->
+                    <div class="swiper-slide">
+                        <a href="work-ed-ai.html" class="block group relative work-card-inner rounded-3xl overflow-hidden h-[430px] md:h-[500px] bg-brand-black shadow-md">
+                            <img src="./assets/image/works/ed-ai.jpg" alt="ED AI Admissions Copilot" class="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/10 transition-opacity duration-300"></div>
+                            
+                            <div class="absolute top-6 left-6 right-6 flex items-center justify-between z-10">
+                                <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/25 text-white text-xs font-bold tracking-wide">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-yellow"></span>
+                                    EdTech / AI SaaS
+                                </div>
+                                <span class="px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white/90 text-xs font-semibold">
+                                    AI Copilot
+                                </span>
+                            </div>
+
+                            <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-10">
+                                <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2 tracking-tight group-hover:text-brand-yellow transition-colors">
+                                    ED AI Admissions Copilot
+                                </h3>
+                                <p class="text-white/80 text-sm md:text-base leading-relaxed line-clamp-2 mb-6 max-w-lg">
+                                    AI-powered university admissions copilot streamlining student profile matching and counselor review workflows.
+                                </p>
+                                <div class="inline-flex items-center btn-hover text-xs md:text-sm font-bold tracking-wide text-white bg-white/15 hover:bg-white hover:text-black border border-white/25 backdrop-blur-md pl-6 pr-2 py-2 rounded-full transition-all duration-300">
+                                    <span>Explore Case Study</span>
+                                    <div class="btn-arrow-box bg-brand-yellow text-black">
+                                        <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Slide 3: HopOn Rider Super App -->
+                    <div class="swiper-slide">
+                        <a href="work-hopon-rider.html" class="block group relative work-card-inner rounded-3xl overflow-hidden h-[430px] md:h-[500px] bg-brand-black shadow-md">
+                            <img src="./assets/image/works/hopon-superapp.png" alt="HopOn Rider Super App" class="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/10 transition-opacity duration-300"></div>
+                            
+                            <div class="absolute top-6 left-6 right-6 flex items-center justify-between z-10">
+                                <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/25 text-white text-xs font-bold tracking-wide">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-yellow"></span>
+                                    Logistics / Super App
+                                </div>
+                                <span class="px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white/90 text-xs font-semibold">
+                                    Mobile Ecosystem
+                                </span>
+                            </div>
+
+                            <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-10">
+                                <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2 tracking-tight group-hover:text-brand-yellow transition-colors">
+                                    HopOn Rider Super App
+                                </h3>
+                                <p class="text-white/80 text-sm md:text-base leading-relaxed line-clamp-2 mb-6 max-w-lg">
+                                    Next-gen mobility and delivery super-app integrating ride-booking, food ordering, and digital wallet payment.
+                                </p>
+                                <div class="inline-flex items-center btn-hover text-xs md:text-sm font-bold tracking-wide text-white bg-white/15 hover:bg-white hover:text-black border border-white/25 backdrop-blur-md pl-6 pr-2 py-2 rounded-full transition-all duration-300">
+                                    <span>Explore Case Study</span>
+                                    <div class="btn-arrow-box bg-brand-yellow text-black">
+                                        <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Slide 4: Vivid Customs Platform -->
+                    <div class="swiper-slide">
+                        <a href="work-vivid-customs.html" class="block group relative work-card-inner rounded-3xl overflow-hidden h-[430px] md:h-[500px] bg-brand-black shadow-md">
+                            <img src="./assets/image/works/vivid-customs.png" alt="Vivid Customs Platform" class="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/10 transition-opacity duration-300"></div>
+                            
+                            <div class="absolute top-6 left-6 right-6 flex items-center justify-between z-10">
+                                <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/25 text-white text-xs font-bold tracking-wide">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-yellow"></span>
+                                    E-Commerce / SaaS
+                                </div>
+                                <span class="px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white/90 text-xs font-semibold">
+                                    Customizer UI
+                                </span>
+                            </div>
+
+                            <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-10">
+                                <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2 tracking-tight group-hover:text-brand-yellow transition-colors">
+                                    Vivid Customs Platform
+                                </h3>
+                                <p class="text-white/80 text-sm md:text-base leading-relaxed line-clamp-2 mb-6 max-w-lg">
+                                    Bespoke apparel customizer with dynamic real-time mockup generation and bulk order automation.
+                                </p>
+                                <div class="inline-flex items-center btn-hover text-xs md:text-sm font-bold tracking-wide text-white bg-white/15 hover:bg-white hover:text-black border border-white/25 backdrop-blur-md pl-6 pr-2 py-2 rounded-full transition-all duration-300">
+                                    <span>Explore Case Study</span>
+                                    <div class="btn-arrow-box bg-brand-yellow text-black">
+                                        <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Slide 5: DRIVE SaaS Dashboard -->
+                    <div class="swiper-slide">
+                        <a href="work-drive-dashboard.html" class="block group relative work-card-inner rounded-3xl overflow-hidden h-[430px] md:h-[500px] bg-brand-black shadow-md">
+                            <img src="https://ar-tanveer-portfolio.vercel.app/drive1.webp" alt="DRIVE SaaS Dashboard" class="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/10 transition-opacity duration-300"></div>
+                            
+                            <div class="absolute top-6 left-6 right-6 flex items-center justify-between z-10">
+                                <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/25 text-white text-xs font-bold tracking-wide">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-yellow"></span>
+                                    Dashboard / Analytics
+                                </div>
+                                <span class="px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white/90 text-xs font-semibold">
+                                    Material UI
+                                </span>
+                            </div>
+
+                            <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-10">
+                                <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2 tracking-tight group-hover:text-brand-yellow transition-colors">
+                                    DRIVE SaaS Dashboard
+                                </h3>
+                                <p class="text-white/80 text-sm md:text-base leading-relaxed line-clamp-2 mb-6 max-w-lg">
+                                    Data-heavy project management ecosystem built for rapid tracking, team velocity, and executive insights.
+                                </p>
+                                <div class="inline-flex items-center btn-hover text-xs md:text-sm font-bold tracking-wide text-white bg-white/15 hover:bg-white hover:text-black border border-white/25 backdrop-blur-md pl-6 pr-2 py-2 rounded-full transition-all duration-300">
+                                    <span>Explore Case Study</span>
+                                    <div class="btn-arrow-box bg-brand-yellow text-black">
+                                        <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Slide 6: StudyLity EdTech -->
+                    <div class="swiper-slide">
+                        <a href="work-studylity.html" class="block group relative work-card-inner rounded-3xl overflow-hidden h-[430px] md:h-[500px] bg-brand-black shadow-md">
+                            <img src="./assets/image/works/studylity1.png" alt="StudyLity EdTech App" class="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/10 transition-opacity duration-300"></div>
+                            
+                            <div class="absolute top-6 left-6 right-6 flex items-center justify-between z-10">
+                                <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/25 text-white text-xs font-bold tracking-wide">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-yellow"></span>
+                                    EdTech / Mobile
+                                </div>
+                                <span class="px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white/90 text-xs font-semibold">
+                                    Schedule AI
+                                </span>
+                            </div>
+
+                            <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-10">
+                                <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2 tracking-tight group-hover:text-brand-yellow transition-colors">
+                                    StudyLity EdTech Platform
+                                </h3>
+                                <p class="text-white/80 text-sm md:text-base leading-relaxed line-clamp-2 mb-6 max-w-lg">
+                                    Interactive academic schedule planner and gamified learning routine companion for students worldwide.
+                                </p>
+                                <div class="inline-flex items-center btn-hover text-xs md:text-sm font-bold tracking-wide text-white bg-white/15 hover:bg-white hover:text-black border border-white/25 backdrop-blur-md pl-6 pr-2 py-2 rounded-full transition-all duration-300">
+                                    <span>Explore Case Study</span>
+                                    <div class="btn-arrow-box bg-brand-yellow text-black">
+                                        <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Slider Bottom Controls Bar -->
+        <div class="container mx-auto px-6 mt-4">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-6 pt-6 border-t border-gray-100">
+                <div class="flex items-center gap-6">
+                    <div class="slider-progress-track">
+                        <div id="recent-work-progress-fill" class="slider-progress-fill w-[16.6%]"></div>
+                    </div>
+                    <div class="text-xs font-bold text-gray-400 tracking-wider">
+                        <span id="recent-work-current-idx" class="text-brand-black text-sm">01</span> / <span id="recent-work-total-idx">06</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3 text-xs font-semibold text-gray-500 bg-gray-50 px-4 py-2 rounded-full border border-gray-100">
+                    <i class="fa-solid fa-arrows-left-right text-brand-yellow"></i>
+                    <span>Drag cards horizontally or scroll with mousewheel</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. SERVICES (6 Cards) -->
+    <section id="services" class="py-32 bg-brand-gray-light section-reveal-trigger">
+        <div class="container mx-auto px-6">
+            <h2 class="text-6xl md:text-7xl font-bold mb-16 tracking-tight text-brand-black section-reveal">Services.</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 section-reveal">
+                <!-- Service 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col group hover:-translate-y-1">
+                    <div class="h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="UI Design">
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold mb-4">UI/UX Design</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-8 flex-grow">
+                            Crafting pixel-perfect, intuitive interfaces that drive engagement and convert users.
+                        </p>
+                        <a href="#" class="inline-flex items-center text-brand-black font-bold text-base hover:text-brand-link-red transition-colors">
+                            Find out more <i class="fa-solid fa-arrow-right ml-2 text-brand-link-red"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Service 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col group hover:-translate-y-1">
+                    <div class="h-56 overflow-hidden">
+                         <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Web Dev">
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold mb-4">Web Development</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-8 flex-grow">
+                            Building responsive, high-performance websites using modern frameworks like React and Vue.
+                        </p>
+                        <a href="#" class="inline-flex items-center text-brand-black font-bold text-base hover:text-brand-link-red transition-colors">
+                            Find out more <i class="fa-solid fa-arrow-right ml-2 text-brand-link-red"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Service 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col group hover:-translate-y-1">
+                    <div class="h-56 overflow-hidden">
+                         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Systems">
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold mb-4">Design Systems</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-8 flex-grow">
+                            Creating scalable design languages ensuring consistency across all digital products.
+                        </p>
+                        <a href="#" class="inline-flex items-center text-brand-black font-bold text-base hover:text-brand-link-red transition-colors">
+                            Find out more <i class="fa-solid fa-arrow-right ml-2 text-brand-link-red"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Service 4 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col group hover:-translate-y-1">
+                    <div class="h-56 overflow-hidden">
+                         <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Research">
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold mb-4">UX Research</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-8 flex-grow">
+                            Deep-dive user research and usability testing to uncover insights for strategic decisions.
+                        </p>
+                        <a href="#" class="inline-flex items-center text-brand-black font-bold text-base hover:text-brand-link-red transition-colors">
+                            Find out more <i class="fa-solid fa-arrow-right ml-2 text-brand-link-red"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Service 5 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col group hover:-translate-y-1">
+                    <div class="h-56 overflow-hidden">
+                         <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Mobile">
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold mb-4">Mobile Apps</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-8 flex-grow">
+                            Designing intuitive, touch-friendly mobile experiences for iOS and Android.
+                        </p>
+                        <a href="#" class="inline-flex items-center text-brand-black font-bold text-base hover:text-brand-link-red transition-colors">
+                            Find out more <i class="fa-solid fa-arrow-right ml-2 text-brand-link-red"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Service 6 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col group hover:-translate-y-1">
+                    <div class="h-56 overflow-hidden">
+                         <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Branding">
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold mb-4">Brand Identity</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-8 flex-grow">
+                            Developing strong, memorable visual identities that resonate with your target audience.
+                        </p>
+                        <a href="#" class="inline-flex items-center text-brand-black font-bold text-base hover:text-brand-link-red transition-colors">
+                            Find out more <i class="fa-solid fa-arrow-right ml-2 text-brand-link-red"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. BESPOKE PROJECTS -->
+    <section class="py-32 bg-brand-gray-light section-reveal-trigger">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl section-reveal">
+                <h2 class="text-5xl font-bold mb-6 text-gray-500 tracking-tight">Any other bespoke projects</h2>
+                <p class="text-3xl text-brand-black mb-10 leading-snug font-bold">
+                    Don’t see what you are looking for above, or have a unique and custom brief? Get in touch with me to discuss how I can design a solution for your specific objectives.
+                </p>
+                <a href="#contact" class="inline-flex items-center text-brand-black font-bold text-lg hover:text-brand-link-red transition-colors">
+                    Contact me <i class="fa-solid fa-arrow-right ml-2 text-brand-link-red"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. CASE STUDIES -->
+    <section id="work" class="py-32 bg-white section-reveal-trigger">
+        <div class="container mx-auto px-6">
+            <h2 class="text-6xl md:text-7xl font-bold mb-16 tracking-tight text-brand-black section-reveal">My works.</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 section-reveal">
+                <!-- Project 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col border border-gray-100 hover:-translate-y-1">
+                    <div class="h-64 overflow-hidden relative">
+                         <img src="./assets/image/works/hopon-superapp.png" 
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Hop On">
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold mb-4">Hop On App</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-8 flex-grow">
+                             A comprehensive ride & delivery solution focused on high-contrast visibility and one-thumb usability.
+                        </p>
+                        <a href="#" class="card-link inline-flex items-center font-bold text-brand-black text-base hover:text-gray-700">
+                            View Case Study <i class="fa-solid fa-arrow-right ml-2 text-brand-orange"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col border border-gray-100 hover:-translate-y-1">
+                    <div class="h-64 overflow-hidden relative">
+                         <img src="./assets/image/works/ed-ai2.jpg" 
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="ED AI">
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold mb-4">ED AI Dashboard</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-8 flex-grow">
+                            Visualizing complex university data for students. An AI-powered SaaS dashboard that simplifies admissions.
+                        </p>
+                        <a href="#" class="card-link inline-flex items-center font-bold text-brand-black text-base hover:text-gray-700">
+                            View Case Study <i class="fa-solid fa-arrow-right ml-2 text-brand-orange"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col border border-gray-100 hover:-translate-y-1">
+                    <div class="h-64 overflow-hidden relative">
+                         <img src="./assets/image/works/3gem3.jpg" 
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="3Gem">
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold mb-4">3Gem Rebrand</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-8 flex-grow">
+                            Corporate rebranding and website development utilizing bold typography and strict grid systems.
+                        </p>
+                        <a href="#" class="card-link inline-flex items-center font-bold text-brand-black text-base hover:text-gray-700">
+                            View Case Study <i class="fa-solid fa-arrow-right ml-2 text-brand-orange"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. MEET THE EXPERT -->
+    <section id="about" class="relative py-32 flex items-center min-h-[600px] section-reveal-trigger">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop" 
+                 alt="Team meeting" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/60"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 text-white section-reveal">
+            <div class="max-w-2xl">
+                <h2 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                    Meet your dedicated <br>
+                    <span class="text-brand-yellow">design partner!</span>
+                </h2>
+                <p class="text-lg text-gray-200 mb-10 leading-relaxed max-w-lg font-medium">
+                    I am ready to support you at every stage of the digital product journey, ensuring your vision comes to life with precision.
+                </p>
+                
+                <a href="#contact" class="btn-hover inline-flex items-center bg-white text-brand-black pl-8 pr-2 py-2 rounded-full font-bold text-sm transition-transform hover:-translate-y-1">
+                    Start a conversation
+                    <div class="btn-arrow-box">
+                        <i class="fa-solid fa-arrow-right text-[12px]"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. FOOTER -->
+    <footer id="contact">
+        <!-- Dark CTA -->
+        <div class="bg-brand-footer-dark text-white py-24 section-reveal-trigger">
+            <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-10 section-reveal">
+                <h2 class="text-3xl md:text-4xl font-bold max-w-3xl leading-tight">
+                    To learn more about how my unique approach can help your business <span class="text-brand-yellow">grow through design</span> contact me
+                </h2>
+                
+                <a href="mailto:contact@tohidul.com" class="flex items-center gap-4 text-2xl font-bold hover:opacity-80 transition-opacity whitespace-nowrap">
+                    Get in touch
+                    <div class="w-12 h-12 bg-brand-yellow text-black flex items-center justify-center rounded-full text-base">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Yellow Links -->
+        <div class="bg-brand-yellow text-brand-black pt-20 pb-12">
+            <div class="container mx-auto px-6">
+                <div class="mb-16">
+                    <div class="flex items-center gap-1 mb-2">
+                        <div class="w-8 h-8 bg-black text-brand-yellow flex items-center justify-center font-bold rounded-full text-sm">TI</div>
+                        <span class="text-3xl font-bold">Tohidul Islam</span>
+                    </div>
+                    <h3 class="text-5xl font-bold">Act on design.</h3>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-20">
+                    <div>
+                        <h4 class="font-bold mb-6 text-sm">Pages</h4>
+                        <ul class="space-y-3 text-sm font-medium">
+                            <li><a href="#" class="hover:underline">Home</a></li>
+                            <li><a href="#services" class="hover:underline">Services</a></li>
+                            <li><a href="#approach" class="hover:underline">Our Approach</a></li>
+                            <li><a href="#work" class="hover:underline">Case Studies</a></li>
+                            <li><a href="#about" class="hover:underline">About</a></li>
+                            <li><a href="#contact" class="hover:underline">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-6 text-sm">Services</h4>
+                         <ul class="space-y-3 text-sm font-medium">
+                            <li><a href="#" class="hover:underline">UI Design</a></li>
+                            <li><a href="#" class="hover:underline">Web Development</a></li>
+                            <li><a href="#" class="hover:underline">Design Systems</a></li>
+                            <li><a href="#" class="hover:underline">UX Research</a></li>
+                            <li><a href="#" class="hover:underline">Prototyping</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-6 text-sm">Find me</h4>
+                        <p class="text-sm font-medium leading-relaxed">
+                            Dhaka, Bangladesh<br>
+                            Available Remote Globally
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-6 text-sm">Follow me online</h4>
+                        <ul class="space-y-3 text-sm font-medium">
+                            <li><a href="https://www.linkedin.com/in/tohidul-islam-design/" target="_blank" rel="noopener noreferrer" class="hover:underline">LinkedIn</a></li>
+                            <li><a href="https://www.behance.net/touhidislam-design" target="_blank" rel="noopener noreferrer" class="hover:underline">Behance</a></li>
+                            <li><a href="https://dribbble.com/tohidul-islam-design" target="_blank" rel="noopener noreferrer" class="hover:underline">Dribbble</a></li>
+                            <li><a href="https://github.com/tohidul-islam-design" target="_blank" rel="noopener noreferrer" class="hover:underline">GitHub</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="w-full h-px bg-black/10 mb-8"></div>
+
+                <div class="flex flex-col md:flex-row justify-between text-[11px] font-medium text-black/60 uppercase tracking-wide">
+                    <p>&copy; 2026 Tohidul Islam. All rights reserved.</p>
+                    <div class="flex gap-6 mt-4 md:mt-0">
+                        <a href="#" class="hover:text-black">Privacy Policy</a>
+                        <a href="#" class="hover:text-black">Cookie Policy</a>
+                        <a href="#" class="hover:text-black">Website by Tohidul</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        window.addEventListener('load', () => {
+            // 1. Remove Preloader
+            const preloader = document.getElementById('preloader');
+            if(preloader) {
+                if (typeof gsap !== 'undefined') {
+                    gsap.to("#preloader", {
+                        opacity: 0,
+                        duration: 0.5,
+                        delay: 0.5,
+                        onComplete: () => preloader.style.display = 'none'
+                    });
+                } else {
+                    preloader.style.display = 'none';
+                }
+            }
+
+            // 2. Animate Hero Elements
+            if (typeof gsap !== 'undefined') {
+                gsap.to(".hero-anim", {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1,
+                    stagger: 0.2,
+                    ease: "power3.out",
+                    delay: 0.8
+                });
+
+                // 3. Scroll Reveal for Sections
+                if (typeof ScrollTrigger !== 'undefined') {
+                    gsap.registerPlugin(ScrollTrigger);
+                    
+                    const sections = document.querySelectorAll('.section-reveal-trigger');
+                    sections.forEach(section => {
+                        const elems = section.querySelectorAll('.section-reveal');
+                        if(elems.length > 0) {
+                            gsap.to(elems, {
+                                y: 0,
+                                opacity: 1,
+                                duration: 1,
+                                stagger: 0.15,
+                                ease: "power3.out",
+                                scrollTrigger: {
+                                    trigger: section,
+                                    start: "top 80%",
+                                    toggleActions: "play none none reverse"
+                                }
+                            });
+                        }
+                    });
+                }
+            }
+
+            // 4. Navbar Background Logic
+            const navbar = document.getElementById('navbar');
+            const navContainer = document.getElementById('nav-container');
+            const navLogo = document.getElementById('nav-logo');
+            const navLinks = document.getElementById('nav-links');
+            const navBtn = document.getElementById('nav-btn');
+            const navToggle = document.getElementById('nav-toggle');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    navContainer.classList.add('bg-white/95', 'shadow-sm', 'text-brand-black', 'py-3');
+                    navContainer.classList.remove('text-white');
+                    
+                    navLogo.classList.remove('text-white');
+                    navLogo.classList.add('text-brand-black');
+                    
+                    navLinks.classList.remove('text-white');
+                    navLinks.classList.add('text-brand-black');
+                    
+                    navBtn.classList.remove('border-white/50', 'hover:bg-white', 'hover:text-black');
+                    navBtn.classList.add('border-brand-black/20', 'hover:bg-brand-black', 'hover:text-white');
+                    
+                    navToggle.classList.remove('text-white');
+                    navToggle.classList.add('text-brand-black');
+                } else {
+                    navContainer.classList.remove('bg-white/95', 'shadow-sm', 'text-brand-black', 'py-3');
+                    navContainer.classList.add('text-white');
+                    
+                    navLogo.classList.add('text-white');
+                    navLogo.classList.remove('text-brand-black');
+                    
+                    navLinks.classList.add('text-white');
+                    navLinks.classList.remove('text-brand-black');
+                    
+                    navBtn.classList.add('border-white/50', 'hover:bg-white', 'hover:text-black');
+                    navBtn.classList.remove('border-brand-black/20', 'hover:bg-brand-black', 'hover:text-white');
+                    
+                    navToggle.classList.add('text-white');
+                    navToggle.classList.remove('text-brand-black');
+                }
+            });
+
+            // 5. Initialize Lenis Smooth Scroll
+            if (typeof Lenis !== 'undefined') {
+                const lenis = new Lenis({
+                    lerp: 0.1, 
+                    smooth: true,
+                });
+                function raf(time) {
+                    lenis.raf(time);
+                    requestAnimationFrame(raf);
+                }
+                requestAnimationFrame(raf);
+            }
+
+            // 6. Initialize My Recent Work Drag Slider (Swiper)
+            if (typeof Swiper !== 'undefined') {
+                const totalSlides = 6;
+                const counterCurrent = document.getElementById('recent-work-current-idx');
+                const counterTotal = document.getElementById('recent-work-total-idx');
+                const progressFill = document.getElementById('recent-work-progress-fill');
+                const prevBtn = document.getElementById('recent-work-prev');
+                const nextBtn = document.getElementById('recent-work-next');
+
+                if (counterTotal) {
+                    counterTotal.textContent = String(totalSlides).padStart(2, '0');
+                }
+
+                function applySlideTransform(swiper) {
+                    for (let i = 0; i < swiper.slides.length; i++) {
+                        const slide = swiper.slides[i];
+                        const cardInner = slide.querySelector('.work-card-inner');
+                        if (!cardInner) continue;
+
+                        const progress = slide.progress;
+                        const absProgress = Math.min(Math.abs(progress), 2);
+                        // Active card stays at scale 1.0 (full size), upcoming cards scale down to ~0.93
+                        const scale = 1.0 - (absProgress * 0.07);
+                        const opacity = 1.0 - (absProgress * 0.28);
+                        
+                        cardInner.style.transform = `scale(${Math.max(0.92, scale)})`;
+                        cardInner.style.opacity = Math.max(0.70, opacity);
+                        
+                        if (absProgress < 0.35) {
+                            slide.classList.add('swiper-slide-active');
+                            cardInner.classList.add('active-card');
+                            slide.style.zIndex = '10';
+                        } else {
+                            slide.classList.remove('swiper-slide-active');
+                            cardInner.classList.remove('active-card');
+                            slide.style.zIndex = '1';
+                        }
+                    }
+                }
+
+                function resetSlideTransitions(swiper, duration) {
+                    for (let i = 0; i < swiper.slides.length; i++) {
+                        const cardInner = swiper.slides[i].querySelector('.work-card-inner');
+                        if (cardInner) {
+                            cardInner.style.transitionDuration = `${duration}ms`;
+                        }
+                    }
+                }
+
+                const recentWorkSwiper = new Swiper('.recent-work-swiper', {
+                    slidesPerView: 'auto',
+                    centeredSlides: false,
+                    spaceBetween: 24,
+                    grabCursor: true,
+                    watchSlidesProgress: true,
+                    speed: 550,
+                    mousewheel: {
+                        forceToAxis: true,
+                        sensitivity: 1,
+                        releaseOnEdges: true,
+                    },
+                    keyboard: {
+                        enabled: true,
+                        onlyInViewport: true,
+                    },
+                    preventClicks: true,
+                    preventClicksPropagation: true,
+                    breakpoints: {
+                        320: {
+                            spaceBetween: 16,
+                            centeredSlides: false,
+                        },
+                        640: {
+                            spaceBetween: 20,
+                            centeredSlides: false,
+                        },
+                        768: {
+                            spaceBetween: 24,
+                            centeredSlides: false,
+                        },
+                        1024: {
+                            spaceBetween: 28,
+                            centeredSlides: false,
+                        },
+                        1280: {
+                            spaceBetween: 32,
+                            centeredSlides: false,
+                        }
+                    },
+                    on: {
+                        init: function() {
+                            applySlideTransform(this);
+                            updateProgress(this.activeIndex);
+                        },
+                        progress: function() {
+                            applySlideTransform(this);
+                        },
+                        setTransition: function(swiper, duration) {
+                            resetSlideTransitions(this, duration);
+                        },
+                        slideChange: function() {
+                            updateProgress(this.activeIndex);
+                        }
+                    }
+                });
+
+                function updateProgress(index) {
+                    if (counterCurrent) {
+                        counterCurrent.textContent = String(index + 1).padStart(2, '0');
+                    }
+                    if (progressFill) {
+                        const pct = ((index + 1) / totalSlides) * 100;
+                        progressFill.style.width = `${pct}%`;
+                    }
+                    if (prevBtn) {
+                        prevBtn.style.opacity = index === 0 ? '0.5' : '1';
+                        prevBtn.style.pointerEvents = index === 0 ? 'none' : 'auto';
+                    }
+                    if (nextBtn) {
+                        nextBtn.style.opacity = index === totalSlides - 1 ? '0.5' : '1';
+                        nextBtn.style.pointerEvents = index === totalSlides - 1 ? 'none' : 'auto';
+                    }
+                }
+
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', () => {
+                        recentWorkSwiper.slidePrev();
+                    });
+                }
+                if (nextBtn) {
+                    nextBtn.addEventListener('click', () => {
+                        recentWorkSwiper.slideNext();
+                    });
+                }
+
+                // Click slide to center it if clicked on adjacent slide
+                recentWorkSwiper.slides.forEach((slide, idx) => {
+                    slide.addEventListener('click', (e) => {
+                        if (recentWorkSwiper.activeIndex !== idx) {
+                            e.preventDefault();
+                            recentWorkSwiper.slideTo(idx);
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+    <!-- Global Floating Butterfly Component -->
+    <script src="./assets/js/butterfly.js"></script>
+</body>
+</html>

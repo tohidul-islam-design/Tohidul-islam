@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivid Customs Platform - Case Study | Tohidul Islam</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts: Indivisible (Primary) & Outfit (Fallback) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- GSAP & Lenis -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"indivisible"', '"Outfit"', 'sans-serif'],
+                        display: ['"indivisible"', '"Outfit"', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-black': '#050505',
+                        'brand-yellow': '#FFD100',
+                        'brand-orange': '#FF5733',
+                        'brand-link-red': '#E85C41',
+                        'brand-gray-light': '#F4F4F4',
+                        'brand-footer-dark': '#1d1d1b',
+                    },
+                    fontSize: {
+                        'giant': 'clamp(3rem, 8vw, 6.5rem)',
+                        'mega': 'clamp(2.5rem, 5vw, 4.5rem)',
+                    },
+                    letterSpacing: {
+                        'tightest': '-0.03em',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Core Setup */
+        body {
+            background-color: #ffffff;
+            color: #050505;
+            font-family: "indivisible", "Outfit", sans-serif;
+            cursor: default;
+        }
+
+        /* Lenis Smooth Scroll */
+        html.lenis, html.lenis body { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto !important; }
+        .lenis.lenis-stopped { overflow: hidden; }
+
+        /* Custom Utilities */
+        .img-zoom-container { overflow: hidden; }
+        .img-zoom-container img { transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
+        .group:hover .img-zoom-container img { transform: scale(1.05); }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: #959390;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 3Gem Style Buttons */
+        .btn-arrow-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background-color: #FFD100;
+            border-radius: 50%;
+            margin-left: 16px;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            color: #050505;
+        }
+        .btn-hover:hover .btn-arrow-box {
+            transform: translateX(4px) rotate(-45deg);
+        }
+        
+        /* Navbar specific arrow adjustment */
+        .nav-btn-hover .btn-arrow-box {
+            width: 24px;
+            height: 24px;
+            margin-left: 10px;
+            border-radius: 50%;
+        }
+        .nav-btn-hover:hover .btn-arrow-box {
+             transform: translateX(2px);
+        }
+
+        /* Scroll Reveal Utility */
+        .section-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="overflow-hidden">
+            <h1 class="text-xl font-bold uppercase tracking-widest text-white animate-pulse">Vivid Customs Platform.</h1>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 top-0 left-0 transition-all duration-500 pt-6" id="navbar">
+        <div class="container mx-auto px-6 md:px-12 flex justify-between items-center p-4 rounded-full transition-all duration-500" id="nav-container">
+            <!-- Logo -->
+            <a href="index.html" class="text-2xl font-bold tracking-tight text-white flex items-center gap-2" id="nav-logo">
+                <div class="w-8 h-8 bg-brand-yellow flex items-center justify-center rounded-full text-black font-black text-sm">TI</div>
+                <span>Tohidul Islam</span>
+            </a>
+            
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-white" id="nav-links">
+                <a href="our-services.html" class="hover:text-brand-yellow transition-colors">Services</a>
+                <a href="approach.html" class="hover:text-brand-yellow transition-colors">Approach</a>
+                <a href="case-studies.html" class="hover:text-brand-yellow transition-colors">My works</a>
+                <a href="about-us.html" class="hover:text-brand-yellow transition-colors">About me</a>
+                
+                <!-- Contact Button -->
+                <a href="contact-us.html" class="nav-btn-hover flex items-center px-6 py-2.5 border border-white/50 rounded-full text-xs font-bold uppercase tracking-wide hover:bg-white hover:text-black transition-all group" id="nav-btn">
+                    Contact us
+                    <div class="btn-arrow-box">
+                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Mobile Toggle -->
+            <button class="md:hidden text-white text-xl" id="nav-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Project Hero -->
+    <header class="relative pt-48 pb-20 md:pt-64 md:pb-32 bg-brand-black text-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-5xl">
+                <div class="flex items-center gap-3 mb-8 hero-anim opacity-0 translate-y-10">
+                    <span class="w-2 h-2 bg-brand-yellow rounded-full"></span>
+                    <span class="text-xs font-bold uppercase tracking-widest text-brand-yellow">E-Commerce / SaaS Platform</span>
+                </div>
+                
+                <h1 class="text-giant font-bold leading-[0.9] tracking-tightest mb-12 hero-anim opacity-0 translate-y-10">
+                    Vivid Customs Platform<span class="text-brand-yellow">.</span>
+                </h1>
+                
+                <p class="text-xl md:text-3xl text-gray-400 font-medium max-w-3xl leading-relaxed hero-anim opacity-0 translate-y-10">
+                    Redefining urban mobility with a comprehensive ride & delivery solution focused on high-contrast visibility and one-thumb usability for millions.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Project Image -->
+    <div class="w-full h-[60vh] md:h-[90vh] overflow-hidden bg-gray-100">
+        <img src="./assets/image/works/vivid-customs.png" 
+             alt="Hop On App Hero" 
+             class="w-full h-full object-cover parallax-img origin-center scale-110">
+    </div>
+
+    <!-- Project Meta Grid -->
+    <section class="py-24 bg-white border-b border-gray-100 section-reveal-trigger">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 section-reveal">
+                <div>
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Client</h3>
+                    <p class="text-xl font-bold text-brand-black">Vivid Customs Inc.</p>
+                </div>
+                <div>
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Services</h3>
+                    <ul class="text-xl font-bold text-brand-black space-y-1">
+                        <li>User Research</li>
+                        <li>UI/UX Design</li>
+                        <li>Design System</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Timeline</h3>
+                    <p class="text-xl font-bold text-brand-black">3 Months</p>
+                </div>
+                <div>
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Year</h3>
+                    <p class="text-xl font-bold text-brand-black">2025</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Challenge -->
+    <section class="py-32 bg-white section-reveal-trigger">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-12">
+                <div class="md:col-span-4 section-reveal">
+                    <h2 class="text-4xl font-bold mb-6">The Challenge</h2>
+                    <div class="w-16 h-1 bg-brand-yellow mb-8"></div>
+                </div>
+                <div class="md:col-span-8 section-reveal">
+                    <p class="text-2xl md:text-3xl font-medium leading-relaxed mb-8">
+                        Urban commuters face a fragmented experience when switching between ride-sharing and food delivery apps. The challenge was to unify these services into a single, cohesive super-app without creating cognitive overload.
+                    </p>
+                    <p class="text-gray-500 text-lg leading-relaxed max-w-2xl">
+                        Our research indicated that 65% of users struggled with navigation in existing competitor apps, particularly during high-stress commute times. The goal was to reduce the "time to action" by 40% while maintaining a visually premium aesthetic.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visual Grid 1 -->
+    <section class="py-12 bg-brand-gray-light section-reveal-trigger">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-8 section-reveal">
+                <div class="bg-white p-8 md:p-16 rounded-2xl flex items-center justify-center">
+                    <img src="https://cdn.dribbble.com/users/3503254/screenshots/16327318/media/649726245e3962637207c40467f334d7.jpg?resize=800x600&vertical=center" 
+                         alt="Wireframes" class="w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="bg-white p-8 md:p-16 rounded-2xl flex items-center justify-center">
+                    <img src="https://cdn.dribbble.com/users/3503254/screenshots/15679549/media/200676007e997f773426767570494444.jpg?resize=800x600&vertical=center" 
+                         alt="Design System" class="w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Solution -->
+    <section class="py-32 bg-white section-reveal-trigger">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-12">
+                <div class="md:col-span-4 section-reveal">
+                    <h2 class="text-4xl font-bold mb-6">The Solution</h2>
+                    <div class="w-16 h-1 bg-brand-yellow mb-8"></div>
+                </div>
+                <div class="md:col-span-8 section-reveal">
+                    <p class="text-2xl md:text-3xl font-medium leading-relaxed mb-10">
+                        We developed a modular design system centered around high-contrast legibility and "thumb-zone" navigation.
+                    </p>
+                    
+                    <div class="grid md:grid-cols-2 gap-10">
+                        <div>
+                            <h3 class="text-xl font-bold mb-4 flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-full bg-brand-black text-brand-yellow flex items-center justify-center text-sm">01</span>
+                                Unified Architecture
+                            </h3>
+                            <p class="text-gray-500 leading-relaxed">
+                                Merged 3 separate user flows into one dashboard, using contextual cards that predict user intent based on time of day.
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-4 flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-full bg-brand-black text-brand-yellow flex items-center justify-center text-sm">02</span>
+                                High Visibility Mode
+                            </h3>
+                            <p class="text-gray-500 leading-relaxed">
+                                Implemented a dynamic contrast system that adjusts UI brightness and font weight based on ambient light sensors.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Full Width Visual -->
+    <section class="w-full h-[80vh] relative overflow-hidden section-reveal-trigger">
+        <div class="absolute inset-0 bg-brand-black/5 z-10"></div>
+        <img src="https://images.unsplash.com/photo-1555421689-491a97ff2040?q=80&w=2070&auto=format&fit=crop" 
+             alt="Hop On Lifestyle" 
+             class="w-full h-full object-cover parallax-img section-reveal">
+    </section>
+
+    <!-- The Result -->
+    <section class="py-32 bg-brand-yellow text-brand-black section-reveal-trigger">
+        <div class="container mx-auto px-6 text-center">
+            <div class="max-w-4xl mx-auto section-reveal">
+                <h2 class="text-4xl md:text-6xl font-bold mb-12">The Impact</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="p-8 border-l border-brand-black/20">
+                        <span class="block text-6xl font-bold mb-2">+45%</span>
+                        <span class="text-sm font-bold uppercase tracking-widest opacity-70">User Retention</span>
+                    </div>
+                    <div class="p-8 border-l border-brand-black/20">
+                        <span class="block text-6xl font-bold mb-2">2.5M</span>
+                        <span class="text-sm font-bold uppercase tracking-widest opacity-70">Daily Active Users</span>
+                    </div>
+                    <div class="p-8 border-l border-brand-black/20">
+                        <span class="block text-6xl font-bold mb-2">4.8</span>
+                        <span class="text-sm font-bold uppercase tracking-widest opacity-70">App Store Rating</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Project Navigation -->
+    <section class="py-32 bg-brand-black text-white section-reveal-trigger">
+        <div class="container mx-auto px-6">
+            <p class="text-gray-500 text-sm font-bold uppercase tracking-widest mb-8">Next Project</p>
+            
+            <a href="#" class="group block relative border-t border-white/20 pt-12">
+                <div class="flex flex-col md:flex-row justify-between md:items-end gap-8">
+                    <div>
+                        <h2 class="text-5xl md:text-8xl font-bold group-hover:text-brand-yellow transition-colors duration-300">
+                            3Gem Digital Platform
+                        </h2>
+                        <p class="text-xl text-gray-400 mt-4 group-hover:text-white transition-colors">
+                            Visualizing complex university data for students.
+                        </p>
+                    </div>
+                    <div class="w-20 h-20 rounded-full border border-white/30 flex items-center justify-center group-hover:bg-brand-yellow group-hover:border-brand-yellow group-hover:text-black transition-all duration-300">
+                        <i class="fa-solid fa-arrow-right text-2xl -rotate-45 group-hover:rotate-0 transition-transform duration-300"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- 8. FOOTER -->
+    <footer id="contact">
+        <!-- Dark CTA -->
+        <div class="bg-brand-footer-dark text-white py-24 section-reveal-trigger">
+            <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-10 section-reveal">
+                <h2 class="text-3xl md:text-4xl font-bold max-w-3xl leading-tight">
+                    To learn more about how my unique approach can help your business <span class="text-brand-yellow">grow through design</span> contact me
+                </h2>
+                
+                <a href="mailto:contact@tohidul.com" class="flex items-center gap-4 text-2xl font-bold hover:opacity-80 transition-opacity whitespace-nowrap">
+                    Get in touch
+                    <div class="w-12 h-12 bg-brand-yellow text-black flex items-center justify-center rounded-full text-base">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Yellow Links -->
+        <div class="bg-brand-yellow text-brand-black pt-20 pb-12">
+            <div class="container mx-auto px-6">
+                <div class="mb-16">
+                    <div class="flex items-center gap-1 mb-2">
+                        <div class="w-8 h-8 bg-black text-brand-yellow flex items-center justify-center font-bold rounded-full text-sm">TI</div>
+                        <span class="text-3xl font-bold">Tohidul Islam</span>
+                    </div>
+                    <h3 class="text-5xl font-bold">Act on design.</h3>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-20">
+                    <div>
+                        <h4 class="font-bold mb-6 text-sm">Pages</h4>
+                        <ul class="space-y-3 text-sm font-medium">
+                            <li><a href="#" class="hover:underline">Home</a></li>
+                            <li><a href="#services" class="hover:underline">Services</a></li>
+                            <li><a href="#approach" class="hover:underline">Our Approach</a></li>
+                            <li><a href="#work" class="hover:underline">Case Studies</a></li>
+                            <li><a href="#about" class="hover:underline">About</a></li>
+                            <li><a href="#contact" class="hover:underline">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-6 text-sm">Services</h4>
+                         <ul class="space-y-3 text-sm font-medium">
+                            <li><a href="#" class="hover:underline">UI Design</a></li>
+                            <li><a href="#" class="hover:underline">Web Development</a></li>
+                            <li><a href="#" class="hover:underline">Design Systems</a></li>
+                            <li><a href="#" class="hover:underline">UX Research</a></li>
+                            <li><a href="#" class="hover:underline">Prototyping</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-6 text-sm">Find me</h4>
+                        <p class="text-sm font-medium leading-relaxed">
+                            Dhaka, Bangladesh<br>
+                            Available Remote Globally
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-6 text-sm">Follow me online</h4>
+                        <ul class="space-y-3 text-sm font-medium">
+                            <li><a href="https://www.linkedin.com/in/tohidul-islam-design/" target="_blank" rel="noopener noreferrer" class="hover:underline">LinkedIn</a></li>
+                            <li><a href="https://www.behance.net/touhidislam-design" target="_blank" rel="noopener noreferrer" class="hover:underline">Behance</a></li>
+                            <li><a href="https://dribbble.com/tohidul-islam-design" target="_blank" rel="noopener noreferrer" class="hover:underline">Dribbble</a></li>
+                            <li><a href="https://github.com/tohidul-islam-design" target="_blank" rel="noopener noreferrer" class="hover:underline">GitHub</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="w-full h-px bg-black/10 mb-8"></div>
+
+                <div class="flex flex-col md:flex-row justify-between text-[11px] font-medium text-black/60 uppercase tracking-wide">
+                    <p>&copy; 2026 Tohidul Islam. All rights reserved.</p>
+                    <div class="flex gap-6 mt-4 md:mt-0">
+                        <a href="#" class="hover:text-black">Privacy Policy</a>
+                        <a href="#" class="hover:text-black">Cookie Policy</a>
+                        <a href="#" class="hover:text-black">Website by Tohidul</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // All Portfolio Projects Dataset
+        const allProjectsDatabase = [
+          // SaaS
+          {
+            id: "3gem",
+            title: "3Gem Digital Platform",
+            category: "Enterprise / SaaS",
+            client: "3Gem Inc.",
+            services: ["UI/UX Architecture", "Design System", "Frontend Specs"],
+            timeline: "5 Months",
+            year: "2025",
+            heroImage: "./assets/image/works/3gem3.jpg",
+            tagline: "Empowering enterprise digital transformation through unified, grid-based operations management.",
+            challenge: "Enterprise clients needed to unify fragmented operational portals into a single high-performance dashboard that scales across global teams.",
+            challengeDetail: "Over 70% of enterprise users struggled with disconnected tools and disparate data structures. Our primary goal was creating a unified architecture with zero latency.",
+            solutionOverview: "We architected a clean, grid-focused design system with dark and high-contrast light modes tailored for data-dense workflows.",
+            solPoints: [
+                { title: "Grid Architecture", text: "Structured multi-tenant layout allowing seamless switching between operations." },
+                { title: "Performance First", text: "Optimized component render loops to handle live data streams with sub-second response times." }
+            ],
+            impactStats: [
+                { value: "+60%", label: "Workflow Efficiency" },
+                { value: "500K+", label: "Enterprise Users" },
+                { value: "99.9%", label: "Uptime Metric" }
+            ],
+            gallery: ["./assets/image/works/3gem1.jpg", "./assets/image/works/3gem2.jpg"],
+            nextId: "ed-ai",
+            nextTitle: "3Gem Digital Platform Admissions Copilot"
+          },
+          {
+            id: "ed-ai",
+            title: "3Gem Digital Platform Admissions Copilot",
+            category: "EdTech / AI SaaS",
+            client: "3Gem Digital Platform Global",
+            services: ["AI Interface Design", "User Flow Mapping", "Design System"],
+            timeline: "3 Months",
+            year: "2025",
+            heroImage: "./assets/image/works/ed-ai2.jpg",
+            tagline: "AI-driven university application & document analysis copilot for students and academic counselors.",
+            challenge: "Navigating international university admissions is overwhelming, involving complex documentation, requirements, and tight timelines.",
+            challengeDetail: "Students and counselors were spending dozens of hours manually verifying university prerequisites and document formats across multiple countries.",
+            solutionOverview: "Built an intuitive copilot interface that translates complex AI document analysis into clear, step-by-step actionable recommendations.",
+            solPoints: [
+                { title: "Smart Matching", text: "Algorithmic match engine linking student profiles with global university admission criteria." },
+                { title: "Live Document Feedback", text: "Instant AI review of essays and transcripts with contextual improvement suggestions." }
+            ],
+            impactStats: [
+                { value: "4.9", label: "User Rating" },
+                { value: "120K+", label: "Students Guided" },
+                { value: "75%", label: "Time Saved" }
+            ],
+            gallery: ["./assets/image/works/ed-ai.jpg", "./assets/image/works/ed-ai2.jpg"],
+            nextId: "hopon-rider",
+            nextTitle: "HopOn Rider Super App"
+          },
+          {
+            id: "hopon-rider",
+            title: "HopOn Rider Super App",
+            category: "E-Commerce / SaaS Platform",
+            client: "Vivid Customs Inc.",
+            services: ["User Research", "UI/UX Design", "Design System"],
+            timeline: "3 Months",
+            year: "2025",
+            heroImage: "./assets/image/works/hopon-superapp.png",
+            tagline: "Redefining urban mobility with a comprehensive ride & delivery solution focused on high-contrast visibility and one-thumb usability for millions.",
+            challenge: "Urban commuters face a fragmented experience when switching between ride-sharing and food delivery apps. The challenge was to unify these services into a single, cohesive super-app without creating cognitive overload.",
+            challengeDetail: "Our research indicated that 65% of users struggled with navigation in existing competitor apps, particularly during high-stress commute times. The goal was to reduce the 'time to action' by 40% while maintaining a visually premium aesthetic.",
+            solutionOverview: "We developed a modular design system centered around high-contrast legibility and 'thumb-zone' navigation.",
+            solPoints: [
+                { title: "Unified Architecture", text: "Merged 3 separate user flows into one dashboard, using contextual cards that predict user intent based on time of day." },
+                { title: "High Visibility Mode", text: "Implemented a dynamic contrast system that adjusts UI brightness and font weight based on ambient light sensors." }
+            ],
+            impactStats: [
+                { value: "+45%", label: "User Retention" },
+                { value: "2.5M", label: "Daily Active Users" },
+                { value: "4.8", label: "App Store Rating" }
+            ],
+            gallery: [
+                "https://cdn.dribbble.com/users/3503254/screenshots/16327318/media/649726245e3962637207c40467f334d7.jpg?resize=800x600&vertical=center",
+                "https://cdn.dribbble.com/users/3503254/screenshots/15679549/media/200676007e997f773426767570494444.jpg?resize=800x600&vertical=center"
+            ],
+            nextId: "revexia",
+            nextTitle: "Revexia Operations"
+          },
+          {
+            id: "revexia",
+            title: "Revexia Operations Platform",
+            category: "SaaS Platform",
+            client: "Revexia Tech",
+            services: ["SaaS Architecture", "Analytics UX", "Design System"],
+            timeline: "5 Months",
+            year: "2025",
+            heroImage: "https://ar-tanveer-portfolio.vercel.app/revexia1.webp",
+            tagline: "Next-generation SaaS platform engineered to revolutionize how modern businesses manage and scale digital metrics.",
+            challenge: "Operational leaders were overwhelmed by dense data streams and complex configuration menus across legacy software.",
+            challengeDetail: "Surfacing key real-time metrics without causing visual fatigue required a brand-new approach to dashboard component architecture.",
+            solutionOverview: "Created a modular widget grid system allowing users to customize their exact workspace metrics in seconds.",
+            solPoints: [
+                { title: "Adaptive Widgets", text: "Drag-and-drop metric components with smart auto-layout reflowing." },
+                { title: "Instant Search", text: "Command-K palette allowing global navigation and macro actions." }
+            ],
+            impactStats: [
+                { value: "+38%", label: "Productivity Increase" },
+                { value: "85K+", label: "Teams Onboarded" },
+                { value: "4.9", label: "Satisfaction Score" }
+            ],
+            gallery: ["https://ar-tanveer-portfolio.vercel.app/revexia2.webp", "https://ar-tanveer-portfolio.vercel.app/revexia1.webp"],
+            nextId: "flowcite",
+            nextTitle: "Flowcite Productivity"
+          },
+          {
+            id: "flowcite",
+            title: "Flowcite Research Suite",
+            category: "Productivity SaaS",
+            client: "Flowcite Academic",
+            services: ["UX Research", "Editor Interface", "Prototyping"],
+            timeline: "5 Months",
+            year: "2025",
+            heroImage: "https://ar-tanveer-portfolio.vercel.app/Flowcite-1.webp",
+            tagline: "Streamlining academic research workflows, citation management, and collaborative publishing.",
+            challenge: "Academic teams wasted up to 30% of research time manually formatting citations and managing conflicting paper revisions.",
+            challengeDetail: "Synthesizing heavy academic data pipelines into a distraction-free writing environment required intense focus on typography and focus modes.",
+            solutionOverview: "Crafted a distraction-free writing environment that intelligently auto-formats citations in real time.",
+            solPoints: [
+                { title: "Auto-Citations", text: "Instant DOI lookup and citation injection into standard styles (APA, MLA, IEEE)." },
+                { title: "Collaborative Focus", text: "Real-time multi-author cursor editing with inline peer review comments." }
+            ],
+            impactStats: [
+                { value: "3x", label: "Faster Publishing" },
+                { value: "400K+", label: "Papers Written" },
+                { value: "98%", label: "Citation Accuracy" }
+            ],
+            gallery: ["https://ar-tanveer-portfolio.vercel.app/Flowcite-2.webp", "https://ar-tanveer-portfolio.vercel.app/Flowcite-1.webp"],
+            nextId: "3gem",
+            nextTitle: "3Gem Digital Platform"
+          }
+        ];
+
+        // Function to load details from URL query parameter ?id=...
+        function loadProjectDetails() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const projectId = 'vivid-customs';
+
+            const p = allProjectsDatabase.find(item => item.id === projectId) || allProjectsDatabase[2];
+
+            // Update page Title
+            document.title = `${p.title} - Case Study | Tohidul Islam`;
+
+            // Preloader Text
+            const preloaderText = document.querySelector('#preloader h1');
+            if(preloaderText) preloaderText.textContent = `${p.title}.`;
+
+            // Hero Category & Title
+            const categorySpan = document.querySelector('header span.tracking-widest');
+            if(categorySpan) categorySpan.textContent = p.category;
+
+            const titleHeading = document.querySelector('header h1');
+            if(titleHeading) titleHeading.innerHTML = `${p.title}<span class="text-brand-yellow">.</span>`;
+
+            const taglineP = document.querySelector('header p');
+            if(taglineP) taglineP.textContent = p.tagline;
+
+            // Hero Main Image
+            const heroImg = document.querySelector('.parallax-img');
+            if(heroImg) {
+                heroImg.src = p.heroImage;
+                heroImg.alt = p.title;
+            }
+
+            // Meta Details
+            const metaContainer = document.querySelector('section.border-b .grid');
+            if(metaContainer) {
+                metaContainer.innerHTML = `
+                    <div>
+                        <h3 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Client</h3>
+                        <p class="text-xl font-bold text-brand-black">${p.client}</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Services</h3>
+                        <ul class="text-xl font-bold text-brand-black space-y-1">
+                            ${p.services.map(s => `<li>${s}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Timeline</h3>
+                        <p class="text-xl font-bold text-brand-black">${p.timeline}</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Year</h3>
+                        <p class="text-xl font-bold text-brand-black">${p.year}</p>
+                    </div>
+                `;
+            }
+
+            // Challenge Content
+            const challengeH2P = document.querySelectorAll('section:nth-of-type(2) p');
+            if(challengeH2P.length >= 2) {
+                challengeH2P[0].textContent = p.challenge;
+                challengeH2P[1].textContent = p.challengeDetail;
+            }
+
+            // Visual Grid Images
+            const visualImgs = document.querySelectorAll('section:nth-of-type(3) img');
+            if(visualImgs.length >= 2 && p.gallery) {
+                visualImgs[0].src = p.gallery[0] || p.heroImage;
+                visualImgs[1].src = p.gallery[1] || p.heroImage;
+            }
+
+            // Solution Overview & Points
+            const solMainP = document.querySelector('section:nth-of-type(4) p.text-2xl');
+            if(solMainP) solMainP.textContent = p.solutionOverview;
+
+            const solGrid = document.querySelector('section:nth-of-type(4) .grid.grid-cols-2') || document.querySelector('section:nth-of-type(4) .grid.md\\:grid-cols-2');
+            if(solGrid && p.solPoints) {
+                solGrid.innerHTML = p.solPoints.map((pt, i) => `
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-brand-black text-brand-yellow flex items-center justify-center text-sm">0${i+1}</span>
+                            ${pt.title}
+                        </h3>
+                        <p class="text-gray-500 leading-relaxed">${pt.text}</p>
+                    </div>
+                `).join('');
+            }
+
+            // Impact Stats
+            const impactGrid = document.querySelector('section:nth-of-type(6) .grid');
+            if(impactGrid && p.impactStats) {
+                impactGrid.innerHTML = p.impactStats.map(st => `
+                    <div class="p-8 border-l border-brand-black/20">
+                        <span class="block text-6xl font-bold mb-2">${st.value}</span>
+                        <span class="text-sm font-bold uppercase tracking-widest opacity-70">${st.label}</span>
+                    </div>
+                `).join('');
+            }
+
+            // Next Project
+            const nextLink = document.querySelector('section:nth-of-type(7) a');
+            if(nextLink && p.nextId) {
+                nextLink.href = `case-studies-details.html?id=${p.nextId}`;
+                const nextH2 = nextLink.querySelector('h2');
+                if(nextH2) nextH2.textContent = p.nextTitle;
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', loadProjectDetails);
+
+        window.addEventListener('load', () => {
+            // 1. Remove Preloader
+            const preloader = document.getElementById('preloader');
+            if(preloader) {
+                if (typeof gsap !== 'undefined') {
+                    gsap.to("#preloader", {
+                        opacity: 0,
+                        duration: 0.5,
+                        delay: 0.5,
+                        onComplete: () => preloader.style.display = 'none'
+                    });
+                } else {
+                    preloader.style.display = 'none';
+                }
+            }
+
+            // 2. Animate Hero Elements
+            if (typeof gsap !== 'undefined') {
+                gsap.to(".hero-anim", {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1,
+                    stagger: 0.2,
+                    ease: "power3.out",
+                    delay: 0.8
+                });
+
+                // 3. Scroll Reveal for Sections
+                if (typeof ScrollTrigger !== 'undefined') {
+                    gsap.registerPlugin(ScrollTrigger);
+                    
+                    const sections = document.querySelectorAll('.section-reveal-trigger');
+                    sections.forEach(section => {
+                        const elems = section.querySelectorAll('.section-reveal');
+                        if(elems.length > 0) {
+                            gsap.to(elems, {
+                                y: 0,
+                                opacity: 1,
+                                duration: 1,
+                                stagger: 0.15,
+                                ease: "power3.out",
+                                scrollTrigger: {
+                                    trigger: section,
+                                    start: "top 80%",
+                                    toggleActions: "play none none reverse"
+                                }
+                            });
+                        }
+                    });
+
+                    // Parallax Images
+                    gsap.utils.toArray('.parallax-img').forEach(img => {
+                        gsap.to(img, {
+                            yPercent: 15,
+                            ease: "none",
+                            scrollTrigger: {
+                                trigger: img.parentElement,
+                                start: "top bottom",
+                                end: "bottom top",
+                                scrub: true
+                            }
+                        });
+                    });
+                }
+            }
+
+            // 4. Navbar Background Logic (Dark Hero)
+            const navContainer = document.getElementById('nav-container');
+            const navLogo = document.getElementById('nav-logo');
+            const navLinks = document.getElementById('nav-links');
+            const navBtn = document.getElementById('nav-btn');
+            const navToggle = document.getElementById('nav-toggle');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    navContainer.classList.add('bg-white/95', 'shadow-sm', 'text-brand-black', 'py-3');
+                    navContainer.classList.remove('text-white');
+                    navLogo.classList.remove('text-white');
+                    navLogo.classList.add('text-brand-black');
+                    navLinks.classList.remove('text-white');
+                    navLinks.classList.add('text-brand-black');
+                    navBtn.classList.remove('border-white/50', 'hover:bg-white', 'hover:text-black');
+                    navBtn.classList.add('border-brand-black/20', 'hover:bg-brand-black', 'hover:text-white');
+                    navToggle.classList.remove('text-white');
+                    navToggle.classList.add('text-brand-black');
+                } else {
+                    navContainer.classList.remove('bg-white/95', 'shadow-sm', 'text-brand-black', 'py-3');
+                    navContainer.classList.add('text-white');
+                    navLogo.classList.add('text-white');
+                    navLogo.classList.remove('text-brand-black');
+                    navLinks.classList.add('text-white');
+                    navLinks.classList.remove('text-brand-black');
+                    navBtn.classList.add('border-white/50', 'hover:bg-white', 'hover:text-black');
+                    navBtn.classList.remove('border-brand-black/20', 'hover:bg-brand-black', 'hover:text-white');
+                    navToggle.classList.add('text-white');
+                    navToggle.classList.remove('text-brand-black');
+                }
+            });
+
+            // 5. Initialize Lenis Smooth Scroll
+            if (typeof Lenis !== 'undefined') {
+                const lenis = new Lenis({
+                    lerp: 0.1, 
+                    smooth: true,
+                });
+                function raf(time) {
+                    lenis.raf(time);
+                    requestAnimationFrame(raf);
+                }
+                requestAnimationFrame(raf);
+            }
+        });
+    </script>
+    <!-- Global Floating Butterfly Component -->
+    <script src="./assets/js/butterfly.js"></script>
+</body>
+</html>

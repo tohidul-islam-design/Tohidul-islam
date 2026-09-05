@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Tohidul Islam</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts: Indivisible (Primary) & Outfit (Fallback) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- GSAP & Lenis -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"indivisible"', '"Outfit"', 'sans-serif'],
+                        display: ['"indivisible"', '"Outfit"', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-black': '#050505',
+                        'brand-yellow': '#FFD100',
+                        'brand-orange': '#FF5733',
+                        'brand-link-red': '#E85C41',
+                        'brand-gray-light': '#F4F4F4',
+                        'brand-footer-dark': '#1d1d1b',
+                    },
+                    fontSize: {
+                        'giant': 'clamp(3rem, 8vw, 6.5rem)',
+                        'mega': 'clamp(2.5rem, 5vw, 4.5rem)',
+                    },
+                    letterSpacing: {
+                        'tightest': '-0.03em',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Core Setup */
+        body {
+            background-color: #ffffff;
+            color: #050505;
+            font-family: "indivisible", "Outfit", sans-serif;
+            cursor: default;
+        }
+
+        /* Lenis Smooth Scroll */
+        html.lenis, html.lenis body { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto !important; }
+        .lenis.lenis-stopped { overflow: hidden; }
+
+        /* Custom Utilities */
+        .img-zoom-container { overflow: hidden; }
+        .img-zoom-container img { transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
+        .group:hover .img-zoom-container img { transform: scale(1.05); }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: #959390;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 3Gem Style Buttons */
+        .btn-arrow-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background-color: #FFD100;
+            border-radius: 50%;
+            margin-left: 16px;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            color: #050505;
+        }
+        .btn-hover:hover .btn-arrow-box {
+            transform: translateX(4px) rotate(-45deg);
+        }
+        
+        /* Navbar specific arrow adjustment */
+        .nav-btn-hover .btn-arrow-box {
+            width: 24px;
+            height: 24px;
+            margin-left: 10px;
+            border-radius: 50%;
+        }
+        .nav-btn-hover:hover .btn-arrow-box {
+             transform: translateX(2px);
+        }
+
+        /* Scroll Reveal Utility */
+        .section-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="overflow-hidden">
+            <h1 class="text-xl font-bold uppercase tracking-widest text-white animate-pulse">About Me.</h1>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 top-0 left-0 transition-all duration-500 pt-6" id="navbar">
+        <div class="container mx-auto px-6 md:px-12 flex justify-between items-center p-4 rounded-full transition-all duration-500" id="nav-container">
+            <!-- Logo -->
+            <a href="index.html" class="text-2xl font-bold tracking-tight text-white flex items-center gap-2" id="nav-logo">
+                <div class="w-8 h-8 bg-brand-yellow flex items-center justify-center rounded-full text-black font-black text-sm">TI</div>
+                <span>Tohidul Islam</span>
+            </a>
+            
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-white" id="nav-links">
+                <a href="our-services.html" class="hover:text-brand-yellow transition-colors">Services</a>
+                <a href="approach.html" class="hover:text-brand-yellow transition-colors">Approach</a>
+                <a href="case-studies.html" class="hover:text-brand-yellow transition-colors">My works</a>
+                <a href="about-us.html" class="text-brand-yellow transition-colors">About me</a>
+                
+                <!-- Contact Button -->
+                <a href="contact-us.html" class="nav-btn-hover flex items-center px-6 py-2.5 border border-white/50 rounded-full text-xs font-bold uppercase tracking-wide hover:bg-white hover:text-black transition-all group" id="nav-btn">
+                    Contact us
+                    <div class="btn-arrow-box">
+                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Mobile Toggle -->
+            <button class="md:hidden text-white text-xl" id="nav-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="pt-48 pb-20 md:pt-64 md:pb-32 bg-brand-black text-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-5xl">
+                <div class="flex items-center gap-3 mb-8 hero-anim opacity-0 translate-y-10">
+                    <span class="w-2 h-2 bg-brand-yellow rounded-full"></span>
+                    <span class="text-xs font-bold uppercase tracking-widest text-brand-yellow">About Me</span>
+                </div>
+                
+                <h1 class="text-giant font-bold leading-[0.9] tracking-tightest mb-12 hero-anim opacity-0 translate-y-10">
+                    Designing for<br> Impact<span class="text-brand-yellow">.</span>
+                </h1>
+                
+                <p class="text-xl md:text-3xl text-gray-400 font-medium max-w-3xl leading-relaxed hero-anim opacity-0 translate-y-10">
+                    I’m Tohidul Islam, Lead Design Engineer | UX & Design Systems specializing in scalable digital products.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Bio Section -->
+    <section class="py-24 bg-white section-reveal-trigger">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center section-reveal">
+                <!-- Image -->
+                <div class="relative">
+                    <div class="aspect-[3/4] overflow-hidden rounded-2xl bg-gray-100">
+                        <img src="./assets/image/profile.jpg" 
+                             alt="Tohidul Islam" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <!-- Decorative Element -->
+                    <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-brand-yellow rounded-full z-[-1] hidden md:block"></div>
+                </div>
+
+                <!-- Text -->
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-8 tracking-tight">The story so far.</h2>
+                    <div class="space-y-6 text-lg text-gray-600 leading-relaxed font-medium">
+                        <p>
+                            I started my journey in front-end development in 2016 and later expanded into UI/UX design in 2018. Since then, I've worked on SaaS platforms, eCommerce solutions, mobile apps, on-demand services, and dashboards—helping teams turn ideas into simple, user-friendly digital experiences.
+                        </p>
+                        <p>
+                            I'm passionate about problem-solving and design thinking, with a strong focus on usability, design systems, and creating pixel-perfect products that people love to use.
+                        </p>
+                        <p>
+                            Based in Dhaka, Bangladesh, I collaborate with local and global clients, delivering intuitive, production-grade applications.
+                        </p>
+                    </div>
+                    
+                    <div class="mt-12 flex gap-12">
+                        <div>
+                            <span class="block text-5xl font-bold text-brand-black mb-2">9+</span>
+                            <span class="text-sm font-bold uppercase tracking-widest text-gray-400">Years Dev & Design</span>
+                        </div>
+                        <div>
+                            <span class="block text-5xl font-bold text-brand-black mb-2">6+</span>
+                            <span class="text-sm font-bold uppercase tracking-widest text-gray-400">Companies Served</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Expertise Section -->
+    <section class="py-24 bg-brand-black text-white section-reveal-trigger">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold mb-16 section-reveal">Skills & Technical Expertise</h2>
+
+            <div class="grid md:grid-cols-3 gap-12 section-reveal">
+                <div>
+                    <h3 class="text-xl font-bold text-brand-yellow mb-6 uppercase tracking-wider">Design Skills</h3>
+                    <ul class="space-y-3 text-gray-300 font-medium">
+                        <li>UI/UX Design</li>
+                        <li>Wireframing & Prototyping</li>
+                        <li>Interaction Design</li>
+                        <li>User Interface Design</li>
+                        <li>Design Systems</li>
+                        <li>Usability Research</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-brand-yellow mb-6 uppercase tracking-wider">Development Skills</h3>
+                    <ul class="space-y-3 text-gray-300 font-medium">
+                        <li>HTML5, CSS3, SCSS, LESS, Stylus</li>
+                        <li>Vue.js, Nuxt.js</li>
+                        <li>React.js, Next.js</li>
+                        <li>Bootstrap 5, Tailwind CSS v4</li>
+                        <li>JavaScript, jQuery</li>
+                        <li>GitHub, GitLab</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-brand-yellow mb-6 uppercase tracking-wider">Softwares & Tools</h3>
+                    <ul class="space-y-3 text-gray-300 font-medium">
+                        <li>Figma</li>
+                        <li>Adobe XD</li>
+                        <li>Adobe Photoshop</li>
+                        <li>Adobe Illustrator</li>
+                        <li>Canva</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values / Philosophy (Yellow Section) -->
+    <section class="bg-brand-yellow text-brand-black py-24 md:py-32 section-reveal-trigger">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold mb-16 section-reveal">Guiding Principles</h2>
+
+            <div class="grid md:grid-cols-3 gap-12 section-reveal">
+                <div class="pr-6">
+                    <h3 class="text-2xl font-bold mb-4">Clarity First</h3>
+                    <p class="text-base font-medium leading-relaxed">
+                        In a world of noise, clarity is power. I strip away the non-essential to focus on what truly matters to the user and the business.
+                    </p>
+                </div>
+                <div class="md:border-l-2 border-brand-black md:pl-10 pr-6">
+                    <h3 class="text-2xl font-bold mb-4">Honest Design</h3>
+                    <p class="text-base font-medium leading-relaxed">
+                        I believe in transparent interfaces. Design should guide and assist, never deceive or manipulate the user for short-term metrics.
+                    </p>
+                </div>
+                <div class="md:border-l-2 border-brand-black md:pl-10">
+                     <h3 class="text-2xl font-bold mb-4">Continuous Iteration</h3>
+                     <p class="text-base font-medium leading-relaxed">
+                        A digital product is never "done." I advocate for a cycle of testing, learning, and refining to ensure long-term success.
+                     </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Education -->
+    <section class="py-32 bg-brand-gray-light section-reveal-trigger">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold mb-16 text-center section-reveal">Work Experience</h2>
+                
+                <div class="space-y-6 section-reveal">
+                    <!-- Role 1 -->
+                    <div class="bg-white p-8 rounded-2xl hover:shadow-lg transition-shadow">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-brand-black">Co Founder & Lead Design Engineer</h3>
+                                <p class="text-gray-500 font-medium">Ambitionix Ltd. <span class="text-xs text-gray-400">• Dhaka, Bangladesh</span></p>
+                            </div>
+                            <span class="px-4 py-2 bg-brand-yellow text-brand-black rounded-full text-xs font-bold uppercase tracking-widest">Jan 2025 - Present</span>
+                        </div>
+                        <p class="text-gray-600 font-medium leading-relaxed text-sm">
+                            Co-founding and directing the product design engineering lifecycle. Architecting unified design systems across Figma and codebases, establishing scalable token architectures, and defining high-converting UX standards. Leading multi-disciplinary teams, steering product roadmaps, and delivering intuitive, production-grade applications.
+                        </p>
+                    </div>
+
+                    <!-- Role 2 -->
+                    <div class="bg-white p-8 rounded-2xl hover:shadow-lg transition-shadow">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-brand-black">UI/UX Designer</h3>
+                                <p class="text-gray-500 font-medium">Syntax Solutions Ltd. <span class="text-xs text-gray-400">• Dhaka, Bangladesh</span></p>
+                            </div>
+                            <span class="px-4 py-2 bg-brand-gray-light rounded-full text-xs font-bold uppercase tracking-widest text-brand-black">April 2024 - Present</span>
+                        </div>
+                        <p class="text-gray-600 font-medium leading-relaxed text-sm">
+                            Leading innovation for Nasir Group by crafting user-focused digital solutions. Contributed to product design using Figma, creating intuitive mobile apps and responsive websites. Designing engaging user interfaces, collaborating with cross-functional teams, gathering requirements, and delivering projects aligned with business needs.
+                        </p>
+                    </div>
+
+                    <!-- Role 3 -->
+                    <div class="bg-white p-8 rounded-2xl hover:shadow-lg transition-shadow">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-brand-black">UI/UX Designer</h3>
+                                <p class="text-gray-500 font-medium">Kaicom Solutions Ltd. <span class="text-xs text-gray-400">• Dhaka, Bangladesh</span></p>
+                            </div>
+                            <span class="px-4 py-2 bg-brand-gray-light rounded-full text-xs font-bold uppercase tracking-widest text-brand-black">May 2022 – November 2023</span>
+                        </div>
+                        <p class="text-gray-600 font-medium leading-relaxed text-sm">
+                            Specializing in Information Technology and Services. Focused on product design using Figma, creating mobile apps and responsive websites. Collaborated closely with team members, participated in client meetings, gathered requirements, and delivered user-friendly solutions aligned with project goals.
+                        </p>
+                    </div>
+
+                    <!-- Role 4 -->
+                    <div class="bg-white p-8 rounded-2xl hover:shadow-lg transition-shadow">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-brand-black">UI/UX Designer & Frontend Developer</h3>
+                                <p class="text-gray-500 font-medium">Qproco Ltd. <span class="text-xs text-gray-400">• Remote</span></p>
+                            </div>
+                            <span class="px-4 py-2 bg-brand-gray-light rounded-full text-xs font-bold uppercase tracking-widest text-brand-black">September 2021 – April 2024</span>
+                        </div>
+                        <p class="text-gray-600 font-medium leading-relaxed text-sm">
+                            Specializing in global online marketplaces with eCommerce stores in Bangladesh and Poland. Worked as UI/UX Designer and Front-End Developer, focusing on Figma product design and responsive front-end solutions using Vue.js and Nuxt.js.
+                        </p>
+                    </div>
+
+                    <!-- Role 5 -->
+                    <div class="bg-white p-8 rounded-2xl hover:shadow-lg transition-shadow">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-brand-black">UI/UX Designer & Frontend Developer</h3>
+                                <p class="text-gray-500 font-medium">Makeup world BD <span class="text-xs text-gray-400">• Dhaka, Bangladesh</span></p>
+                            </div>
+                            <span class="px-4 py-2 bg-brand-gray-light rounded-full text-xs font-bold uppercase tracking-widest text-brand-black">May 2020 – August 2021</span>
+                        </div>
+                        <p class="text-gray-600 font-medium leading-relaxed text-sm">
+                            Led product design using Figma and Adobe XD for cosmetics and makeup eCommerce. Designed mobile apps, web assets, and responsive features, implementing them with Vue.js and Nuxt.js.
+                        </p>
+                    </div>
+
+                    <!-- Role 6 -->
+                    <div class="bg-white p-8 rounded-2xl hover:shadow-lg transition-shadow">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-brand-black">Web Designer & Developer</h3>
+                                <p class="text-gray-500 font-medium">Nogor Solutions Limited <span class="text-xs text-gray-400">• Dhaka, Bangladesh</span></p>
+                            </div>
+                            <span class="px-4 py-2 bg-brand-gray-light rounded-full text-xs font-bold uppercase tracking-widest text-brand-black">October 2016 – May 2020</span>
+                        </div>
+                        <p class="text-gray-600 font-medium leading-relaxed text-sm">
+                            Worked on product design using Figma, Adobe XD, and Photoshop. Developed responsive websites using CSS3, SASS, LESS, HTML5, Laravel, PHP, JavaScript, and Vue.js.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Education & Certification -->
+                <div class="mt-20 grid md:grid-cols-2 gap-8 section-reveal">
+                    <div class="bg-white p-8 rounded-2xl">
+                        <h3 class="text-xs font-bold uppercase tracking-widest text-brand-yellow mb-2">Education</h3>
+                        <h4 class="text-xl font-bold text-brand-black">Bsc in Computer Science & Engineering</h4>
+                        <p class="text-gray-500 text-sm font-medium mt-1">Daffodils International University - Dhaka, Bangladesh</p>
+                        <p class="text-gray-400 text-xs mt-2 font-bold uppercase">October 2019 – January 2022</p>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-2xl">
+                        <h3 class="text-xs font-bold uppercase tracking-widest text-brand-yellow mb-2">Course & Certificate</h3>
+                        <h4 class="text-xl font-bold text-brand-black">Diploma in UX-UI Design</h4>
+                        <p class="text-gray-500 text-sm font-medium mt-1">Userhub - Dhaka, Bangladesh</p>
+                        <p class="text-gray-400 text-xs mt-2 font-bold uppercase">December 2021 – April 2022</p>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-12 section-reveal">
+                    <a href="./assets/doc/tohidul-islam-resume.pdf" target="_blank" download class="inline-flex items-center font-bold text-brand-link-red text-lg hover:opacity-80 transition-opacity">
+                        Download Resume <i class="fa-solid fa-download ml-2 text-sm"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. FOOTER -->
+    <footer id="contact">
+        <!-- Dark CTA -->
+        <div class="bg-brand-footer-dark text-white py-24 section-reveal-trigger">
+            <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-10 section-reveal">
+                <h2 class="text-3xl md:text-4xl font-bold max-w-3xl leading-tight">
+                    To learn more about how my unique approach can help your business <span class="text-brand-yellow">grow through design</span> contact me
+                </h2>
+                
+                <a href="mailto:contact@tohidul.com" class="flex items-center gap-4 text-2xl font-bold hover:opacity-80 transition-opacity whitespace-nowrap">
+                    Get in touch
+                    <div class="w-12 h-12 bg-brand-yellow text-black flex items-center justify-center rounded-full text-base">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Yellow Links -->
+        <div class="bg-brand-yellow text-brand-black pt-20 pb-12">
+            <div class="container mx-auto px-6">
+                <div class="mb-16">
+                    <div class="flex items-center gap-1 mb-2">
+                        <div class="w-8 h-8 bg-black text-brand-yellow flex items-center justify-center font-bold rounded-full text-sm">TI</div>
+                        <span class="text-3xl font-bold">Tohidul Islam</span>
+                    </div>
+                    <h3 class="text-5xl font-bold">Act on design.</h3>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-20">
+                    <div>
+                        <h4 class="font-bold mb-6 text-sm">Pages</h4>
+                        <ul class="space-y-3 text-sm font-medium">
+                            <li><a href="#" class="hover:underline">Home</a></li>
+                            <li><a href="#services" class="hover:underline">Services</a></li>
+                            <li><a href="#approach" class="hover:underline">Our Approach</a></li>
+                            <li><a href="#work" class="hover:underline">Case Studies</a></li>
+                            <li><a href="about-us.html" class="hover:underline">About me</a></li>
+                            <li><a href="#contact" class="hover:underline">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-6 text-sm">Services</h4>
+                         <ul class="space-y-3 text-sm font-medium">
+                            <li><a href="#" class="hover:underline">UI Design</a></li>
+                            <li><a href="#" class="hover:underline">Web Development</a></li>
+                            <li><a href="#" class="hover:underline">Design Systems</a></li>
+                            <li><a href="#" class="hover:underline">UX Research</a></li>
+                            <li><a href="#" class="hover:underline">Prototyping</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-6 text-sm">Find me</h4>
+                        <p class="text-sm font-medium leading-relaxed">
+                            Dhaka, Bangladesh<br>
+                            Available Remote Globally
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-6 text-sm">Follow me online</h4>
+                        <ul class="space-y-3 text-sm font-medium">
+                            <li><a href="https://www.linkedin.com/in/tohidul-islam-design/" target="_blank" rel="noopener noreferrer" class="hover:underline">LinkedIn</a></li>
+                            <li><a href="https://www.behance.net/touhidislam-design" target="_blank" rel="noopener noreferrer" class="hover:underline">Behance</a></li>
+                            <li><a href="https://dribbble.com/tohidul-islam-design" target="_blank" rel="noopener noreferrer" class="hover:underline">Dribbble</a></li>
+                            <li><a href="https://github.com/tohidul-islam-design" target="_blank" rel="noopener noreferrer" class="hover:underline">GitHub</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="w-full h-px bg-black/10 mb-8"></div>
+
+                <div class="flex flex-col md:flex-row justify-between text-[11px] font-medium text-black/60 uppercase tracking-wide">
+                    <p>&copy; 2026 Tohidul Islam. All rights reserved.</p>
+                    <div class="flex gap-6 mt-4 md:mt-0">
+                        <a href="#" class="hover:text-black">Privacy Policy</a>
+                        <a href="#" class="hover:text-black">Cookie Policy</a>
+                        <a href="#" class="hover:text-black">Website by Tohidul</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        window.addEventListener('load', () => {
+            // 1. Remove Preloader
+            const preloader = document.getElementById('preloader');
+            if(preloader) {
+                if (typeof gsap !== 'undefined') {
+                    gsap.to("#preloader", {
+                        opacity: 0,
+                        duration: 0.5,
+                        delay: 0.5,
+                        onComplete: () => preloader.style.display = 'none'
+                    });
+                } else {
+                    preloader.style.display = 'none';
+                }
+            }
+
+            // 2. Animate Hero Elements
+            if (typeof gsap !== 'undefined') {
+                gsap.to(".hero-anim", {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1,
+                    stagger: 0.2,
+                    ease: "power3.out",
+                    delay: 0.8
+                });
+
+                // 3. Scroll Reveal for Sections
+                if (typeof ScrollTrigger !== 'undefined') {
+                    gsap.registerPlugin(ScrollTrigger);
+                    
+                    const sections = document.querySelectorAll('.section-reveal-trigger');
+                    sections.forEach(section => {
+                        const elems = section.querySelectorAll('.section-reveal');
+                        if(elems.length > 0) {
+                            gsap.to(elems, {
+                                y: 0,
+                                opacity: 1,
+                                duration: 1,
+                                stagger: 0.15,
+                                ease: "power3.out",
+                                scrollTrigger: {
+                                    trigger: section,
+                                    start: "top 80%",
+                                    toggleActions: "play none none reverse"
+                                }
+                            });
+                        }
+                    });
+                }
+            }
+
+            // 4. Navbar Background Logic (Dark Hero)
+            const navbar = document.getElementById('navbar');
+            const navContainer = document.getElementById('nav-container');
+            const navLogo = document.getElementById('nav-logo');
+            const navLinks = document.getElementById('nav-links');
+            const navBtn = document.getElementById('nav-btn');
+            const navToggle = document.getElementById('nav-toggle');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    navContainer.classList.add('bg-white/95', 'shadow-sm', 'text-brand-black', 'py-3');
+                    navContainer.classList.remove('text-white');
+                    
+                    navLogo.classList.remove('text-white');
+                    navLogo.classList.add('text-brand-black');
+                    
+                    navLinks.classList.remove('text-white');
+                    navLinks.classList.add('text-brand-black');
+                    
+                    navBtn.classList.remove('border-white/50', 'hover:bg-white', 'hover:text-black');
+                    navBtn.classList.add('border-brand-black/20', 'hover:bg-brand-black', 'hover:text-white');
+                    
+                    navToggle.classList.remove('text-white');
+                    navToggle.classList.add('text-brand-black');
+                } else {
+                    navContainer.classList.remove('bg-white/95', 'shadow-sm', 'text-brand-black', 'py-3');
+                    navContainer.classList.add('text-white');
+                    
+                    navLogo.classList.add('text-white');
+                    navLogo.classList.remove('text-brand-black');
+                    
+                    navLinks.classList.add('text-white');
+                    navLinks.classList.remove('text-brand-black');
+                    
+                    navBtn.classList.add('border-white/50', 'hover:bg-white', 'hover:text-black');
+                    navBtn.classList.remove('border-brand-black/20', 'hover:bg-brand-black', 'hover:text-white');
+                    
+                    navToggle.classList.add('text-white');
+                    navToggle.classList.remove('text-brand-black');
+                }
+            });
+
+            // 5. Initialize Lenis Smooth Scroll
+            if (typeof Lenis !== 'undefined') {
+                const lenis = new Lenis({
+                    lerp: 0.1, 
+                    smooth: true,
+                });
+                function raf(time) {
+                    lenis.raf(time);
+                    requestAnimationFrame(raf);
+                }
+                requestAnimationFrame(raf);
+            }
+        });
+    </script>
+    <!-- Global Floating Butterfly Component -->
+    <script src="./assets/js/butterfly.js"></script>
+</body>
+</html>

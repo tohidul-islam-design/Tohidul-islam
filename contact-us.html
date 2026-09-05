@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Tohidul Islam</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts: Indivisible (Primary) & Outfit (Fallback) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- GSAP & Lenis -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"indivisible"', '"Outfit"', 'sans-serif'],
+                        display: ['"indivisible"', '"Outfit"', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-black': '#050505',
+                        'brand-yellow': '#FFD100',
+                        'brand-orange': '#FF5733',
+                        'brand-link-red': '#E85C41',
+                        'brand-gray-light': '#F4F4F4',
+                        'brand-footer-dark': '#1d1d1b',
+                    },
+                    fontSize: {
+                        'giant': 'clamp(3rem, 8vw, 6.5rem)',
+                        'mega': 'clamp(2.5rem, 5vw, 4.5rem)',
+                    },
+                    letterSpacing: {
+                        'tightest': '-0.03em',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Core Setup */
+        body {
+            background-color: #ffffff;
+            color: #050505;
+            font-family: "indivisible", "Outfit", sans-serif;
+            cursor: default;
+        }
+
+        /* Lenis Smooth Scroll */
+        html.lenis, html.lenis body { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto !important; }
+        .lenis.lenis-stopped { overflow: hidden; }
+
+        /* Custom Utilities */
+        .img-zoom-container { overflow: hidden; }
+        .img-zoom-container img { transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
+        .group:hover .img-zoom-container img { transform: scale(1.05); }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: #959390;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 3Gem Style Buttons */
+        .btn-arrow-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background-color: #FFD100;
+            border-radius: 50%;
+            margin-left: 16px;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            color: #050505;
+        }
+        .btn-hover:hover .btn-arrow-box {
+            transform: translateX(4px) rotate(-45deg);
+        }
+        
+        /* Navbar specific arrow adjustment */
+        .nav-btn-hover .btn-arrow-box {
+            width: 24px;
+            height: 24px;
+            margin-left: 10px;
+            border-radius: 50%;
+        }
+        .nav-btn-hover:hover .btn-arrow-box {
+             transform: translateX(2px);
+        }
+
+        /* Scroll Reveal Utility */
+        .section-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        /* Form Focus Styles */
+        .form-input:focus {
+            outline: none;
+            border-color: #FFD100;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="overflow-hidden">
+            <h1 class="text-xl font-bold uppercase tracking-widest text-white animate-pulse">Contact.</h1>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 top-0 left-0 transition-all duration-500 pt-6" id="navbar">
+        <div class="container mx-auto px-6 md:px-12 flex justify-between items-center p-4 rounded-full transition-all duration-500" id="nav-container">
+            <!-- Logo -->
+            <a href="index.html" class="text-2xl font-bold tracking-tight text-white flex items-center gap-2" id="nav-logo">
+                <div class="w-8 h-8 bg-brand-yellow flex items-center justify-center rounded-full text-black font-black text-sm">TI</div>
+                <span>Tohidul Islam</span>
+            </a>
+            
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-white" id="nav-links">
+                <a href="our-services.html" class="hover:text-brand-yellow transition-colors">Services</a>
+                <a href="approach.html" class="hover:text-brand-yellow transition-colors">Approach</a>
+                <a href="case-studies.html" class="hover:text-brand-yellow transition-colors">My works</a>
+                <a href="about-us.html" class="hover:text-brand-yellow transition-colors">About me</a>
+                
+                <!-- Contact Button -->
+                <a href="contact-us.html" class="nav-btn-hover flex items-center px-6 py-2.5 border border-white/50 rounded-full text-xs font-bold uppercase tracking-wide hover:bg-white hover:text-black transition-all group" id="nav-btn">
+                    Contact us
+                    <div class="btn-arrow-box">
+                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Mobile Toggle -->
+            <button class="md:hidden text-white text-xl" id="nav-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="pt-48 pb-20 md:pt-64 md:pb-32 bg-brand-black text-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-5xl">
+                <div class="flex items-center gap-3 mb-8 hero-anim opacity-0 translate-y-10">
+                    <span class="w-2 h-2 bg-brand-yellow rounded-full"></span>
+                    <span class="text-xs font-bold uppercase tracking-widest text-brand-yellow">Get In Touch</span>
+                </div>
+                
+                <h1 class="text-giant font-bold leading-[0.9] tracking-tightest mb-12 hero-anim opacity-0 translate-y-10">
+                    Let's Start a<br> Project<span class="text-brand-yellow">.</span>
+                </h1>
+                
+                <p class="text-xl md:text-3xl text-gray-400 font-medium max-w-3xl leading-relaxed hero-anim opacity-0 translate-y-10">
+                    Have a project in mind? I’d love to hear about it. Let’s discuss how we can help your business grow.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contact Content Section -->
+    <section class="py-24 bg-white section-reveal-trigger">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-16">
+                
+                <!-- Contact Info (Left) -->
+                <div class="md:col-span-4 space-y-12 section-reveal">
+                    <div>
+                        <h3 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Email Details</h3>
+                        <a href="mailto:contact@tohidul.com" class="text-2xl font-bold text-brand-black hover:text-brand-link-red transition-colors">contact@tohidul.com</a>
+                        <p class="text-gray-500 mt-2">Reply time: within 24 hours</p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Office</h3>
+                        <p class="text-xl font-bold text-brand-black leading-relaxed">
+                            Dhaka, Bangladesh<br>
+                            Available for Remote Work Globally
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Socials</h3>
+                        <div class="flex flex-col gap-2">
+                            <a href="https://www.linkedin.com/in/tohidul-islam-design/" target="_blank" rel="noopener noreferrer" class="text-lg font-bold text-brand-black hover:text-brand-link-red transition-colors">LinkedIn ↗</a>
+                            <a href="https://www.behance.net/touhidislam-design" target="_blank" rel="noopener noreferrer" class="text-lg font-bold text-brand-black hover:text-brand-link-red transition-colors">Behance ↗</a>
+                            <a href="https://dribbble.com/tohidul-islam-design" target="_blank" rel="noopener noreferrer" class="text-lg font-bold text-brand-black hover:text-brand-link-red transition-colors">Dribbble ↗</a>
+                            <a href="https://github.com/tohidul-islam-design" target="_blank" rel="noopener noreferrer" class="text-lg font-bold text-brand-black hover:text-brand-link-red transition-colors">GitHub ↗</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form (Right) -->
+                <div class="md:col-span-8 section-reveal">
+                    <form class="space-y-8">
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="group">
+                                <label class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Name</label>
+                                <input type="text" placeholder="John Doe" class="form-input w-full bg-transparent border-b border-gray-200 py-4 text-xl font-medium text-brand-black placeholder-gray-300 transition-colors focus:border-brand-yellow">
+                            </div>
+                            <div class="group">
+                                <label class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Email</label>
+                                <input type="email" placeholder="john@example.com" class="form-input w-full bg-transparent border-b border-gray-200 py-4 text-xl font-medium text-brand-black placeholder-gray-300 transition-colors focus:border-brand-yellow">
+                            </div>
+                        </div>
+
+                        <div class="group">
+                            <label class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Project Type</label>
+                            <select class="form-input w-full bg-transparent border-b border-gray-200 py-4 text-xl font-medium text-brand-black transition-colors focus:border-brand-yellow appearance-none cursor-pointer">
+                                <option>UI/UX Design</option>
+                                <option>Web Development</option>
+                                <option>Brand Identity</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <div class="group">
+                            <label class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Message</label>
+                            <textarea rows="4" placeholder="Tell me about your project..." class="form-input w-full bg-transparent border-b border-gray-200 py-4 text-xl font-medium text-brand-black placeholder-gray-300 transition-colors focus:border-brand-yellow resize-none"></textarea>
+                        </div>
+
+                        <div class="pt-8">
+                            <button type="button" class="btn-hover inline-flex items-center bg-brand-black text-white px-8 py-4 rounded-full font-bold text-sm transition-transform hover:-translate-y-1">
+                                Send Message
+                                <div class="btn-arrow-box bg-brand-yellow text-black">
+                                    <i class="fa-solid fa-arrow-right text-[12px]"></i>
+                                </div>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="bg-brand-gray-light py-24 section-reveal-trigger">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-12">
+                <div class="md:col-span-4 section-reveal">
+                    <h2 class="text-4xl font-bold mb-6">Frequently Asked Questions</h2>
+                    <p class="text-gray-500">Can't find what you're looking for? Email me directly.</p>
+                </div>
+                <div class="md:col-span-8 space-y-4 section-reveal">
+                    <!-- FAQ Item 1 -->
+                    <div class="bg-white rounded-2xl p-8 cursor-pointer hover:shadow-md transition-all group" onclick="this.classList.toggle('active')">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xl font-bold text-brand-black">What is your typical process?</h3>
+                            <div class="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 group-hover:border-brand-black group-hover:text-brand-black transition-colors">
+                                <i class="fa-solid fa-plus text-sm"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-500 mt-4 hidden group-[.active]:block leading-relaxed">
+                            My process typically involves Discovery, Research, Wireframing, Visual Design, and Handoff. I believe in transparent communication and regular check-ins to ensure we align with your goals at every step.
+                        </p>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="bg-white rounded-2xl p-8 cursor-pointer hover:shadow-md transition-all group" onclick="this.classList.toggle('active')">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xl font-bold text-brand-black">Do you work with startups?</h3>
+                            <div class="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 group-hover:border-brand-black group-hover:text-brand-black transition-colors">
+                                <i class="fa-solid fa-plus text-sm"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-500 mt-4 hidden group-[.active]:block leading-relaxed">
+                            Yes! I love working with ambitious startups. Whether you need an MVP design or a full brand rollout, I can scale my services to fit your stage of growth.
+                        </p>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="bg-white rounded-2xl p-8 cursor-pointer hover:shadow-md transition-all group" onclick="this.classList.toggle('active')">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xl font-bold text-brand-black">What are your payment terms?</h3>
+                            <div class="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 group-hover:border-brand-black group-hover:text-brand-black transition-colors">
+                                <i class="fa-solid fa-plus text-sm"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-500 mt-4 hidden group-[.active]:block leading-relaxed">
+                            Typically, I require a 50% deposit to secure your slot in my schedule, with the remaining 50% due upon project completion and file delivery. For larger projects, we can discuss milestone-based payments.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- 8. FOOTER -->
+    <footer id="contact">
+        <!-- Dark CTA -->
+        <div class="bg-brand-footer-dark text-white py-24 section-reveal-trigger">
+            <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-10 section-reveal">
+                <h2 class="text-3xl md:text-4xl font-bold max-w-3xl leading-tight">
+                    To learn more about how my unique approach can help your business <span class="text-brand-yellow">grow through design</span> contact me
+                </h2>
+                
+                <a href="mailto:contact@tohidul.com" class="flex items-center gap-4 text-2xl font-bold hover:opacity-80 transition-opacity whitespace-nowrap">
+                    Get in touch
+                    <div class="w-12 h-12 bg-brand-yellow text-black flex items-center justify-center rounded-full text-base">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Yellow Links -->
+        <div class="bg-brand-yellow text-brand-black pt-20 pb-12">
+            <div class="container mx-auto px-6">
+                <div class="mb-16">
+                    <div class="flex items-center gap-1 mb-2">
+                        <div class="w-8 h-8 bg-black text-brand-yellow flex items-center justify-center font-bold rounded-full text-sm">TI</div>
+                        <span class="text-3xl font-bold">Tohidul Islam</span>
+                    </div>
+                    <h3 class="text-5xl font-bold">Act on design.</h3>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-20">
+                    <div>
+                        <h4 class="font-bold mb-6 text-sm">Pages</h4>
+                        <ul class="space-y-3 text-sm font-medium">
+                            <li><a href="#" class="hover:underline">Home</a></li>
+                            <li><a href="#services" class="hover:underline">Services</a></li>
+                            <li><a href="#approach" class="hover:underline">Our Approach</a></li>
+                            <li><a href="#work" class="hover:underline">Case Studies</a></li>
+                            <li><a href="#about" class="hover:underline">About</a></li>
+                            <li><a href="#contact" class="hover:underline">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-6 text-sm">Services</h4>
+                         <ul class="space-y-3 text-sm font-medium">
+                            <li><a href="#" class="hover:underline">UI Design</a></li>
+                            <li><a href="#" class="hover:underline">Web Development</a></li>
+                            <li><a href="#" class="hover:underline">Design Systems</a></li>
+                            <li><a href="#" class="hover:underline">UX Research</a></li>
+                            <li><a href="#" class="hover:underline">Prototyping</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-6 text-sm">Find me</h4>
+                        <p class="text-sm font-medium leading-relaxed">
+                            Dhaka, Bangladesh<br>
+                            Available Remote Globally
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-6 text-sm">Follow me online</h4>
+                        <ul class="space-y-3 text-sm font-medium">
+                            <li><a href="https://www.linkedin.com/in/tohidul-islam-design/" target="_blank" rel="noopener noreferrer" class="hover:underline">LinkedIn</a></li>
+                            <li><a href="https://www.behance.net/touhidislam-design" target="_blank" rel="noopener noreferrer" class="hover:underline">Behance</a></li>
+                            <li><a href="https://dribbble.com/tohidul-islam-design" target="_blank" rel="noopener noreferrer" class="hover:underline">Dribbble</a></li>
+                            <li><a href="https://github.com/tohidul-islam-design" target="_blank" rel="noopener noreferrer" class="hover:underline">GitHub</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="w-full h-px bg-black/10 mb-8"></div>
+
+                <div class="flex flex-col md:flex-row justify-between text-[11px] font-medium text-black/60 uppercase tracking-wide">
+                    <p>&copy; 2026 Tohidul Islam. All rights reserved.</p>
+                    <div class="flex gap-6 mt-4 md:mt-0">
+                        <a href="#" class="hover:text-black">Privacy Policy</a>
+                        <a href="#" class="hover:text-black">Cookie Policy</a>
+                        <a href="#" class="hover:text-black">Website by Tohidul</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        window.addEventListener('load', () => {
+            // 1. Remove Preloader
+            const preloader = document.getElementById('preloader');
+            if(preloader) {
+                if (typeof gsap !== 'undefined') {
+                    gsap.to("#preloader", {
+                        opacity: 0,
+                        duration: 0.5,
+                        delay: 0.5,
+                        onComplete: () => preloader.style.display = 'none'
+                    });
+                } else {
+                    preloader.style.display = 'none';
+                }
+            }
+
+            // 2. Animate Hero Elements
+            if (typeof gsap !== 'undefined') {
+                gsap.to(".hero-anim", {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1,
+                    stagger: 0.2,
+                    ease: "power3.out",
+                    delay: 0.8
+                });
+
+                // 3. Scroll Reveal for Sections
+                if (typeof ScrollTrigger !== 'undefined') {
+                    gsap.registerPlugin(ScrollTrigger);
+                    
+                    const sections = document.querySelectorAll('.section-reveal-trigger');
+                    sections.forEach(section => {
+                        const elems = section.querySelectorAll('.section-reveal');
+                        if(elems.length > 0) {
+                            gsap.to(elems, {
+                                y: 0,
+                                opacity: 1,
+                                duration: 1,
+                                stagger: 0.15,
+                                ease: "power3.out",
+                                scrollTrigger: {
+                                    trigger: section,
+                                    start: "top 80%",
+                                    toggleActions: "play none none reverse"
+                                }
+                            });
+                        }
+                    });
+                }
+            }
+
+            // 4. Navbar Background Logic (Dark Hero)
+            const navbar = document.getElementById('navbar');
+            const navContainer = document.getElementById('nav-container');
+            const navLogo = document.getElementById('nav-logo');
+            const navLinks = document.getElementById('nav-links');
+            const navBtn = document.getElementById('nav-btn');
+            const navToggle = document.getElementById('nav-toggle');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    navContainer.classList.add('bg-white/95', 'shadow-sm', 'text-brand-black', 'py-3');
+                    navContainer.classList.remove('text-white');
+                    
+                    navLogo.classList.remove('text-white');
+                    navLogo.classList.add('text-brand-black');
+                    
+                    navLinks.classList.remove('text-white');
+                    navLinks.classList.add('text-brand-black');
+                    
+                    navBtn.classList.remove('border-white/50', 'hover:bg-white', 'hover:text-black');
+                    navBtn.classList.add('border-brand-black/20', 'hover:bg-brand-black', 'hover:text-white');
+                    
+                    navToggle.classList.remove('text-white');
+                    navToggle.classList.add('text-brand-black');
+                } else {
+                    navContainer.classList.remove('bg-white/95', 'shadow-sm', 'text-brand-black', 'py-3');
+                    navContainer.classList.add('text-white');
+                    
+                    navLogo.classList.add('text-white');
+                    navLogo.classList.remove('text-brand-black');
+                    
+                    navLinks.classList.add('text-white');
+                    navLinks.classList.remove('text-brand-black');
+                    
+                    navBtn.classList.add('border-white/50', 'hover:bg-white', 'hover:text-black');
+                    navBtn.classList.remove('border-brand-black/20', 'hover:bg-brand-black', 'hover:text-white');
+                    
+                    navToggle.classList.add('text-white');
+                    navToggle.classList.remove('text-brand-black');
+                }
+            });
+
+            // 5. Initialize Lenis Smooth Scroll
+            if (typeof Lenis !== 'undefined') {
+                const lenis = new Lenis({
+                    lerp: 0.1, 
+                    smooth: true,
+                });
+                function raf(time) {
+                    lenis.raf(time);
+                    requestAnimationFrame(raf);
+                }
+                requestAnimationFrame(raf);
+            }
+        });
+    </script>
+    <!-- Global Floating Butterfly Component -->
+    <script src="./assets/js/butterfly.js"></script>
+</body>
+</html>

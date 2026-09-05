@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Title & SEO Tags -->
+  <title>Tohidul Islam - Portfolio</title>
+  <meta name="description" content="Senior Product Designer Portfolio. Deep foundation in HTML, CSS, and Canvas. Streamlined SaaS, App Design, Dashboards, and Landing Pages.">
+  
+  <!-- Google Font: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class', // Enable class-based dark mode
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            zinc: {
+              950: '#09090b',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Custom styles for blueprint dotted grid, transitions, and glow details -->
+  <style>
+    /* Blueprint Dotted Grid Background (Theme-Adaptive) */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(var(--dot-color, rgba(255, 255, 255, 0.015)) 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+      z-index: 0;
+      transition: background-image 0.5s ease;
+    }
+
+    .dark body::before {
+      --dot-color: rgba(255, 255, 255, 0.015);
+    }
+    
+    html:not(.dark) body::before {
+      --dot-color: rgba(9, 9, 11, 0.025);
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(var(--float-y, -10px)) rotate(var(--rotate-deg, 5deg)); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+    
+    .floating-icon-el {
+      animation: float var(--float-dur, 4s) ease-in-out infinite;
+      transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out, color 0.6s ease;
+    }
+    
+    /* Scrollbar Styling for adaptive themes */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+    }
+    .dark ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    html:not(.dark) ::-webkit-scrollbar-thumb {
+      background: rgba(9, 9, 11, 0.1);
+      border-radius: 4px;
+    }
+    html:not(.dark) ::-webkit-scrollbar-thumb:hover {
+      background: rgba(9, 9, 11, 0.2);
+    }
+    
+    /* Transition for glowing radial layers */
+    #top-gradient, #bottom-gradient {
+      transition: background 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease-in-out;
+    }
+
+    /* Hide scrollbar */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="relative min-h-screen bg-zinc-50 dark:bg-zinc-950 font-sans text-zinc-900 dark:text-zinc-100 flex flex-col items-center selection:bg-zinc-900 dark:selection:bg-white selection:text-white dark:selection:text-zinc-950 overflow-x-hidden transition-colors duration-500">
+
+  <!-- Background Gradients (Glowing aura layers) -->
+  <div id="top-gradient" class="absolute top-0 left-0 right-0 pointer-events-none overflow-hidden" style="height: 500px; z-index: 0;">
+    <!-- Floating Icons Top -->
+    <div id="top-floating-icons" class="absolute inset-0 pointer-events-none"></div>
+  </div>
+
+  <div id="bottom-gradient" class="fixed bottom-0 left-0 right-0 pointer-events-none opacity-0" style="height: 500px; z-index: 0;">
+    <!-- Floating Icons Bottom -->
+    <div id="bottom-floating-icons" class="absolute inset-0 pointer-events-none"></div>
+  </div>
+
+  <!-- Desktop Fixed Left Sidebar -->
+  <aside id="sidebar-desktop" class="hidden lg:flex fixed left-0 top-0 bottom-0 w-64 h-screen bg-white/70 dark:bg-zinc-900/60 border-r border-zinc-200/50 dark:border-white/5 backdrop-blur-xl flex-col justify-between p-6 z-50 transition-colors duration-500">
+    <div>
+      <!-- Profile Header Block -->
+      <a href="#/saas" class="flex items-center gap-3 shrink-0 group pb-6 border-b border-zinc-200/50 dark:border-white/5">
+        <img id="nav-avatar-desktop" src="../assets/image/profile.jpg" alt="Tohidul Islam" class="rounded-xl w-[40px] h-[40px] object-cover border border-zinc-200 dark:border-white/10 group-hover:border-zinc-300 dark:group-hover:border-white/20">
+        <div class="leading-tight">
+          <p class="font-bold text-sm text-zinc-950 dark:text-white tracking-tight">TOHIDUL ISLAM</p>
+          <p class="text-[11px] text-zinc-500 dark:text-zinc-400 font-medium group-hover:text-zinc-700 dark:group-hover:text-zinc-300 transition-colors">Sr. Product Designer</p>
+        </div>
+      </a>
+
+      <!-- Vertical Navigation Menu -->
+      <nav class="flex flex-col gap-1.5 mt-8">
+        <button onclick="navigateTo('/saas')" data-tab="saas" class="tab-btn flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-300 w-full text-left cursor-pointer">
+          <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-10 9 10 9 10-9Z"/><path d="m2 17 10 9 10-9"/><path d="m2 12 10 9 10-9"/></svg>
+          SaaS
+        </button>
+        <button onclick="navigateTo('/appdesign')" data-tab="appdesign" class="tab-btn flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-300 w-full text-left cursor-pointer">
+          <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+          App Design
+        </button>
+        <button onclick="navigateTo('/dashboards')" data-tab="dashboards" class="tab-btn flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-300 w-full text-left cursor-pointer">
+          <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+          Dashboards
+        </button>
+        <button onclick="navigateTo('/landing')" data-tab="landing" class="tab-btn flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-300 w-full text-left cursor-pointer">
+          <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+          Landing Pages
+        </button>
+        <button onclick="navigateTo('/visualdesign')" data-tab="visualdesign" class="tab-btn flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-300 w-full text-left cursor-pointer">
+          <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/></svg>
+          Visual Design
+        </button>
+        <button onclick="navigateTo('/vibecode')" data-tab="vibecode" class="tab-btn flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-300 w-full text-left cursor-pointer">
+          <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+          Vibe Code
+        </button>
+      </nav>
+    </div>
+
+    <!-- Sidebar Bottom Controls Footer -->
+    <div class="flex flex-col gap-4 border-t border-zinc-200/50 dark:border-white/5 pt-5">
+      <div class="flex items-center justify-between">
+        <span class="text-[10px] text-zinc-500 dark:text-zinc-400 font-extrabold uppercase tracking-wider">Appearance</span>
+        <button onclick="toggleTheme()" class="theme-toggle-btn p-2.5 rounded-xl border border-zinc-200 dark:border-white/10 bg-white/50 dark:bg-zinc-900/60 text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all flex items-center justify-center cursor-pointer shadow-sm">
+          <!-- Themed Icon SVG loaded by JS -->
+        </button>
+      </div>
+      <div class="text-[10px] text-zinc-400 dark:text-zinc-500 font-medium">
+        © 2026 Tohidul Islam.
+      </div>
+    </div>
+  </aside>
+
+  <!-- Mobile/Tablet Top Sticky Header -->
+  <header id="navbar-mobile" class="lg:hidden w-full sticky top-0 z-[100] h-14 bg-white/80 dark:bg-zinc-950/80 border-b border-zinc-200/50 dark:border-white/5 backdrop-blur-md flex items-center justify-between px-4 transition-colors duration-500">
+    <a href="#/saas" class="flex items-center gap-2 group">
+      <img src="../assets/image/profile.jpg" alt="Tohidul Islam" class="rounded-lg w-[32px] h-[32px] object-cover border border-zinc-200 dark:border-white/10">
+      <span class="font-bold text-xs tracking-tight text-zinc-950 dark:text-white">TOHIDUL ISLAM</span>
+    </a>
+    
+    <div class="flex items-center gap-2">
+      <!-- Mobile theme toggle button -->
+      <button onclick="toggleTheme()" class="theme-toggle-btn p-2 rounded-lg text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors cursor-pointer">
+        <!-- Themed Icon SVG loaded by JS -->
+      </button>
+      
+      <!-- Mobile burger drawer menu button -->
+      <button onclick="toggleMobileMenu()" class="p-2 rounded-lg text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors cursor-pointer">
+        <svg id="burger-icon" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        <svg id="close-icon" class="w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer panel -->
+    <div id="mobile-drawer" class="lg:hidden absolute top-14 left-0 right-0 overflow-hidden border-b border-zinc-200/50 dark:border-white/5 h-0 transition-all duration-300 bg-white/95 dark:bg-zinc-950/90 backdrop-blur-xl">
+      <div class="flex flex-col p-3 gap-1">
+        <button onclick="navigateTo('/saas')" data-tab="saas" class="mobile-tab-btn flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-left transition-all duration-200">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-10 9 10 9 10-9Z"/><path d="m2 17 10 9 10-9"/><path d="m2 12 10 9 10-9"/></svg>
+          SaaS
+        </button>
+        <button onclick="navigateTo('/appdesign')" data-tab="appdesign" class="mobile-tab-btn flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-left transition-all duration-200">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+          App Design
+        </button>
+        <button onclick="navigateTo('/dashboards')" data-tab="dashboards" class="mobile-tab-btn flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-left transition-all duration-200">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+          Dashboards
+        </button>
+        <button onclick="navigateTo('/landing')" data-tab="landing" class="mobile-tab-btn flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-left transition-all duration-200">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+          Landing Pages
+        </button>
+        <button onclick="navigateTo('/visualdesign')" data-tab="visualdesign" class="mobile-tab-btn flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-left transition-all duration-200">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/></svg>
+          Visual Design
+        </button>
+        <button onclick="navigateTo('/vibecode')" data-tab="vibecode" class="mobile-tab-btn flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-left transition-all duration-200">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+          Vibe Code
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Offset Wrapper: Shift Content to the Right on Desktop viewports -->
+  <div class="w-full lg:pl-64 flex flex-col items-center min-h-screen z-10 relative">
+
+    <!-- Main content container (aligned naturally at the top, full-width) -->
+    <div class="w-full relative z-20 mt-6 px-6 sm:px-8 lg:px-12">
+      
+      <!-- Overlapping Tab Header Panel (full-width minimal Style) -->
+      <div id="page-header-card" class="w-full mb-8 py-2 transition-all duration-500 flex items-center justify-between gap-4 select-none">
+        <div class="flex items-center gap-4">
+          <!-- Dynamic colored icon container -->
+          <div id="header-icon-box" class="w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 border">
+            <svg id="header-icon-svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
+          </div>
+          <div>
+            <h2 id="page-title" class="text-xl md:text-2xl font-extrabold tracking-tight text-zinc-950 dark:text-white leading-tight">SaaS Projects</h2>
+            <p id="page-subtitle" class="text-xs text-zinc-500 dark:text-zinc-400 font-medium mt-0.5 transition-all duration-500">Explore selected product design work</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Container where content changes (stretches to full-width) -->
+      <div id="main-content" class="w-full flex flex-col opacity-100 scale-100 transition-all duration-500">
+        <!-- Dynamic Content Injected Here -->
+      </div>
+    </div>
+
+    <!-- Simple, Clean Footer (full-width) -->
+    <footer class="w-full px-6 sm:px-8 lg:px-12 py-10 mt-16 border-t border-zinc-200/50 dark:border-white/5 flex items-center justify-between text-xs text-zinc-400 dark:text-zinc-500 font-medium">
+      <span>© 2026 Tohidul Islam. All rights reserved.</span>
+    </footer>
+
+  </div>
+
+  <!-- Fullscreen Lightbox Modal -->
+  <div id="lightbox-modal" onclick="closeLightbox()" class="fixed inset-0 z-[400] bg-black/95 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300 flex items-center justify-center p-4">
+    <button class="absolute top-6 right-6 p-3 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-colors cursor-pointer" aria-label="Close image zoom">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+    <img id="lightbox-img" src="" alt="Fullscreen zoom" class="max-w-full max-h-[85vh] object-contain rounded-xl border border-white/10 shadow-2xl transition-transform duration-500 scale-95">
+  </div>
+
+  <!-- Scroll to Top Button -->
+  <button id="scroll-to-top" onclick="scrollToTop()" class="fixed bottom-8 right-8 w-12 h-12 rounded-xl bg-white dark:bg-zinc-900/85 text-zinc-700 dark:text-white hover:bg-zinc-900 hover:text-white dark:hover:bg-white dark:hover:text-zinc-950 backdrop-blur-md border border-zinc-200/50 dark:border-white/10 shadow-2xl flex items-center justify-center cursor-pointer z-[200] opacity-0 pointer-events-none translate-y-2 transition-all duration-300 hover:scale-110 active:scale-95" aria-label="Scroll to top">
+    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+  </button>
+
+  <!-- Notification Toast for Copied URL link -->
+  <div id="toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 bg-zinc-950 dark:bg-white text-white dark:text-zinc-950 text-xs font-bold px-5 py-3 rounded-xl shadow-2xl border border-white/10 dark:border-zinc-200/50 opacity-0 pointer-events-none transition-all duration-300 z-[300] flex items-center gap-2">
+    <svg class="w-4 h-4 text-emerald-500 dark:text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+    <span id="toast-text">Direct link copied to clipboard!</span>
+  </div>
+
+  <!-- JavaScript logic to handle Tabs, Carousels, Sidebar & Content data -->
+  <script>
+    // --- Portfolio Data Arrays ---
+    const saasProjects = [
+      {
+        id: 1,
+        slug: "drive",
+        title: "DRIVE",
+        timeline: "11 Month",
+        designSystem: "Material UI",
+        category: "SaaS",
+        figmaLink: "https://www.figma.com/design/lW8MjBDPIlM0IIEroyqKEN/Drive?node-id=0-11401&t=hRsUI3xTL3iUGU8p-1",
+        images: [
+          "https://ar-tanveer-portfolio.vercel.app/drive1.webp",
+          "https://ar-tanveer-portfolio.vercel.app/drive2.webp",
+          "https://ar-tanveer-portfolio.vercel.app/drive3.webp",
+          "https://ar-tanveer-portfolio.vercel.app/drive4.webp",
+          "https://ar-tanveer-portfolio.vercel.app/drive5.webp"
+        ],
+        context: "DRIVE is a comprehensive project management dashboard tailored specifically for high-growth SaaS platforms. It centralizes task tracking, timeline visualization, and team resource allocation into one unified workspace.<br><br>Key problems solved include fragmented communication channels, lack of high-level overview for C-Suite executives, and inefficient deadline tracking. The Material UI foundation allowed us to build an interface that feels instantly familiar while supporting complex data-heavy tables and rich interactive elements.<br><br>Throughout the 11-month timeline, we specifically focused on ensuring the platform remained performant even when dealing with thousands of active project nodes simultaneously. We implemented virtualized lists and aggressive caching strategies to maintain sub-second interaction times."
+      },
+      {
+        id: 4,
+        slug: "revexia",
+        title: "Revexia",
+        timeline: "5 Month",
+        designSystem: "Custom UI",
+        category: "SaaS",
+        figmaLink: "https://www.figma.com/design/b84FCZ0uBhk3BoyD8XxEUY/Revexia?node-id=0-1&t=bMJKzmEbeS0aYqao-1",
+        images: [
+          "https://ar-tanveer-portfolio.vercel.app/revexia1.webp",
+          "https://ar-tanveer-portfolio.vercel.app/revexia2.webp",
+          "https://ar-tanveer-portfolio.vercel.app/revexia3.webp",
+          "https://ar-tanveer-portfolio.vercel.app/revexia4.webp"
+        ],
+        context: "Revexia is a next-generation SaaS platform engineered to revolutionize how modern businesses manage, monitor, and scale their digital operations.<br><br>The primary challenge was designing a system capable of surfacing critical insights from massive data streams without overwhelming users. We crafted a bespoke UI system built around clarity and speed — every component was purpose-built to reduce decision fatigue and accelerate action.<br><br>Across 5 months, we shaped Revexia into a platform that feels both powerful and instinctive — from its intelligent dashboard to its deep customization layers — positioning it as a tool that grows smarter with every team that uses it."
+      },
+      {
+        id: 2,
+        slug: "flowcite",
+        title: "Flowcite",
+        timeline: "5 Month",
+        designSystem: "Custom UI",
+        category: "SaaS / Productivity",
+        figmaLink: "https://www.figma.com/design/ldwZE4FOlFGQ0fHpgpVoYE/Flowcite?node-id=0-1&t=mULJgITe43DVxDxe-1",
+        images: [
+          "https://ar-tanveer-portfolio.vercel.app/Flowcite-1.webp",
+          "https://ar-tanveer-portfolio.vercel.app/Flowcite-2.webp",
+          "https://ar-tanveer-portfolio.vercel.app/Flowcite-3.webp",
+          "https://ar-tanveer-portfolio.vercel.app/Flowcite-4.webp"
+        ],
+        context: "Flowcite is a cutting-edge SaaS productivity platform designed to streamline research workflows, citation management, and collaborative content creation for academic and professional teams.<br><br>The core challenge was synthesizing complex research pipelines into a clean, intuitive interface that doesn't overwhelm users with information. We built a fully custom design system to handle rich document previews, smart citation tagging, and real-time collaborative editing seamlessly.<br><br>Over 5 months, the focus was on crafting a fast, distraction-free writing environment that intelligently connects sources, automates citation formatting, and keeps research organized — transforming how teams move from discovery to publication."
+      },
+      {
+        id: 3,
+        slug: "dome",
+        title: "DOME",
+        timeline: "6 Month",
+        designSystem: "Custom UI",
+        category: "SaaS",
+        figmaLink: "https://www.figma.com/design/qaj06cNC6Kgo3QgJ5ygKyH/Dome-Prototype?node-id=0-1&t=RB5hqIFm8sVqiHtr-1",
+        images: [
+          "https://ar-tanveer-portfolio.vercel.app/Dome1.webp",
+          "https://ar-tanveer-portfolio.vercel.app/Dome2.webp",
+          "https://ar-tanveer-portfolio.vercel.app/Dome3.webp"
+        ],
+        context: "DOME is a powerful SaaS platform built to centralize and simplify enterprise-level operations management under one unified interface.<br><br>The design challenge was creating a system that could handle an enormous complexity of data and workflows while remaining approachable for teams of all technical levels. We developed a fully custom UI with a strong emphasis on spatial hierarchy and contextual navigation, ensuring users always know where they are and what actions are available.<br><br>Over 6 months, we focused on building scalable design patterns that could grow with the platform — from onboarding flows to advanced analytics dashboards — delivering a cohesive and premium experience across every touchpoint."
+      }
+    ];
+
+    const appDesignProjects = [
+      {
+        id: 201,
+        slug: "tms",
+        title: "TMS",
+        timeline: "4 Month",
+        designSystem: "Custom UI",
+        category: "Logistics / Operations",
+        figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files?node-id=18-8132&t=92Su7LDNN0qikFsP-1",
+        images: [
+          "https://ar-tanveer-portfolio.vercel.app/TMS-1.webp",
+          "https://ar-tanveer-portfolio.vercel.app/TMS-2.webp",
+          "https://ar-tanveer-portfolio.vercel.app/TMS-3.webp"
+        ],
+        context: "TMS (Transport Management System) is a powerful logistics operations platform designed to streamline fleet management, route planning, and cargo tracking for enterprise logistics teams.<br><br>The interface was built from the ground up with a custom design system optimized for data density without sacrificing clarity. Real-time shipment tracking, driver assignment workflows, and compliance reporting were key pillars of the UX.<br><br>Over 4 months, we focused heavily on making complex operational data readable at a glance and ensuring the platform performs flawlessly under intense, time-sensitive conditions."
+      },
+      {
+        id: 202,
+        slug: "auto-inspect",
+        title: "Auto Inspect",
+        timeline: "6 Month",
+        designSystem: "Custom UI",
+        category: "SaaS",
+        figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files?node-id=20-19757&t=92Su7LDNN0qikFsP-1",
+        images: [
+          "https://ar-tanveer-portfolio.vercel.app/Autoinspect1.png",
+          "https://ar-tanveer-portfolio.vercel.app/Autoinspect2.png",
+          "https://ar-tanveer-portfolio.vercel.app/AutoInspect3.png"
+        ],
+        context: "Auto Inspect was built to revolutionize how quality assurance teams conduct their daily visual inspections and automated metrics reporting.<br><br>The challenge was moving away from legacy, paper-based workflows that often resulted in data loss and compliance issues. By building a custom UI completely from scratch, we tailored the interface specifically for tablet devices often used on the manufacturing floor.<br><br>The application features real-time photo capturing, instant defect highlighting powered by computer vision models, and single-click compliance report generation. The dark overarching theme reduces eye strain during long shifts in brightly lit industrial environments."
+      },
+      {
+        id: 203,
+        slug: "mind-care",
+        title: "Mind Care",
+        timeline: "3 Month",
+        designSystem: "Tailwind UI",
+        category: "Healthcare",
+        figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files?node-id=8-5987&t=92Su7LDNN0qikFsP-1",
+        images: [
+          "https://ar-tanveer-portfolio.vercel.app/mindcare1.png",
+          "https://ar-tanveer-portfolio.vercel.app/mindcare2.png",
+          "https://ar-tanveer-portfolio.vercel.app/mindcare3.png",
+          "https://ar-tanveer-portfolio.vercel.app/mindacare4.png"
+        ],
+        context: "Mind Care provides a comprehensive, secure, and HIPAA-compliant suite of tele-health tools designed for modern psychiatric and therapeutic practitioners.<br><br>We utilized Tailwind UI to rapidly prototype and build a calming, accessible, and inclusive design system that prioritizes user comfort and trust. Features include secure end-to-end encrypted video conferencing, integrated digital prescribing, and robust patient mood tracking.<br><br>One of our primary focuses was reducing the cognitive load for both patients booking appointments and doctors managing their schedules. We simplified the intake process down from an average of 15 minutes completely analog to just under 3 minutes digitally."
+      },
+      {
+        id: 204,
+        slug: "muscle-locker",
+        title: "Muscle Locker",
+        timeline: "4 Month",
+        designSystem: "Tailwind CSS",
+        category: "Fitness & Health",
+        figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files?node-id=80-12958&t=92Su7LDNN0qikFsP-1",
+        images: [
+          "https://ar-tanveer-portfolio.vercel.app/Muscle-locker1.png",
+          "https://ar-tanveer-portfolio.vercel.app/Muscle-locker2.png",
+          "https://ar-tanveer-portfolio.vercel.app/Muscle-locker3.png"
+        ],
+        context: "Muscle Locker is a specialized fitness companion and progress tracking app designed for gym enthusiasts and professional trainers.<br><br>The core problem it tackles is the fragmented nature of workout logging and diet tracking. By combining both into a unified, high-octane visual interface, we made the act of logging daily fitness goals quick and engaging rather than a tedious chore.<br><br>During development, we heavily focused on creating intuitive, touch-friendly interactions for logging sets between rests. The dark mode default aesthetic is tailored for bright gym environments, making the data pop and easy to read mid-workout."
+      },
+      {
+        id: 205,
+        slug: "ldma",
+        title: "LDMA",
+        timeline: "5 Month",
+        designSystem: "Custom UI",
+        category: "Corporate / Data",
+        figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files?node-id=8-14520&t=92Su7LDNN0qikFsP-1",
+        images: [
+          "https://ar-tanveer-portfolio.vercel.app/ldma1.png",
+          "https://ar-tanveer-portfolio.vercel.app/ldma2.png",
+          "https://ar-tanveer-portfolio.vercel.app/ldma3.png"
+        ],
+        context: "LDMA is a forward-thinking corporate project focused on delivering streamlined data analysis and robust management tools.<br><br>The primary focus of this project was to handle highly complex data sets and present them in a visually digestible format for corporate decision-makers. We built an entirely custom UI from the ground up to support the specialized charting and reporting requirements.<br><br>Over the course of 5 months, we focused on bringing high performance and elegant interactions to what would otherwise be a dense and administrative interface, making the experience both powerful and highly engaging."
+      },
+      {
+        id: 206,
+        slug: "studylity",
+        title: "StudyLity",
+        timeline: "3 Month",
+        designSystem: "Custom UI",
+        category: "EdTech",
+        figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files?node-id=18-12438&t=92Su7LDNN0qikFsP-1",
+        images: [
+          "https://ar-tanveer-portfolio.vercel.app/Studylity1.webp",
+          "https://ar-tanveer-portfolio.vercel.app/Studylity2.webp",
+          "https://ar-tanveer-portfolio.vercel.app/Studylity3.webp"
+        ],
+        context: "StudyLity is a modern EdTech application designed to help students manage their study schedules, track progress, and stay motivated throughout their academic journey.<br><br>The design focuses on reducing overwhelm by breaking study goals into digestible, gamified tasks. Clear visual progress indicators and a clean, distraction-free interface keep students engaged without adding cognitive load.<br><br>Over 3 months, we crafted an experience that balances structure with flexibility — giving students the tools they need to study smarter, not harder."
+      }
+    ];
+
+    const dashboardProjects = [
+      {
+        id: 301,
+        slug: "dashboard-design",
+        title: "Dashboard Design",
+        timeline: "3 Month",
+        designSystem: "Custom UI",
+        category: "Dashboard / SaaS",
+        figmaLink: "",
+        images: [
+          "https://ar-tanveer-portfolio.vercel.app/dashboard1.webp",
+          "https://ar-tanveer-portfolio.vercel.app/dashboard2.webp",
+          "https://ar-tanveer-portfolio.vercel.app/dashboard3.webp"
+        ],
+        context: "Clarity OS is a centralized operational dashboard designed to surface actionable insights from complex organizational data.<br><br>Unlike traditional dashboards that hide information behind layers of navigation, Clarity OS uses a vertically-scrolling layout to tell a continuous data story. This approach ensures that executive teams can see the full picture — from high-level KPIs down to granular operation metrics — in one fluid movement.<br><br>The UI system was built with a focus on high information density without visual noise, using a monochrome foundation with purposeful color accents to highlight anomalies and critical trends."
+      }
+    ];
+
+    const landingProjects = [
+      {
+        id: 101,
+        slug: "capital-coin",
+        title: "Capital Coin",
+        timeline: "2 Month",
+        designSystem: "Framer Motion & Tailwind",
+        category: "Crypto / Web3",
+        figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files?node-id=82-20027&t=92Su7LDNN0qikFsP-1",
+        images: ["https://ar-tanveer-portfolio.vercel.app/CapitalCoin.png"],
+        context: "Capital Coin is a high-converting, premium landing page designed for a next-generation cryptocurrency exchange platform.<br><br>The primary objective of this landing page was to establish immediate trust and authority while explaining complex Web3 concepts simply. We used dark, sophisticated color palettes mixed with neon energetic accents to align with modern crypto aesthetics.<br><br>Technically, the page was heavily optimized for scroll performance, utilizing Framer Motion to create silky smooth reveal animations as users discover the platform's trading features and security guarantees."
+      },
+      {
+        id: 102,
+        slug: "budget-now",
+        title: "Budget Now",
+        timeline: "3 Weeks",
+        designSystem: "Custom UI",
+        category: "FinTech",
+        figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files?node-id=82-20027&t=92Su7LDNN0qikFsP-1",
+        images: ["https://ar-tanveer-portfolio.vercel.app/BudgetNow.webp"],
+        context: "Budget Now is a clean and modern personal finance landing page built to help users take control of their money with intuitive budgeting tools.<br><br>The design focuses on clarity and trust — essential factors for a financial product. The layout guides users through key features with a logical flow, ending with a strong call-to-action."
+      },
+      {
+        id: 103,
+        slug: "jeff-sutherland",
+        title: "Jeff Sutherland",
+        timeline: "2 Weeks",
+        designSystem: "Custom UI",
+        category: "Personal Brand",
+        figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files?node-id=82-20027&t=92Su7LDNN0qikFsP-1",
+        images: [
+          "https://ar-tanveer-portfolio.vercel.app/JeffLanding.webp",
+          "https://ar-tanveer-portfolio.vercel.app/JeffSutherland.webp"
+        ],
+        context: "A personal branding landing page for Jeff Sutherland — a speaker, author, and the co-creator of Scrum.<br><br>This page was designed to convey authority and credibility at a glance. Clean typography and strong imagery communicate the subject's expertise, while a compelling hero section drives visitors toward booking and speaking inquiries."
+      },
+      {
+        id: 104,
+        slug: "kina-becha",
+        title: "Kina Becha",
+        timeline: "1 Month",
+        designSystem: "Minimalist UI",
+        category: "E-Commerce",
+        figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files?node-id=82-20027&t=92Su7LDNN0qikFsP-1",
+        images: ["https://ar-tanveer-portfolio.vercel.app/KinaBecha.webp"],
+        context: "Kina Becha is a vibrant Bengali e-commerce landing page concept focused on local product discovery and online shopping.<br><br>The design blends local cultural identity with modern e-commerce best practices, creating a familiar yet polished experience for the target audience."
+      },
+      {
+        id: 105,
+        slug: "maxshelf-retail",
+        title: "MaxShelf Retail",
+        timeline: "3 Weeks",
+        designSystem: "Retail UI",
+        category: "Retail / POS",
+        figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files?node-id=82-20027&t=92Su7LDNN0qikFsP-1",
+        images: ["https://ar-tanveer-portfolio.vercel.app/MaxShelf-Retail.webp"],
+        context: "MaxShelf is a retail management SaaS landing page designed to attract brick-and-mortar store owners looking to digitize their inventory and point-of-sale operations.<br><br>The design is clean and professional, emphasizing ROI and operational efficiency to speak directly to business-minded decision-makers."
+      },
+      {
+        id: 107,
+        slug: "polock-interior",
+        title: "Polock Interior",
+        timeline: "1 Month",
+        designSystem: "Luxury UI",
+        category: "Interior Design",
+        figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files?node-id=82-20027&t=92Su7LDNN0qikFsP-1",
+        images: ["https://ar-tanveer-portfolio.vercel.app/PolockInterior.webp"],
+        context: "Polock Interior is a sleek, high-end landing page for a premium interior design studio.<br><br>The page uses large, full-bleed imagery and refined typography to communicate luxury and expertise. Every section is arranged to build desire and guide high-net-worth clients toward scheduling a consultation."
+      },
+      {
+        id: 108,
+        slug: "prospera",
+        title: "Prospera",
+        timeline: "5 Weeks",
+        designSystem: "Modern SaaS UI",
+        category: "FinTech / SaaS",
+        figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files?node-id=82-20027&t=92Su7LDNN0qikFsP-1",
+        images: ["https://ar-tanveer-portfolio.vercel.app/Prospera.webp"],
+        context: "Prospera is a financial planning SaaS landing page designed to attract both individual users and enterprise clients looking for wealth management solutions.<br><br>The design strikes a balance between being approachable and professional, using a confident color palette and data visualizations to build trust."
+      },
+      {
+        id: 109,
+        slug: "qproco",
+        title: "QProco",
+        timeline: "3 Weeks",
+        designSystem: "Tech UI",
+        category: "SaaS / Productivity",
+        figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files?node-id=82-20027&t=92Su7LDNN0qikFsP-1",
+        images: ["https://ar-tanveer-portfolio.webp"],
+        context: "QProco is a productivity and workflow automation SaaS landing page designed to convert technical decision-makers.<br><br>The page leans into a clean, code-forward aesthetic that resonates with developer and ops audiences, while keeping feature explanations clear enough for non-technical stakeholders."
+      },
+      {
+        id: 110,
+        slug: "silk-route",
+        title: "Silk Route",
+        timeline: "1 Month",
+        designSystem: "Editorial UI",
+        category: "E-Commerce / Fashion",
+        figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files?node-id=82-20027&t=92Su7LDNN0qikFsP-1",
+        images: ["https://ar-tanveer-portfolio.vercel.app/SilkRoute.webp"],
+        context: "Silk Route is a fashion e-commerce landing page inspired by the elegance of South Asian textile traditions.<br><br>The editorial layout elevates the brand's craftsmanship story, using rich imagery and sophisticated typography to position the products as premium, culturally meaningful fashion."
+      },
+      {
+        id: 111,
+        slug: "revexia-landing",
+        title: "Revexia",
+        timeline: "3 Weeks",
+        designSystem: "Custom UI",
+        category: "SaaS / Landing",
+        figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files?node-id=82-20027&t=92Su7LDNN0qikFsP-1",
+        images: ["https://ar-tanveer-portfolio.vercel.app/Revexialanding.webp"],
+        context: "Revexia's landing page was crafted to capture the essence of the brand — a bold, high-converting entry point into the platform's ecosystem.<br><br>The design prioritizes immediate clarity and visual impact, using strong typographic hierarchy and purposeful motion to communicate the platform's power without overwhelming visitors.<br><br>Every section was engineered to guide users through the product story — from the problem statement to the solution reveal — culminating in a visual call-to-action that drives sign-ups and demo requests."
+      },
+      {
+        id: 112,
+        slug: "everything4logistics",
+        title: "Everything4Logistics",
+        timeline: "3 Weeks",
+        designSystem: "Custom UI",
+        category: "Logistics / B2B",
+        figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files?node-id=82-20027&t=92Su7LDNN0qikFsP-1",
+        images: ["https://ar-tanveer-portfolio.vercel.app/vibe/Everything4logistics.webp"],
+        context: "Everything4Logistics is a B2B logistics platform landing page designed to serve freight operators, supply chain managers, and logistics service providers.<br><br>The design communicates reliability and scale through a structured, data-forward layout — converting complex service offerings into a clear, digestible narrative that drives enquiries and partnership conversations."
+      }
+    ];
+
+    const visualProjects = [
+      {
+        id: 401,
+        slug: "brand-identity",
+        title: "Brand Identity",
+        timeline: "2 Month",
+        designSystem: "Brand Manual",
+        category: "Identity / Branding",
+        figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
+        images: [
+          "https://images.unsplash.com/photo-1561070791-26c113006238?w=1600&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=1600&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1541462608141-2f682d6f40e1?w=1600&auto=format&fit=crop&q=80"
+        ],
+        context: "A complete visual rebranding project for a modern technology consultancy. Created a comprehensive brand identity system including logo design, color theory, custom typography guidelines, and marketing collateral."
+      },
+      {
+        id: 402,
+        slug: "marketing-design",
+        title: "Marketing & Ads",
+        timeline: "3 Weeks",
+        designSystem: "Marketing Guidelines",
+        category: "Marketing / Digital Assets",
+        figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
+        images: [
+          "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=1600&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1600&auto=format&fit=crop&q=80"
+        ],
+        context: "Designed high-converting promotional graphic banners, commercial posters, and digital asset templates for multi-channel advertising campaigns. Focused on typographic hierarchy and conversion rate optimization."
+      },
+      {
+        id: 403,
+        slug: "packaging-print",
+        title: "Packaging & Print",
+        timeline: "1 Month",
+        designSystem: "Print Specs",
+        category: "Packaging / Print Design",
+        figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
+        images: [
+          "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=1600&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1509319117193-57bab727e09d?w=1600&auto=format&fit=crop&q=80"
+        ],
+        context: "Created environmentally-friendly custom product packaging layouts, including bottle labels, shipping carton visual designs, and branded corporate merchandise layouts."
+      }
+    ];
+
+    const vibeCodeProjects = [
+      { id: 1, name: "The Café", url: "https://the-cafe-mu.vercel.app/", image: "https://ar-tanveer-portfolio.vercel.app/vibe/the cafe.png", tags: ["HTML5", "CSS3", "Vanilla JS"] },
+      { id: 2, name: "Argos Legal Group", url: "https://argos-legal-group.vercel.app/", image: "https://ar-tanveer-portfolio.vercel.app/vibe/argos.png", tags: ["Tailwind", "HTML5", "JS"] },
+      { id: 3, name: "Sentekse", url: "https://sentekse.vercel.app/index.html", image: "https://ar-tanveer-portfolio.vercel.app/vibe/senteske.png", tags: ["Tailwind", "JavaScript"] },
+      { id: 4, name: "HopOn BD", url: "https://hoponbd.com/", image: "https://ar-tanveer-portfolio.vercel.app/vibe/hopon.png", tags: ["HTML5", "CSS3", "JavaScript"] },
+      { id: 5, name: "HopOn Food", url: "https://hopon-food.vercel.app/", image: "https://ar-tanveer-portfolio.vercel.app/vibe/hopon-food.png", tags: ["Tailwind", "HTML5", "JS"] },
+      { id: 6, name: "MLJ Digital", url: "https://mljdigital.dk/", image: "https://ar-tanveer-portfolio.vercel.app/vibe/mlj.png", tags: ["HTML5", "CSS3", "JS"] },
+      { id: 7, name: "Noma", url: "https://noma-iota.vercel.app/", image: "https://ar-tanveer-portfolio.vercel.app/vibe/noma.png", tags: ["CSS3", "HTML5", "JS"] },
+      { id: 8, name: "CaseActive", url: "https://caseactive-sandbox.vercel.app/", image: "https://ar-tanveer-portfolio.vercel.app/vibe/caseactive.png", tags: ["Sandbox API", "Tailwind", "JS"] },
+      { id: 9, name: "Edge Surgical", url: "https://edgesurgical.vercel.app/", image: "https://ar-tanveer-portfolio.vercel.app/vibe/Edge.png", tags: ["HTML5", "CSS3", "JS"] },
+      { id: 10, name: "Figma Token Sandbox", url: "https://figma-token-sandbox.vercel.app/", image: "https://ar-tanveer-portfolio.vercel.app/vibe/Figma-token.png", tags: ["Figma API", "Tailwind", "JS"] },
+      { id: 11, name: "FacilityFlow", url: "https://facilityflow.dk/", image: "https://ar-tanveer-portfolio.vercel.app/vibe/facilityscreen.png", tags: ["HTML5", "CSS3", "JS"] }
+    ];
+
+    // --- Floating Icons Layout Configurations ---
+    const topIconsConf = [
+      {left:"7%",top:12,size:54,floatY:10,floatDur:4.2,rotateDeg:8},
+      {left:"26%",top:68,size:32,floatY:7,floatDur:5.6,rotateDeg:-6},
+      {left:"50%",top:6,size:50,floatY:12,floatDur:3.8,rotateDeg:5},
+      {left:"62%",top:54,size:80,floatY:8,floatDur:6.1,rotateDeg:-4},
+      {left:"76%",top:10,size:44,floatY:10,floatDur:4.7,rotateDeg:7},
+      {left:"91%",top:34,size:30,floatY:6,floatDur:5.2,rotateDeg:-9},
+      {left:"38%",top:108,size:22,floatY:8,floatDur:4.4,rotateDeg:6}
+    ];
+
+    const bottomIconsConf = [
+      {left:"9%",bottom:14,size:48,floatY:9,floatDur:4.5,rotateDeg:-7},
+      {left:"28%",bottom:60,size:30,floatY:7,floatDur:5.8,rotateDeg:6},
+      {left:"51%",bottom:8,size:46,floatY:11,floatDur:3.9,rotateDeg:-5},
+      {left:"63%",bottom:50,size:74,floatY:8,floatDur:6.3,rotateDeg:4},
+      {left:"77%",bottom:12,size:40,floatY:10,floatDur:4.8,rotateDeg:-8},
+      {left:"90%",bottom:36,size:28,floatY:6,floatDur:5.4,rotateDeg:9}
+    ];
+
+    // --- Application State ---
+    let currentTab = "saas";
+    let activeLandingSlug = ""; 
+    let activeVisualCategory = "all";
+    let carouselIndexes = {}; 
+    let currentTheme = "dark"; // Default theme is dark
+
+    const visualCategories = [
+      { id: "all", name: "All" },
+      { id: "branding", name: "Branding", filter: "Identity / Branding" },
+      { id: "marketing", name: "Marketing", filter: "Marketing / Digital Assets" },
+      { id: "packaging", name: "Packaging", filter: "Packaging / Print Design" }
+    ];
+
+    // Initialize carousel tracking keys
+    [...saasProjects, ...appDesignProjects, ...visualProjects].forEach(p => {
+      carouselIndexes[p.id] = 0;
+    });
+
+    // --- Bootstrapping ---
+    document.addEventListener("DOMContentLoaded", () => {
+      // Load stored theme or system preference
+      const savedTheme = localStorage.getItem("theme") || "dark";
+      setTheme(savedTheme);
+
+      renderFloatingIcons();
+      handleRouting();
+      
+      // Hash change listener for router
+      window.addEventListener("hashchange", handleRouting);
+
+      // Scroll listener for navbar & scroll top button
+      window.addEventListener("scroll", handleScroll, { passive: true });
+    });
+
+    // --- Helper: Render Background Floating Elements ---
+    function renderFloatingIcons() {
+      const topDiv = document.getElementById("top-floating-icons");
+      const bottomDiv = document.getElementById("bottom-floating-icons");
+
+      topDiv.innerHTML = topIconsConf.map((c) => `
+        <div class="absolute floating-icon-el transition-all duration-500 opacity-[0.06] dark:opacity-[0.05]"
+             style="left: ${c.left}; top: ${c.top}px; --float-y: -${c.floatY}px; --float-dur: ${c.floatDur}s; --rotate-deg: ${c.rotateDeg}deg; width: ${c.size}px; height: ${c.size}px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full float-svg">
+            <!-- Dynamic Path -->
+          </svg>
+        </div>
+      `).join('');
+
+      bottomDiv.innerHTML = bottomIconsConf.map((c) => `
+        <div class="absolute floating-icon-el transition-all duration-500 opacity-[0.06] dark:opacity-[0.05]"
+             style="left: ${c.left}; bottom: ${c.bottom}px; --float-y: -${c.floatY}px; --float-dur: ${c.floatDur}s; --rotate-deg: ${c.rotateDeg}deg; width: ${c.size}px; height: ${c.size}px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full float-svg">
+            <!-- Dynamic Path -->
+          </svg>
+        </div>
+      `).join('');
+    }
+
+    // --- Helper: Get Tab Specific Theme Gradients ---
+    const tabStyles = {
+      saas: {
+        title: "SaaS Projects",
+        iconColor: "#93c5fd",
+        svgPath: `<path d="M12 2L2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>`
+      },
+      appdesign: {
+        title: "App Design",
+        iconColor: "#c4b5fd",
+        svgPath: `<rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/>`
+      },
+      dashboards: {
+        title: "Dashboards",
+        iconColor: "#6ee7b7",
+        svgPath: `<rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/>`
+      },
+      landing: {
+        title: "Landing Pages",
+        iconColor: "#fbbf24",
+        svgPath: `<rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/>`
+      },
+      visualdesign: {
+        title: "Visual Design",
+        iconColor: "#f43f5e",
+        svgPath: `<rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/>`
+      },
+      vibecode: {
+        title: "Vibe Code",
+        iconColor: "#22d3ee",
+        svgPath: `<path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/>`
+      }
+    };
+
+    function getAuraColor(tabName, isDark) {
+      const colors = {
+        saas: isDark ? "rgba(59, 130, 246, 0.18)" : "rgba(59, 130, 246, 0.12)",
+        appdesign: isDark ? "rgba(139, 92, 246, 0.18)" : "rgba(139, 92, 246, 0.12)",
+        dashboards: isDark ? "rgba(16, 185, 129, 0.18)" : "rgba(16, 185, 129, 0.12)",
+        landing: isDark ? "rgba(245, 158, 11, 0.12)" : "rgba(245, 158, 11, 0.08)",
+        visualdesign: isDark ? "rgba(244, 63, 94, 0.18)" : "rgba(244, 63, 94, 0.12)",
+        vibecode: isDark ? "rgba(6, 182, 212, 0.18)" : "rgba(6, 182, 212, 0.12)"
+      };
+      return colors[tabName];
+    }
+
+    // --- Helper: Update Background Icon Types, Colors and Aura ---
+    function updateBackgroundIcons(tabName) {
+      const style = tabStyles[tabName];
+      const isDark = currentTheme === "dark";
+      const auraColor = getAuraColor(tabName, isDark);
+
+      // Transition glowing radial backdrops
+      document.getElementById("top-gradient").style.background = `radial-gradient(circle at 50% -100px, ${auraColor} 0%, transparent 65%)`;
+      document.getElementById("bottom-gradient").style.background = `radial-gradient(circle at 50% 110%, ${auraColor} 0%, transparent 65%)`;
+
+      // Update SVG path and stroke color
+      document.querySelectorAll(".floating-icon-el").forEach(el => {
+        el.style.color = style.iconColor;
+        const svg = el.querySelector(".float-svg");
+        if (svg) svg.innerHTML = style.svgPath;
+      });
+    }
+
+    // --- Theme Management Logic (Light/Dark Mode Toggle) ---
+    function toggleTheme() {
+      const targetTheme = currentTheme === "dark" ? "light" : "dark";
+      setTheme(targetTheme);
+      handleRouting(); // Redraw UI elements with correct theme styles
+    }
+
+    // --- Theme Management Logic (Light/Dark Mode Toggle) ---
+    function setTheme(theme) {
+      currentTheme = theme;
+      const html = document.documentElement;
+      const isLight = theme === "light";
+
+      if (isLight) {
+        html.classList.remove("dark");
+      } else {
+        html.classList.add("dark");
+      }
+
+      // Update the SVGs for both desktop and mobile theme toggles
+      const svgContent = isLight ? `
+        <svg class="w-5 h-5 text-zinc-700" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+        </svg>
+      ` : `
+        <svg class="w-5 h-5 text-zinc-300" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m0 13.5V21M4.93 4.93l1.59 1.59m10.96 10.96l1.59 1.59M3 12h2.25m13.5 0H21m-2.23-7.07l-1.59 1.59m-10.96 10.96l-1.59 1.59M12 8.25a3.75 3.75 0 100 7.5 3.75 3.75 0 000-7.5z" />
+        </svg>
+      `;
+
+      document.querySelectorAll(".theme-toggle-btn").forEach(btn => {
+        btn.innerHTML = svgContent;
+      });
+
+      localStorage.setItem("theme", theme);
+    }
+
+    // --- Scroll Listener Logic ---
+    function handleScroll() {
+      const scrolled = window.scrollY > 80;
+      const backToTop = document.getElementById("scroll-to-top");
+      const bottomGrad = document.getElementById("bottom-gradient");
+
+      // Bottom aura gradient visibility on scroll
+      if (scrolled) {
+        bottomGrad.classList.remove("opacity-0");
+        bottomGrad.classList.add("opacity-100");
+      } else {
+        bottomGrad.classList.remove("opacity-100");
+        bottomGrad.classList.add("opacity-0");
+      }
+
+      // Back-to-top button threshold
+      if (window.scrollY > 200) {
+        backToTop.classList.remove("opacity-0", "pointer-events-none", "translate-y-2");
+        backToTop.classList.add("opacity-100", "translate-y-0");
+      } else {
+        backToTop.classList.remove("opacity-100", "translate-y-0");
+        backToTop.classList.add("opacity-0", "pointer-events-none", "translate-y-2");
+      }
+    }
+
+    // --- Router Navigation Handling ---
+    function navigateTo(path) {
+      window.location.hash = path;
+      closeMobileMenu();
+    }
+
+    function handleRouting() {
+      const hash = window.location.hash || "#/saas";
+      const parts = hash.split("/");
+      const category = parts[1] || "saas";
+      const slug = parts[2] || "";
+
+      switchTabState(category);
+
+      if (category === "landing") {
+        activeLandingSlug = slug || landingProjects[0].slug;
+        renderLandingPagesView(activeLandingSlug);
+      } else if (category === "saas") {
+        renderProjectsList(saasProjects, "saas", slug);
+      } else if (category === "appdesign") {
+        renderProjectsList(appDesignProjects, "appdesign", slug);
+      } else if (category === "visualdesign") {
+        renderVisualDesignView();
+      } else if (category === "dashboards") {
+        renderDashboardsView(slug);
+      } else if (category === "vibecode") {
+        renderVibeCodeView();
+      }
+
+      updateBackgroundIcons(category);
+    }
+
+    // --- Navbar Active States Switcher ---
+    function switchTabState(tabName) {
+      currentTab = tabName;
+      
+      const style = tabStyles[tabName];
+      const isDark = currentTheme === "dark";
+
+      // Update header title, subtitle, SVG path, and theme colors
+      document.getElementById("page-title").innerText = style.title;
+      
+      // Define category subtitles, counts, and color classes
+      const subtitles = {
+        saas: "Enterprise business tools & cloud applications",
+        appdesign: "Mobile application systems & interface paradigms",
+        dashboards: "Data visualization systems & operations centers",
+        landing: "High-conversion product showcases & web frameworks",
+        visualdesign: "Brand assets, print packaging & marketing graphics",
+        vibecode: "Rapid browser prototypes & micro-interactions"
+      };
+      
+      const counts = {
+        saas: `${saasProjects.length} Projects`,
+        appdesign: `${appDesignProjects.length} Projects`,
+        dashboards: `${dashboardProjects.length} Project`,
+        landing: `${landingProjects.length} Projects`,
+        visualdesign: `${visualProjects.length} Projects`,
+        vibecode: `${vibeCodeProjects.length} Sites`
+      };
+      
+      // Update subtitle and count badge text safely
+      document.getElementById("page-subtitle").innerText = subtitles[tabName] || "";
+      const metaCount = document.getElementById("header-meta-count");
+      if (metaCount) {
+        metaCount.innerText = counts[tabName] || "";
+      }
+      
+      // Update icon SVG
+      const iconSvg = document.getElementById("header-icon-svg");
+      if (iconSvg) {
+        iconSvg.innerHTML = style.svgPath;
+      }
+      
+      // Update icon box background and border colors dynamically
+      const iconBox = document.getElementById("header-icon-box");
+      if (iconBox) {
+        const colorMap = {
+          saas: {
+            bg: isDark ? "rgba(59, 130, 246, 0.15)" : "rgba(59, 130, 246, 0.08)",
+            border: isDark ? "rgba(59, 130, 246, 0.25)" : "rgba(59, 130, 246, 0.15)",
+            text: "text-blue-500 dark:text-blue-400"
+          },
+          appdesign: {
+            bg: isDark ? "rgba(139, 92, 246, 0.15)" : "rgba(139, 92, 246, 0.08)",
+            border: isDark ? "rgba(139, 92, 246, 0.25)" : "rgba(139, 92, 246, 0.15)",
+            text: "text-violet-500 dark:text-violet-400"
+          },
+          dashboards: {
+            bg: isDark ? "rgba(16, 185, 129, 0.15)" : "rgba(16, 185, 129, 0.08)",
+            border: isDark ? "rgba(16, 185, 129, 0.25)" : "rgba(16, 185, 129, 0.15)",
+            text: "text-emerald-500 dark:text-emerald-400"
+          },
+          landing: {
+            bg: isDark ? "rgba(245, 158, 11, 0.15)" : "rgba(245, 158, 11, 0.08)",
+            border: isDark ? "rgba(245, 158, 11, 0.25)" : "rgba(245, 158, 11, 0.15)",
+            text: "text-amber-500 dark:text-amber-400"
+          },
+          visualdesign: {
+            bg: isDark ? "rgba(244, 63, 94, 0.15)" : "rgba(244, 63, 94, 0.08)",
+            border: isDark ? "rgba(244, 63, 94, 0.25)" : "rgba(244, 63, 94, 0.15)",
+            text: "text-rose-500 dark:text-rose-400"
+          },
+          vibecode: {
+            bg: isDark ? "rgba(6, 182, 212, 0.15)" : "rgba(6, 182, 212, 0.08)",
+            border: isDark ? "rgba(6, 182, 212, 0.25)" : "rgba(6, 182, 212, 0.15)",
+            text: "text-cyan-500 dark:text-cyan-400"
+          }
+        };
+        
+        const col = colorMap[tabName] || colorMap.saas;
+        iconBox.style.backgroundColor = col.bg;
+        iconBox.style.borderColor = col.border;
+        iconBox.className = `w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 border ${col.text}`;
+      }
+
+      // Update Desktop Sidebar Buttons
+      document.querySelectorAll(".tab-btn").forEach(btn => {
+        const t = btn.getAttribute("data-tab");
+        if (t === tabName) {
+          btn.className = isDark 
+            ? "tab-btn flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-300 w-full text-left bg-white text-zinc-950 shadow-[0_4px_12px_rgba(255,255,255,0.08)] scale-[1.01]"
+            : "tab-btn flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-300 w-full text-left bg-zinc-900 text-white shadow-[0_4px_12px_rgba(9,9,11,0.15)] scale-[1.01]";
+        } else {
+          btn.className = "tab-btn flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-300 w-full text-left bg-transparent text-zinc-500 dark:text-zinc-400 hover:bg-zinc-200/50 dark:hover:bg-white/5 hover:text-zinc-950 dark:hover:text-white";
+        }
+      });
+
+      // Update Mobile drawer buttons
+      document.querySelectorAll(".mobile-tab-btn").forEach(btn => {
+        const t = btn.getAttribute("data-tab");
+        if (t === tabName) {
+          btn.className = isDark
+            ? "mobile-tab-btn flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-left transition-all duration-200 bg-white text-zinc-950"
+            : "mobile-tab-btn flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-left transition-all duration-200 bg-zinc-900 text-white";
+        } else {
+          btn.className = "mobile-tab-btn flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-left transition-all duration-200 text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-white/5 hover:text-zinc-950 dark:hover:text-white";
+        }
+      });
+    }
+
+    // --- Dynamic Layout Helper: Format Project Description and Case Study Drawer ---
+    function formatProjectContext(p) {
+      const sections = p.context.split("<br><br>");
+      const intro = sections[0] || "";
+      
+      // Formulate bullet highlights from the second section
+      let bulletsHTML = "";
+      if (sections[1]) {
+        const points = sections[1]
+          .replace(/<\/?[^>]+(>|$)/g, "") // strip html tags
+          .split(/[.;] /)
+          .map(pt => pt.trim())
+          .filter(pt => pt.length > 3);
+        
+        if (points.length > 0) {
+          bulletsHTML = `
+            <div class="mt-4 mb-4">
+              <p class="text-[10px] font-extrabold text-zinc-950 dark:text-white uppercase tracking-wider mb-2">Key Focus Areas</p>
+              <ul class="space-y-1.5 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400">
+                ${points.map(pt => `
+                  <li class="flex items-start gap-2">
+                    <span class="text-emerald-500 font-bold shrink-0">✓</span>
+                    <span>${pt.endsWith('.') ? pt : pt + '.'}</span>
+                  </li>
+                `).join('')}
+              </ul>
+            </div>
+          `;
+        }
+      }
+
+      // Formulate expandable case study details from the remaining sections
+      const rest = sections.slice(2).join("<br><br>");
+      let drawerHTML = "";
+      if (rest.trim().length > 0) {
+        drawerHTML = `
+          <div id="drawer-${p.id}" class="h-0 overflow-hidden transition-all duration-500 ease-in-out">
+            <div class="pt-4 border-t border-zinc-100 dark:border-white/5 mt-4 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+              ${rest}
+            </div>
+          </div>
+          <button onclick="toggleCaseStudyDrawer(${p.id})" id="drawer-btn-${p.id}" class="mt-4 text-xs font-bold text-zinc-800 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white flex items-center gap-1.5 group/btn cursor-pointer">
+            <span>Read Case Study</span>
+            <svg id="drawer-arrow-${p.id}" class="w-3.5 h-3.5 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+          </button>
+        `;
+      }
+
+      return `
+        <div class="text-zinc-700 dark:text-zinc-300 text-xs sm:text-sm leading-relaxed">
+          <p>${intro}</p>
+          ${bulletsHTML}
+          ${drawerHTML}
+        </div>
+      `;
+    }
+
+    // Toggle Expand/Collapse Project Details Drawer
+    function toggleCaseStudyDrawer(id) {
+      const drawer = document.getElementById(`drawer-${id}`);
+      const btn = document.getElementById(`drawer-btn-${id}`).querySelector("span");
+      const arrow = document.getElementById(`drawer-arrow-${id}`);
+      
+      if (drawer.style.height === "auto" || drawer.classList.contains("expanded-drawer")) {
+        drawer.style.height = "0px";
+        drawer.classList.remove("expanded-drawer");
+        btn.innerText = "Read Case Study";
+        arrow.style.transform = "rotate(0deg)";
+      } else {
+        drawer.style.height = "auto";
+        const height = drawer.scrollHeight + "px";
+        drawer.style.height = "0px";
+        
+        setTimeout(() => {
+          drawer.style.height = height;
+          drawer.classList.add("expanded-drawer");
+        }, 10);
+        
+        setTimeout(() => {
+          if (drawer.classList.contains("expanded-drawer")) {
+            drawer.style.height = "auto";
+          }
+        }, 500);
+
+        btn.innerText = "Collapse Case Study";
+        arrow.style.transform = "rotate(180deg)";
+      }
+    }
+
+    // --- Lightbox Modal functions ---
+    function openLightbox(src) {
+      const modal = document.getElementById("lightbox-modal");
+      const img = document.getElementById("lightbox-img");
+      img.src = src;
+      modal.classList.remove("opacity-0", "pointer-events-none");
+      modal.classList.add("opacity-100");
+      
+      setTimeout(() => {
+        img.classList.remove("scale-95");
+        img.classList.add("scale-100");
+      }, 50);
+
+      document.addEventListener("keydown", handleLightboxEscape);
+    }
+
+    // --- Lightbox Modal functions ---
+    function closeLightbox() {
+      const modal = document.getElementById("lightbox-modal");
+      const img = document.getElementById("lightbox-img");
+      img.classList.remove("scale-100");
+      img.classList.add("scale-95");
+      modal.classList.remove("opacity-100");
+      modal.classList.add("opacity-0", "pointer-events-none");
+      
+      document.removeEventListener("keydown", handleLightboxEscape);
+    }
+
+    function handleLightboxEscape(e) {
+      if (e.key === "Escape") {
+        closeLightbox();
+      }
+    }
+
+    // --- Copy Email helper ---
+    function copyEmailToClipboard(email) {
+      navigator.clipboard.writeText(email).then(() => {
+        const toast = document.getElementById("toast");
+        const toastText = document.getElementById("toast-text");
+        toastText.innerText = "Email address copied to clipboard!";
+        
+        toast.classList.remove("opacity-0", "pointer-events-none");
+        toast.classList.add("opacity-100");
+        
+        setTimeout(() => {
+          toast.classList.remove("opacity-100");
+          toast.classList.add("opacity-0", "pointer-events-none");
+        }, 2000);
+      });
+    }
+
+    // --- Core View: SaaS & App Design List (Horizontal Top Tabs + Full Width detailed card) ---
+    function renderProjectsList(projects, category, targetSlug) {
+      const container = document.getElementById("main-content");
+      
+      container.classList.add("opacity-0", "scale-[0.98]");
+      
+      setTimeout(() => {
+        const project = projects.find(p => p.slug === targetSlug) || projects[0];
+        const shareUrl = `${window.location.origin}${window.location.pathname}#/${category}/${project.slug}`;
+        const currentImgIndex = carouselIndexes[project.id] || 0;
+        const isDark = currentTheme === "dark";
+        const isApp = category === "appdesign";
+
+        container.className = "w-full flex flex-col";
+        container.innerHTML = `
+          <!-- Horizontal Top Tab Navigation bar -->
+          <div class="w-full flex flex-row overflow-x-auto gap-2 pb-4 mb-6 no-scrollbar border-b border-zinc-200/50 dark:border-white/5 select-none shrink-0">
+            ${projects.map(p => {
+              const isSelected = p.slug === project.slug;
+              return `
+                <button onclick="navigateTo('/${category}/${p.slug}')" class="relative flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm whitespace-nowrap transition-all duration-300 shrink-0 cursor-pointer ${
+                  isSelected 
+                    ? 'bg-zinc-900 dark:bg-white text-white dark:text-zinc-950 shadow-md scale-[1.01]' 
+                    : 'bg-white/80 dark:bg-zinc-900/40 text-zinc-500 dark:text-zinc-400 border border-zinc-200/50 dark:border-white/5 hover:text-zinc-950 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800/40 shadow-sm'
+                }">
+                  ${p.title}
+                </button>
+              `;
+            }).join('')}
+          </div>
+
+          <!-- Highlighted Project Full-Width Widescreen Vertical Row Card -->
+          <div class="w-full bg-white/80 dark:bg-zinc-900/30 border border-zinc-200/50 dark:border-white/5 rounded-[2rem] p-5 md:p-8 lg:p-10 transition-all duration-500 shadow-lg dark:shadow-2xl">
+            <div class="flex flex-col gap-8">
+              
+              <!-- Top Row: Text descriptions and Metadata + Actions -->
+              <div class="flex flex-col md:flex-row justify-between items-start gap-6 border-b border-zinc-100 dark:border-white/5 pb-6">
+                <div class="flex-1">
+                  <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-4 text-zinc-900 dark:text-white">${project.title}</h2>
+                  
+                  <div class="flex flex-wrap gap-2.5">
+                    <div class="bg-zinc-100 dark:bg-white/5 border border-zinc-200/50 dark:border-white/5 rounded-xl px-4 py-2 flex flex-col backdrop-blur-sm">
+                      <p class="text-[9px] text-zinc-500 dark:text-zinc-400 font-extrabold uppercase tracking-widest mb-0.5">Timeline</p>
+                      <p class="text-xs font-bold text-zinc-800 dark:text-white">${project.timeline}</p>
+                    </div>
+                    <div class="bg-zinc-100 dark:bg-white/5 border border-zinc-200/50 dark:border-white/5 rounded-xl px-4 py-2 flex flex-col backdrop-blur-sm">
+                      <p class="text-[9px] text-zinc-500 dark:text-zinc-400 font-extrabold uppercase tracking-widest mb-0.5">Design System</p>
+                      <p class="text-xs font-bold text-zinc-800 dark:text-white">${project.designSystem}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Actions aligned right on larger screens, full-width below description on mobile -->
+                <div class="flex flex-row md:flex-col gap-3 shrink-0 w-full md:w-56 mt-4 md:mt-0">
+                  <button onclick="copyToClipboard('${shareUrl}')" class="flex-1 flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl font-semibold text-xs border bg-zinc-50 dark:bg-zinc-900/40 text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white border-zinc-200 dark:border-white/5 hover:border-zinc-300 dark:hover:border-white/10 hover:bg-zinc-100 dark:hover:bg-zinc-900/80 transition-all duration-300 cursor-pointer font-sans">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                    Copy Link
+                  </button>
+                  ${project.figmaLink ? `
+                    <a href="${project.figmaLink}" target="_blank" rel="noopener noreferrer" class="flex-1 flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl transition-all duration-300 font-bold text-xs shadow-sm cursor-pointer font-sans text-center ${
+                      isDark 
+                        ? 'bg-white text-zinc-950 hover:bg-zinc-100' 
+                        : 'bg-zinc-950 text-white hover:bg-zinc-800'
+                    }">
+                      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/><path d="M12 2h3.5a3.5 3.5 0 0 1 0 7H12z"/><path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"/><path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/><path d="M5 18.5A3.5 3.5 0 0 1 8.5 15H12v3.5A3.5 3.5 0 0 1 8.5 22 3.5 3.5 0 0 1 5 18.5z"/></svg>
+                      View in Figma
+                    </a>
+                  ` : ''}
+                </div>
+              </div>
+
+              <!-- Bottom Row: Mockup preview (Safari Web Browser Bezel) -->
+              <div class="w-full flex flex-col items-center">
+                <!-- Safari Web Browser Bezel -->
+                <div class="w-full bg-zinc-100 dark:bg-zinc-900/60 border border-zinc-200/50 dark:border-white/5 rounded-2xl shadow-2xl relative flex flex-col overflow-hidden">
+                  <div class="h-9 bg-zinc-200/60 dark:bg-zinc-900/80 border-b border-zinc-200 dark:border-white/5 px-4 flex items-center gap-2 select-none shrink-0">
+                    <div class="flex items-center gap-1.5">
+                      <span class="w-2.5 h-2.5 rounded-full bg-red-400 dark:bg-red-500/80"></span>
+                      <span class="w-2.5 h-2.5 rounded-full bg-yellow-400 dark:bg-yellow-500/80"></span>
+                      <span class="w-2.5 h-2.5 rounded-full bg-green-400 dark:bg-green-500/80"></span>
+                    </div>
+                    <div class="mx-auto w-40 sm:w-60 h-5 rounded bg-zinc-100 dark:bg-zinc-950/50 border border-zinc-300/50 dark:border-white/5 flex items-center justify-center text-[10px] text-zinc-400 dark:text-zinc-500 font-medium">
+                      ${project.slug}.design
+                    </div>
+                  </div>
+                  <div class="relative w-full aspect-[16/10]">
+                    <img id="carousel-img-${project.id}" src="${project.images[currentImgIndex]}" alt="${project.title} preview" onclick="openLightbox(this.src)" class="w-full h-full object-cover cursor-zoom-in transition-opacity duration-300">
+                    
+                    <!-- Carousel Dots Indicators -->
+                    ${project.images.length > 1 ? `
+                      <div class="absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-10 bg-black/30 dark:bg-black/40 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/5" id="carousel-dots-${project.id}">
+                        ${project.images.map((img, idx) => `
+                          <span class="h-1.5 transition-all duration-300 rounded-full ${idx === currentImgIndex ? 'w-4 bg-white' : 'w-1.5 bg-white/40'}"></span>
+                        `).join('')}
+                      </div>
+                      
+                      <!-- Arrow Navigation -->
+                      <button onclick="prevCarouselImg(${project.id}, ${JSON.stringify(project.images).replace(/"/g, '&quot;')})" class="absolute left-4 top-1/2 -translate-y-1/2 p-2 shadow-xl flex items-center justify-center z-10 transition-all duration-300 bg-white/90 dark:bg-zinc-900/80 text-zinc-900 dark:text-white hover:bg-zinc-950 dark:hover:bg-white hover:text-white dark:hover:text-zinc-950 rounded-full border border-zinc-200/50 dark:border-white/10 hover:scale-105 active:scale-95 cursor-pointer" aria-label="Previous image">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
+                      </button>
+                      <button onclick="nextCarouselImg(${project.id}, ${JSON.stringify(project.images).replace(/"/g, '&quot;')})" class="absolute right-4 top-1/2 -translate-y-1/2 p-2 shadow-xl flex items-center justify-center z-10 transition-all duration-300 bg-white/90 dark:bg-zinc-900/80 text-zinc-900 dark:text-white hover:bg-zinc-950 dark:hover:bg-white hover:text-white dark:hover:text-zinc-950 rounded-full border border-zinc-200/50 dark:border-white/10 hover:scale-105 active:scale-95 cursor-pointer" aria-label="Next image">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+                      </button>
+                    ` : ''}
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        `;
+
+        container.classList.remove("opacity-0", "scale-[0.98]");
+        const headerEl = document.querySelector(".relative.z-20");
+        if (headerEl) headerEl.scrollIntoView({ behavior: "instant", block: "start" });
+
+      }, 150);
+    }
+
+    // --- Core View: Dashboards View (Widescreen Fluid layouts) ---
+    function renderDashboardsView(targetSlug) {
+      const container = document.getElementById("main-content");
+      
+      container.classList.add("opacity-0", "scale-[0.98]");
+      
+      setTimeout(() => {
+        container.className = "w-full flex flex-col gap-8 md:gap-16";
+        container.innerHTML = dashboardProjects.map(p => {
+          const isHighlighted = p.slug === targetSlug;
+          const shareUrl = `${window.location.origin}${window.location.pathname}#/dashboards/${p.slug}`;
+          
+          return `
+            <div id="card-${p.slug}" class="border rounded-[2rem] p-5 md:p-8 lg:p-10 transition-all duration-500 scroll-mt-24 group ${
+              isHighlighted 
+                ? 'border-zinc-900 dark:border-white/20 bg-white dark:bg-zinc-900/60 shadow-[0_15px_40px_rgba(9,9,11,0.08)] dark:shadow-[0_0_30px_rgba(255,255,255,0.02),0_15px_50px_rgba(0,0,0,0.6)] -translate-y-1' 
+                : 'border-zinc-200/60 dark:border-white/5 bg-white/80 dark:bg-zinc-900/30 shadow-[0_4px_20px_rgba(0,0,0,0.02)] dark:shadow-2xl hover:shadow-[0_15px_30px_rgba(0,0,0,0.06)] dark:hover:shadow-black/60 hover:border-zinc-300 dark:hover:border-white/10 hover:-translate-y-1.5'
+            }">
+              
+              <!-- Card Header -->
+              <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-6">
+                <div>
+                  <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-4 md:mb-6 text-zinc-900 dark:text-white">${p.title}</h2>
+                  <div class="flex flex-wrap gap-4 md:gap-6">
+                    <div class="bg-zinc-100/80 dark:bg-white/5 border border-zinc-200/50 dark:border-white/5 rounded-2xl px-5 py-3 flex flex-col backdrop-blur-sm">
+                      <p class="text-[10px] text-zinc-500 dark:text-zinc-400 font-extrabold uppercase tracking-widest mb-1">Project Timeline</p>
+                      <p class="text-base font-bold text-zinc-800 dark:text-white">${p.timeline}</p>
+                    </div>
+                    <div class="bg-zinc-100/80 dark:bg-white/5 border border-zinc-200/50 dark:border-white/5 rounded-2xl px-5 py-3 flex flex-col backdrop-blur-sm">
+                      <p class="text-[10px] text-zinc-500 dark:text-zinc-400 font-extrabold uppercase tracking-widest mb-1">Design System</p>
+                      <p class="text-base font-bold text-zinc-800 dark:text-white">${p.designSystem}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex items-center gap-3 flex-wrap w-full md:w-auto">
+                  <button onclick="copyToClipboard('${shareUrl}')" class="flex-1 md:flex-initial flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-semibold text-sm border bg-zinc-50 dark:bg-zinc-900/40 text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white border-zinc-200 dark:border-white/5 hover:border-zinc-300 dark:hover:border-white/10 hover:bg-zinc-100 dark:hover:bg-zinc-900/80 shadow-md transition-all duration-300 cursor-pointer">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                    Copy Link
+                  </button>
+                </div>
+              </div>
+
+              <!-- Stacked scrolling preview mockups -->
+              <div class="flex flex-col gap-8">
+                ${p.images.map((img, idx) => `
+                  <!-- Safari browser frame mockup -->
+                  <div class="w-full bg-zinc-100 dark:bg-zinc-900/40 rounded-2xl overflow-hidden border border-zinc-200/50 dark:border-white/5 shadow-2xl transition-all duration-500 hover:border-zinc-300 dark:hover:border-white/10">
+                    <div class="h-9 bg-zinc-200/60 dark:bg-zinc-900/80 border-b border-zinc-200 dark:border-white/5 px-4 flex items-center gap-2 select-none shrink-0">
+                      <div class="flex items-center gap-1.5">
+                        <span class="w-2.5 h-2.5 rounded-full bg-red-400 dark:bg-red-500/80"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-yellow-400 dark:bg-yellow-500/80"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-green-400 dark:bg-green-500/80"></span>
+                      </div>
+                      <div class="mx-auto w-40 sm:w-60 h-5 rounded bg-zinc-100 dark:bg-zinc-950/50 border border-zinc-300/50 dark:border-white/5 flex items-center justify-center text-[10px] text-zinc-400 dark:text-zinc-500 font-medium">
+                        clarity-os.design/detail-${idx+1}
+                      </div>
+                    </div>
+                    <img src="${img}" alt="${p.title} detail ${idx + 1}" onclick="openLightbox(this.src)" class="w-full h-auto object-contain cursor-zoom-in">
+                  </div>
+                `).join('')}
+              </div>
+
+              <!-- Description Details -->
+              <div class="mt-8">
+                ${formatProjectContext(p)}
+              </div>
+
+            </div>
+          `;
+        }).join('');
+
+        container.classList.remove("opacity-0", "scale-[0.98]");
+        
+        if (targetSlug) {
+          const el = document.getElementById("card-" + targetSlug);
+          if (el) {
+            setTimeout(() => {
+              el.scrollIntoView({ behavior: "smooth", block: "start" });
+            }, 100);
+            return;
+          }
+        }
+        const headerEl = document.querySelector(".relative.z-20");
+        if (headerEl) headerEl.scrollIntoView({ behavior: "instant", block: "start" });
+
+      }, 150);
+    }
+
+    // --- Core View: Landing Pages View (Top Tab switcher Navigation + Full Width Stack) ---
+    function renderLandingPagesView(targetSlug) {
+      const container = document.getElementById("main-content");
+      
+      container.classList.add("opacity-0", "scale-[0.98]");
+      
+      setTimeout(() => {
+        const project = landingProjects.find(p => p.slug === targetSlug) || landingProjects[0];
+        const shareUrl = `${window.location.origin}${window.location.pathname}#/landing/${project.slug}`;
+        const isDark = currentTheme === "dark";
+
+        container.className = "w-full flex flex-col";
+        container.innerHTML = `
+          <!-- Horizontal Top Tab Navigation bar -->
+          <div class="w-full flex flex-row overflow-x-auto gap-2 pb-4 mb-6 no-scrollbar border-b border-zinc-200/50 dark:border-white/5 select-none shrink-0">
+            ${landingProjects.map(p => {
+              const isSelected = p.slug === project.slug;
+              return `
+                <button onclick="navigateTo('/landing/${p.slug}')" class="relative flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm whitespace-nowrap transition-all duration-300 shrink-0 cursor-pointer ${
+                  isSelected 
+                    ? 'bg-zinc-900 dark:bg-white text-white dark:text-zinc-950 shadow-md scale-[1.01]' 
+                    : 'bg-white/80 dark:bg-zinc-900/40 text-zinc-500 dark:text-zinc-400 border border-zinc-200/50 dark:border-white/5 hover:text-zinc-950 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800/40 shadow-sm'
+                }">
+                  ${p.title}
+                </button>
+              `;
+            }).join('')}
+          </div>
+
+          <!-- Highlighted Project Full-Width Widescreen Vertical Row Card -->
+          <div class="w-full bg-white/80 dark:bg-zinc-900/30 border border-zinc-200/50 dark:border-white/5 rounded-[2rem] p-5 md:p-8 lg:p-10 transition-all duration-500 shadow-lg dark:shadow-2xl">
+            <div class="flex flex-col gap-8">
+              
+              <!-- Top Row: Text descriptions and Metadata + Actions -->
+              <div class="flex flex-col md:flex-row justify-between items-start gap-6 border-b border-zinc-100 dark:border-white/5 pb-6">
+                <div class="flex-1">
+                  <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-4 text-zinc-900 dark:text-white">${project.title}</h2>
+                  
+                  <div class="flex flex-wrap gap-2.5">
+                    <div class="bg-zinc-100 dark:bg-white/5 border border-zinc-200/50 dark:border-white/5 rounded-xl px-4 py-2 flex flex-col backdrop-blur-sm">
+                      <p class="text-[9px] text-zinc-500 dark:text-zinc-400 font-extrabold uppercase tracking-widest mb-0.5">Timeline</p>
+                      <p class="text-xs font-bold text-zinc-800 dark:text-white">${project.timeline}</p>
+                    </div>
+                    <div class="bg-zinc-100 dark:bg-white/5 border border-zinc-200/50 dark:border-white/5 rounded-xl px-4 py-2 flex flex-col backdrop-blur-sm">
+                      <p class="text-[9px] text-zinc-500 dark:text-zinc-400 font-extrabold uppercase tracking-widest mb-0.5">Design System</p>
+                      <p class="text-xs font-bold text-zinc-800 dark:text-white">${project.designSystem}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Actions aligned right on larger screens, full-width below description on mobile -->
+                <div class="flex flex-row md:flex-col gap-3 shrink-0 w-full md:w-56 mt-4 md:mt-0">
+                  <button onclick="copyToClipboard('${shareUrl}')" class="flex-1 flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl font-semibold text-xs border bg-zinc-50 dark:bg-zinc-900/40 text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white border-zinc-200 dark:border-white/5 hover:border-zinc-300 dark:hover:border-white/10 hover:bg-zinc-100 dark:hover:bg-zinc-900/80 transition-all duration-300 cursor-pointer font-sans">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                    Copy Link
+                  </button>
+                  ${project.figmaLink ? `
+                    <a href="${project.figmaLink}" target="_blank" rel="noopener noreferrer" class="flex-1 flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl transition-all duration-300 font-bold text-xs shadow-sm cursor-pointer font-sans text-center ${
+                      isDark 
+                        ? 'bg-white text-zinc-950 hover:bg-zinc-100' 
+                        : 'bg-zinc-950 text-white hover:bg-zinc-800'
+                    }">
+                      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/><path d="M12 2h3.5a3.5 3.5 0 0 1 0 7H12z"/><path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"/><path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/><path d="M5 18.5A3.5 3.5 0 0 1 8.5 15H12v3.5A3.5 3.5 0 0 1 8.5 22 3.5 3.5 0 0 1 5 18.5z"/></svg>
+                      View in Figma
+                    </a>
+                  ` : ''}
+                </div>
+              </div>
+
+              <!-- Bottom Row: Widescreen browser preview mockup -->
+              <div class="w-full bg-zinc-100 dark:bg-zinc-900/40 rounded-2xl overflow-hidden border border-zinc-200/50 dark:border-white/5 shadow-2xl relative flex flex-col">
+                <div class="h-9 bg-zinc-200/60 dark:bg-zinc-900/80 border-b border-zinc-200 dark:border-white/5 px-4 flex items-center gap-2 select-none shrink-0">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-red-400 dark:bg-red-500/80"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-yellow-400 dark:bg-yellow-500/80"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-green-400 dark:bg-green-500/80"></span>
+                  </div>
+                  <div class="mx-auto w-40 sm:w-60 h-5 rounded bg-zinc-100 dark:bg-zinc-950/50 border border-zinc-300/50 dark:border-white/5 flex items-center justify-center text-[10px] text-zinc-400 dark:text-zinc-500 font-medium">
+                    ${project.slug}.com/preview
+                  </div>
+                </div>
+                <img src="${project.images[0]}" alt="${project.title} preview" onclick="openLightbox(this.src)" class="w-full h-auto object-contain cursor-zoom-in">
+              </div>
+
+            </div>
+          </div>
+        `;
+
+        container.classList.remove("opacity-0", "scale-[0.98]");
+        const headerEl = document.querySelector(".relative.z-20");
+        if (headerEl) headerEl.scrollIntoView({ behavior: "instant", block: "start" });
+
+      }, 150);
+    }
+
+    // --- Core View: Visual Design Grid (4-Column Widescreen Layout) ---
+    function renderVisualDesignView() {
+      const container = document.getElementById("main-content");
+      
+      container.classList.add("opacity-0", "scale-[0.98]");
+      
+      setTimeout(() => {
+        // Filter projects based on activeVisualCategory
+        const filteredProjects = activeVisualCategory === "all" 
+          ? visualProjects 
+          : visualProjects.filter(p => p.category === visualCategories.find(c => c.id === activeVisualCategory).filter);
+
+        container.className = "w-full flex flex-col";
+        container.innerHTML = `
+          <!-- Horizontal Top Tab Navigation bar -->
+          <div class="w-full flex flex-row overflow-x-auto gap-2 pb-4 mb-6 no-scrollbar border-b border-zinc-200/50 dark:border-white/5 select-none shrink-0">
+            ${visualCategories.map(cat => {
+              const isSelected = cat.id === activeVisualCategory;
+              return `
+                <button onclick="filterVisualCategory('${cat.id}')" class="relative flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm whitespace-nowrap transition-all duration-300 shrink-0 cursor-pointer ${
+                  isSelected 
+                    ? 'bg-zinc-900 dark:bg-white text-white dark:text-zinc-950 shadow-md scale-[1.01]' 
+                    : 'bg-white/80 dark:bg-zinc-900/40 text-zinc-500 dark:text-zinc-400 border border-zinc-200/50 dark:border-white/5 hover:text-zinc-950 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800/40 shadow-sm'
+                }">
+                  ${cat.name}
+                </button>
+              `;
+            }).join('')}
+          </div>
+
+          <!-- Designer Quote Banner -->
+          <div class="w-full bg-white/80 dark:bg-zinc-900/40 backdrop-blur-md border border-zinc-200/50 dark:border-white/5 text-zinc-900 dark:text-white rounded-[2rem] px-8 py-7 mb-12 flex flex-col sm:flex-row sm:items-center gap-5 shadow-lg dark:shadow-2xl transition-all duration-300 font-sans">
+            <div class="shrink-0 text-3xl select-none filter drop-shadow-[0_0_10px_rgba(244,63,94,0.4)]">🎨</div>
+            <p class="text-zinc-600 dark:text-zinc-300 text-sm sm:text-base leading-relaxed">
+              Every pixel counts. From corporate typography to product packaging layout design,
+              <span class="text-zinc-950 dark:text-white font-semibold">visual design is the storytelling medium</span>
+              that communicates product value and intent. I create cohesive visual assets, brand identity manuals, and high-impact digital graphics.
+            </p>
+          </div>
+
+          <!-- Project Sites Grid with Tech Badges -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-6">
+            ${filteredProjects.map((p) => `
+              <div onclick="openLightbox('${p.images[0]}')" 
+                   class="group bg-white/80 dark:bg-zinc-900/20 rounded-2xl border border-zinc-200/50 dark:border-white/5 shadow-lg dark:shadow-2xl hover:shadow-[0_15px_35px_rgba(0,0,0,0.06)] dark:hover:shadow-black hover:border-zinc-300 dark:hover:border-white/10 hover:bg-white dark:hover:bg-zinc-900/45 transition-all duration-500 hover:-translate-y-1.5 overflow-hidden flex flex-col font-sans cursor-pointer">
+                
+                <div class="p-3 pb-0">
+                  <div class="w-full aspect-[16/10] bg-zinc-100 dark:bg-zinc-900/60 overflow-hidden relative rounded-xl border border-zinc-200/50 dark:border-white/5">
+                    <img src="${p.images[0]}" alt="${p.title} preview" class="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-500">
+                    
+                    <!-- Blur Hover overlay button -->
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 backdrop-blur-0 group-hover:backdrop-blur-[1px] transition-all duration-300 flex items-center justify-center">
+                      <span class="opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 bg-zinc-950 dark:bg-white text-white dark:text-zinc-950 text-xs font-bold px-4 py-2.5 rounded-xl flex items-center gap-2 shadow-2xl">
+                        Zoom Design
+                        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="px-5 py-4 flex flex-col justify-between flex-1 gap-3">
+                  <div>
+                    <p class="font-extrabold text-zinc-950 dark:text-white text-sm leading-tight group-hover:text-zinc-800 dark:group-hover:text-rose-400 transition-colors">${p.title}</p>
+                    <p class="text-zinc-500 dark:text-zinc-400 text-xs mt-2 line-clamp-2 leading-normal">${p.context}</p>
+                  </div>
+                  
+                  <!-- Tech stack badges -->
+                  <div class="flex flex-wrap items-center justify-between gap-1.5 mt-2 mb-1 border-t border-zinc-100 dark:border-white/5 pt-3">
+                    <div class="flex flex-wrap gap-1">
+                      <span class="bg-zinc-100 dark:bg-white/5 border border-zinc-200/50 dark:border-white/5 text-[9px] text-zinc-500 dark:text-zinc-400 font-extrabold uppercase px-2 py-0.5 rounded-md">
+                        ${p.designSystem}
+                      </span>
+                      <span class="bg-zinc-100 dark:bg-white/5 border border-zinc-200/50 dark:border-white/5 text-[9px] text-zinc-500 dark:text-zinc-400 font-extrabold uppercase px-2 py-0.5 rounded-md">
+                        ${p.category}
+                      </span>
+                    </div>
+                    ${p.figmaLink ? `
+                      <a href="${p.figmaLink}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="text-zinc-400 hover:text-zinc-950 dark:hover:text-white transition-colors" title="View Figma Files">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/><path d="M12 2h3.5a3.5 3.5 0 0 1 0 7H12z"/><path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"/><path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/><path d="M5 18.5A3.5 3.5 0 0 1 8.5 15H12v3.5A3.5 3.5 0 0 1 8.5 22 3.5 3.5 0 0 1 5 18.5z"/></svg>
+                      </a>
+                    ` : ''}
+                  </div>
+                </div>
+
+              </div>
+            `).join('')}
+          </div>
+        `;
+
+        container.classList.remove("opacity-0", "scale-[0.98]");
+        const headerEl = document.querySelector(".relative.z-20");
+        if (headerEl) headerEl.scrollIntoView({ behavior: "instant", block: "start" });
+
+      }, 150);
+    }
+
+    function filterVisualCategory(catId) {
+      activeVisualCategory = catId;
+      renderVisualDesignView();
+    }
+
+    // --- Core View: Vibe Code Tab Grid (4-Column Widescreen Layout) ---
+    function renderVibeCodeView() {
+      const container = document.getElementById("main-content");
+      
+      container.classList.add("opacity-0", "scale-[0.98]");
+      
+      setTimeout(() => {
+        container.className = "w-full flex flex-col";
+        container.innerHTML = `
+          
+          <!-- Designer Quote Banner -->
+          <div class="w-full bg-white/80 dark:bg-zinc-900/40 backdrop-blur-md border border-zinc-200/50 dark:border-white/5 text-zinc-900 dark:text-white rounded-[2rem] px-8 py-7 mb-12 flex flex-col sm:flex-row sm:items-center gap-5 shadow-lg dark:shadow-2xl transition-all duration-300 font-sans">
+            <div class="shrink-0 text-3xl select-none filter drop-shadow-[0_0_10px_rgba(6,182,212,0.4)]">⚡</div>
+            <p class="text-zinc-600 dark:text-zinc-300 text-sm sm:text-base leading-relaxed">
+              I'm a designer first, with a deep foundation in HTML, CSS, and Canvas. That combination means I don't just generate code;
+              <span class="text-zinc-950 dark:text-white font-semibold">I direct it.</span>
+              I know exactly how an interface should feel, behave, and scale in a real product.
+              <span class="text-zinc-950 dark:text-white font-semibold">Vibe coding didn't replace my craft. It amplified it.</span>
+            </p>
+          </div>
+
+          <!-- Project Sites Grid with Tech Badges -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-6">
+            ${vibeCodeProjects.map((p) => `
+              <a href="${p.url}" target="_blank" rel="noopener noreferrer" 
+                 class="group bg-white/80 dark:bg-zinc-900/20 rounded-2xl border border-zinc-200/50 dark:border-white/5 shadow-lg dark:shadow-2xl hover:shadow-[0_15px_35px_rgba(0,0,0,0.06)] dark:hover:shadow-black hover:border-zinc-300 dark:hover:border-white/10 hover:bg-white dark:hover:bg-zinc-900/45 transition-all duration-500 hover:-translate-y-1.5 overflow-hidden flex flex-col font-sans">
+                
+                <div class="p-3 pb-0">
+                  <div class="w-full aspect-[16/10] bg-zinc-100 dark:bg-zinc-900/60 overflow-hidden relative rounded-xl border border-zinc-200/50 dark:border-white/5">
+                    <img src="${p.image}" alt="${p.name} screenshot" class="w-full h-full object-cover object-top group-hover:scale-[1.02] transition-transform duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&auto=format&fit=crop&q=60';">
+                    
+                    <!-- Blur Hover overlay button -->
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 backdrop-blur-0 group-hover:backdrop-blur-[1px] transition-all duration-300 flex items-center justify-center">
+                      <span class="opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 bg-zinc-950 dark:bg-white text-white dark:text-zinc-950 text-xs font-bold px-4 py-2.5 rounded-xl flex items-center gap-2 shadow-2xl">
+                        Visit Site
+                        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2 2V8a2 2 0 0 1 2-2h6"/></svg>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="px-5 py-4 flex flex-col justify-between flex-1 gap-3">
+                  <div>
+                    <p class="font-extrabold text-zinc-950 dark:text-white text-sm leading-tight group-hover:text-zinc-800 dark:group-hover:text-cyan-400 transition-colors">${p.name}</p>
+                    <p class="text-zinc-400 text-xs mt-1 truncate max-w-[220px]">${p.url.replace(/^https?:\/\//, '').replace(/\/$/, '')}</p>
+                  </div>
+                  
+                  <!-- Tech stack badges -->
+                  <div class="flex flex-wrap gap-1.5 mt-2 mb-1 border-t border-zinc-100 dark:border-white/5 pt-3">
+                    ${p.tags.map(tag => `
+                      <span class="bg-zinc-100 dark:bg-white/5 border border-zinc-200/50 dark:border-white/5 text-[9px] text-zinc-500 dark:text-zinc-400 font-extrabold uppercase px-2 py-0.5 rounded-md">
+                        ${tag}
+                      </span>
+                    `).join('')}
+                  </div>
+                </div>
+
+              </a>
+            `).join('')}
+          </div>
+        `;
+
+        container.classList.remove("opacity-0", "scale-[0.98]");
+        const headerEl = document.querySelector(".relative.z-20");
+        if (headerEl) headerEl.scrollIntoView({ behavior: "instant", block: "start" });
+
+      }, 150);
+    }
+
+    // --- Interactive Feature: Carousel controls ---
+    function prevCarouselImg(id, images) {
+      const total = images.length;
+      carouselIndexes[id] = (carouselIndexes[id] - 1 + total) % total;
+      updateCarouselUI(id, images);
+    }
+
+    // --- Interactive Feature: Carousel controls ---
+    function nextCarouselImg(id, images) {
+      const total = images.length;
+      carouselIndexes[id] = (carouselIndexes[id] + 1) % total;
+      updateCarouselUI(id, images);
+    }
+
+    function updateCarouselUI(id, images) {
+      const currentIndex = carouselIndexes[id];
+      const imgEl = document.getElementById("carousel-img-" + id);
+      
+      imgEl.classList.add("opacity-30");
+      setTimeout(() => {
+        imgEl.src = images[currentIndex];
+        imgEl.classList.remove("opacity-30");
+      }, 150);
+
+      // Sync Pagination Dots
+      const dotsContainer = document.getElementById("carousel-dots-" + id);
+      if (dotsContainer) {
+        dotsContainer.innerHTML = images.map((img, idx) => `
+          <span class="h-1.5 transition-all duration-300 rounded-full ${idx === currentIndex ? 'w-4 bg-white' : 'w-1.5 bg-white/40'}"></span>
+        `).join('');
+      }
+    }
+
+    document.addEventListener("mousedown", (e) => {
+      if (e.detail > 1 && e.target.tagName === 'BUTTON') {
+        e.preventDefault();
+      }
+    }, false);
+
+    // --- Interactive Feature: Copy URL link ---
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById("toast");
+        const toastText = document.getElementById("toast-text");
+        toastText.innerText = "Direct link copied to clipboard!";
+        
+        toast.classList.remove("opacity-0", "pointer-events-none");
+        toast.classList.add("opacity-100");
+        
+        setTimeout(() => {
+          toast.classList.remove("opacity-100");
+          toast.classList.add("opacity-0", "pointer-events-none");
+        }, 2000);
+      });
+    }
+
+    // --- Interactive Feature: Scroll to top ---
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    // --- Interactive Feature: Mobile drawer menu toggle ---
+    function toggleMobileMenu() {
+      const drawer = document.getElementById("mobile-drawer");
+      const burger = document.getElementById("burger-icon");
+      const close = document.getElementById("close-icon");
+      
+      if (drawer.classList.contains("h-0")) {
+        drawer.className = "lg:hidden absolute top-14 left-0 right-0 overflow-hidden border-b border-zinc-200/50 dark:border-white/5 h-auto transition-all duration-300 bg-white/95 dark:bg-zinc-950/90 backdrop-blur-xl";
+        burger.classList.add("hidden");
+        close.classList.remove("hidden");
+      } else {
+        closeMobileMenu();
+      }
+    }
+
+    // --- Interactive Feature: Mobile drawer menu toggle ---
+    function closeMobileMenu() {
+      const drawer = document.getElementById("mobile-drawer");
+      const burger = document.getElementById("burger-icon");
+      const close = document.getElementById("close-icon");
+      
+      drawer.className = "lg:hidden absolute top-14 left-0 right-0 overflow-hidden border-b border-zinc-200/50 dark:border-white/5 h-0 transition-all duration-300";
+      close.classList.add("hidden");
+      burger.classList.remove("hidden");
+    }
+  </script>
+    <!-- Global Floating Butterfly Component -->
+    <script src="../assets/js/butterfly.js"></script>
+</body>
+</html>
