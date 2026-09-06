@@ -68,15 +68,110 @@
         .img-zoom-container img { transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
         .group:hover .img-zoom-container img { transform: scale(1.05); }
 
-        /* Preloader */
+                /* Preloader */
         #preloader {
             position: fixed;
             inset: 0;
-            background: #959390;
+            background: radial-gradient(circle at center, #18181b 0%, #09090b 100%);
             z-index: 9999;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
+            overflow: hidden;
+        }
+
+        .preloader-butterfly-wrap {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .butterfly-glow {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle, rgba(255, 209, 0, 0.28) 0%, rgba(232, 92, 65, 0.12) 50%, transparent 75%);
+            border-radius: 50%;
+            filter: blur(20px);
+            animation: butterfly-pulse-glow 2.6s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+
+        @keyframes butterfly-pulse-glow {
+            0% { transform: scale(0.85); opacity: 0.55; }
+            100% { transform: scale(1.3); opacity: 1; }
+        }
+
+        .butterfly-loader-img {
+            width: 110px;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 16px rgba(255, 209, 0, 0.3));
+            animation: butterfly-hover-float 2.8s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes butterfly-hover-float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg) scale(1);
+            }
+            30% {
+                transform: translateY(-8px) rotate(2deg) scale(1.03);
+            }
+            70% {
+                transform: translateY(-14px) rotate(-2deg) scale(1.05);
+            }
+        }
+
+        .butterfly-ground-shadow {
+            width: 70px;
+            height: 12px;
+            background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 75%);
+            border-radius: 50%;
+            margin-top: 10px;
+            animation: butterfly-shadow-scale 2.8s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes butterfly-shadow-scale {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.65;
+            }
+            70% {
+                transform: scale(0.65);
+                opacity: 0.25;
+            }
+        }
+
+        .loader-bar-wrap {
+            width: 140px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 9999px;
+            overflow: hidden;
+            position: relative;
+            margin-top: 14px;
+        }
+
+        .loader-bar-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 40%;
+            background: linear-gradient(90deg, transparent, #FFD100, #E85C41);
+            border-radius: 9999px;
+            animation: loader-slide 1.6s ease-in-out infinite;
+        }
+
+        @keyframes loader-slide {
+            0% { left: -40%; }
+            100% { left: 100%; }
         }
 
         /* 3Gem Style Buttons */
@@ -116,10 +211,18 @@
 </head>
 <body class="overflow-x-hidden">
 
-    <!-- Preloader -->
+    <!-- Preloader with Butterfly -->
     <div id="preloader">
-        <div class="overflow-hidden">
-            <h1 class="text-xl font-bold uppercase tracking-widest text-white animate-pulse">About Me.</h1>
+        <div class="preloader-butterfly-wrap">
+            <div class="butterfly-glow"></div>
+            <img src="./assets/image/butterfly.gif" alt="Loading" class="butterfly-loader-img">
+            <div class="butterfly-ground-shadow"></div>
+        </div>
+        <div class="mt-6 text-center z-10">
+            <h1 class="text-xs md:text-sm font-bold uppercase tracking-[0.25em] text-white/95">About Me.</h1>
+            <div class="loader-bar-wrap mx-auto">
+                <div class="loader-bar-fill"></div>
+            </div>
         </div>
     </div>
 
@@ -141,7 +244,7 @@
                 
                 <!-- Contact Button -->
                 <a href="contact-us.html" class="nav-btn-hover flex items-center px-6 py-2.5 border border-white/50 rounded-full text-xs font-bold uppercase tracking-wide hover:bg-white hover:text-black transition-all group" id="nav-btn">
-                    Contact us
+                    Get in touch
                     <div class="btn-arrow-box">
                         <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </div>
@@ -419,7 +522,7 @@
                     To learn more about how my unique approach can help your business <span class="text-brand-yellow">grow through design</span> contact me
                 </h2>
                 
-                <a href="mailto:contact@tohidul.com" class="flex items-center gap-4 text-2xl font-bold hover:opacity-80 transition-opacity whitespace-nowrap">
+                <a href="mailto:tohidul.islam2016@gmail.com" class="flex items-center gap-4 text-2xl font-bold hover:opacity-80 transition-opacity whitespace-nowrap">
                     Get in touch
                     <div class="w-12 h-12 bg-brand-yellow text-black flex items-center justify-center rounded-full text-base">
                         <i class="fa-solid fa-arrow-right"></i>
@@ -448,7 +551,7 @@
                             <li><a href="#approach" class="hover:underline">Our Approach</a></li>
                             <li><a href="#work" class="hover:underline">Case Studies</a></li>
                             <li><a href="about-us.html" class="hover:underline">About me</a></li>
-                            <li><a href="#contact" class="hover:underline">Contact</a></li>
+                            <li><a href="contact-us.html" class="hover:underline">Contact</a></li>
                         </ul>
                     </div>
                     <div>

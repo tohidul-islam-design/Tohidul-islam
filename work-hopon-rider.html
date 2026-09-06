@@ -16,6 +16,11 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- Swiper CSS & JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <!-- GSAP & Lenis -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -68,15 +73,110 @@
         .img-zoom-container img { transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
         .group:hover .img-zoom-container img { transform: scale(1.05); }
 
-        /* Preloader */
+                /* Preloader */
         #preloader {
             position: fixed;
             inset: 0;
-            background: #959390;
+            background: radial-gradient(circle at center, #18181b 0%, #09090b 100%);
             z-index: 9999;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
+            overflow: hidden;
+        }
+
+        .preloader-butterfly-wrap {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .butterfly-glow {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle, rgba(255, 209, 0, 0.28) 0%, rgba(232, 92, 65, 0.12) 50%, transparent 75%);
+            border-radius: 50%;
+            filter: blur(20px);
+            animation: butterfly-pulse-glow 2.6s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+
+        @keyframes butterfly-pulse-glow {
+            0% { transform: scale(0.85); opacity: 0.55; }
+            100% { transform: scale(1.3); opacity: 1; }
+        }
+
+        .butterfly-loader-img {
+            width: 110px;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 16px rgba(255, 209, 0, 0.3));
+            animation: butterfly-hover-float 2.8s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes butterfly-hover-float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg) scale(1);
+            }
+            30% {
+                transform: translateY(-8px) rotate(2deg) scale(1.03);
+            }
+            70% {
+                transform: translateY(-14px) rotate(-2deg) scale(1.05);
+            }
+        }
+
+        .butterfly-ground-shadow {
+            width: 70px;
+            height: 12px;
+            background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 75%);
+            border-radius: 50%;
+            margin-top: 10px;
+            animation: butterfly-shadow-scale 2.8s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes butterfly-shadow-scale {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.65;
+            }
+            70% {
+                transform: scale(0.65);
+                opacity: 0.25;
+            }
+        }
+
+        .loader-bar-wrap {
+            width: 140px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 9999px;
+            overflow: hidden;
+            position: relative;
+            margin-top: 14px;
+        }
+
+        .loader-bar-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 40%;
+            background: linear-gradient(90deg, transparent, #FFD100, #E85C41);
+            border-radius: 9999px;
+            animation: loader-slide 1.6s ease-in-out infinite;
+        }
+
+        @keyframes loader-slide {
+            0% { left: -40%; }
+            100% { left: 100%; }
         }
 
         /* 3Gem Style Buttons */
@@ -112,14 +212,50 @@
             opacity: 0;
             transform: translateY(30px);
         }
+            /* Full-Width Project Hero Swiper */
+        .project-hero-swiper {
+            width: 100%;
+            height: 100%;
+        }
+        .project-hero-swiper .swiper-slide {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #050505;
+        }
+        .project-hero-swiper .swiper-pagination-bullet {
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.45);
+            opacity: 1;
+            border-radius: 9999px;
+            transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+            margin: 0 !important;
+            cursor: pointer;
+        }
+        .project-hero-swiper .swiper-pagination-bullet-active {
+            background: #FFD100 !important;
+            width: 26px;
+            border-radius: 9999px;
+        }
     </style>
 </head>
 <body class="overflow-x-hidden">
 
-    <!-- Preloader -->
+    <!-- Preloader with Butterfly -->
     <div id="preloader">
-        <div class="overflow-hidden">
-            <h1 class="text-xl font-bold uppercase tracking-widest text-white animate-pulse">HopOn Rider Super App.</h1>
+        <div class="preloader-butterfly-wrap">
+            <div class="butterfly-glow"></div>
+            <img src="./assets/image/butterfly.gif" alt="Loading" class="butterfly-loader-img">
+            <div class="butterfly-ground-shadow"></div>
+        </div>
+        <div class="mt-6 text-center z-10">
+            <h1 class="text-xs md:text-sm font-bold uppercase tracking-[0.25em] text-white/95">HopOn Rider Super App.</h1>
+            <div class="loader-bar-wrap mx-auto">
+                <div class="loader-bar-fill"></div>
+            </div>
         </div>
     </div>
 
@@ -141,7 +277,7 @@
                 
                 <!-- Contact Button -->
                 <a href="contact-us.html" class="nav-btn-hover flex items-center px-6 py-2.5 border border-white/50 rounded-full text-xs font-bold uppercase tracking-wide hover:bg-white hover:text-black transition-all group" id="nav-btn">
-                    Contact us
+                    Get in touch
                     <div class="btn-arrow-box">
                         <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </div>
@@ -175,12 +311,52 @@
         </div>
     </header>
 
-    <!-- Main Project Image -->
-    <div class="w-full h-[60vh] md:h-[90vh] overflow-hidden bg-gray-100">
-        <img src="./assets/image/works/hopon-superapp.png" 
-             alt="Hop On App Hero" 
-             class="w-full h-full object-cover parallax-img origin-center scale-110">
-    </div>
+    <!-- Full-Width Project Image Slider -->
+    <section class="w-full relative bg-brand-black overflow-hidden select-none group/slider border-y border-white/5">
+        <div class="swiper project-hero-swiper w-full h-[60vh] sm:h-[75vh] md:h-[85vh] lg:h-[90vh]">
+            <div class="swiper-wrapper" id="project-slider-wrapper">
+                <div class="swiper-slide w-full h-full relative overflow-hidden bg-brand-black flex items-center justify-center">
+                    <img src="./assets/image/works/hopon-superapp.png" alt="Project Preview 1" class="w-full h-full object-cover object-center">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
+                </div>
+                <div class="swiper-slide w-full h-full relative overflow-hidden bg-brand-black flex items-center justify-center">
+                    <img src="./assets/image/works/hopon1.jpg" alt="Project Preview 2" class="w-full h-full object-cover object-center">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
+                </div>
+                <div class="swiper-slide w-full h-full relative overflow-hidden bg-brand-black flex items-center justify-center">
+                    <img src="./assets/image/works/hopon2.jpg" alt="Project Preview 3" class="w-full h-full object-cover object-center">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
+                </div>
+                <div class="swiper-slide w-full h-full relative overflow-hidden bg-brand-black flex items-center justify-center">
+                    <img src="./assets/image/works/hopon3.jpg" alt="Project Preview 4" class="w-full h-full object-cover object-center">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
+                </div>
+                <div class="swiper-slide w-full h-full relative overflow-hidden bg-brand-black flex items-center justify-center">
+                    <img src="./assets/image/works/hop-on.png.jpg" alt="Project Preview 5" class="w-full h-full object-cover object-center">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons (Prev / Next) -->
+            <button class="project-swiper-prev absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-black/60 hover:bg-white text-white hover:text-black backdrop-blur-md border border-white/20 flex items-center justify-center transition-all duration-300 shadow-xl opacity-80 md:opacity-0 md:group-hover/slider:opacity-100 -translate-x-2 md:-translate-x-4 md:group-hover/slider:translate-x-0 cursor-pointer active:scale-95" aria-label="Previous image">
+                <i class="fa-solid fa-chevron-left text-sm sm:text-base"></i>
+            </button>
+            <button class="project-swiper-next absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-black/60 hover:bg-white text-white hover:text-black backdrop-blur-md border border-white/20 flex items-center justify-center transition-all duration-300 shadow-xl opacity-80 md:opacity-0 md:group-hover/slider:opacity-100 translate-x-2 md:translate-x-4 md:group-hover/slider:translate-x-0 cursor-pointer active:scale-95" aria-label="Next image">
+                <i class="fa-solid fa-chevron-right text-sm sm:text-base"></i>
+            </button>
+
+            <!-- Bottom Floating Pill (Slide Counter & Pagination Dots) -->
+            <div class="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-4 bg-black/80 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/15 text-white shadow-2xl">
+                <div class="swiper-pagination !static !w-auto flex items-center gap-1.5" id="project-swiper-pagination"></div>
+                <div class="w-px h-3.5 bg-white/20"></div>
+                <div class="text-xs font-mono font-bold tracking-wider">
+                    <span id="project-slide-current" class="text-brand-yellow">01</span>
+                    <span class="text-white/40">/</span>
+                    <span id="project-slide-total" class="text-white/70">05</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Project Meta Grid -->
     <section class="py-24 bg-white border-b border-gray-100 section-reveal-trigger">
@@ -347,7 +523,7 @@
                     To learn more about how my unique approach can help your business <span class="text-brand-yellow">grow through design</span> contact me
                 </h2>
                 
-                <a href="mailto:contact@tohidul.com" class="flex items-center gap-4 text-2xl font-bold hover:opacity-80 transition-opacity whitespace-nowrap">
+                <a href="mailto:tohidul.islam2016@gmail.com" class="flex items-center gap-4 text-2xl font-bold hover:opacity-80 transition-opacity whitespace-nowrap">
                     Get in touch
                     <div class="w-12 h-12 bg-brand-yellow text-black flex items-center justify-center rounded-full text-base">
                         <i class="fa-solid fa-arrow-right"></i>
@@ -376,7 +552,7 @@
                             <li><a href="#approach" class="hover:underline">Our Approach</a></li>
                             <li><a href="#work" class="hover:underline">Case Studies</a></li>
                             <li><a href="#about" class="hover:underline">About</a></li>
-                            <li><a href="#contact" class="hover:underline">Contact</a></li>
+                            <li><a href="contact-us.html" class="hover:underline">Contact</a></li>
                         </ul>
                     </div>
                     <div>
@@ -425,7 +601,6 @@
     <script>
         // All Portfolio Projects Dataset
         const allProjectsDatabase = [
-          // SaaS
           {
             id: "3gem",
             title: "3Gem Digital Platform",
@@ -435,6 +610,12 @@
             timeline: "5 Months",
             year: "2025",
             heroImage: "./assets/image/works/3gem3.jpg",
+            sliderImages: [
+                "./assets/image/works/3gem3.jpg",
+                "./assets/image/works/3gem.jpg",
+                "./assets/image/works/3gem1.jpg",
+                "./assets/image/works/3gem2.jpg"
+            ],
             tagline: "Empowering enterprise digital transformation through unified, grid-based operations management.",
             challenge: "Enterprise clients needed to unify fragmented operational portals into a single high-performance dashboard that scales across global teams.",
             challengeDetail: "Over 70% of enterprise users struggled with disconnected tools and disparate data structures. Our primary goal was creating a unified architecture with zero latency.",
@@ -450,17 +631,23 @@
             ],
             gallery: ["./assets/image/works/3gem1.jpg", "./assets/image/works/3gem2.jpg"],
             nextId: "ed-ai",
-            nextTitle: "Revexia Operations Platform Admissions Copilot"
+            nextTitle: "ED AI Admissions Copilot"
           },
           {
             id: "ed-ai",
-            title: "Revexia Operations Platform Admissions Copilot",
+            title: "ED AI Admissions Copilot",
             category: "EdTech / AI SaaS",
-            client: "Revexia Operations Platform Global",
+            client: "ED AI Global",
             services: ["AI Interface Design", "User Flow Mapping", "Design System"],
             timeline: "4 Months",
             year: "2025",
             heroImage: "./assets/image/works/ed-ai2.jpg",
+            sliderImages: [
+                "./assets/image/works/ed-ai2.jpg",
+                "./assets/image/works/edai-features.jpg",
+                "./assets/image/works/ed-ai.jpg",
+                "./assets/image/works/ed-ai1.jpg"
+            ],
             tagline: "AI-driven university application & document analysis copilot for students and academic counselors.",
             challenge: "Navigating international university admissions is overwhelming, involving complex documentation, requirements, and tight timelines.",
             challengeDetail: "Students and counselors were spending dozens of hours manually verifying university prerequisites and document formats across multiple countries.",
@@ -487,6 +674,13 @@
             timeline: "4 Months",
             year: "2025",
             heroImage: "./assets/image/works/hopon-superapp.png",
+            sliderImages: [
+                "./assets/image/works/hopon-superapp.png",
+                "./assets/image/works/hopon1.jpg",
+                "./assets/image/works/hopon2.jpg",
+                "./assets/image/works/hopon3.jpg",
+                "./assets/image/works/hop-on.png.jpg"
+            ],
             tagline: "Redefining urban mobility with a comprehensive ride & delivery solution focused on high-contrast visibility and one-thumb usability for millions.",
             challenge: "Urban commuters face a fragmented experience when switching between ride-sharing and food delivery apps. The challenge was to unify these services into a single, cohesive super-app without creating cognitive overload.",
             challengeDetail: "Our research indicated that 65% of users struggled with navigation in existing competitor apps, particularly during high-stress commute times. The goal was to reduce the 'time to action' by 40% while maintaining a visually premium aesthetic.",
@@ -500,66 +694,140 @@
                 { value: "2.5M", label: "Daily Active Users" },
                 { value: "4.8", label: "App Store Rating" }
             ],
-            gallery: [
-                "https://cdn.dribbble.com/users/3503254/screenshots/16327318/media/649726245e3962637207c40467f334d7.jpg?resize=800x600&vertical=center",
-                "https://cdn.dribbble.com/users/3503254/screenshots/15679549/media/200676007e997f773426767570494444.jpg?resize=800x600&vertical=center"
-            ],
-            nextId: "revexia",
-            nextTitle: "Revexia Operations"
+            gallery: ["./assets/image/works/hopon1.jpg", "./assets/image/works/hopon2.jpg"],
+            nextId: "studylity",
+            nextTitle: "StudyLity EdTech"
           },
           {
-            id: "revexia",
-            title: "Revexia Operations Platform",
-            category: "SaaS Platform",
-            client: "Revexia Tech",
-            services: ["SaaS Architecture", "Analytics UX", "Design System"],
-            timeline: "5 Months",
+            id: "studylity",
+            title: "StudyLity EdTech Platform",
+            category: "EdTech Application",
+            client: "StudyLity Learning",
+            services: ["Product Design", "Learning UX", "Mobile Design"],
+            timeline: "3 Months",
             year: "2025",
-            heroImage: "https://ar-tanveer-portfolio.vercel.app/revexia1.webp",
-            tagline: "Next-generation SaaS platform engineered to revolutionize how modern businesses manage and scale digital metrics.",
-            challenge: "Operational leaders were overwhelmed by dense data streams and complex configuration menus across legacy software.",
-            challengeDetail: "Surfacing key real-time metrics without causing visual fatigue required a brand-new approach to dashboard component architecture.",
-            solutionOverview: "Created a modular widget grid system allowing users to customize their exact workspace metrics in seconds.",
+            heroImage: "./assets/image/works/studylity1.png",
+            sliderImages: [
+                "./assets/image/works/studylity1.png",
+                "./assets/image/works/studylity2.png",
+                "https://ar-tanveer-portfolio.vercel.app/Studylity1.webp"
+            ],
+            tagline: "Empowering students with structured digital study routines and automated progress analytics.",
+            challenge: "Students often experience fragmented study habits across disjointed calendars, notes, and timers.",
+            challengeDetail: "Consolidating learning materials and schedule tracking into a focused, distraction-free interface required deeply streamlined UI workflows.",
+            solutionOverview: "Engineered an intelligent study schedule manager with integrated milestone timers and analytics.",
             solPoints: [
-                { title: "Adaptive Widgets", text: "Drag-and-drop metric components with smart auto-layout reflowing." },
-                { title: "Instant Search", text: "Command-K palette allowing global navigation and macro actions." }
+                { title: "Focused Study Mode", text: "Distraction-free timer that tracks active study sessions and rest intervals." },
+                { title: "Analytics Overview", text: "Visual charts detailing weekly subject mastery and time allocation." }
             ],
             impactStats: [
-                { value: "+38%", label: "Productivity Increase" },
-                { value: "85K+", label: "Teams Onboarded" },
-                { value: "4.9", label: "Satisfaction Score" }
+                { value: "92%", label: "Completion Rate" },
+                { value: "40K+", label: "Active Learners" },
+                { value: "4.9", label: "User Rating" }
             ],
-            gallery: ["https://ar-tanveer-portfolio.vercel.app/revexia2.webp", "https://ar-tanveer-portfolio.vercel.app/revexia1.webp"],
-            nextId: "flowcite",
-            nextTitle: "Flowcite Productivity"
+            gallery: ["./assets/image/works/studylity1.png", "./assets/image/works/studylity2.png"],
+            nextId: "vivid-customs",
+            nextTitle: "Vivid Customs Platform"
           },
           {
-            id: "flowcite",
-            title: "Flowcite Research Suite",
-            category: "Productivity SaaS",
-            client: "Flowcite Academic",
-            services: ["UX Research", "Editor Interface", "Prototyping"],
-            timeline: "5 Months",
+            id: "vivid-customs",
+            title: "Vivid Customs Platform",
+            category: "E-Commerce / Custom SaaS",
+            client: "Vivid Customs",
+            services: ["E-Commerce UX", "Product Customizer", "Design System"],
+            timeline: "3 Months",
             year: "2025",
-            heroImage: "https://ar-tanveer-portfolio.vercel.app/Flowcite-1.webp",
-            tagline: "Streamlining academic research workflows, citation management, and collaborative publishing.",
-            challenge: "Academic teams wasted up to 30% of research time manually formatting citations and managing conflicting paper revisions.",
-            challengeDetail: "Synthesizing heavy academic data pipelines into a distraction-free writing environment required intense focus on typography and focus modes.",
-            solutionOverview: "Crafted a distraction-free writing environment that intelligently auto-formats citations in real time.",
+            heroImage: "./assets/image/works/vivid-customs.png",
+            sliderImages: [
+                "./assets/image/works/vivid-customs.png",
+                "https://ar-tanveer-portfolio.vercel.app/vibe/Everything4logistics.webp"
+            ],
+            tagline: "Custom apparel print platform with instant online 3D preview tools and high-volume order management.",
+            challenge: "Customers found ordering customized apparel confusing with inaccurate print alignments.",
+            challengeDetail: "Bridging the gap between creative visual designs and factory print specifications required real-time interactive canvas tools.",
+            solutionOverview: "Designed an intuitive live customization interface with high-fidelity visual mockups.",
             solPoints: [
-                { title: "Auto-Citations", text: "Instant DOI lookup and citation injection into standard styles (APA, MLA, IEEE)." },
-                { title: "Collaborative Focus", text: "Real-time multi-author cursor editing with inline peer review comments." }
+                { title: "Real-time Mockups", text: "Instant vector graphics placement on garments with 360 preview." },
+                { title: "Bulk Ordering", text: "Optimized multi-size matrix allowing quick checkout for teams." }
             ],
             impactStats: [
-                { value: "3x", label: "Faster Publishing" },
-                { value: "400K+", label: "Papers Written" },
-                { value: "98%", label: "Citation Accuracy" }
+                { value: "+55%", label: "Conversion Lift" },
+                { value: "10K+", label: "Designs Created" },
+                { value: "99%", label: "Print Accuracy" }
             ],
-            gallery: ["https://ar-tanveer-portfolio.vercel.app/Flowcite-2.webp", "https://ar-tanveer-portfolio.vercel.app/Flowcite-1.webp"],
+            gallery: ["./assets/image/works/vivid-customs.png"],
+            nextId: "brand-identity",
+            nextTitle: "Brand Identity Manual"
+          },
+          {
+            id: "brand-identity",
+            title: "Brand Identity & Design System",
+            category: "Identity / Visual Design",
+            client: "Global Brands",
+            services: ["Brand Strategy", "Typography", "Style Guidelines"],
+            timeline: "2 Months",
+            year: "2025",
+            heroImage: "./assets/image/works/decoraan-brandguide.jpg",
+            sliderImages: [
+                "./assets/image/works/decoraan-brandguide.jpg",
+                "./assets/image/works/maxshelf-brandguide.jpg",
+                "./assets/image/works/polok-brandguide.jpg"
+            ],
+            tagline: "End-to-end visual identity guidelines establishing distinctive brand consistency across digital and print touchpoints.",
+            challenge: "Inconsistent brand communication across various sub-brands diluted customer recognition.",
+            challengeDetail: "Creating a comprehensive, living design system that accommodates diverse digital platforms and physical packaging.",
+            solutionOverview: "Constructed an exhaustive brand manual defining clear logo anatomy, color palettes, and typographic scales.",
+            solPoints: [
+                { title: "Design System Guidelines", text: "Defined scalable UI components, icons, and layout rules for developers." },
+                { title: "Print & Packaging Specs", text: "Color-accurate CMYK formulations and material standards for packaging." }
+            ],
+            impactStats: [
+                { value: "100%", label: "Brand Alignment" },
+                { value: "35+", label: "Brand Assets" },
+                { value: "5.0", label: "Brand Score" }
+            ],
+            gallery: ["./assets/image/works/decoraan-brandguide.jpg", "./assets/image/works/maxshelf-brandguide.jpg"],
             nextId: "3gem",
             nextTitle: "3Gem Digital Platform"
           }
         ];
+
+        let projectSwiperInstance = null;
+        function initProjectHeroSwiper(totalCount) {
+            if (typeof Swiper === 'undefined') return;
+            if (projectSwiperInstance) {
+                try { projectSwiperInstance.destroy(true, true); } catch (e) {}
+            }
+            const currentEl = document.getElementById('project-slide-current');
+            projectSwiperInstance = new Swiper('.project-hero-swiper', {
+                loop: totalCount > 1,
+                speed: 700,
+                autoplay: totalCount > 1 ? {
+                    delay: 4500,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true
+                } : false,
+                grabCursor: true,
+                navigation: {
+                    nextEl: '.project-swiper-next',
+                    prevEl: '.project-swiper-prev',
+                },
+                pagination: {
+                    el: '#project-swiper-pagination',
+                    clickable: true,
+                },
+                keyboard: {
+                    enabled: true,
+                },
+                on: {
+                    slideChange: function () {
+                        if (currentEl) {
+                            currentEl.textContent = String(this.realIndex + 1).padStart(2, '0');
+                        }
+                    }
+                }
+            });
+        }
 
         // Function to load details from URL query parameter ?id=...
         function loadProjectDetails() {
@@ -585,11 +853,26 @@
             const taglineP = document.querySelector('header p');
             if(taglineP) taglineP.textContent = p.tagline;
 
-            // Hero Main Image
-            const heroImg = document.querySelector('.parallax-img');
-            if(heroImg) {
-                heroImg.src = p.heroImage;
-                heroImg.alt = p.title;
+            // Full Width Slider Images
+            const sliderWrapper = document.getElementById('project-slider-wrapper');
+            const totalEl = document.getElementById('project-slide-total');
+            const currentEl = document.getElementById('project-slide-current');
+            
+            const rawImages = p.sliderImages || (p.images && p.images.length > 0 ? p.images : [p.heroImage, ...(p.gallery || [])]);
+            const sliderImages = Array.from(new Set(rawImages)).filter(Boolean);
+
+            if (sliderWrapper && sliderImages.length > 0) {
+                sliderWrapper.innerHTML = sliderImages.map((imgUrl, idx) => `
+                    <div class="swiper-slide w-full h-full relative overflow-hidden bg-brand-black flex items-center justify-center">
+                        <img src="${imgUrl}" alt="${p.title} - Preview ${idx + 1}" class="w-full h-full object-cover object-center">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
+                    </div>
+                `).join('');
+
+                if (totalEl) totalEl.textContent = String(sliderImages.length).padStart(2, '0');
+                if (currentEl) currentEl.textContent = '01';
+
+                initProjectHeroSwiper(sliderImages.length);
             }
 
             // Meta Details
@@ -668,7 +951,7 @@
             }
         }
 
-        window.addEventListener('DOMContentLoaded', loadProjectDetails);
+        window.addEventListener('DOMContentLoaded', loadProjectDetails);window.addEventListener('DOMContentLoaded', loadProjectDetails);
 
         window.addEventListener('load', () => {
             // 1. Remove Preloader
@@ -734,6 +1017,12 @@
                         });
                     });
                 }
+            }
+
+            // Fallback Swiper initialization
+            if (!projectSwiperInstance && typeof Swiper !== 'undefined') {
+                const slideCount = document.querySelectorAll('#project-slider-wrapper .swiper-slide').length;
+                initProjectHeroSwiper(slideCount || 1);
             }
 
             // 4. Navbar Background Logic (Dark Hero)
