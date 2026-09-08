@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tohidul Islam - Co-Founder & Lead Design Engineer | Resume</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Font: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              DEFAULT: '#0284c7',
+              light: '#38bdf8',
+              dark: '#0369a1',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f1f5f9;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Print styles optimized for exact 2-page A4 format */
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    @media print {
+      body {
+        background-color: #ffffff !important;
+        padding: 0 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .resume-sheet {
+        box-shadow: none !important;
+        border: none !important;
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-height: 100vh !important;
+        padding: 2.5rem 3rem !important;
+        page-break-after: always;
+        break-after: page;
+      }
+      .resume-sheet:last-child {
+        page-break-after: avoid;
+        break-after: avoid;
+      }
+    }
+
+    .resume-sheet {
+      width: 100%;
+      max-width: 820px;
+      min-height: 1140px;
+      background: #ffffff;
+    }
+  </style>
+</head>
+<body class="text-neutral-800 py-6 sm:py-10 px-3 sm:px-6">
+
+  <!-- Download PDF Action (Hidden during print) -->
+  <div class="no-print max-w-[820px] mx-auto mb-6 flex justify-end">
+    <button onclick="window.print()" class="inline-flex items-center gap-2 px-4 py-2.5 bg-sky-600 hover:bg-sky-700 active:bg-sky-800 text-white text-xs sm:text-sm font-semibold rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+      </svg>
+      <span>Download PDF</span>
+    </button>
+  </div>
+
+  <!-- ==================== PAGE 1 ==================== -->
+  <main class="resume-sheet mx-auto rounded-xl sm:shadow-lg border border-neutral-200/80 p-8 sm:p-14 mb-8 flex flex-col justify-between relative overflow-hidden">
+    <div>
+      
+      <!-- Top Header & Contact Block -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-8 pb-2">
+        
+        <!-- Name + Title + Avatar -->
+        <div class="md:col-span-8 flex items-center gap-5">
+          <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden shrink-0 border-2 border-sky-100 shadow-sm bg-neutral-100 flex items-center justify-center">
+            <img 
+              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" 
+              alt="Tohidul Islam" 
+              class="w-full h-full object-cover"
+              onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Tohidul+Islam&background=0284c7&color=fff&size=200';"
+            />
+          </div>
+          <div>
+            <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-900">Tohidul Islam</h1>
+            <p class="text-sky-600 font-medium text-sm sm:text-base mt-1 tracking-wide">
+              Co-Founder &amp; Lead Design Engineer | UX &amp; Design Systems
+            </p>
+          </div>
+        </div>
+
+        <!-- Contact & Socials -->
+        <div class="md:col-span-4 text-xs sm:text-[13px] leading-relaxed text-neutral-700 md:pl-2 flex flex-col justify-center">
+          <p class="mb-0.5">
+            <a href="mailto:tohidul.islam2016@gmail.com" class="text-sky-600 hover:text-sky-700 hover:underline font-medium break-all">
+              tohidul.islam2016@gmail.com
+            </a>
+          </p>
+          <p class="mb-2.5 text-neutral-800 font-normal">+880 1760149575</p>
+          
+          <nav aria-label="Social Links" class="space-y-1">
+            <div>
+              <a href="https://www.linkedin.com/in/tohidul-islam-design/" target="_blank" rel="noopener noreferrer" class="text-neutral-900 hover:text-sky-600 underline underline-offset-2 transition-colors font-medium">
+                LinkedIn
+              </a>
+            </div>
+            <div>
+              <a href="https://www.behance.net/touhidislam-design" target="_blank" rel="noopener noreferrer" class="text-neutral-900 hover:text-sky-600 underline underline-offset-2 transition-colors font-medium">
+                Behance
+              </a>
+            </div>
+            <div>
+              <a href="https://dribbble.com/tohidul-islam-design" target="_blank" rel="noopener noreferrer" class="text-neutral-900 hover:text-sky-600 underline underline-offset-2 transition-colors font-medium">
+                Dribble
+              </a>
+            </div>
+            <div>
+              <a href="https://github.com/tohidul-islam-design" target="_blank" rel="noopener noreferrer" class="text-neutral-900 hover:text-sky-600 underline underline-offset-2 transition-colors font-medium">
+                Github
+              </a>
+            </div>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Main Columns -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12">
+        
+        <!-- Left: About + Experience (Page 1) -->
+        <div class="md:col-span-8 space-y-6">
+          
+          <section>
+            <h2 class="text-xs font-bold uppercase tracking-wider text-sky-500 mb-2.5">ABOUT ME</h2>
+            <p class="text-neutral-700 text-xs sm:text-[13px] leading-relaxed text-justify sm:text-left">
+              I started my journey in front-end development in 2016 and later expanded into UI/UX design in 2018. Since then, I've worked on SaaS platforms, eCommerce solutions, mobile apps, on-demand services, and dashboards—helping teams turn ideas into simple, user-friendly digital experiences. I'm passionate about problem-solving and design thinking, with a strong focus on usability, design systems, and creating pixel-perfect products that people love to use.
+            </p>
+          </section>
+
+          <section class="space-y-5">
+            <h2 class="text-xs font-bold uppercase tracking-wider text-sky-500 mb-3">EXPERIENCE</h2>
+
+            <!-- Ambitionix Ltd. -->
+            <article class="space-y-1">
+              <div class="flex flex-col">
+                <h3 class="text-sm sm:text-[14.5px] font-bold text-neutral-900">Co-Founder &amp; Lead Design Engineer</h3>
+                <div class="text-xs sm:text-[13px] text-neutral-800 font-semibold">
+                  Ambitionix Ltd. <span class="font-normal text-neutral-600">- Dhaka, Bangladesh</span>
+                </div>
+                <div class="text-xs text-neutral-400 font-medium mt-0.5">Jan 2025 - Present</div>
+              </div>
+              <p class="text-xs sm:text-[12.5px] leading-relaxed text-neutral-600 pt-0.5 text-justify sm:text-left">
+                Co-founding and directing the product design engineering lifecycle. Architecting unified design systems across Figma and codebases, establishing scalable token architectures, and defining high-converting UX standards. Leading multi-disciplinary teams, steering product roadmaps, and delivering intuitive, production-grade applications.
+              </p>
+            </article>
+
+            <!-- Syntax Solutions Ltd. -->
+            <article class="space-y-1">
+              <div class="flex flex-col">
+                <h3 class="text-sm sm:text-[14.5px] font-bold text-neutral-900">UI/UX Designer</h3>
+                <div class="text-xs sm:text-[13px] text-neutral-800 font-semibold">
+                  Syntax Solutions Ltd. <span class="font-normal text-neutral-600">- Dhaka Bangladesh</span>
+                </div>
+                <div class="text-xs text-neutral-400 font-medium mt-0.5">April 2024 - Present</div>
+              </div>
+              <p class="text-xs sm:text-[12.5px] leading-relaxed text-neutral-600 pt-0.5 text-justify sm:text-left">
+                Leading innovation for Nasir Group by crafting user-focused digital solutions. I contributed to product design using Figma, creating intuitive mobile apps and responsive websites. My role included designing engaging user interfaces, collaborating with cross-functional teams, gathering requirements, and delivering projects aligned with business needs.
+              </p>
+            </article>
+
+            <!-- Kaicom Solutions Ltd. -->
+            <article class="space-y-1">
+              <div class="flex flex-col">
+                <h3 class="text-sm sm:text-[14.5px] font-bold text-neutral-900">UI/UX Designer</h3>
+                <div class="text-xs sm:text-[13px] text-neutral-800 font-semibold">
+                  Kaicom Solutions Ltd. <span class="font-normal text-neutral-600">- Dhaka, Bangladesh</span>
+                </div>
+                <div class="text-xs text-neutral-400 font-medium mt-0.5">May 2022 – November 2023</div>
+              </div>
+              <p class="text-xs sm:text-[12.5px] leading-relaxed text-neutral-600 pt-0.5 text-justify sm:text-left">
+                Kaicom Solutions is a private company specializing in Information Technology and Services. As a UI/UX Designer, I focused on product design using Figma, creating mobile apps and responsive websites. I collaborated closely with team members, participated in client meetings, gathered requirements, and delivered user-friendly solutions aligned with project goals.
+              </p>
+            </article>
+
+          </section>
+        </div>
+
+        <!-- Right: Skills & Tools -->
+        <div class="md:col-span-4 space-y-6 md:pl-2">
+          
+          <section>
+            <h2 class="text-xs font-bold uppercase tracking-wider text-sky-500 mb-2">SKILLS</h2>
+            <ul class="text-xs sm:text-[13px] text-neutral-800 space-y-1 font-normal leading-snug">
+              <li>UI/UX Design</li>
+              <li>Wireframing</li>
+              <li>Prototyping</li>
+              <li>Interaction Design</li>
+              <li>User Interface Design</li>
+              <li>Design System</li>
+              <li>Usability Research</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="text-xs font-bold uppercase tracking-wider text-sky-500 mb-2">SOFTWARES</h2>
+            <ul class="text-xs sm:text-[13px] text-neutral-800 space-y-1 font-normal leading-snug">
+              <li>Figma</li>
+              <li>Adobe XD</li>
+              <li>Adobe Photoshop</li>
+              <li>Adobe Illustrator</li>
+              <li>Canva</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="text-xs font-bold uppercase tracking-wider text-sky-500 mb-2">DEVELOPMENT SKILLS</h2>
+            <ul class="text-xs sm:text-[13px] text-neutral-800 space-y-1 font-normal leading-snug">
+              <li>HTML5, CSS3</li>
+              <li>Vue JS, Nuxt</li>
+              <li>React JS, Next</li>
+              <li>Bootstrap5, Tailwind4</li>
+              <li>JavaScript, JQuery</li>
+              <li>SCSS, LESS, Stylus</li>
+              <li>Github, Gitlab</li>
+            </ul>
+          </section>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== PAGE 2 ==================== -->
+  <main class="resume-sheet mx-auto rounded-xl sm:shadow-lg border border-neutral-200/80 p-8 sm:p-14 flex flex-col justify-between relative overflow-hidden">
+    <div>
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12">
+        
+        <!-- Left: Remaining Work Experience -->
+        <div class="md:col-span-8 space-y-6">
+          
+          <!-- Qproco Ltd. -->
+          <article class="space-y-1.5">
+            <div class="flex flex-col">
+              <h3 class="text-sm sm:text-[15px] font-bold text-neutral-900">UI/UX Designer &amp; Frontend Developer</h3>
+              <div class="text-xs sm:text-[13px] text-neutral-800 font-semibold">
+                Qproco Ltd. <span class="font-normal text-neutral-600">- Remote</span>
+              </div>
+              <div class="text-xs text-neutral-400 font-medium mt-0.5">September 2021 – April 2024</div>
+            </div>
+            <p class="text-xs sm:text-[13px] leading-relaxed text-neutral-600 pt-1 text-justify sm:text-left">
+              Qproco is a private company specializing in the global online marketplace with eCommerce stores in Bangladesh and Poland. At Qproco, I worked as both a UI/UX Designer and Front-End Developer, focusing on product design with Figma and building intuitive mobile apps and websites. I developed responsive front-end solutions using Vue.js and Nuxt.js, while collaborating with team members, attending meetings, gathering requirements, and delivering projects tailored to business and user needs.
+            </p>
+          </article>
+
+          <!-- Makeup world BD -->
+          <article class="space-y-1.5">
+            <div class="flex flex-col">
+              <h3 class="text-sm sm:text-[15px] font-bold text-neutral-900">UI/UX Designer &amp; Frontend Developer</h3>
+              <div class="text-xs sm:text-[13px] text-neutral-800 font-semibold">
+                Makeup world BD <span class="font-normal text-neutral-600">- Dhaka, Bangladesh</span>
+              </div>
+              <div class="text-xs text-neutral-400 font-medium mt-0.5">May 2020 - August 2021</div>
+            </div>
+            <p class="text-xs sm:text-[13px] leading-relaxed text-neutral-600 pt-1 text-justify sm:text-left">
+              Makeup World BD is a cosmetics and makeup eCommerce company based in Bangladesh. In this role, I led product design using Figma and Adobe XD, creating mobile apps, web assets, and responsive features. I gathered product requirements, designed solutions, and implemented them using Vue.js and Nuxt.js. As a senior designer and developer, I ensured seamless user interactions and engaging experiences while coordinating with copywriters and graphic artists to integrate images, icons, banners, audio, and other creative elements into the website.
+            </p>
+          </article>
+
+          <!-- Nogor Solutions Limited -->
+          <article class="space-y-1.5">
+            <div class="flex flex-col">
+              <h3 class="text-sm sm:text-[15px] font-bold text-neutral-900">Web Designer &amp; Developer</h3>
+              <div class="text-xs sm:text-[13px] text-neutral-800 font-semibold">
+                Nogor Solutions Limited <span class="font-normal text-neutral-600">- Dhaka, Bangladesh</span>
+              </div>
+              <div class="text-xs text-neutral-400 font-medium mt-0.5">October 2016 - May 2020</div>
+            </div>
+            <p class="text-xs sm:text-[13px] leading-relaxed text-neutral-600 pt-1 text-justify sm:text-left">
+              Nogor Solutions Ltd. is a software firm offering IT services. In this role, I worked on product design using Figma, Adobe XD, and Photoshop, creating web assets such as landing pages, banners, and email headers for events, shows, and promotions. I developed responsive websites using CSS3, SASS, LESS, HTML5, Laravel, PHP, JavaScript, and Vue.js. My responsibilities also included collaborating with team members, attending meetings, gathering requirements, and delivering projects aligned with client and business needs.
+            </p>
+          </article>
+
+        </div>
+
+        <!-- Right: Education & Credentials -->
+        <div class="md:col-span-4 space-y-7 md:pl-2">
+          
+          <section class="space-y-2">
+            <h2 class="text-xs font-bold uppercase tracking-wider text-sky-500">EDUCATION</h2>
+            <div>
+              <h3 class="text-xs sm:text-[13.5px] font-bold text-neutral-900 leading-snug">
+                Bsc in Computer Science &amp; Engineering
+              </h3>
+              <p class="text-xs text-neutral-700 mt-1 leading-snug">
+                Daffodils International University - Dhaka, Bangladesh
+              </p>
+              <p class="text-xs text-neutral-400 font-medium mt-1">
+                October 2019 – January 2022
+              </p>
+            </div>
+          </section>
+
+          <section class="space-y-2">
+            <h2 class="text-xs font-bold uppercase tracking-wider text-sky-500">COURSE &amp; CERTIFICATE</h2>
+            <div>
+              <h3 class="text-xs sm:text-[13.5px] font-bold text-neutral-900 leading-snug">
+                Diploma in UX-UI Design
+              </h3>
+              <p class="text-xs text-neutral-700 mt-1 leading-snug">
+                Userhub - Dhaka, Bangladesh
+              </p>
+              <p class="text-xs text-neutral-400 font-medium mt-1">
+                December 2021 – April 2022
+              </p>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

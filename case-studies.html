@@ -51,6 +51,12 @@
     </script>
     
     <style>
+        /* Dynamic Navbar Logo */
+        #nav-logo .logo-black { display: none !important; }
+        #nav-logo .logo-white { display: block !important; }
+        #nav-logo.text-brand-black .logo-black { display: block !important; }
+        #nav-logo.text-brand-black .logo-white { display: none !important; }
+
         /* Core Setup */
         body {
             background-color: #ffffff;
@@ -245,9 +251,9 @@
     <nav class="fixed w-full z-50 top-0 left-0 transition-all duration-500 pt-6" id="navbar">
         <div class="container mx-auto px-6 md:px-12 flex justify-between items-center p-4 rounded-full transition-all duration-500" id="nav-container">
             <!-- Logo -->
-            <a href="index.html" class="text-2xl font-bold tracking-tight text-white flex items-center gap-2" id="nav-logo">
-                <div class="w-8 h-8 bg-brand-yellow flex items-center justify-center rounded-full text-black font-black text-sm">TI</div>
-                <span>Tohidul Islam</span>
+            <a href="index.html" class="text-white flex items-center transition-colors focus:outline-none" id="nav-logo" aria-label="Tohidul Islam">
+                <img src="./assets/image/logo-white.png" alt="Tohidul Islam" class="h-8 md:h-9 w-auto object-contain transition-transform hover:scale-105 duration-300 logo-white">
+                <img src="./assets/image/logo-black.png" alt="Tohidul Islam" class="h-8 md:h-9 w-auto object-contain transition-transform hover:scale-105 duration-300 logo-black">
             </a>
             
             <!-- Desktop Links -->
@@ -363,9 +369,10 @@
         <div class="bg-brand-yellow text-brand-black pt-20 pb-12">
             <div class="container mx-auto px-6">
                 <div class="mb-16">
-                    <div class="flex items-center gap-1 mb-2">
-                        <div class="w-8 h-8 bg-black text-brand-yellow flex items-center justify-center font-bold rounded-full text-sm">TI</div>
-                        <span class="text-3xl font-bold">Tohidul Islam</span>
+                    <div class="mb-4">
+                        <a href="index.html" class="inline-block transition-transform hover:scale-105 duration-300" aria-label="Tohidul Islam">
+                            <img src="./assets/image/logo-black.png" alt="Tohidul Islam" class="h-10 md:h-12 w-auto object-contain">
+                        </a>
                     </div>
                     <h3 class="text-5xl font-bold">Act on design.</h3>
                 </div>
