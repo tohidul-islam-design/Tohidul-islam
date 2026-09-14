@@ -214,6 +214,9 @@
             transform: translateY(30px);
         }
     </style>
+    <link rel="stylesheet" href="./assets/css/inner-page-header.css">
+    <link rel="stylesheet" href="./assets/css/navigation.css">
+    <script src="./assets/js/navigation.js" defer></script>
 </head>
 <body class="overflow-x-hidden">
 
@@ -265,7 +268,7 @@
     </nav>
 
     <!-- Header Section -->
-    <header class="pt-48 pb-20 md:pt-64 md:pb-32 bg-brand-black text-white">
+    <header class="inner-page-header pt-48 pb-20 md:pt-64 md:pb-32 bg-brand-black text-white">
         <div class="container mx-auto px-6">
             <div class="max-w-5xl">
                 <div class="flex items-center gap-3 mb-8 hero-anim opacity-0 translate-y-10">
@@ -283,6 +286,26 @@
             </div>
         </div>
     </header>
+
+    <!-- Introduction Video -->
+    <section class="pt-20 md:pt-24 bg-white" aria-labelledby="introduction-heading">
+        <div class="container mx-auto px-6">
+            <div class="max-w-5xl mx-auto">
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="w-2 h-2 bg-brand-yellow rounded-full" aria-hidden="true"></span>
+                    <h2 id="introduction-heading" class="text-2xl md:text-3xl font-bold tracking-tight">A quick introduction.</h2>
+                </div>
+                <video controls playsinline preload="metadata"
+                       width="1920" height="1080"
+                       aria-label="Introduction video"
+                       class="block w-full aspect-video rounded-2xl bg-brand-black object-contain">
+                    <source src="./assets/video/introducing-tohidul-islam.mp4" type="video/mp4">
+                    Your browser does not support embedded video.
+                    <a href="./assets/video/introducing-tohidul-islam.mp4">Watch the introduction video.</a>
+                </video>
+            </div>
+        </div>
+    </section>
 
     <!-- Bio Section -->
     <section class="py-24 bg-white section-reveal-trigger">

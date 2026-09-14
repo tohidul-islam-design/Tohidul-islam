@@ -221,6 +221,7 @@
         .section-reveal {
             opacity: 0;
             transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
         /* Filter Active State */
@@ -229,6 +230,9 @@
             color: #ffffff;
         }
     </style>
+    <link rel="stylesheet" href="./assets/css/inner-page-header.css">
+    <link rel="stylesheet" href="./assets/css/navigation.css">
+    <script src="./assets/js/navigation.js" defer></script>
 </head>
 <body class="overflow-x-hidden">
 
@@ -280,7 +284,7 @@
     </nav>
 
     <!-- Header Section -->
-    <header class="pt-48 pb-20 md:pt-64 md:pb-32 bg-brand-black text-white">
+    <header class="inner-page-header pt-48 pb-20 md:pt-64 md:pb-32 bg-brand-black text-white">
         <div class="container mx-auto px-6">
             <div class="max-w-5xl">
                 <div class="flex items-center gap-3 mb-8 hero-anim opacity-0 translate-y-10">
@@ -331,9 +335,6 @@
                     <span>Live Vibe Code</span>
                     <span class="tab-count bg-gray-200 text-gray-700 text-[10px] px-2 py-0.5 rounded-full font-extrabold">0</span>
                 </button>
-                <a href="./portfolio-projects/index.html#/saas" target="_blank" class="px-5 py-2.5 rounded-full bg-brand-yellow text-brand-black text-xs font-bold uppercase tracking-wider hover:opacity-90 flex items-center gap-1.5 ml-3">
-                    <i class="fa-solid fa-bolt"></i> Interactive Playground App ↗
-                </a>
             </div>
         </div>
     </div>
@@ -465,7 +466,7 @@
             designSystem: "Custom E-Commerce UI",
             category: "E-Commerce / SaaS",
             figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
-            images: ["./assets/image/works/vivid-customs.png"],
+            images: ["./assets/image/works/vivid-customs-card-preview.png"],
             context: "Custom apparel & t-shirt print platform with real-time online design preview tools and order scaling."
           }
         ];
@@ -794,6 +795,11 @@
 
             grid.style.opacity = '1';
             grid.style.transform = 'translateY(0)';
+            if (typeof ScrollTrigger !== 'undefined') {
+                setTimeout(() => {
+                    ScrollTrigger.refresh();
+                }, 100);
+            }
           }, 200);
         }
 
@@ -809,7 +815,12 @@
                         opacity: 0,
                         duration: 0.5,
                         delay: 0.5,
-                        onComplete: () => preloader.style.display = 'none'
+                        onComplete: () => {
+                            preloader.style.display = 'none';
+                            if (typeof ScrollTrigger !== 'undefined') {
+                                ScrollTrigger.refresh();
+                            }
+                        }
                     });
                 } else {
                     preloader.style.display = 'none';
@@ -825,6 +836,47 @@
                     stagger: 0.2,
                     ease: "power3.out",
                     delay: 0.8
+                });
+            }
+
+            // Scroll Reveal for Sections (Fixes Dark CTA visibility)
+            if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+                gsap.registerPlugin(ScrollTrigger);
+                const sections = document.querySelectorAll('.section-reveal-trigger');
+                sections.forEach(section => {
+                    const elems = section.querySelectorAll('.section-reveal');
+                    if (elems.length > 0) {
+                        gsap.to(elems, {
+                            y: 0,
+                            opacity: 1,
+                            duration: 1,
+                            stagger: 0.15,
+                            ease: "power3.out",
+                            scrollTrigger: {
+                                trigger: section,
+                                start: "top 85%",
+                                toggleActions: "play none none none"
+                            }
+                        });
+                    }
+                });
+            } else if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.querySelectorAll('.section-reveal').forEach(el => {
+                                el.style.opacity = '1';
+                                el.style.transform = 'translateY(0)';
+                            });
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.15 });
+                document.querySelectorAll('.section-reveal-trigger').forEach(trigger => observer.observe(trigger));
+            } else {
+                document.querySelectorAll('.section-reveal').forEach(el => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'none';
                 });
             }
 
@@ -867,6 +919,9 @@
                     lerp: 0.1, 
                     smooth: true,
                 });
+                if (typeof ScrollTrigger !== 'undefined') {
+                    lenis.on('scroll', ScrollTrigger.update);
+                }
                 function raf(time) {
                     lenis.raf(time);
                     requestAnimationFrame(raf);
