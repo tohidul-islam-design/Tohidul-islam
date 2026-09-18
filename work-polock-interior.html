@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Polock Interior Studio - Case Study | Tohidul Islam</title>
+    <title>Polock Interior | Tohidul Islam</title>
     
     <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./assets/js/tailwind-runtime.js"></script>
     
     <!-- Fonts: Indivisible (Primary) & Outfit (Fallback) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +27,7 @@
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
     <script>
-        tailwind.config = {
+        if (typeof tailwind !== 'undefined') tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
@@ -247,13 +247,15 @@
             border-radius: 9999px;
         }
     </style>
-    <link rel="stylesheet" href="./assets/css/inner-page-header.css">
-    <link rel="stylesheet" href="./assets/css/navigation.css">
-    <script src="./assets/js/navigation.js" defer></script>
+    <link rel="stylesheet" href="./assets/css/inner-page-header.css?v=20260918g">
+    <link rel="stylesheet" href="./assets/css/navigation.css?v=20260918k">
+    <script src="./assets/js/navigation.js?v=20260918e" defer></script>
+    <link rel="stylesheet" href="./assets/css/footer.css">
+<link rel="stylesheet" href="./assets/css/portfolio-clarity.css?v=20260918">
+<script src="./assets/js/portfolio-accessibility.js?v=20260918b" defer></script>
 </head>
 <body class="overflow-x-hidden">
-
-    <!-- Preloader with Butterfly -->
+<!-- Preloader with Butterfly -->
     <div id="preloader">
         <div class="preloader-butterfly-wrap">
             <div class="butterfly-glow"></div>
@@ -261,7 +263,7 @@
             <div class="butterfly-ground-shadow"></div>
         </div>
         <div class="mt-6 text-center z-10">
-            <h1 class="text-xs md:text-sm font-bold uppercase tracking-[0.25em] text-white/95">Polock Interior Studio.</h1>
+            <p class="text-xs md:text-sm font-bold uppercase tracking-[0.25em] text-white/95">Polock Interior Studio.</p>
             <div class="loader-bar-wrap mx-auto">
                 <div class="loader-bar-fill"></div>
             </div>
@@ -278,15 +280,15 @@
             </a>
             
             <!-- Desktop Links -->
-            <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-white" id="nav-links">
-                <a href="our-services.html" class="hover:text-brand-yellow transition-colors">Services</a>
-                <a href="approach.html" class="hover:text-brand-yellow transition-colors">Approach</a>
-                <a href="case-studies.html" class="hover:text-brand-yellow transition-colors">My works</a>
-                <a href="about-us.html" class="hover:text-brand-yellow transition-colors">About me</a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-white" id="nav-links"><a href="our-services.html" class="hover:text-brand-yellow transition-colors">Services</a><a href="case-studies.html" class="hover:text-brand-yellow transition-colors">My Works</a><a href="pricing.html" class="hover:text-brand-yellow transition-colors">Pricing</a><a href="about-us.html" class="hover:text-brand-yellow transition-colors">About me</a>
+                
+                
+                
+                
                 
                 <!-- Contact Button -->
                 <a href="contact-us.html" class="nav-btn-hover flex items-center px-6 py-2.5 border border-white/50 rounded-full text-xs font-bold uppercase tracking-wide hover:bg-white hover:text-black transition-all group" id="nav-btn">
-                    Get in touch
+                    Let's Talk
                     <div class="btn-arrow-box">
                         <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </div>
@@ -301,229 +303,21 @@
     </nav>
 
     <!-- Project Hero -->
-    <header class="inner-page-header relative pt-48 pb-20 md:pt-64 md:pb-32 bg-brand-black text-white">
+    <header class="inner-page-header relative bg-brand-black text-white">
         <div class="container mx-auto px-6">
             <div class="max-w-5xl">
-                <div class="flex items-center gap-3 mb-8 hero-anim opacity-0 translate-y-10">
-                    <span class="w-2 h-2 bg-brand-yellow rounded-full"></span>
-                    <span class="text-xs font-bold uppercase tracking-widest text-brand-yellow">Interior Design</span>
-                </div>
+                <nav class="page-breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><a href="case-studies.html">Selected Work</a></li><li><span aria-current="page">Polock Interior</span></li></ol></nav>
                 
-                <h1 class="text-giant font-bold leading-[0.9] tracking-tightest mb-12 hero-anim opacity-0 translate-y-10">
-                    Polock Interior Studio<span class="text-brand-yellow">.</span>
-                </h1>
                 
-                <p class="text-xl md:text-3xl text-gray-400 font-medium max-w-3xl leading-relaxed hero-anim opacity-0 translate-y-10">
-                    Redefining urban mobility with a comprehensive ride & delivery solution focused on high-contrast visibility and one-thumb usability for millions.
-                </p>
+                <h1 class="text-giant font-bold leading-[0.9] tracking-tightest mb-12 hero-anim opacity-0 translate-y-10">Polock Interior<span class="text-brand-yellow">.</span></h1>
+                
+                <p class="text-xl md:text-3xl text-gray-400 font-medium max-w-3xl leading-relaxed hero-anim opacity-0 translate-y-10">Polock Interior is a high-end landing page for a premium interior design studio.</p>
             </div>
         </div>
     </header>
 
-    <!-- Full-Width Project Image Slider -->
-    <section class="w-full relative bg-brand-black overflow-hidden select-none group/slider border-y border-white/5">
-        <div class="swiper project-hero-swiper w-full h-[60vh] sm:h-[75vh] md:h-[85vh] lg:h-[90vh]">
-            <div class="swiper-wrapper" id="project-slider-wrapper">
-                <div class="swiper-slide w-full h-full relative overflow-hidden bg-brand-black flex items-center justify-center">
-                    <img src="./assets/image/works/hopon-superapp.png" alt="Project Preview 1" class="w-full h-full object-cover object-center">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
-                </div>
-                <div class="swiper-slide w-full h-full relative overflow-hidden bg-brand-black flex items-center justify-center">
-                    <img src="./assets/image/works/hopon1.jpg" alt="Project Preview 2" class="w-full h-full object-cover object-center">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
-                </div>
-                <div class="swiper-slide w-full h-full relative overflow-hidden bg-brand-black flex items-center justify-center">
-                    <img src="./assets/image/works/hopon2.jpg" alt="Project Preview 3" class="w-full h-full object-cover object-center">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
-                </div>
-                <div class="swiper-slide w-full h-full relative overflow-hidden bg-brand-black flex items-center justify-center">
-                    <img src="./assets/image/works/hopon3.jpg" alt="Project Preview 4" class="w-full h-full object-cover object-center">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
-                </div>
-                <div class="swiper-slide w-full h-full relative overflow-hidden bg-brand-black flex items-center justify-center">
-                    <img src="./assets/image/works/hop-on.png.jpg" alt="Project Preview 5" class="w-full h-full object-cover object-center">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
-                </div>
-            </div>
-
-            <!-- Navigation Buttons (Prev / Next) -->
-            <button class="project-swiper-prev absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-black/60 hover:bg-white text-white hover:text-black backdrop-blur-md border border-white/20 flex items-center justify-center transition-all duration-300 shadow-xl opacity-80 md:opacity-0 md:group-hover/slider:opacity-100 -translate-x-2 md:-translate-x-4 md:group-hover/slider:translate-x-0 cursor-pointer active:scale-95" aria-label="Previous image">
-                <i class="fa-solid fa-chevron-left text-sm sm:text-base"></i>
-            </button>
-            <button class="project-swiper-next absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-black/60 hover:bg-white text-white hover:text-black backdrop-blur-md border border-white/20 flex items-center justify-center transition-all duration-300 shadow-xl opacity-80 md:opacity-0 md:group-hover/slider:opacity-100 translate-x-2 md:translate-x-4 md:group-hover/slider:translate-x-0 cursor-pointer active:scale-95" aria-label="Next image">
-                <i class="fa-solid fa-chevron-right text-sm sm:text-base"></i>
-            </button>
-
-            <!-- Bottom Floating Pill (Slide Counter & Pagination Dots) -->
-            <div class="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-4 bg-black/80 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/15 text-white shadow-2xl">
-                <div class="swiper-pagination !static !w-auto flex items-center gap-1.5" id="project-swiper-pagination"></div>
-                <div class="w-px h-3.5 bg-white/20"></div>
-                <div class="text-xs font-mono font-bold tracking-wider">
-                    <span id="project-slide-current" class="text-brand-yellow">01</span>
-                    <span class="text-white/40">/</span>
-                    <span id="project-slide-total" class="text-white/70">05</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Project Meta Grid -->
-    <section class="py-24 bg-white border-b border-gray-100 section-reveal-trigger">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 section-reveal">
-                <div>
-                    <h3 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Client</h3>
-                    <p class="text-xl font-bold text-brand-black">Polock Interior</p>
-                </div>
-                <div>
-                    <h3 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Services</h3>
-                    <ul class="text-xl font-bold text-brand-black space-y-1">
-                        <li>User Research</li>
-                        <li>UI/UX Design</li>
-                        <li>Design System</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Timeline</h3>
-                    <p class="text-xl font-bold text-brand-black">1 Month</p>
-                </div>
-                <div>
-                    <h3 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Year</h3>
-                    <p class="text-xl font-bold text-brand-black">2025</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- The Challenge -->
-    <section class="py-32 bg-white section-reveal-trigger">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-12 gap-12">
-                <div class="md:col-span-4 section-reveal">
-                    <h2 class="text-4xl font-bold mb-6">The Challenge</h2>
-                    <div class="w-16 h-1 bg-brand-yellow mb-8"></div>
-                </div>
-                <div class="md:col-span-8 section-reveal">
-                    <p class="text-2xl md:text-3xl font-medium leading-relaxed mb-8">
-                        Urban commuters face a fragmented experience when switching between ride-sharing and food delivery apps. The challenge was to unify these services into a single, cohesive super-app without creating cognitive overload.
-                    </p>
-                    <p class="text-gray-500 text-lg leading-relaxed max-w-2xl">
-                        Our research indicated that 65% of users struggled with navigation in existing competitor apps, particularly during high-stress commute times. The goal was to reduce the "time to action" by 40% while maintaining a visually premium aesthetic.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Visual Grid 1 -->
-    <section class="py-12 bg-brand-gray-light section-reveal-trigger">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-8 section-reveal">
-                <div class="bg-white p-8 md:p-16 rounded-2xl flex items-center justify-center">
-                    <img src="https://cdn.dribbble.com/users/3503254/screenshots/16327318/media/649726245e3962637207c40467f334d7.jpg?resize=800x600&vertical=center" 
-                         alt="Wireframes" class="w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-500">
-                </div>
-                <div class="bg-white p-8 md:p-16 rounded-2xl flex items-center justify-center">
-                    <img src="https://cdn.dribbble.com/users/3503254/screenshots/15679549/media/200676007e997f773426767570494444.jpg?resize=800x600&vertical=center" 
-                         alt="Design System" class="w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-500">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- The Solution -->
-    <section class="py-32 bg-white section-reveal-trigger">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-12 gap-12">
-                <div class="md:col-span-4 section-reveal">
-                    <h2 class="text-4xl font-bold mb-6">The Solution</h2>
-                    <div class="w-16 h-1 bg-brand-yellow mb-8"></div>
-                </div>
-                <div class="md:col-span-8 section-reveal">
-                    <p class="text-2xl md:text-3xl font-medium leading-relaxed mb-10">
-                        We developed a modular design system centered around high-contrast legibility and "thumb-zone" navigation.
-                    </p>
-                    
-                    <div class="grid md:grid-cols-2 gap-10">
-                        <div>
-                            <h3 class="text-xl font-bold mb-4 flex items-center gap-3">
-                                <span class="w-8 h-8 rounded-full bg-brand-black text-brand-yellow flex items-center justify-center text-sm">01</span>
-                                Unified Architecture
-                            </h3>
-                            <p class="text-gray-500 leading-relaxed">
-                                Merged 3 separate user flows into one dashboard, using contextual cards that predict user intent based on time of day.
-                            </p>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold mb-4 flex items-center gap-3">
-                                <span class="w-8 h-8 rounded-full bg-brand-black text-brand-yellow flex items-center justify-center text-sm">02</span>
-                                High Visibility Mode
-                            </h3>
-                            <p class="text-gray-500 leading-relaxed">
-                                Implemented a dynamic contrast system that adjusts UI brightness and font weight based on ambient light sensors.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Full Width Visual -->
-    <section class="w-full h-[80vh] relative overflow-hidden section-reveal-trigger">
-        <div class="absolute inset-0 bg-brand-black/5 z-10"></div>
-        <img src="https://images.unsplash.com/photo-1555421689-491a97ff2040?q=80&w=2070&auto=format&fit=crop" 
-             alt="Hop On Lifestyle" 
-             class="w-full h-full object-cover parallax-img section-reveal">
-    </section>
-
-    <!-- The Result -->
-    <section class="py-32 bg-brand-yellow text-brand-black section-reveal-trigger">
-        <div class="container mx-auto px-6 text-center">
-            <div class="max-w-4xl mx-auto section-reveal">
-                <h2 class="text-4xl md:text-6xl font-bold mb-12">The Impact</h2>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="p-8 border-l border-brand-black/20">
-                        <span class="block text-6xl font-bold mb-2">+45%</span>
-                        <span class="text-sm font-bold uppercase tracking-widest opacity-70">User Retention</span>
-                    </div>
-                    <div class="p-8 border-l border-brand-black/20">
-                        <span class="block text-6xl font-bold mb-2">2.5M</span>
-                        <span class="text-sm font-bold uppercase tracking-widest opacity-70">Daily Active Users</span>
-                    </div>
-                    <div class="p-8 border-l border-brand-black/20">
-                        <span class="block text-6xl font-bold mb-2">4.8</span>
-                        <span class="text-sm font-bold uppercase tracking-widest opacity-70">App Store Rating</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Next Project Navigation -->
-    <section class="py-32 bg-brand-black text-white section-reveal-trigger">
-        <div class="container mx-auto px-6">
-            <p class="text-gray-500 text-sm font-bold uppercase tracking-widest mb-8">Next Project</p>
-            
-            <a href="#" class="group block relative border-t border-white/20 pt-12">
-                <div class="flex flex-col md:flex-row justify-between md:items-end gap-8">
-                    <div>
-                        <h2 class="text-5xl md:text-8xl font-bold group-hover:text-brand-yellow transition-colors duration-300">
-                            Prospera FinTech
-                        </h2>
-                        <p class="text-xl text-gray-400 mt-4 group-hover:text-white transition-colors">
-                            Visualizing complex university data for students.
-                        </p>
-                    </div>
-                    <div class="w-20 h-20 rounded-full border border-white/30 flex items-center justify-center group-hover:bg-brand-yellow group-hover:border-brand-yellow group-hover:text-black transition-all duration-300">
-                        <i class="fa-solid fa-arrow-right text-2xl -rotate-45 group-hover:rotate-0 transition-transform duration-300"></i>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <!-- 8. FOOTER -->
+    <main id="main-content" tabindex="-1"><section id="overview" class="case-section "><div class="case-container"><h2>Project overview</h2><p class="case-lead">Polock Interior is a high-end landing page for a premium interior design studio.</p><dl class="case-meta"><div><dt>Design focus</dt><dd>Interior Design</dd></div><div><dt>Presentation</dt><dd>Selected design work</dd></div></dl></div></section><div class="case-container"><figure class="case-figure"><a href="https://ar-tanveer-portfolio.vercel.app/PolockInterior.webp" target="_blank" rel="noopener" aria-label="Open full-size Polock Interior image (new tab)"><img src="https://ar-tanveer-portfolio.vercel.app/PolockInterior.webp" alt="Polock Interior — project presentation." fetchpriority="high" decoding="async"></a><figcaption>Polock Interior — project presentation. <a href="https://ar-tanveer-portfolio.vercel.app/PolockInterior.webp" target="_blank" rel="noopener">View full size <span class="sr-only">(new tab)</span> ↗</a></figcaption></figure></div><section id="screens" class="case-section "><div class="case-container"><h2>Selected screens</h2><p>Open the presentation above to inspect the design at its original size.</p></div></section><section id="evidence" class="case-section case-yellow"><div class="case-container"><h2>Scope & evidence</h2><p>This page presents interior design design work. The visuals show the interface or visual direction; they do not establish launch status or measured business impact.</p><p>Research methods, individual responsibilities, and outcome measurements are not documented in this presentation.</p></div></section><section id="next-project" class="case-section "><div class="case-container"><h2>Continue exploring</h2><a class="case-next" href="work-silk-route.html">Silk Route Fashion <span aria-hidden="true">↗</span></a><a href="case-studies.html">Browse all work</a></div></section></main>
+<!-- 8. FOOTER -->
     <footer id="contact">
         <!-- Dark CTA -->
         <div class="bg-brand-footer-dark text-white py-24 section-reveal-trigger">
@@ -547,7 +341,7 @@
                 <div class="mb-16">
                     <div class="mb-4">
                         <a href="index.html" class="inline-block transition-transform hover:scale-105 duration-300" aria-label="Tohidul Islam">
-                            <img src="./assets/image/logo-black.png" alt="Tohidul Islam" class="h-10 md:h-12 w-auto object-contain">
+                            <img src="./assets/image/logo-white.png" alt="Tohidul Islam" class="h-10 md:h-12 w-auto object-contain">
                         </a>
                     </div>
                     <h3 class="text-5xl font-bold">Act on design.</h3>
@@ -557,22 +351,22 @@
                     <div>
                         <h4 class="font-bold mb-6 text-sm">Pages</h4>
                         <ul class="space-y-3 text-sm font-medium">
-                            <li><a href="#" class="hover:underline">Home</a></li>
-                            <li><a href="#services" class="hover:underline">Services</a></li>
-                            <li><a href="#approach" class="hover:underline">Our Approach</a></li>
-                            <li><a href="#work" class="hover:underline">Case Studies</a></li>
-                            <li><a href="#about" class="hover:underline">About</a></li>
+                            <li><a href="index.html" class="hover:underline">Home</a></li>
+                            <li><a href="our-services.html" class="hover:underline">Services</a></li>
+                            <li><a href="pricing.html" class="hover:underline">Pricing</a></li>
+                            <li><a href="case-studies.html" class="hover:underline">Case Studies</a></li>
+                            <li><a href="about-us.html" class="hover:underline">About</a></li>
                             <li><a href="contact-us.html" class="hover:underline">Contact</a></li>
                         </ul>
                     </div>
                     <div>
                         <h4 class="font-bold mb-6 text-sm">Services</h4>
                          <ul class="space-y-3 text-sm font-medium">
-                            <li><a href="#" class="hover:underline">UI Design</a></li>
-                            <li><a href="#" class="hover:underline">Web Development</a></li>
-                            <li><a href="#" class="hover:underline">Design Systems</a></li>
-                            <li><a href="#" class="hover:underline">UX Research</a></li>
-                            <li><a href="#" class="hover:underline">Prototyping</a></li>
+                            <li><a href="our-services.html" class="hover:underline">UI Design</a></li>
+                            <li><a href="our-services.html" class="hover:underline">Web Development</a></li>
+                            <li><a href="our-services.html" class="hover:underline">Design Systems</a></li>
+                            <li><a href="our-services.html" class="hover:underline">UX Research</a></li>
+                            <li><a href="our-services.html" class="hover:underline">Prototyping</a></li>
                         </ul>
                     </div>
                     <div>
@@ -598,9 +392,9 @@
                 <div class="flex flex-col md:flex-row justify-between text-[11px] font-medium text-black/60 uppercase tracking-wide">
                     <p>&copy; 2026 Tohidul Islam. All rights reserved.</p>
                     <div class="flex gap-6 mt-4 md:mt-0">
-                        <a href="#" class="hover:text-black">Privacy Policy</a>
-                        <a href="#" class="hover:text-black">Cookie Policy</a>
-                        <a href="#" class="hover:text-black">Website by Tohidul</a>
+                        
+                        
+                        <span>Website by Tohidul</span>
                     </div>
                 </div>
             </div>
@@ -609,360 +403,6 @@
 
     <!-- Scripts -->
     <script>
-        // All Portfolio Projects Dataset
-        const allProjectsDatabase = [
-          {
-            id: "3gem",
-            title: "3Gem Digital Platform",
-            category: "Enterprise / SaaS",
-            client: "3Gem Inc.",
-            services: ["UI/UX Architecture", "Design System", "Frontend Specs"],
-            timeline: "5 Months",
-            year: "2025",
-            heroImage: "./assets/image/works/3gem3.jpg",
-            sliderImages: [
-                "./assets/image/works/3gem3.jpg",
-                "./assets/image/works/3gem.jpg",
-                "./assets/image/works/3gem1.jpg",
-                "./assets/image/works/3gem2.jpg"
-            ],
-            tagline: "Empowering enterprise digital transformation through unified, grid-based operations management.",
-            challenge: "Enterprise clients needed to unify fragmented operational portals into a single high-performance dashboard that scales across global teams.",
-            challengeDetail: "Over 70% of enterprise users struggled with disconnected tools and disparate data structures. Our primary goal was creating a unified architecture with zero latency.",
-            solutionOverview: "We architected a clean, grid-focused design system with dark and high-contrast light modes tailored for data-dense workflows.",
-            solPoints: [
-                { title: "Grid Architecture", text: "Structured multi-tenant layout allowing seamless switching between operations." },
-                { title: "Performance First", text: "Optimized component render loops to handle live data streams with sub-second response times." }
-            ],
-            impactStats: [
-                { value: "+60%", label: "Workflow Efficiency" },
-                { value: "500K+", label: "Enterprise Users" },
-                { value: "99.9%", label: "Uptime Metric" }
-            ],
-            gallery: ["./assets/image/works/3gem1.jpg", "./assets/image/works/3gem2.jpg"],
-            nextId: "ed-ai",
-            nextTitle: "ED AI Admissions Copilot"
-          },
-          {
-            id: "ed-ai",
-            title: "ED AI Admissions Copilot",
-            category: "EdTech / AI SaaS",
-            client: "ED AI Global",
-            services: ["AI Interface Design", "User Flow Mapping", "Design System"],
-            timeline: "4 Months",
-            year: "2025",
-            heroImage: "./assets/image/works/ed-ai2.jpg",
-            sliderImages: [
-                "./assets/image/works/ed-ai2.jpg",
-                "./assets/image/works/edai-features.jpg",
-                "./assets/image/works/ed-ai.jpg",
-                "./assets/image/works/ed-ai1.jpg"
-            ],
-            tagline: "AI-driven university application & document analysis copilot for students and academic counselors.",
-            challenge: "Navigating international university admissions is overwhelming, involving complex documentation, requirements, and tight timelines.",
-            challengeDetail: "Students and counselors were spending dozens of hours manually verifying university prerequisites and document formats across multiple countries.",
-            solutionOverview: "Built an intuitive copilot interface that translates complex AI document analysis into clear, step-by-step actionable recommendations.",
-            solPoints: [
-                { title: "Smart Matching", text: "Algorithmic match engine linking student profiles with global university admission criteria." },
-                { title: "Live Document Feedback", text: "Instant AI review of essays and transcripts with contextual improvement suggestions." }
-            ],
-            impactStats: [
-                { value: "4.9", label: "User Rating" },
-                { value: "120K+", label: "Students Guided" },
-                { value: "75%", label: "Time Saved" }
-            ],
-            gallery: ["./assets/image/works/ed-ai.jpg", "./assets/image/works/ed-ai2.jpg"],
-            nextId: "hopon-rider",
-            nextTitle: "HopOn Rider Super App"
-          },
-          {
-            id: "hopon-rider",
-            title: "HopOn Rider Super App",
-            category: "Mobile Application",
-            client: "Hop On Inc.",
-            services: ["User Research", "UI/UX Design", "Design System"],
-            timeline: "4 Months",
-            year: "2025",
-            heroImage: "./assets/image/works/hopon-superapp.png",
-            sliderImages: [
-                "./assets/image/works/hopon-superapp.png",
-                "./assets/image/works/hopon1.jpg",
-                "./assets/image/works/hopon2.jpg",
-                "./assets/image/works/hopon3.jpg",
-                "./assets/image/works/hop-on.png.jpg"
-            ],
-            tagline: "Redefining urban mobility with a comprehensive ride & delivery solution focused on high-contrast visibility and one-thumb usability for millions.",
-            challenge: "Urban commuters face a fragmented experience when switching between ride-sharing and food delivery apps. The challenge was to unify these services into a single, cohesive super-app without creating cognitive overload.",
-            challengeDetail: "Our research indicated that 65% of users struggled with navigation in existing competitor apps, particularly during high-stress commute times. The goal was to reduce the 'time to action' by 40% while maintaining a visually premium aesthetic.",
-            solutionOverview: "We developed a modular design system centered around high-contrast legibility and 'thumb-zone' navigation.",
-            solPoints: [
-                { title: "Unified Architecture", text: "Merged 3 separate user flows into one dashboard, using contextual cards that predict user intent based on time of day." },
-                { title: "High Visibility Mode", text: "Implemented a dynamic contrast system that adjusts UI brightness and font weight based on ambient light sensors." }
-            ],
-            impactStats: [
-                { value: "+45%", label: "User Retention" },
-                { value: "2.5M", label: "Daily Active Users" },
-                { value: "4.8", label: "App Store Rating" }
-            ],
-            gallery: ["./assets/image/works/hopon1.jpg", "./assets/image/works/hopon2.jpg"],
-            nextId: "studylity",
-            nextTitle: "StudyLity EdTech"
-          },
-          {
-            id: "studylity",
-            title: "StudyLity EdTech Platform",
-            category: "EdTech Application",
-            client: "StudyLity Learning",
-            services: ["Product Design", "Learning UX", "Mobile Design"],
-            timeline: "3 Months",
-            year: "2025",
-            heroImage: "./assets/image/works/studylity1.png",
-            sliderImages: [
-                "./assets/image/works/studylity1.png",
-                "./assets/image/works/studylity2.png",
-                "https://ar-tanveer-portfolio.vercel.app/Studylity1.webp"
-            ],
-            tagline: "Empowering students with structured digital study routines and automated progress analytics.",
-            challenge: "Students often experience fragmented study habits across disjointed calendars, notes, and timers.",
-            challengeDetail: "Consolidating learning materials and schedule tracking into a focused, distraction-free interface required deeply streamlined UI workflows.",
-            solutionOverview: "Engineered an intelligent study schedule manager with integrated milestone timers and analytics.",
-            solPoints: [
-                { title: "Focused Study Mode", text: "Distraction-free timer that tracks active study sessions and rest intervals." },
-                { title: "Analytics Overview", text: "Visual charts detailing weekly subject mastery and time allocation." }
-            ],
-            impactStats: [
-                { value: "92%", label: "Completion Rate" },
-                { value: "40K+", label: "Active Learners" },
-                { value: "4.9", label: "User Rating" }
-            ],
-            gallery: ["./assets/image/works/studylity1.png", "./assets/image/works/studylity2.png"],
-            nextId: "vivid-customs",
-            nextTitle: "Vivid Customs Platform"
-          },
-          {
-            id: "vivid-customs",
-            title: "Vivid Customs Platform",
-            category: "E-Commerce / Custom SaaS",
-            client: "Vivid Customs",
-            services: ["E-Commerce UX", "Product Customizer", "Design System"],
-            timeline: "3 Months",
-            year: "2025",
-            heroImage: "./assets/image/works/vivid-customs.png",
-            sliderImages: [
-                "./assets/image/works/vivid-customs.png",
-                "https://ar-tanveer-portfolio.vercel.app/vibe/Everything4logistics.webp"
-            ],
-            tagline: "Custom apparel print platform with instant online 3D preview tools and high-volume order management.",
-            challenge: "Customers found ordering customized apparel confusing with inaccurate print alignments.",
-            challengeDetail: "Bridging the gap between creative visual designs and factory print specifications required real-time interactive canvas tools.",
-            solutionOverview: "Designed an intuitive live customization interface with high-fidelity visual mockups.",
-            solPoints: [
-                { title: "Real-time Mockups", text: "Instant vector graphics placement on garments with 360 preview." },
-                { title: "Bulk Ordering", text: "Optimized multi-size matrix allowing quick checkout for teams." }
-            ],
-            impactStats: [
-                { value: "+55%", label: "Conversion Lift" },
-                { value: "10K+", label: "Designs Created" },
-                { value: "99%", label: "Print Accuracy" }
-            ],
-            gallery: ["./assets/image/works/vivid-customs.png"],
-            nextId: "brand-identity",
-            nextTitle: "Brand Identity Manual"
-          },
-          {
-            id: "brand-identity",
-            title: "Brand Identity & Design System",
-            category: "Identity / Visual Design",
-            client: "Global Brands",
-            services: ["Brand Strategy", "Typography", "Style Guidelines"],
-            timeline: "2 Months",
-            year: "2025",
-            heroImage: "./assets/image/works/decoraan-brandguide.jpg",
-            sliderImages: [
-                "./assets/image/works/decoraan-brandguide.jpg",
-                "./assets/image/works/maxshelf-brandguide.jpg",
-                "./assets/image/works/polok-brandguide.jpg"
-            ],
-            tagline: "End-to-end visual identity guidelines establishing distinctive brand consistency across digital and print touchpoints.",
-            challenge: "Inconsistent brand communication across various sub-brands diluted customer recognition.",
-            challengeDetail: "Creating a comprehensive, living design system that accommodates diverse digital platforms and physical packaging.",
-            solutionOverview: "Constructed an exhaustive brand manual defining clear logo anatomy, color palettes, and typographic scales.",
-            solPoints: [
-                { title: "Design System Guidelines", text: "Defined scalable UI components, icons, and layout rules for developers." },
-                { title: "Print & Packaging Specs", text: "Color-accurate CMYK formulations and material standards for packaging." }
-            ],
-            impactStats: [
-                { value: "100%", label: "Brand Alignment" },
-                { value: "35+", label: "Brand Assets" },
-                { value: "5.0", label: "Brand Score" }
-            ],
-            gallery: ["./assets/image/works/decoraan-brandguide.jpg", "./assets/image/works/maxshelf-brandguide.jpg"],
-            nextId: "3gem",
-            nextTitle: "3Gem Digital Platform"
-          }
-        ];
-
-        let projectSwiperInstance = null;
-        function initProjectHeroSwiper(totalCount) {
-            if (typeof Swiper === 'undefined') return;
-            if (projectSwiperInstance) {
-                try { projectSwiperInstance.destroy(true, true); } catch (e) {}
-            }
-            const currentEl = document.getElementById('project-slide-current');
-            projectSwiperInstance = new Swiper('.project-hero-swiper', {
-                loop: totalCount > 1,
-                speed: 700,
-                autoplay: totalCount > 1 ? {
-                    delay: 4500,
-                    disableOnInteraction: false,
-                    pauseOnMouseEnter: true
-                } : false,
-                grabCursor: true,
-                navigation: {
-                    nextEl: '.project-swiper-next',
-                    prevEl: '.project-swiper-prev',
-                },
-                pagination: {
-                    el: '#project-swiper-pagination',
-                    clickable: true,
-                },
-                keyboard: {
-                    enabled: true,
-                },
-                on: {
-                    slideChange: function () {
-                        if (currentEl) {
-                            currentEl.textContent = String(this.realIndex + 1).padStart(2, '0');
-                        }
-                    }
-                }
-            });
-        }
-
-        // Function to load details from URL query parameter ?id=...
-        function loadProjectDetails() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const projectId = 'polock-interior';
-
-            const p = allProjectsDatabase.find(item => item.id === projectId) || allProjectsDatabase[2];
-
-            // Update page Title
-            document.title = `${p.title} - Case Study | Tohidul Islam`;
-
-            // Preloader Text
-            const preloaderText = document.querySelector('#preloader h1');
-            if(preloaderText) preloaderText.textContent = `${p.title}.`;
-
-            // Hero Category & Title
-            const categorySpan = document.querySelector('header span.tracking-widest');
-            if(categorySpan) categorySpan.textContent = p.category;
-
-            const titleHeading = document.querySelector('header h1');
-            if(titleHeading) titleHeading.innerHTML = `${p.title}<span class="text-brand-yellow">.</span>`;
-
-            const taglineP = document.querySelector('header p');
-            if(taglineP) taglineP.textContent = p.tagline;
-
-            // Full Width Slider Images
-            const sliderWrapper = document.getElementById('project-slider-wrapper');
-            const totalEl = document.getElementById('project-slide-total');
-            const currentEl = document.getElementById('project-slide-current');
-            
-            const rawImages = p.sliderImages || (p.images && p.images.length > 0 ? p.images : [p.heroImage, ...(p.gallery || [])]);
-            const sliderImages = Array.from(new Set(rawImages)).filter(Boolean);
-
-            if (sliderWrapper && sliderImages.length > 0) {
-                sliderWrapper.innerHTML = sliderImages.map((imgUrl, idx) => `
-                    <div class="swiper-slide w-full h-full relative overflow-hidden bg-brand-black flex items-center justify-center">
-                        <img src="${imgUrl}" alt="${p.title} - Preview ${idx + 1}" class="w-full h-full object-cover object-center">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
-                    </div>
-                `).join('');
-
-                if (totalEl) totalEl.textContent = String(sliderImages.length).padStart(2, '0');
-                if (currentEl) currentEl.textContent = '01';
-
-                initProjectHeroSwiper(sliderImages.length);
-            }
-
-            // Meta Details
-            const metaContainer = document.querySelector('section.border-b .grid');
-            if(metaContainer) {
-                metaContainer.innerHTML = `
-                    <div>
-                        <h3 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Client</h3>
-                        <p class="text-xl font-bold text-brand-black">${p.client}</p>
-                    </div>
-                    <div>
-                        <h3 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Services</h3>
-                        <ul class="text-xl font-bold text-brand-black space-y-1">
-                            ${p.services.map(s => `<li>${s}</li>`).join('')}
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Timeline</h3>
-                        <p class="text-xl font-bold text-brand-black">${p.timeline}</p>
-                    </div>
-                    <div>
-                        <h3 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Year</h3>
-                        <p class="text-xl font-bold text-brand-black">${p.year}</p>
-                    </div>
-                `;
-            }
-
-            // Challenge Content
-            const challengeH2P = document.querySelectorAll('section:nth-of-type(2) p');
-            if(challengeH2P.length >= 2) {
-                challengeH2P[0].textContent = p.challenge;
-                challengeH2P[1].textContent = p.challengeDetail;
-            }
-
-            // Visual Grid Images
-            const visualImgs = document.querySelectorAll('section:nth-of-type(3) img');
-            if(visualImgs.length >= 2 && p.gallery) {
-                visualImgs[0].src = p.gallery[0] || p.heroImage;
-                visualImgs[1].src = p.gallery[1] || p.heroImage;
-            }
-
-            // Solution Overview & Points
-            const solMainP = document.querySelector('section:nth-of-type(4) p.text-2xl');
-            if(solMainP) solMainP.textContent = p.solutionOverview;
-
-            const solGrid = document.querySelector('section:nth-of-type(4) .grid.grid-cols-2') || document.querySelector('section:nth-of-type(4) .grid.md\\:grid-cols-2');
-            if(solGrid && p.solPoints) {
-                solGrid.innerHTML = p.solPoints.map((pt, i) => `
-                    <div>
-                        <h3 class="text-xl font-bold mb-4 flex items-center gap-3">
-                            <span class="w-8 h-8 rounded-full bg-brand-black text-brand-yellow flex items-center justify-center text-sm">0${i+1}</span>
-                            ${pt.title}
-                        </h3>
-                        <p class="text-gray-500 leading-relaxed">${pt.text}</p>
-                    </div>
-                `).join('');
-            }
-
-            // Impact Stats
-            const impactGrid = document.querySelector('section:nth-of-type(6) .grid');
-            if(impactGrid && p.impactStats) {
-                impactGrid.innerHTML = p.impactStats.map(st => `
-                    <div class="p-8 border-l border-brand-black/20">
-                        <span class="block text-6xl font-bold mb-2">${st.value}</span>
-                        <span class="text-sm font-bold uppercase tracking-widest opacity-70">${st.label}</span>
-                    </div>
-                `).join('');
-            }
-
-            // Next Project
-            const nextLink = document.querySelector('section:nth-of-type(7) a');
-            if(nextLink && p.nextId) {
-                nextLink.href = `case-studies-details.html?id=${p.nextId}`;
-                const nextH2 = nextLink.querySelector('h2');
-                if(nextH2) nextH2.textContent = p.nextTitle;
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', loadProjectDetails);window.addEventListener('DOMContentLoaded', loadProjectDetails);
-
         window.addEventListener('load', () => {
             // 1. Remove Preloader
             const preloader = document.getElementById('preloader');
@@ -1013,28 +453,9 @@
                         }
                     });
 
-                    // Parallax Images
-                    gsap.utils.toArray('.parallax-img').forEach(img => {
-                        gsap.to(img, {
-                            yPercent: 15,
-                            ease: "none",
-                            scrollTrigger: {
-                                trigger: img.parentElement,
-                                start: "top bottom",
-                                end: "bottom top",
-                                scrub: true
-                            }
-                        });
-                    });
+                    
                 }
             }
-
-            // Fallback Swiper initialization
-            if (!projectSwiperInstance && typeof Swiper !== 'undefined') {
-                const slideCount = document.querySelectorAll('#project-slider-wrapper .swiper-slide').length;
-                initProjectHeroSwiper(slideCount || 1);
-            }
-
             // 4. Navbar Background Logic (Dark Hero)
             const navContainer = document.getElementById('nav-container');
             const navLogo = document.getElementById('nav-logo');
@@ -1068,21 +489,10 @@
                 }
             });
 
-            // 5. Initialize Lenis Smooth Scroll
-            if (typeof Lenis !== 'undefined') {
-                const lenis = new Lenis({
-                    lerp: 0.1, 
-                    smooth: true,
-                });
-                function raf(time) {
-                    lenis.raf(time);
-                    requestAnimationFrame(raf);
-                }
-                requestAnimationFrame(raf);
-            }
+            // Native scrolling keeps browser and keyboard behavior predictable.
         });
     </script>
     <!-- Global Floating Butterfly Component -->
-    <script src="./assets/js/butterfly.js"></script>
+    <script src="./assets/js/butterfly.js?v=20260918h"></script>
 </body>
 </html>

@@ -6,7 +6,7 @@
     <title>Work & Case Studies | Tohidul Islam</title>
     
     <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./assets/js/tailwind-runtime.js"></script>
     
     <!-- Fonts: Indivisible (Primary) & Outfit (Fallback) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +23,7 @@
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
     <script>
-        tailwind.config = {
+        if (typeof tailwind !== 'undefined') tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
@@ -230,13 +230,15 @@
             color: #ffffff;
         }
     </style>
-    <link rel="stylesheet" href="./assets/css/inner-page-header.css">
-    <link rel="stylesheet" href="./assets/css/navigation.css">
-    <script src="./assets/js/navigation.js" defer></script>
+    <link rel="stylesheet" href="./assets/css/inner-page-header.css?v=20260918g">
+    <link rel="stylesheet" href="./assets/css/navigation.css?v=20260918k">
+    <script src="./assets/js/navigation.js?v=20260918e" defer></script>
+    <link rel="stylesheet" href="./assets/css/footer.css">
+<link rel="stylesheet" href="./assets/css/portfolio-clarity.css?v=20260918">
+<script src="./assets/js/portfolio-accessibility.js?v=20260918b" defer></script>
 </head>
 <body class="overflow-x-hidden">
-
-    <!-- Preloader with Butterfly -->
+<!-- Preloader with Butterfly -->
     <div id="preloader">
         <div class="preloader-butterfly-wrap">
             <div class="butterfly-glow"></div>
@@ -244,7 +246,7 @@
             <div class="butterfly-ground-shadow"></div>
         </div>
         <div class="mt-6 text-center z-10">
-            <h1 class="text-xs md:text-sm font-bold uppercase tracking-[0.25em] text-white/95">Our Work.</h1>
+            <p class="text-xs md:text-sm font-bold uppercase tracking-[0.25em] text-white/95">Selected Work.</p>
             <div class="loader-bar-wrap mx-auto">
                 <div class="loader-bar-fill"></div>
             </div>
@@ -261,15 +263,15 @@
             </a>
             
             <!-- Desktop Links -->
-            <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-white" id="nav-links">
-                <a href="our-services.html" class="hover:text-brand-yellow transition-colors">Services</a>
-                <a href="approach.html" class="hover:text-brand-yellow transition-colors">Approach</a>
-                <a href="case-studies.html" class="text-brand-yellow transition-colors">My works</a>
-                <a href="about-us.html" class="hover:text-brand-yellow transition-colors">About me</a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-white" id="nav-links"><a href="our-services.html" class="hover:text-brand-yellow transition-colors">Services</a><a href="case-studies.html" class="hover:text-brand-yellow transition-colors">My Works</a><a href="pricing.html" class="hover:text-brand-yellow transition-colors">Pricing</a><a href="about-us.html" class="hover:text-brand-yellow transition-colors">About me</a>
+                
+                
+                
+                
                 
                 <!-- Contact Button -->
                 <a href="contact-us.html" class="nav-btn-hover flex items-center px-6 py-2.5 border border-white/50 rounded-full text-xs font-bold uppercase tracking-wide hover:bg-white hover:text-black transition-all group" id="nav-btn">
-                    Get in touch
+                    Let's Talk
                     <div class="btn-arrow-box">
                         <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </div>
@@ -284,13 +286,11 @@
     </nav>
 
     <!-- Header Section -->
-    <header class="inner-page-header pt-48 pb-20 md:pt-64 md:pb-32 bg-brand-black text-white">
+    <header id="main-content" tabindex="-1" class="inner-page-header bg-brand-black text-white">
         <div class="container mx-auto px-6">
             <div class="max-w-5xl">
-                <div class="flex items-center gap-3 mb-8 hero-anim opacity-0 translate-y-10">
-                    <span class="w-2 h-2 bg-brand-yellow rounded-full"></span>
-                    <span class="text-xs font-bold uppercase tracking-widest text-brand-yellow">My Works</span>
-                </div>
+                <nav class="page-breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><span aria-current="page">Selected Work</span></li></ol></nav>
+                
                 
                 <h1 class="text-giant font-bold leading-[0.9] tracking-tightest mb-12 hero-anim opacity-0 translate-y-10">
                     Selected Works<span class="text-brand-yellow">.</span>
@@ -304,7 +304,7 @@
     </header>
 
     <!-- Sticky Filter Tab Navigation Bar -->
-    <div class="bg-white/95 backdrop-blur-md border-b border-gray-100 py-4 sticky top-24 z-40" id="filter-bar">
+    <div class="bg-white/95 backdrop-blur-md border-b border-gray-100 py-4 sticky top-0 z-40" id="filter-bar">
         <div class="container mx-auto px-6 overflow-x-auto hide-scrollbar">
             <div class="flex gap-2 min-w-max select-none" id="work-tab-buttons">
                 <button onclick="filterWorks('all')" data-tab="all" class="work-tab-btn px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 bg-brand-black text-white shadow-md flex items-center gap-2">
@@ -372,7 +372,7 @@
                 <div class="mb-16">
                     <div class="mb-4">
                         <a href="index.html" class="inline-block transition-transform hover:scale-105 duration-300" aria-label="Tohidul Islam">
-                            <img src="./assets/image/logo-black.png" alt="Tohidul Islam" class="h-10 md:h-12 w-auto object-contain">
+                            <img src="./assets/image/logo-white.png" alt="Tohidul Islam" class="h-10 md:h-12 w-auto object-contain">
                         </a>
                     </div>
                     <h3 class="text-5xl font-bold">Act on design.</h3>
@@ -384,7 +384,7 @@
                         <ul class="space-y-3 text-sm font-medium">
                             <li><a href="index.html" class="hover:underline">Home</a></li>
                             <li><a href="our-services.html" class="hover:underline">Services</a></li>
-                            <li><a href="approach.html" class="hover:underline">Our Approach</a></li>
+                            <li><a href="pricing.html" class="hover:underline">Pricing</a></li>
                             <li><a href="case-studies.html" class="hover:underline">My works</a></li>
                             <li><a href="about-us.html" class="hover:underline">About me</a></li>
                             <li><a href="contact-us.html" class="hover:underline">Contact</a></li>
@@ -393,11 +393,11 @@
                     <div>
                         <h4 class="font-bold mb-6 text-sm">Services</h4>
                          <ul class="space-y-3 text-sm font-medium">
-                            <li><a href="#" class="hover:underline">UI Design</a></li>
-                            <li><a href="#" class="hover:underline">Web Development</a></li>
-                            <li><a href="#" class="hover:underline">Design Systems</a></li>
-                            <li><a href="#" class="hover:underline">UX Research</a></li>
-                            <li><a href="#" class="hover:underline">Prototyping</a></li>
+                            <li><a href="our-services.html" class="hover:underline">UI Design</a></li>
+                            <li><a href="our-services.html" class="hover:underline">Web Development</a></li>
+                            <li><a href="our-services.html" class="hover:underline">Design Systems</a></li>
+                            <li><a href="our-services.html" class="hover:underline">UX Research</a></li>
+                            <li><a href="our-services.html" class="hover:underline">Prototyping</a></li>
                         </ul>
                     </div>
                     <div>
@@ -423,9 +423,9 @@
                 <div class="flex flex-col md:flex-row justify-between text-[11px] font-medium text-black/60 uppercase tracking-wide">
                     <p>&copy; 2026 Tohidul Islam. All rights reserved.</p>
                     <div class="flex gap-6 mt-4 md:mt-0">
-                        <a href="#" class="hover:text-black">Privacy Policy</a>
-                        <a href="#" class="hover:text-black">Cookie Policy</a>
-                        <a href="#" class="hover:text-black">Website by Tohidul</a>
+                        
+                        
+                        <span>Website by Tohidul</span>
                     </div>
                 </div>
             </div>
@@ -434,219 +434,363 @@
 
     <!-- Scripts -->
     <script>
-        // --- Complete Project Datasets from portfolio-projects ---
-        const saasProjects = [
-          {
-            id: 1,
-            slug: "3gem",
-            title: "3Gem Digital Platform",
-            timeline: "5 Month",
-            designSystem: "Tailwind & Custom UI",
-            category: "Enterprise / SaaS",
-            figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files?node-id=0-1&t=92Su7LDNN0qikFsP-1",
-            images: ["./assets/image/works/3gem3.jpg", "./assets/image/works/3gem1.jpg", "./assets/image/works/3gem2.jpg"],
-            context: "3Gem is an enterprise digital transformation platform designed for large-scale corporate operations."
-          },
-          {
-            id: 5,
-            slug: "ed-ai",
-            title: "ED AI Admissions Copilot",
-            timeline: "4 Month",
-            designSystem: "Custom UI",
-            category: "EdTech / AI SaaS",
-            figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files?node-id=1-2594&t=92Su7LDNN0qikFsP-1",
-            images: ["./assets/image/works/ed-ai2.jpg", "./assets/image/works/ed-ai.jpg"],
-            context: "ED AI is an AI-driven university admissions copilot streamlining application processes for students and counselors."
-          },
-          {
-            id: 6,
-            slug: "vivid-customs",
-            title: "Vivid Customs Platform",
-            timeline: "3 Month",
-            designSystem: "Custom E-Commerce UI",
-            category: "E-Commerce / SaaS",
-            figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
-            images: ["./assets/image/works/vivid-customs-card-preview.png"],
-            context: "Custom apparel & t-shirt print platform with real-time online design preview tools and order scaling."
-          }
-        ];
-
-        const appDesignProjects = [
-          {
-            id: 200,
-            slug: "hopon-rider",
-            title: "HopOn Rider Super App",
-            timeline: "6 Month",
-            designSystem: "Custom Mobile System",
-            category: "Logistics / Super App",
-            figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
-            images: ["./assets/image/works/hopon-superapp.png", "./assets/image/works/hopon2.jpg"],
-            context: "HopOn is a ride-sharing, food delivery, parcel logistics, and digital wallet super-app ecosystem."
-          },
-          {
-            id: 201,
-            slug: "tms",
-            title: "TMS Transport Manager",
-            timeline: "4 Month",
-            designSystem: "Custom UI",
-            category: "Logistics / Operations",
-            figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files?node-id=18-8132&t=92Su7LDNN0qikFsP-1",
-            images: ["https://ar-tanveer-portfolio.vercel.app/TMS-1.webp", "https://ar-tanveer-portfolio.vercel.app/TMS-2.webp"],
-            context: "TMS is a logistics operations platform designed to streamline fleet management and cargo tracking."
-          },
-          {
-            id: 206,
-            slug: "studylity",
-            title: "StudyLity EdTech",
-            timeline: "3 Month",
-            designSystem: "Custom UI",
-            category: "EdTech",
-            figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files?node-id=18-12438&t=92Su7LDNN0qikFsP-1",
-            images: ["https://ar-tanveer-portfolio.vercel.app/Studylity1.webp"],
-            context: "StudyLity is an EdTech application helping students manage study schedules and track progress."
-          }
-        ];
-
-        const dashboardProjects = [
-          {
-            id: 300,
-            slug: "drive-dashboard",
-            title: "DRIVE SaaS Dashboard",
-            timeline: "11 Month",
-            designSystem: "Material UI",
-            category: "Dashboard / SaaS",
-            figmaLink: "https://www.figma.com/design/lW8MjBDPIlM0IIEroyqKEN/Drive?node-id=0-11401&t=hRsUI3xTL3iUGU8p-1",
-            images: ["https://ar-tanveer-portfolio.vercel.app/drive1.webp", "https://ar-tanveer-portfolio.vercel.app/drive2.webp"],
-            context: "DRIVE is a project management dashboard tailored specifically for high-growth SaaS platforms."
-          },
-          {
-            id: 301,
-            slug: "dashboard-design",
-            title: "Clarity OS Dashboard",
-            timeline: "3 Month",
-            designSystem: "Custom UI",
-            category: "Dashboard / SaaS",
-            figmaLink: "",
-            images: ["https://ar-tanveer-portfolio.vercel.app/dashboard1.webp", "https://ar-tanveer-portfolio.vercel.app/dashboard2.webp"],
-            context: "Clarity OS is a centralized operational dashboard surfacing actionable insights from complex data."
-          },
-          {
-            id: 302,
-            slug: "ldma-dashboard",
-            title: "LDMA Corporate Analytics",
-            timeline: "5 Month",
-            designSystem: "Custom UI",
-            category: "Dashboard / Corporate",
-            figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files?node-id=8-14520&t=92Su7LDNN0qikFsP-1",
-            images: ["https://ar-tanveer-portfolio.vercel.app/ldma1.png", "https://ar-tanveer-portfolio.vercel.app/ldma2.png"],
-            context: "LDMA is a corporate analytics project focused on delivering streamlined data analysis tools."
-          }
-        ];
-
-        const landingProjects = [
-          {
-            id: 103,
-            slug: "jeff-sutherland",
-            title: "Jeff Sutherland Landing",
-            timeline: "2 Weeks",
-            designSystem: "Custom UI",
-            category: "Personal Brand",
-            figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
-            images: ["https://ar-tanveer-portfolio.vercel.app/JeffLanding.webp"],
-            context: "A personal branding landing page for Jeff Sutherland — speaker, author, and co-creator of Scrum."
-          },
-          {
-            id: 104,
-            slug: "kina-becha",
-            title: "Kina Becha E-Commerce",
-            timeline: "1 Month",
-            designSystem: "Minimalist UI",
-            category: "E-Commerce",
-            figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
-            images: ["https://ar-tanveer-portfolio.vercel.app/KinaBecha.webp"],
-            context: "Vibrant Bengali e-commerce landing page concept focused on local product discovery and online shopping."
-          },
-          {
-            id: 105,
-            slug: "maxshelf-retail",
-            title: "MaxShelf Retail POS",
-            timeline: "3 Weeks",
-            designSystem: "Retail UI",
-            category: "Retail / POS",
-            figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
-            images: ["https://ar-tanveer-portfolio.vercel.app/MaxShelf-Retail.webp"],
-            context: "Retail management SaaS landing page designed to attract store owners looking to digitize inventory."
-          },
-          {
-            id: 107,
-            slug: "polock-interior",
-            title: "Polock Interior",
-            timeline: "1 Month",
-            designSystem: "Luxury UI",
-            category: "Interior Design",
-            figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
-            images: ["https://ar-tanveer-portfolio.vercel.app/PolockInterior.webp"],
-            context: "Polock Interior is a high-end landing page for a premium interior design studio."
-          },
-          {
-            id: 110,
-            slug: "silk-route",
-            title: "Silk Route Fashion",
-            timeline: "1 Month",
-            designSystem: "Editorial UI",
-            category: "E-Commerce / Fashion",
-            figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
-            images: ["https://ar-tanveer-portfolio.vercel.app/SilkRoute.webp"],
-            context: "Fashion e-commerce landing page inspired by the elegance of South Asian textile traditions."
-          },
-          {
-            id: 112,
-            slug: "everything4logistics",
-            title: "Everything4Logistics B2B",
-            timeline: "3 Weeks",
-            designSystem: "Custom UI",
-            category: "Logistics / B2B",
-            figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
-            images: ["https://ar-tanveer-portfolio.vercel.app/vibe/Everything4logistics.webp"],
-            context: "B2B logistics platform landing page designed to serve freight operators and supply chain managers."
-          }
-        ];
+        // The selected work list is ordered to match the portfolio owner's list.
+        const selectedProjects = [
+  {
+    "id": 2,
+    "slug": "studyfound",
+    "title": "Study Found",
+    "designSystem": "Reusable UI components",
+    "category": "Web / SaaS",
+    "role": "Lead UI/UX Designer",
+    "website": "https://studyfound.com",
+    "figmaLink": "",
+    "images": [
+      "./assets/image/works/studyfound-cover-v2.png"
+    ],
+    "context": "An agent-free study-abroad platform connecting program discovery, shortlisting, applications, scholarships, and AI document tools.",
+    "tabs": [
+      "saas"
+    ]
+  },
+  {
+    "id": 200,
+    "slug": "hopon-rider",
+    "title": "Hop On",
+    "designSystem": "Shared multi-service design system",
+    "category": "Web, App / SaaS",
+    "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
+    "images": [
+      "./assets/image/works/hopon1.jpg",
+      "./assets/image/works/hopon-app-flow.png",
+      "./assets/image/works/hopon-superapp.png"
+    ],
+    "context": "Leading UX across ride sharing, parcel delivery, food ordering, driver tools, and operations in Bangladesh.",
+    "role": "Lead UI/UX Designer",
+    "website": "https://hoponbd.com",
+    "tabs": [
+      "saas",
+      "appdesign"
+    ]
+  },
+  {
+    "id": 602,
+    "slug": "inclusive",
+    "images": [
+      "./assets/image/works/Inclusive-card-preview.png"
+    ],
+    "context": "Project details coming soon.",
+    "detailsPending": true,
+    "title": "Inclusive",
+    "category": "Web, App / SaaS",
+    "tabs": [
+      "saas",
+      "appdesign"
+    ]
+  },
+  {
+    "id": 603,
+    "slug": "decoraan",
+    "images": [
+      "./assets/image/works/decoraan-brandguide.jpg"
+    ],
+    "context": "Project details coming soon.",
+    "detailsPending": true,
+    "title": "Decoraan",
+    "category": "",
+    "tabs": []
+  },
+  {
+    "id": 6,
+    "slug": "vivid-customs",
+    "title": "Vivid Customs",
+    "designSystem": "Reusable UI & Vue.js components",
+    "category": "Custom Apparel / Fundraising",
+    "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
+    "images": [
+      "./assets/image/works/vivid-customs-card-preview.png",
+      "./assets/image/works/vivid-customs.png"
+    ],
+    "context": "Leading UX and Vue.js frontend development for custom apparel, product customization, fundraising, and campaign management.",
+    "role": "Lead UI/UX Designer & Frontend Developer",
+    "frontend": "Vue.js",
+    "website": "https://vividcustoms.com",
+    "tabs": []
+  },
+  {
+    "id": 5,
+    "slug": "ed-ai",
+    "title": "ED AI",
+    "designSystem": "Custom UI",
+    "category": "SaaS",
+    "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files?node-id=1-2594&t=92Su7LDNN0qikFsP-1",
+    "images": [
+      "./assets/image/works/ed-ai2.jpg",
+      "./assets/image/works/edai-features.jpg",
+      "./assets/image/works/ed-ai1.jpg",
+      "./assets/image/works/ed-ai.jpg"
+    ],
+    "context": "ED AI is an AI-driven university admissions copilot streamlining application processes for students and counselors.",
+    "tabs": [
+      "saas"
+    ]
+  },
+  {
+    "id": 1,
+    "slug": "3gem",
+    "title": "3Gem",
+    "designSystem": "Tailwind & Custom UI",
+    "category": "Enterprise / SaaS",
+    "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files?node-id=0-1&t=92Su7LDNN0qikFsP-1",
+    "images": [
+      "./assets/image/works/3gem3.jpg",
+      "./assets/image/works/3gem1.jpg",
+      "./assets/image/works/3gem2.jpg"
+    ],
+    "context": "3Gem is an enterprise digital transformation platform designed for large-scale corporate operations.",
+    "tabs": [
+      "saas"
+    ]
+  },
+  {
+    "id": 201,
+    "slug": "tms",
+    "title": "TMS (Transport Manager)",
+    "designSystem": "Custom UI",
+    "category": "Logistics / Operations",
+    "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files?node-id=18-8132&t=92Su7LDNN0qikFsP-1",
+    "images": [
+      "https://ar-tanveer-portfolio.vercel.app/TMS-1.webp",
+      "https://ar-tanveer-portfolio.vercel.app/TMS-2.webp"
+    ],
+    "context": "TMS is a logistics operations platform designed to streamline fleet management and cargo tracking.",
+    "tabs": [
+      "appdesign"
+    ]
+  },
+  {
+    "id": 206,
+    "slug": "studylity",
+    "title": "StudyLity",
+    "designSystem": "Custom UI",
+    "category": "App / SaaS",
+    "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files?node-id=18-12438&t=92Su7LDNN0qikFsP-1",
+    "images": [
+      "./assets/image/works/studylity1.png",
+      "./assets/image/works/studylity2.png"
+    ],
+    "context": "StudyLity is an EdTech application helping students manage study schedules and track progress.",
+    "tabs": [
+      "saas",
+      "appdesign"
+    ]
+  },
+  {
+    "id": 104,
+    "slug": "kina-becha",
+    "title": "Kina Becha E-commerce",
+    "designSystem": "Minimalist UI",
+    "category": "SaaS",
+    "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
+    "images": [
+      "https://ar-tanveer-portfolio.vercel.app/KinaBecha.webp"
+    ],
+    "context": "Vibrant Bengali e-commerce landing page concept focused on local product discovery and online shopping.",
+    "tabs": [
+      "saas",
+      "landing"
+    ]
+  },
+  {
+    "id": 105,
+    "slug": "maxshelf-retail",
+    "title": "Maxshelf",
+    "designSystem": "Retail UI",
+    "category": "Retail / POS",
+    "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
+    "images": [
+      "https://ar-tanveer-portfolio.vercel.app/MaxShelf-Retail.webp"
+    ],
+    "context": "Retail management SaaS landing page designed to attract store owners looking to digitize inventory.",
+    "tabs": [
+      "landing"
+    ]
+  },
+  {
+    "id": 107,
+    "slug": "polock-interior",
+    "title": "Polok Interior",
+    "designSystem": "Luxury UI",
+    "category": "Interior Design",
+    "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
+    "images": [
+      "https://ar-tanveer-portfolio.vercel.app/PolockInterior.webp"
+    ],
+    "context": "Polock Interior is a high-end landing page for a premium interior design studio.",
+    "tabs": [
+      "landing"
+    ]
+  },
+  {
+    "id": 110,
+    "slug": "silk-route",
+    "title": "Silk Route",
+    "designSystem": "Editorial UI",
+    "category": "E-Commerce / Fashion",
+    "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
+    "images": [
+      "https://ar-tanveer-portfolio.vercel.app/SilkRoute.webp"
+    ],
+    "context": "Fashion e-commerce landing page inspired by the elegance of South Asian textile traditions.",
+    "tabs": [
+      "landing"
+    ]
+  },
+  {
+    "id": 613,
+    "slug": "basis",
+    "images": [],
+    "context": "Project details coming soon.",
+    "detailsPending": true,
+    "title": "Basis",
+    "category": "",
+    "tabs": []
+  },
+  {
+    "id": 614,
+    "slug": "studyfound-dashboard",
+    "images": [],
+    "context": "Project details coming soon.",
+    "detailsPending": true,
+    "title": "Study Found Dashboard",
+    "category": "Dashboard",
+    "tabs": [
+      "dashboards"
+    ]
+  },
+  {
+    "id": 615,
+    "slug": "inclusive-dashboard",
+    "images": [],
+    "context": "Project details coming soon.",
+    "detailsPending": true,
+    "title": "Inclusive Dashboard",
+    "category": "Dashboard",
+    "tabs": [
+      "dashboards"
+    ]
+  },
+  {
+    "id": 616,
+    "slug": "hopon-dashboard",
+    "images": [],
+    "context": "Project details coming soon.",
+    "detailsPending": true,
+    "title": "Hop On Dashboard",
+    "category": "Dashboard",
+    "tabs": [
+      "dashboards"
+    ]
+  },
+  {
+    "id": 617,
+    "slug": "ed-ai-dashboard",
+    "images": [],
+    "context": "Project details coming soon.",
+    "detailsPending": true,
+    "title": "ED AI Dashboard",
+    "category": "Dashboard",
+    "tabs": [
+      "dashboards"
+    ]
+  },
+  {
+    "id": 618,
+    "slug": "dating-app",
+    "images": [],
+    "context": "Project details coming soon.",
+    "detailsPending": true,
+    "title": "Dating App",
+    "category": "App",
+    "tabs": [
+      "appdesign"
+    ]
+  },
+  {
+    "id": 112,
+    "slug": "everything4logistics",
+    "title": "Everything4Logistics B2B",
+    "designSystem": "Custom UI",
+    "category": "Logistics / B2B",
+    "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
+    "images": [
+      "https://ar-tanveer-portfolio.vercel.app/vibe/Everything4logistics.webp"
+    ],
+    "context": "B2B logistics platform landing page designed to serve freight operators and supply chain managers.",
+    "tabs": [
+      "landing"
+    ]
+  }
+];
+        const saasProjects = selectedProjects.filter(item => item.tabs.includes('saas'));
+        const appDesignProjects = selectedProjects.filter(item => item.tabs.includes('appdesign'));
+        const dashboardProjects = selectedProjects.filter(item => item.tabs.includes('dashboards'));
+        const additionalProjects = [
+  {
+    "id": 103,
+    "slug": "jeff-sutherland",
+    "title": "Jeff Sutherland Landing",
+    "designSystem": "Custom UI",
+    "category": "Personal Brand",
+    "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
+    "images": [
+      "https://ar-tanveer-portfolio.vercel.app/JeffLanding.webp"
+    ],
+    "context": "A personal branding landing page for Jeff Sutherland — speaker, author, and co-creator of Scrum."
+  }
+];
+        const landingProjects = [...selectedProjects.filter(item => item.tabs.includes('landing')), ...additionalProjects];
 
         const visualProjects = [
-          {
-            id: 401,
-            slug: "brand-identity",
-            title: "Brand Identity Manual",
-            timeline: "2 Month",
-            designSystem: "Brand Guidelines",
-            category: "Identity / Branding",
-            figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
-            images: ["./assets/image/works/decoraan-brandguide.jpg"],
-            context: "A complete visual rebranding project including logo design, color theory, and typography guidelines."
-          },
-          {
-            id: 402,
-            slug: "marketing-design",
-            title: "Marketing & Digital Assets",
-            timeline: "3 Weeks",
-            designSystem: "Marketing Guidelines",
-            category: "Marketing / Digital Assets",
-            figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
-            images: ["./assets/image/works/polok-brandguide.jpg"],
-            context: "High-converting promotional graphic banners, commercial posters, and digital asset templates."
-          },
-          {
-            id: 403,
-            slug: "packaging-print",
-            title: "Packaging & Print Design",
-            timeline: "1 Month",
-            designSystem: "Print Specs",
-            category: "Packaging / Print Design",
-            figmaLink: "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
-            images: ["./assets/image/works/maxshelf-brandguide.jpg"],
-            context: "Environmentally-friendly custom product packaging layouts, bottle labels, and merchandise prints."
-          }
-        ];
+  {
+    "id": 401,
+    "slug": "brand-identity",
+    "title": "Brand Identity Manual",
+    "designSystem": "Brand Guidelines",
+    "category": "Identity / Branding",
+    "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
+    "images": [
+      "./assets/image/works/decoraan-brandguide.jpg",
+      "./assets/image/works/maxshelf-brandguide.jpg",
+      "./assets/image/works/polok-brandguide.jpg"
+    ],
+    "context": "A visual identity presentation including logo design, color theory, and typography guidelines."
+  },
+  {
+    "id": 402,
+    "slug": "marketing-design",
+    "title": "Marketing & Digital Assets",
+    "designSystem": "Marketing Guidelines",
+    "category": "Marketing / Digital Assets",
+    "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
+    "images": [
+      "./assets/image/works/polok-brandguide.jpg"
+    ],
+    "context": "promotional graphic banners, commercial posters, and digital asset templates."
+  },
+  {
+    "id": 403,
+    "slug": "packaging-print",
+    "title": "Packaging & Print Design",
+    "designSystem": "Print Specs",
+    "category": "Packaging / Print Design",
+    "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
+    "images": [
+      "./assets/image/works/maxshelf-brandguide.jpg"
+    ],
+    "context": "custom product packaging layouts, bottle labels, and merchandise prints."
+  }
+];
 
         const vibeCodeProjects = [
           { id: 501, title: "The Café", url: "https://the-cafe-mu.vercel.app/", images: ["https://ar-tanveer-portfolio.vercel.app/vibe/the cafe.png"], category: "Vibe Code", context: "HTML5 • CSS3 • Vanilla JS live website project." },
@@ -659,7 +803,7 @@
         // --- Function to update tab badge counters ---
         function updateTabCounters() {
           const counts = {
-            all: saasProjects.length + appDesignProjects.length + dashboardProjects.length + landingProjects.length + visualProjects.length + vibeCodeProjects.length,
+            all: selectedProjects.length + additionalProjects.length + visualProjects.length + vibeCodeProjects.length,
             saas: saasProjects.length,
             appdesign: appDesignProjects.length,
             dashboards: dashboardProjects.length,
@@ -684,6 +828,7 @@
           // Update active button styling
           document.querySelectorAll('.work-tab-btn').forEach(btn => {
             const countBadge = btn.querySelector('.tab-count');
+            btn.setAttribute('aria-pressed', String(btn.getAttribute('data-tab') === tab));
             if (btn.getAttribute('data-tab') === tab) {
               btn.className = "work-tab-btn px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 bg-brand-black text-white shadow-md flex items-center gap-2";
               if (countBadge) countBadge.className = "tab-count bg-brand-yellow text-black text-[10px] px-2 py-0.5 rounded-full font-extrabold";
@@ -698,6 +843,19 @@
           grid.style.transform = 'translateY(15px)';
 
           const renderCard = (item) => {
+            if (item.detailsPending) {
+              return `<article class="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col">
+                <div class="aspect-[16/10] bg-brand-black text-brand-yellow flex items-center justify-center overflow-hidden relative">
+                  ${item.images.length ? `<img src="${item.images[0]}" alt="${item.title} project artwork" loading="lazy" class="w-full h-full object-cover">` : `<span class="text-3xl font-bold text-center p-8">${item.title}</span>`}
+                </div>
+                <div class="p-6 flex-1">
+                  ${item.category ? `<p class="text-xs font-bold uppercase tracking-wider text-gray-500 mb-3">${item.category}</p>` : ''}
+                  <h3 class="text-xl font-bold mb-2 text-brand-black">${item.title}</h3>
+                  <p class="text-gray-500 text-xs leading-relaxed">Project details coming soon.</p>
+                </div>
+                <div class="px-6 py-4 border-t border-gray-100"><span class="text-xs font-medium text-gray-500">Case study coming soon</span></div>
+              </article>`;
+            }
             const isVibe = item.url;
             const linkUrl = isVibe ? item.url : `work-${item.slug || item.id}.html`;
             const linkTarget = isVibe ? `target="_blank" rel="noopener noreferrer"` : ``;
@@ -705,7 +863,7 @@
             return `
               <div class="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1 flex flex-col justify-between">
                 <div>
-                  <a href="${linkUrl}" ${linkTarget} class="block overflow-hidden relative">
+                  ${item.images.length ? `<a href="${linkUrl}" ${linkTarget} class="block overflow-hidden relative">
                     <div class="img-zoom-container aspect-[16/10] bg-gray-50">
                       <img src="${item.images[0]}" alt="${item.title}" class="w-full h-full object-cover">
                     </div>
@@ -714,7 +872,7 @@
                         ${item.category || 'Portfolio Work'}
                       </span>
                     </div>
-                  </a>
+                  </a>` : ''}
                   <div class="p-6">
                     <h3 class="text-xl font-bold mb-2 text-brand-black group-hover:text-brand-link-red transition-colors">
                       <a href="${linkUrl}" ${linkTarget}>${item.title}</a>
@@ -723,7 +881,7 @@
                   </div>
                 </div>
                 <div class="px-6 pb-6 pt-2 flex items-center justify-between border-t border-gray-50">
-                  <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">${item.timeline || (isVibe ? 'Live Site' : 'Case Study')}</span>
+                  <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">${item.presentation || (isVibe ? 'Live Site' : 'Case Study')}</span>
                   <a href="${linkUrl}" ${linkTarget} class="inline-flex items-center text-xs font-bold text-brand-black hover:text-brand-link-red gap-1.5">
                     ${isVibe ? 'Visit Site <i class="fa-solid fa-up-right-from-square text-[10px]"></i>' : 'View Details <i class="fa-solid fa-arrow-right text-[10px]"></i>'}
                   </a>
@@ -744,10 +902,8 @@
 
             if (tab === 'all') {
               const categories = [
-                { title: "SaaS Projects", items: saasProjects },
-                { title: "App Design", items: appDesignProjects },
-                { title: "Dashboards", items: dashboardProjects },
-                { title: "Landing Pages", items: landingProjects },
+                { title: "Selected Work", items: selectedProjects },
+                { title: "More Work", items: additionalProjects },
                 { title: "Visual Design", items: visualProjects },
                 { title: "Live Vibe Code", items: vibeCodeProjects }
               ];
@@ -913,24 +1069,10 @@
                 }
             });
 
-            // Initialize Lenis
-            if (typeof Lenis !== 'undefined') {
-                const lenis = new Lenis({
-                    lerp: 0.1, 
-                    smooth: true,
-                });
-                if (typeof ScrollTrigger !== 'undefined') {
-                    lenis.on('scroll', ScrollTrigger.update);
-                }
-                function raf(time) {
-                    lenis.raf(time);
-                    requestAnimationFrame(raf);
-                }
-                requestAnimationFrame(raf);
-            }
+            // Use native scrolling.
         });
     </script>
     <!-- Global Floating Butterfly Component -->
-    <script src="./assets/js/butterfly.js"></script>
+    <script src="./assets/js/butterfly.js?v=20260918h"></script>
 </body>
 </html>

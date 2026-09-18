@@ -6,7 +6,7 @@
     <title>UI/UX Design Service | Tohidul Islam</title>
     
     <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./assets/js/tailwind-runtime.js"></script>
     
     <!-- Fonts: Indivisible (Primary) & Outfit (Fallback) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,7 @@
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
     <script>
-        tailwind.config = {
+        if (typeof tailwind !== 'undefined') tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
@@ -214,13 +214,15 @@
             transform: translateY(30px);
         }
     </style>
-    <link rel="stylesheet" href="./assets/css/inner-page-header.css">
-    <link rel="stylesheet" href="./assets/css/navigation.css">
-    <script src="./assets/js/navigation.js" defer></script>
+    <link rel="stylesheet" href="./assets/css/inner-page-header.css?v=20260918g">
+    <link rel="stylesheet" href="./assets/css/navigation.css?v=20260918k">
+    <script src="./assets/js/navigation.js?v=20260918e" defer></script>
+    <link rel="stylesheet" href="./assets/css/footer.css">
+<link rel="stylesheet" href="./assets/css/portfolio-clarity.css?v=20260918">
+<script src="./assets/js/portfolio-accessibility.js?v=20260918b" defer></script>
 </head>
 <body class="overflow-x-hidden">
-
-    <!-- Preloader with Butterfly -->
+<!-- Preloader with Butterfly -->
     <div id="preloader">
         <div class="preloader-butterfly-wrap">
             <div class="butterfly-glow"></div>
@@ -228,7 +230,7 @@
             <div class="butterfly-ground-shadow"></div>
         </div>
         <div class="mt-6 text-center z-10">
-            <h1 class="text-xs md:text-sm font-bold uppercase tracking-[0.25em] text-white/95">UI/UX Design.</h1>
+            <p class="text-xs md:text-sm font-bold uppercase tracking-[0.25em] text-white/95">UI/UX Design.</p>
             <div class="loader-bar-wrap mx-auto">
                 <div class="loader-bar-fill"></div>
             </div>
@@ -245,15 +247,15 @@
             </a>
             
             <!-- Desktop Links -->
-            <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-white" id="nav-links">
-                <a href="our-services.html" class="text-brand-yellow transition-colors">Services</a>
-                <a href="approach.html" class="hover:text-brand-yellow transition-colors">Approach</a>
-                <a href="case-studies.html" class="hover:text-brand-yellow transition-colors">My works</a>
-                <a href="about-us.html" class="hover:text-brand-yellow transition-colors">About me</a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-white" id="nav-links"><a href="our-services.html" class="hover:text-brand-yellow transition-colors">Services</a><a href="case-studies.html" class="hover:text-brand-yellow transition-colors">My Works</a><a href="pricing.html" class="hover:text-brand-yellow transition-colors">Pricing</a><a href="about-us.html" class="hover:text-brand-yellow transition-colors">About me</a>
+                
+                
+                
+                
                 
                 <!-- Contact Button -->
                 <a href="contact-us.html" class="nav-btn-hover flex items-center px-6 py-2.5 border border-white/50 rounded-full text-xs font-bold uppercase tracking-wide hover:bg-white hover:text-black transition-all group" id="nav-btn">
-                    Get in touch
+                    Let's Talk
                     <div class="btn-arrow-box">
                         <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </div>
@@ -268,14 +270,10 @@
     </nav>
 
     <!-- Header Section -->
-    <header class="inner-page-header pt-48 pb-20 md:pt-64 md:pb-32 bg-brand-black text-white">
+    <header id="main-content" tabindex="-1" class="inner-page-header bg-brand-black text-white">
         <div class="container mx-auto px-6">
             <div class="max-w-5xl">
-                <div class="flex items-center gap-3 mb-8 hero-anim opacity-0 translate-y-10">
-                    <a href="services.html" class="text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors">Services</a>
-                    <span class="text-gray-600">/</span>
-                    <span class="text-xs font-bold uppercase tracking-widest text-brand-yellow">UI/UX Design</span>
-                </div>
+                <nav class="page-breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><a href="our-services.html">Services</a></li><li><span aria-current="page">UI/UX Design</span></li></ol></nav>
                 
                 <h1 class="text-giant font-bold leading-[0.9] tracking-tightest mb-12 hero-anim opacity-0 translate-y-10">
                     UI/UX Design<span class="text-brand-yellow">.</span>
@@ -429,7 +427,7 @@
             <div class="grid md:grid-cols-2 gap-12 section-reveal">
                 <!-- Case Study 1 -->
                 <div class="group cursor-pointer">
-                    <a href="case-study.html" class="block overflow-hidden rounded-2xl mb-6">
+                    <a href="case-studies.html" class="block overflow-hidden rounded-2xl mb-6">
                         <div class="img-zoom-container aspect-[16/10] bg-gray-100">
                             <img src="./assets/image/works/hopon2.jpg" 
                                  onerror="this.src='https://images.unsplash.com/photo-1617727553252-65863c156eb0?q=80&w=1200&auto=format&fit=crop'" 
@@ -480,7 +478,7 @@
                 <div class="mb-16">
                     <div class="mb-4">
                         <a href="index.html" class="inline-block transition-transform hover:scale-105 duration-300" aria-label="Tohidul Islam">
-                            <img src="./assets/image/logo-black.png" alt="Tohidul Islam" class="h-10 md:h-12 w-auto object-contain">
+                            <img src="./assets/image/logo-white.png" alt="Tohidul Islam" class="h-10 md:h-12 w-auto object-contain">
                         </a>
                     </div>
                     <h3 class="text-5xl font-bold">Act on design.</h3>
@@ -490,22 +488,22 @@
                     <div>
                         <h4 class="font-bold mb-6 text-sm">Pages</h4>
                         <ul class="space-y-3 text-sm font-medium">
-                            <li><a href="#" class="hover:underline">Home</a></li>
-                            <li><a href="#services" class="hover:underline">Services</a></li>
-                            <li><a href="#approach" class="hover:underline">Our Approach</a></li>
-                            <li><a href="#work" class="hover:underline">Case Studies</a></li>
-                            <li><a href="#about" class="hover:underline">About</a></li>
+                            <li><a href="index.html" class="hover:underline">Home</a></li>
+                            <li><a href="our-services.html" class="hover:underline">Services</a></li>
+                            <li><a href="pricing.html" class="hover:underline">Pricing</a></li>
+                            <li><a href="case-studies.html" class="hover:underline">Case Studies</a></li>
+                            <li><a href="about-us.html" class="hover:underline">About</a></li>
                             <li><a href="contact-us.html" class="hover:underline">Contact</a></li>
                         </ul>
                     </div>
                     <div>
                         <h4 class="font-bold mb-6 text-sm">Services</h4>
                          <ul class="space-y-3 text-sm font-medium">
-                            <li><a href="#" class="hover:underline">UI Design</a></li>
-                            <li><a href="#" class="hover:underline">Web Development</a></li>
-                            <li><a href="#" class="hover:underline">Design Systems</a></li>
-                            <li><a href="#" class="hover:underline">UX Research</a></li>
-                            <li><a href="#" class="hover:underline">Prototyping</a></li>
+                            <li><a href="our-services.html" class="hover:underline">UI Design</a></li>
+                            <li><a href="our-services.html" class="hover:underline">Web Development</a></li>
+                            <li><a href="our-services.html" class="hover:underline">Design Systems</a></li>
+                            <li><a href="our-services.html" class="hover:underline">UX Research</a></li>
+                            <li><a href="our-services.html" class="hover:underline">Prototyping</a></li>
                         </ul>
                     </div>
                     <div>
@@ -531,9 +529,9 @@
                 <div class="flex flex-col md:flex-row justify-between text-[11px] font-medium text-black/60 uppercase tracking-wide">
                     <p>&copy; 2026 Tohidul Islam. All rights reserved.</p>
                     <div class="flex gap-6 mt-4 md:mt-0">
-                        <a href="#" class="hover:text-black">Privacy Policy</a>
-                        <a href="#" class="hover:text-black">Cookie Policy</a>
-                        <a href="#" class="hover:text-black">Website by Tohidul</a>
+                        
+                        
+                        <span>Website by Tohidul</span>
                     </div>
                 </div>
             </div>
@@ -636,21 +634,10 @@
                 }
             });
 
-            // 5. Initialize Lenis Smooth Scroll
-            if (typeof Lenis !== 'undefined') {
-                const lenis = new Lenis({
-                    lerp: 0.1, 
-                    smooth: true,
-                });
-                function raf(time) {
-                    lenis.raf(time);
-                    requestAnimationFrame(raf);
-                }
-                requestAnimationFrame(raf);
-            }
+            // Native scrolling keeps browser and keyboard behavior predictable.
         });
     </script>
     <!-- Global Floating Butterfly Component -->
-    <script src="./assets/js/butterfly.js"></script>
+    <script src="./assets/js/butterfly.js?v=20260918h"></script>
 </body>
 </html>

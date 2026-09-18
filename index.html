@@ -6,7 +6,7 @@
     <title>Tohidul Islam | Sr. UI/UX Designer</title>
     
     <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./assets/js/tailwind-runtime.js"></script>
     
     <!-- Fonts: Indivisible (Primary) & Outfit (Fallback) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,7 +26,7 @@
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
     <script>
-        tailwind.config = {
+        if (typeof tailwind !== 'undefined') tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
@@ -311,12 +311,16 @@
         }
 
     </style>
-    <link rel="stylesheet" href="./assets/css/navigation.css">
-    <script src="./assets/js/navigation.js" defer></script>
+    <link rel="stylesheet" href="./assets/css/navigation.css?v=20260918k">
+    <link rel="stylesheet" href="./assets/css/hero-showcase.css?v=20260918c">
+    <script src="./assets/js/hero-showcase.js?v=20260918c" defer></script>
+    <script src="./assets/js/navigation.js?v=20260918e" defer></script>
+    <link rel="stylesheet" href="./assets/css/footer.css">
+<link rel="stylesheet" href="./assets/css/portfolio-clarity.css?v=20260918c">
+<script src="./assets/js/portfolio-accessibility.js?v=20260918b" defer></script>
 </head>
 <body class="overflow-x-hidden">
-
-    <!-- Preloader with Butterfly -->
+<!-- Preloader with Butterfly -->
     <div id="preloader">
         <div class="preloader-butterfly-wrap">
             <div class="butterfly-glow"></div>
@@ -324,7 +328,7 @@
             <div class="butterfly-ground-shadow"></div>
         </div>
         <div class="mt-6 text-center z-10">
-            <h1 class="text-xs md:text-sm font-bold uppercase tracking-[0.25em] text-white/95">Tohidul Islam.</h1>
+            <p class="text-xs md:text-sm font-bold uppercase tracking-[0.25em] text-white/95">Tohidul Islam.</p>
             <div class="loader-bar-wrap mx-auto">
                 <div class="loader-bar-fill"></div>
             </div>
@@ -335,21 +339,21 @@
     <nav class="fixed w-full z-50 top-0 left-0 transition-all duration-500 pt-6" id="navbar">
         <div class="container mx-auto px-6 md:px-12 flex justify-between items-center p-4 rounded-full transition-all duration-500" id="nav-container">
             <!-- Logo -->
-            <a href="#" class="text-white flex items-center transition-colors focus:outline-none" id="nav-logo" aria-label="Tohidul Islam">
+            <a href="index.html" class="text-white flex items-center transition-colors focus:outline-none" id="nav-logo" aria-label="Tohidul Islam">
                 <img src="./assets/image/logo-white.png" alt="Tohidul Islam" class="h-8 md:h-9 w-auto object-contain transition-transform hover:scale-105 duration-300 logo-white">
                 <img src="./assets/image/logo-black.png" alt="Tohidul Islam" class="h-8 md:h-9 w-auto object-contain transition-transform hover:scale-105 duration-300 logo-black">
             </a>
             
             <!-- Desktop Links -->
-            <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-white" id="nav-links">
-                <a href="our-services.html" class="hover:text-brand-yellow transition-colors">Services</a>
-                <a href="approach.html" class="hover:text-brand-yellow transition-colors">Approach</a>
-                <a href="case-studies.html" class="hover:text-brand-yellow transition-colors">My works</a>
-                <a href="about-us.html" class="hover:text-brand-yellow transition-colors">About me</a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-white" id="nav-links"><a href="our-services.html" class="hover:text-brand-yellow transition-colors">Services</a><a href="case-studies.html" class="hover:text-brand-yellow transition-colors">My Works</a><a href="pricing.html" class="hover:text-brand-yellow transition-colors">Pricing</a><a href="about-us.html" class="hover:text-brand-yellow transition-colors">About me</a>
+                
+                
+                
+                
                 
                 <!-- Contact Button (Updated to Pill Shape) -->
                 <a href="contact-us.html" class="nav-btn-hover flex items-center px-6 py-2.5 border border-white/50 rounded-full text-xs font-bold uppercase tracking-wide hover:bg-white hover:text-black transition-all group" id="nav-btn">
-                    Get in touch
+                    Let's Talk
                     <div class="btn-arrow-box">
                         <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </div>
@@ -364,11 +368,11 @@
     </nav>
 
     <!-- 1. HERO SECTION -->
-    <header class="relative min-h-screen flex flex-col justify-center items-center text-center px-6 overflow-hidden">
+    <header id="home-hero" tabindex="-1" class="relative min-h-screen flex flex-col items-center text-center px-6 overflow-hidden">
         
         <!-- Video Background -->
         <video autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1558655146-d09347e0c766?q=80&w=2070&auto=format&fit=crop" class="absolute top-0 left-0 w-full h-full object-cover z-0">
-            <source src="./assets/video/0_Asian_Male_1920x1080.mp4" type="video/mp4">
+            <source src="./assets/video/hero-background.mp4" type="video/mp4">
         </video>
 
         <!-- Dark Overlay -->
@@ -377,78 +381,42 @@
         <!-- Content -->
         <div class="max-w-5xl mx-auto mt-20 md:mt-0 relative z-10 px-4">
             <h1 class="font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] xl:text-[4.75rem] leading-[1.12] md:leading-[1.08] tracking-tight text-white mb-6 md:mb-8 hero-anim opacity-0 translate-y-10 drop-shadow-[0_4px_24px_rgba(0,0,0,0.5)]">
-                Crafting Intuitive Design <br class="hidden sm:inline"> Solutions for Every Challenge<span class="text-brand-yellow">.</span>
+                Complex products, <br class="hidden sm:inline"> made easier to use<span class="text-brand-yellow">.</span>
             </h1>
             <p class="text-lg sm:text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-10 md:mb-12 font-medium leading-relaxed hero-anim opacity-0 translate-y-10 drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]">
-                Crafting scalable design systems and intuitive interfaces used by millions of users across the world.
+                I’m Tohidul Islam, a product designer with a frontend background. I design SaaS interfaces, AI experiences, and systems that connect design with implementation.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center hero-anim opacity-0 translate-y-10">
                 <!-- Updated Button Styles: Rounded Full -->
-                <a href="#work" class="btn-hover bg-white text-brand-black pl-8 pr-2 py-2 rounded-full font-bold text-sm flex items-center shadow-lg hover:shadow-xl transition-transform hover:-translate-y-1">
-                    View My Approach
+                <a href="#recent-works" class="btn-hover bg-white text-brand-black pl-8 pr-2 py-2 rounded-full font-bold text-sm flex items-center shadow-lg hover:shadow-xl transition-transform hover:-translate-y-1">
+                    View selected work
                     <span class="btn-arrow-box"><i class="fa-solid fa-arrow-right text-[12px]"></i></span>
                 </a>
-                <a href="#services" class="btn-hover bg-white text-brand-black pl-8 pr-2 py-2 rounded-full font-bold text-sm flex items-center shadow-lg hover:shadow-xl transition-transform hover:-translate-y-1">
-                    Services
+                <a href="contact-us.html" class="hero-cta-outline btn-hover bg-transparent text-white border border-white/80 pl-8 pr-2 py-2 rounded-full font-bold text-sm flex items-center transition-all hover:-translate-y-1 hover:bg-white/10">
+                    Let's Talk
                     <span class="btn-arrow-box"><i class="fa-solid fa-arrow-right text-[12px]"></i></span>
                 </a>
             </div>
         </div>
 
-        <!-- Dots -->
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-            <div class="w-2 h-2 bg-white rounded-full opacity-100"></div>
-            <div class="w-2 h-2 bg-white rounded-full opacity-40"></div>
-            <div class="w-2 h-2 bg-white rounded-full opacity-40"></div>
+      <div id="hero-showcase" class="showcase-wrap relative z-10" role="region" aria-label="Product design showcase" tabindex="0" data-lenis-prevent>
+        <div class="showcase-track flex items-end">
+          <a class="device device-desktop" href="work-hopon-rider.html" aria-label="View HopOn — Ride, Delivery & Food"><img src="./assets/image/works/hopon-superapp.png" alt="HopOn super app website and mobile design" draggable="false" decoding="async"></a>
+          <a class="device device-phone" href="work-hopon-rider.html" aria-label="View HopOn — Ride, Delivery & Food"><img src="./assets/image/works/hopon-superapp.png" alt="HopOn ride booking app" draggable="false" decoding="async" style="width:825.8064516129032%;height:204.1522491349481%;left:-562.0967741935484%;top:-76.8166089965398%"></a>
+          <a class="device device-desktop" href="work-ed-ai.html" aria-label="View ED AI Admissions Copilot"><img src="./assets/image/works/ed-ai-card-preview.png" alt="ED AI university discovery website" draggable="false" decoding="async"></a>
+          <a class="device device-phone" href="work-ed-ai.html" aria-label="View ED AI Admissions Copilot"><img src="./assets/image/works/ed-ai-card-preview.png" alt="ED AI mobile admissions experience" draggable="false" decoding="async" style="width:620.3065134099618%;height:173.08377896613192%;left:-483.9080459770115%;top:-44.38502673796791%"></a>
+          <a class="device device-desktop" href="work-vivid-customs.html" aria-label="View Vivid Customs"><img src="./assets/image/works/vivid-customs-card-preview.png" alt="Vivid Customs apparel storefront" draggable="false" decoding="async"></a>
+          <a class="device device-phone" href="work-ed-ai.html" aria-label="View ED AI Admissions Copilot"><img src="./assets/image/works/ed-ai-card-preview.png" alt="ED AI mobile program discovery" draggable="false" decoding="async" style="width:620.3065134099618%;height:173.08377896613192%;left:-483.9080459770115%;top:-44.38502673796791%"></a>
+          <a class="device device-desktop" href="work-brand-identity.html" aria-label="View Brand Identity Manual"><img src="./assets/image/works/decoraan-brandguide.jpg" alt="Decoraan brand identity and visual guidelines" draggable="false" decoding="async"></a>
+          <a class="device device-phone" href="work-ed-ai.html" aria-label="View ED AI Admissions Copilot"><img src="./assets/image/works/ed-ai-card-preview.png" alt="ED AI mobile university discovery" draggable="false" decoding="async" style="width:620.3065134099618%;height:173.08377896613192%;left:-483.9080459770115%;top:-44.38502673796791%"></a>
         </div>
+      </div>
     </header>
 
-    <!-- 2. THE APPROACH (Yellow) -->
-    <section id="approach" class="bg-brand-yellow text-brand-black py-24 md:py-32 section-reveal-trigger">
-        <div class="container mx-auto px-6">
-            <div class="max-w-5xl mb-24 section-reveal">
-                <p class="text-3xl md:text-5xl font-bold leading-tight">
-                    Using the latest design tools, my own industry expertise, and access to global design standards, I deliver interfaces that go deeper than ever before.
-                </p>
-            </div>
 
-            <h2 class="text-sm md:text-base font-extrabold uppercase tracking-[0.2em] text-brand-black mb-10 section-reveal flex items-center gap-2.5">
-                <span class="w-6 h-[2px] bg-brand-black"></span>
-                Approach
-            </h2>
-
-            <div class="grid md:grid-cols-3 gap-12 mb-16 section-reveal">
-                <div class="pr-6">
-                    <h3 class="text-2xl font-bold mb-4">User-Centric Focus</h3>
-                    <p class="text-base font-medium leading-relaxed">
-                        With tailor-made designs bespoke to your business, I bring insights from verified user research, simplifying data so you can act on it.
-                    </p>
-                </div>
-                <div class="md:border-l-2 border-brand-black md:pl-10 pr-6">
-                    <h3 class="text-2xl font-bold mb-4">Scalable Systems</h3>
-                    <p class="text-base font-medium leading-relaxed">
-                        Whether you need a simple landing page or a complex design system, I manage your design architecture from atoms to pages.
-                    </p>
-                </div>
-                <div class="md:border-l-2 border-brand-black md:pl-10">
-                     <h3 class="text-2xl font-bold mb-4">Data-Driven Results</h3>
-                     <p class="text-base font-medium leading-relaxed">
-                        My reputation depends on the quality of my research and designs. At every stage, I ensure I deliver precise interfaces you can depend on.
-                     </p>
-                </div>
-            </div>
-
-            <a href="#about" class="section-reveal btn-hover inline-flex items-center bg-black text-white pl-8 pr-2 py-2 rounded-full font-bold text-sm transition-transform hover:-translate-y-1">
-                More about my approach
-                <div class="btn-arrow-box bg-brand-yellow text-black">
-                    <i class="fa-solid fa-arrow-right text-[12px]"></i>
-                </div>
-            </a>
-        </div>
-    </section>
 
     <!-- 3. MY RECENT WORK (DRAG SLIDER) -->
-    <section class="py-20 md:py-28 bg-white border-b border-gray-100 overflow-hidden section-reveal-trigger" id="recent-works">
+    <section class="py-20 md:py-28 bg-white border-b border-gray-100 overflow-hidden section-reveal-trigger" id="recent-works" tabindex="-1">
         <div class="container mx-auto px-6 mb-8 md:mb-10">
             <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 section-reveal">
                 <div>
@@ -457,7 +425,7 @@
                     </div>
                     <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight text-brand-black mb-4">My Recent Work.</h2>
                     <p class="text-gray-500 max-w-xl text-base md:text-lg font-medium leading-relaxed">
-                        A curated showcase of high-impact enterprise SaaS platforms, AI copilots, mobile super-apps, and scalable design systems.
+                        Selected interface and product design work, with a closer look at ED AI’s program discovery experience.
                     </p>
                 </div>
                 
@@ -506,7 +474,7 @@
                                     3Gem Digital Platform
                                 </h3>
                                 <p class="text-white/80 text-sm md:text-base leading-relaxed line-clamp-2 mb-6 max-w-lg">
-                                    Enterprise digital transformation platform streamlining corporate operations and collaborative governance.
+                                    An enterprise interface exploring structured navigation and data-dense workflows.
                                 </p>
                                 <div class="inline-flex items-center btn-hover text-xs md:text-sm font-bold tracking-wide text-white bg-white/15 hover:bg-white hover:text-black border border-white/25 backdrop-blur-md pl-6 pr-2 py-2 rounded-full transition-all duration-300">
                                     <span>Explore Case Study</span>
@@ -539,7 +507,7 @@
                                     ED AI Admissions Copilot
                                 </h3>
                                 <p class="text-white/80 text-sm md:text-base leading-relaxed line-clamp-2 mb-6 max-w-lg">
-                                    AI-powered university admissions copilot streamlining student profile matching and counselor review workflows.
+                                    Helping students find programs and understand the next steps toward applying.
                                 </p>
                                 <div class="inline-flex items-center btn-hover text-xs md:text-sm font-bold tracking-wide text-white bg-white/15 hover:bg-white hover:text-black border border-white/25 backdrop-blur-md pl-6 pr-2 py-2 rounded-full transition-all duration-300">
                                     <span>Explore Case Study</span>
@@ -551,10 +519,10 @@
                         </a>
                     </div>
 
-                    <!-- Slide 3: HopOn Rider Super App -->
+                    <!-- Slide 3: HopOn — Ride, Delivery & Food -->
                     <div class="swiper-slide">
                         <a href="work-hopon-rider.html" class="block group relative work-card-inner rounded-3xl overflow-hidden h-[430px] md:h-[500px] bg-brand-black shadow-md">
-                            <img src="./assets/image/works/hopon-superapp.png" alt="HopOn Rider Super App" class="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105">
+                            <img src="./assets/image/works/hopon1.jpg" alt="HopOn — Ride, Delivery & Food" class="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/10 transition-opacity duration-300"></div>
                             
                             <div class="absolute top-6 left-6 right-6 flex items-center justify-between z-10">
@@ -569,10 +537,10 @@
 
                             <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-10">
                                 <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2 tracking-tight group-hover:text-brand-yellow transition-colors">
-                                    HopOn Rider Super App
+                                    HopOn — Ride, Delivery & Food
                                 </h3>
                                 <p class="text-white/80 text-sm md:text-base leading-relaxed line-clamp-2 mb-6 max-w-lg">
-                                    Next-gen mobility and delivery super-app integrating ride-booking, food ordering, and digital wallet payment.
+                                    Leading UX across ride sharing, parcel delivery, food ordering, driver tools, and operations in Bangladesh.
                                 </p>
                                 <div class="inline-flex items-center btn-hover text-xs md:text-sm font-bold tracking-wide text-white bg-white/15 hover:bg-white hover:text-black border border-white/25 backdrop-blur-md pl-6 pr-2 py-2 rounded-full transition-all duration-300">
                                     <span>Explore Case Study</span>
@@ -584,10 +552,10 @@
                         </a>
                     </div>
 
-                    <!-- Slide 4: Vivid Customs Platform -->
+                    <!-- Slide 4: Vivid Customs -->
                     <div class="swiper-slide">
                         <a href="work-vivid-customs.html" class="block group relative work-card-inner rounded-3xl overflow-hidden h-[430px] md:h-[500px] bg-brand-black shadow-md">
-                            <img src="./assets/image/works/vivid-customs.png" alt="Vivid Customs Platform" class="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105">
+                            <img src="./assets/image/works/vivid-customs-card-preview.png" alt="Vivid Customs" class="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/10 transition-opacity duration-300"></div>
                             
                             <div class="absolute top-6 left-6 right-6 flex items-center justify-between z-10">
@@ -602,10 +570,10 @@
 
                             <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-10">
                                 <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2 tracking-tight group-hover:text-brand-yellow transition-colors">
-                                    Vivid Customs Platform
+                                    Vivid Customs
                                 </h3>
                                 <p class="text-white/80 text-sm md:text-base leading-relaxed line-clamp-2 mb-6 max-w-lg">
-                                    Bespoke apparel customizer with dynamic real-time mockup generation and bulk order automation.
+                                    Leading UX and Vue.js frontend development for custom apparel, product customization, fundraising, and campaign management.
                                 </p>
                                 <div class="inline-flex items-center btn-hover text-xs md:text-sm font-bold tracking-wide text-white bg-white/15 hover:bg-white hover:text-black border border-white/25 backdrop-blur-md pl-6 pr-2 py-2 rounded-full transition-all duration-300">
                                     <span>Explore Case Study</span>
@@ -707,6 +675,49 @@
         </div>
     </section>
 
+    <!-- 2. THE APPROACH (Yellow) -->
+    <section id="approach" class="bg-brand-yellow text-brand-black py-24 md:py-32 section-reveal-trigger">
+        <div class="container mx-auto px-6">
+            <div class="max-w-5xl mb-24 section-reveal">
+                <p class="text-3xl md:text-5xl font-bold leading-tight">
+                    Using the latest design tools, my own industry expertise, and access to global design standards, I deliver interfaces that go deeper than ever before.
+                </p>
+            </div>
+
+            <h2 class="text-sm md:text-base font-extrabold uppercase tracking-[0.2em] text-brand-black mb-10 section-reveal flex items-center gap-2.5">
+                <span class="w-6 h-[2px] bg-brand-black"></span>
+                Approach
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-12 mb-16 section-reveal">
+                <div class="pr-6">
+                    <h3 class="text-2xl font-bold mb-4">User-Centric Focus</h3>
+                    <p class="text-base font-medium leading-relaxed">
+                        With tailor-made designs bespoke to your business, I bring insights from verified user research, simplifying data so you can act on it.
+                    </p>
+                </div>
+                <div class="md:border-l-2 border-brand-black md:pl-10 pr-6">
+                    <h3 class="text-2xl font-bold mb-4">Scalable Systems</h3>
+                    <p class="text-base font-medium leading-relaxed">
+                        Whether you need a simple landing page or a complex design system, I manage your design architecture from atoms to pages.
+                    </p>
+                </div>
+                <div class="md:border-l-2 border-brand-black md:pl-10">
+                     <h3 class="text-2xl font-bold mb-4">Data-Driven Results</h3>
+                     <p class="text-base font-medium leading-relaxed">
+                        My reputation depends on the quality of my research and designs. At every stage, I ensure I deliver precise interfaces you can depend on.
+                     </p>
+                </div>
+            </div>
+
+            <a href="our-services.html#approach" class="section-reveal btn-hover inline-flex items-center bg-black text-white pl-8 pr-2 py-2 rounded-full font-bold text-sm transition-transform hover:-translate-y-1">
+                More about my approach
+                <div class="btn-arrow-box bg-brand-yellow text-black">
+                    <i class="fa-solid fa-arrow-right text-[12px]"></i>
+                </div>
+            </a>
+        </div>
+    </section>
     <!-- 4. SERVICES (6 Cards) -->
     <section id="services" class="py-32 bg-brand-gray-light section-reveal-trigger">
         <div class="container mx-auto px-6">
@@ -723,7 +734,7 @@
                         <p class="text-gray-500 text-sm leading-relaxed mb-8 flex-grow">
                             Crafting pixel-perfect, intuitive interfaces that drive engagement and convert users.
                         </p>
-                        <a href="#" class="inline-flex items-center text-brand-black font-bold text-base hover:text-brand-link-red transition-colors">
+                        <a href="our-services.html" class="inline-flex items-center text-brand-black font-bold text-base hover:text-brand-link-red transition-colors">
                             Find out more <i class="fa-solid fa-arrow-right ml-2 text-brand-link-red"></i>
                         </a>
                     </div>
@@ -738,7 +749,7 @@
                         <p class="text-gray-500 text-sm leading-relaxed mb-8 flex-grow">
                             Building responsive, high-performance websites using modern frameworks like React and Vue.
                         </p>
-                        <a href="#" class="inline-flex items-center text-brand-black font-bold text-base hover:text-brand-link-red transition-colors">
+                        <a href="our-services.html" class="inline-flex items-center text-brand-black font-bold text-base hover:text-brand-link-red transition-colors">
                             Find out more <i class="fa-solid fa-arrow-right ml-2 text-brand-link-red"></i>
                         </a>
                     </div>
@@ -753,7 +764,7 @@
                         <p class="text-gray-500 text-sm leading-relaxed mb-8 flex-grow">
                             Creating scalable design languages ensuring consistency across all digital products.
                         </p>
-                        <a href="#" class="inline-flex items-center text-brand-black font-bold text-base hover:text-brand-link-red transition-colors">
+                        <a href="our-services.html" class="inline-flex items-center text-brand-black font-bold text-base hover:text-brand-link-red transition-colors">
                             Find out more <i class="fa-solid fa-arrow-right ml-2 text-brand-link-red"></i>
                         </a>
                     </div>
@@ -768,7 +779,7 @@
                         <p class="text-gray-500 text-sm leading-relaxed mb-8 flex-grow">
                             Deep-dive user research and usability testing to uncover insights for strategic decisions.
                         </p>
-                        <a href="#" class="inline-flex items-center text-brand-black font-bold text-base hover:text-brand-link-red transition-colors">
+                        <a href="our-services.html" class="inline-flex items-center text-brand-black font-bold text-base hover:text-brand-link-red transition-colors">
                             Find out more <i class="fa-solid fa-arrow-right ml-2 text-brand-link-red"></i>
                         </a>
                     </div>
@@ -783,7 +794,7 @@
                         <p class="text-gray-500 text-sm leading-relaxed mb-8 flex-grow">
                             Designing intuitive, touch-friendly mobile experiences for iOS and Android.
                         </p>
-                        <a href="#" class="inline-flex items-center text-brand-black font-bold text-base hover:text-brand-link-red transition-colors">
+                        <a href="our-services.html" class="inline-flex items-center text-brand-black font-bold text-base hover:text-brand-link-red transition-colors">
                             Find out more <i class="fa-solid fa-arrow-right ml-2 text-brand-link-red"></i>
                         </a>
                     </div>
@@ -798,7 +809,7 @@
                         <p class="text-gray-500 text-sm leading-relaxed mb-8 flex-grow">
                             Developing strong, memorable visual identities that resonate with your target audience.
                         </p>
-                        <a href="#" class="inline-flex items-center text-brand-black font-bold text-base hover:text-brand-link-red transition-colors">
+                        <a href="our-services.html" class="inline-flex items-center text-brand-black font-bold text-base hover:text-brand-link-red transition-colors">
                             Find out more <i class="fa-solid fa-arrow-right ml-2 text-brand-link-red"></i>
                         </a>
                     </div>
@@ -823,62 +834,7 @@
     </section>
 
     <!-- 6. CASE STUDIES -->
-    <section id="work" class="py-32 bg-white section-reveal-trigger">
-        <div class="container mx-auto px-6">
-            <h2 class="text-6xl md:text-7xl font-bold mb-16 tracking-tight text-brand-black section-reveal">My works.</h2>
-            
-            <div class="grid md:grid-cols-3 gap-8 section-reveal">
-                <!-- Project 1 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col border border-gray-100 hover:-translate-y-1">
-                    <div class="h-64 overflow-hidden relative">
-                         <img src="./assets/image/works/hopon-superapp.png" 
-                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Hop On">
-                    </div>
-                    <div class="p-8 flex flex-col flex-grow">
-                        <h3 class="text-2xl font-bold mb-4">Hop On App</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-8 flex-grow">
-                             A comprehensive ride & delivery solution focused on high-contrast visibility and one-thumb usability.
-                        </p>
-                        <a href="#" class="card-link inline-flex items-center font-bold text-brand-black text-base hover:text-gray-700">
-                            View Case Study <i class="fa-solid fa-arrow-right ml-2 text-brand-orange"></i>
-                        </a>
-                    </div>
-                </div>
-                <!-- Project 2 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col border border-gray-100 hover:-translate-y-1">
-                    <div class="h-64 overflow-hidden relative">
-                         <img src="./assets/image/works/ed-ai2.jpg" 
-                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="ED AI">
-                    </div>
-                    <div class="p-8 flex flex-col flex-grow">
-                        <h3 class="text-2xl font-bold mb-4">ED AI Dashboard</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-8 flex-grow">
-                            Visualizing complex university data for students. An AI-powered SaaS dashboard that simplifies admissions.
-                        </p>
-                        <a href="#" class="card-link inline-flex items-center font-bold text-brand-black text-base hover:text-gray-700">
-                            View Case Study <i class="fa-solid fa-arrow-right ml-2 text-brand-orange"></i>
-                        </a>
-                    </div>
-                </div>
-                <!-- Project 3 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col border border-gray-100 hover:-translate-y-1">
-                    <div class="h-64 overflow-hidden relative">
-                         <img src="./assets/image/works/3gem3.jpg" 
-                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="3Gem">
-                    </div>
-                    <div class="p-8 flex flex-col flex-grow">
-                        <h3 class="text-2xl font-bold mb-4">3Gem Rebrand</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-8 flex-grow">
-                            Corporate rebranding and website development utilizing bold typography and strict grid systems.
-                        </p>
-                        <a href="#" class="card-link inline-flex items-center font-bold text-brand-black text-base hover:text-gray-700">
-                            View Case Study <i class="fa-solid fa-arrow-right ml-2 text-brand-orange"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    
 
     <!-- 7. MEET THE EXPERT -->
     <section id="about" class="relative py-32 flex items-center min-h-[600px] section-reveal-trigger">
@@ -932,8 +888,8 @@
             <div class="container mx-auto px-6">
                 <div class="mb-16">
                     <div class="mb-4">
-                        <a href="#" class="inline-block transition-transform hover:scale-105 duration-300" aria-label="Tohidul Islam">
-                            <img src="./assets/image/logo-black.png" alt="Tohidul Islam" class="h-10 md:h-12 w-auto object-contain">
+                        <a href="index.html" class="inline-block transition-transform hover:scale-105 duration-300" aria-label="Tohidul Islam">
+                            <img src="./assets/image/logo-white.png" alt="Tohidul Islam" class="h-10 md:h-12 w-auto object-contain">
                         </a>
                     </div>
                     <h3 class="text-5xl font-bold">Act on design.</h3>
@@ -943,22 +899,22 @@
                     <div>
                         <h4 class="font-bold mb-6 text-sm">Pages</h4>
                         <ul class="space-y-3 text-sm font-medium">
-                            <li><a href="#" class="hover:underline">Home</a></li>
-                            <li><a href="#services" class="hover:underline">Services</a></li>
-                            <li><a href="#approach" class="hover:underline">Our Approach</a></li>
-                            <li><a href="#work" class="hover:underline">Case Studies</a></li>
-                            <li><a href="#about" class="hover:underline">About</a></li>
+                            <li><a href="index.html" class="hover:underline">Home</a></li>
+                            <li><a href="our-services.html" class="hover:underline">Services</a></li>
+                            <li><a href="pricing.html" class="hover:underline">Pricing</a></li>
+                            <li><a href="case-studies.html" class="hover:underline">Case Studies</a></li>
+                            <li><a href="about-us.html" class="hover:underline">About</a></li>
                             <li><a href="contact-us.html" class="hover:underline">Contact</a></li>
                         </ul>
                     </div>
                     <div>
                         <h4 class="font-bold mb-6 text-sm">Services</h4>
                          <ul class="space-y-3 text-sm font-medium">
-                            <li><a href="#" class="hover:underline">UI Design</a></li>
-                            <li><a href="#" class="hover:underline">Web Development</a></li>
-                            <li><a href="#" class="hover:underline">Design Systems</a></li>
-                            <li><a href="#" class="hover:underline">UX Research</a></li>
-                            <li><a href="#" class="hover:underline">Prototyping</a></li>
+                            <li><a href="our-services.html" class="hover:underline">UI Design</a></li>
+                            <li><a href="our-services.html" class="hover:underline">Web Development</a></li>
+                            <li><a href="our-services.html" class="hover:underline">Design Systems</a></li>
+                            <li><a href="our-services.html" class="hover:underline">UX Research</a></li>
+                            <li><a href="our-services.html" class="hover:underline">Prototyping</a></li>
                         </ul>
                     </div>
                     <div>
@@ -984,9 +940,9 @@
                 <div class="flex flex-col md:flex-row justify-between text-[11px] font-medium text-black/60 uppercase tracking-wide">
                     <p>&copy; 2026 Tohidul Islam. All rights reserved.</p>
                     <div class="flex gap-6 mt-4 md:mt-0">
-                        <a href="#" class="hover:text-black">Privacy Policy</a>
-                        <a href="#" class="hover:text-black">Cookie Policy</a>
-                        <a href="#" class="hover:text-black">Website by Tohidul</a>
+                        
+                        
+                        <span>Website by Tohidul</span>
                     </div>
                 </div>
             </div>
@@ -1089,18 +1045,7 @@
                 }
             });
 
-            // 5. Initialize Lenis Smooth Scroll
-            if (typeof Lenis !== 'undefined') {
-                const lenis = new Lenis({
-                    lerp: 0.1, 
-                    smooth: true,
-                });
-                function raf(time) {
-                    lenis.raf(time);
-                    requestAnimationFrame(raf);
-                }
-                requestAnimationFrame(raf);
-            }
+            // Native scrolling keeps browser and keyboard behavior predictable.
 
             // 6. Initialize My Recent Work Drag Slider (Swiper)
             if (typeof Swiper !== 'undefined') {
@@ -1250,6 +1195,6 @@
         });
     </script>
     <!-- Global Floating Butterfly Component -->
-    <script src="./assets/js/butterfly.js"></script>
+    <script src="./assets/js/butterfly.js?v=20260918h"></script>
 </body>
 </html>

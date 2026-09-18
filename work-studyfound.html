@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | Tohidul Islam</title>
+    <title>StudyFound — Agent-Free Study Abroad Platform | Tohidul Islam</title>
     
     <!-- Tailwind CSS -->
     <script src="./assets/js/tailwind-runtime.js"></script>
@@ -14,6 +14,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Swiper CSS & JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- GSAP & Lenis -->
@@ -213,6 +218,34 @@
             opacity: 0;
             transform: translateY(30px);
         }
+            /* Full-Width Project Hero Swiper */
+        .project-hero-swiper {
+            width: 100%;
+            height: 100%;
+        }
+        .project-hero-swiper .swiper-slide {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #050505;
+        }
+        .project-hero-swiper .swiper-pagination-bullet {
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.45);
+            opacity: 1;
+            border-radius: 9999px;
+            transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+            margin: 0 !important;
+            cursor: pointer;
+        }
+        .project-hero-swiper .swiper-pagination-bullet-active {
+            background: #FFD100 !important;
+            width: 26px;
+            border-radius: 9999px;
+        }
     </style>
     <link rel="stylesheet" href="./assets/css/inner-page-header.css?v=20260918g">
     <link rel="stylesheet" href="./assets/css/navigation.css?v=20260918k">
@@ -220,9 +253,9 @@
     <link rel="stylesheet" href="./assets/css/footer.css">
 <link rel="stylesheet" href="./assets/css/portfolio-clarity.css?v=20260918">
 <script src="./assets/js/portfolio-accessibility.js?v=20260918b" defer></script>
-<link rel="stylesheet" href="./assets/css/intro-elements.css?v=20260918a">
-</head>
-<body class="overflow-x-hidden">
+<meta name="description" content="StudyFound case study by Tohidul Islam, Lead UI/UX Designer: program discovery, applications, AI document tools, and a reusable design system.">
+<link rel="stylesheet" href="./assets/css/studyfound-case.css?v=20260918g"></head>
+<body data-case="studyfound" class="overflow-x-hidden">
 <!-- Preloader with Butterfly -->
     <div id="preloader">
         <div class="preloader-butterfly-wrap">
@@ -231,7 +264,7 @@
             <div class="butterfly-ground-shadow"></div>
         </div>
         <div class="mt-6 text-center z-10">
-            <p class="text-xs md:text-sm font-bold uppercase tracking-[0.25em] text-white/95">About Me.</p>
+            <p class="text-xs md:text-sm font-bold uppercase tracking-[0.25em] text-white/95">StudyFound.</p>
             <div class="loader-bar-wrap mx-auto">
                 <div class="loader-bar-fill"></div>
             </div>
@@ -270,286 +303,35 @@
         </div>
     </nav>
 
-    <!-- Header Section -->
-    <header id="main-content" tabindex="-1" class="inner-page-header bg-brand-black text-white">
-        <div class="container mx-auto px-6">
-            <div class="max-w-5xl">
-                <nav class="page-breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><span aria-current="page">About Me</span></li></ol></nav>
-                
-                
-                <h1 class="text-giant font-bold leading-[0.9] tracking-tightest mb-12 hero-anim opacity-0 translate-y-10">
-                    Designing for<br> Impact<span class="text-brand-yellow">.</span>
-                </h1>
-                
-                <p class="text-xl md:text-3xl text-gray-400 font-medium max-w-3xl leading-relaxed hero-anim opacity-0 translate-y-10">
-                    I’m Tohidul Islam, Lead Design Engineer | UX & Design Systems specializing in scalable digital products.
-                </p>
-            </div>
-        </div>
-    </header>
+    <!-- Project Hero -->
+    <header class="inner-page-header relative bg-brand-black text-white">
+    <div class="container mx-auto px-6"><div class="max-w-5xl">
+        <nav class="page-breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><a href="case-studies.html">Selected Work</a></li><li><span aria-current="page">StudyFound</span></li></ol></nav>
+        <h1 class="text-giant font-bold leading-[0.9] tracking-tightest mb-12">StudyFound<span class="text-brand-yellow">.</span></h1>
+        <p class="text-xl md:text-3xl text-gray-400 font-medium max-w-3xl leading-relaxed">Agent-free study abroad.<br>One connected student journey.</p>
+    </div></div>
+<dl class="case-meta">
+                <div><dt>My role</dt><dd>Lead UI/UX Designer</dd></div>
+                <div><dt>Platform</dt><dd>Responsive Web / SaaS</dd></div>
+                <div><dt>Industry</dt><dd>EdTech / Study Abroad / AI</dd></div>
+                <div><dt>Product</dt><dd><a href="https://studyfound.com" target="_blank" rel="noopener noreferrer">studyfound.com <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></dd></div>
+            </dl>
+</header>
 
-    <!-- Introduction Video -->
-    <section class="intro-scene pt-20 md:pt-24 bg-white" aria-labelledby="introduction-heading">
-        <div class="container mx-auto px-6">
-            <div class="max-w-5xl mx-auto">
-                <div class="flex items-center gap-3 mb-6">
-                    <span class="w-2 h-2 bg-brand-yellow rounded-full" aria-hidden="true"></span>
-                    <h2 id="introduction-heading" class="text-2xl md:text-3xl font-bold tracking-tight">A quick introduction.</h2>
-                </div>
-                <div class="intro-stage">
-                    <div class="intro-decoration intro-ring" aria-hidden="true"></div>
-                    <div class="intro-decoration intro-figma" aria-hidden="true"><div class="intro-glass"><div class="intro-figma-mark"><i></i><i></i><i></i><i></i><i></i></div></div></div>
-                    <div class="intro-decoration intro-spark" aria-hidden="true"><svg viewBox="0 0 100 120" focusable="false"><defs><radialGradient id="intro-pearl" cx="30%" cy="25%" r="85%"><stop stop-color="#fff1fc"/><stop offset=".32" stop-color="#e7c7ff"/><stop offset=".62" stop-color="#b2aff7"/><stop offset="1" stop-color="#7b63c9"/></radialGradient></defs><path d="M50 2 C59 40 67 49 98 60 C67 69 58 82 50 118 C41 82 33 70 2 60 C33 49 41 39 50 2Z" fill="url(#intro-pearl)" stroke="#e6d5ff"/><path d="M50 6 Q45 49 8 60 Q44 57 50 111 Q52 66 93 60 Q55 57 50 6" fill="#fff" opacity=".17"/></svg></div>
-                    <div class="intro-decoration intro-orb" aria-hidden="true"></div>
-                <video controls playsinline preload="metadata"
-                       width="1920" height="1080"
-                       aria-label="Introduction video"
-                       class="block w-full aspect-video rounded-2xl bg-brand-black object-contain">
-                    <source src="./assets/video/introducing-tohidul-islam.mp4" type="video/mp4">
-                    Your browser does not support embedded video.
-                    <a href="./assets/video/introducing-tohidul-islam.mp4">Watch the introduction video.</a>
-                </video>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Bio Section -->
-    <section class="py-24 bg-white section-reveal-trigger">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-16 items-center section-reveal">
-                <!-- Image -->
-                <div class="relative">
-                    <div class="aspect-[3/4] overflow-hidden rounded-2xl bg-gray-100">
-                        <img src="./assets/image/profile.jpg" 
-                             alt="Tohidul Islam" 
-                             class="w-full h-full object-cover">
-                    </div>
-                    <!-- Decorative Element -->
-                    <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-brand-yellow rounded-full z-[-1] hidden md:block"></div>
-                </div>
-
-                <!-- Text -->
-                <div>
-                    <h2 class="text-4xl md:text-5xl font-bold mb-8 tracking-tight">The story so far.</h2>
-                    <div class="space-y-6 text-lg text-gray-600 leading-relaxed font-medium">
-                        <p>
-                            I started my journey in front-end development in 2016 and later expanded into UI/UX design in 2018. Since then, I've worked on SaaS platforms, eCommerce solutions, mobile apps, on-demand services, and dashboards—helping teams turn ideas into simple, user-friendly digital experiences.
-                        </p>
-                        <p>
-                            I'm passionate about problem-solving and design thinking, with a strong focus on usability, design systems, and creating pixel-perfect products that people love to use.
-                        </p>
-                        <p>
-                            Based in Dhaka, Bangladesh, I collaborate with local and global clients, delivering intuitive, production-grade applications.
-                        </p>
-                    </div>
-                    
-                    <div class="mt-12 flex gap-12">
-                        <div>
-                            <span class="block text-5xl font-bold text-brand-black mb-2">9+</span>
-                            <span class="text-sm font-bold uppercase tracking-widest text-gray-400">Years Dev & Design</span>
-                        </div>
-                        <div>
-                            <span class="block text-5xl font-bold text-brand-black mb-2">6+</span>
-                            <span class="text-sm font-bold uppercase tracking-widest text-gray-400">Companies Served</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills & Expertise Section -->
-    <section class="py-24 bg-brand-black text-white section-reveal-trigger">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl md:text-5xl font-bold mb-16 section-reveal">Skills & Technical Expertise</h2>
-
-            <div class="grid md:grid-cols-3 gap-12 section-reveal">
-                <div>
-                    <h3 class="text-xl font-bold text-brand-yellow mb-6 uppercase tracking-wider">Design Skills</h3>
-                    <ul class="space-y-3 text-gray-300 font-medium">
-                        <li>UI/UX Design</li>
-                        <li>Wireframing & Prototyping</li>
-                        <li>Interaction Design</li>
-                        <li>User Interface Design</li>
-                        <li>Design Systems</li>
-                        <li>Usability Research</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3 class="text-xl font-bold text-brand-yellow mb-6 uppercase tracking-wider">Development Skills</h3>
-                    <ul class="space-y-3 text-gray-300 font-medium">
-                        <li>HTML5, CSS3, SCSS, LESS, Stylus</li>
-                        <li>Vue.js, Nuxt.js</li>
-                        <li>React.js, Next.js</li>
-                        <li>Bootstrap 5, Tailwind CSS v4</li>
-                        <li>JavaScript, jQuery</li>
-                        <li>GitHub, GitLab</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3 class="text-xl font-bold text-brand-yellow mb-6 uppercase tracking-wider">Softwares & Tools</h3>
-                    <ul class="space-y-3 text-gray-300 font-medium">
-                        <li>Figma</li>
-                        <li>Adobe XD</li>
-                        <li>Adobe Photoshop</li>
-                        <li>Adobe Illustrator</li>
-                        <li>Canva</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Values / Philosophy (Yellow Section) -->
-    <section class="bg-brand-yellow text-brand-black py-24 md:py-32 section-reveal-trigger">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl md:text-5xl font-bold mb-16 section-reveal">Guiding Principles</h2>
-
-            <div class="grid md:grid-cols-3 gap-12 section-reveal">
-                <div class="pr-6">
-                    <h3 class="text-2xl font-bold mb-4">Clarity First</h3>
-                    <p class="text-base font-medium leading-relaxed">
-                        In a world of noise, clarity is power. I strip away the non-essential to focus on what truly matters to the user and the business.
-                    </p>
-                </div>
-                <div class="md:border-l-2 border-brand-black md:pl-10 pr-6">
-                    <h3 class="text-2xl font-bold mb-4">Honest Design</h3>
-                    <p class="text-base font-medium leading-relaxed">
-                        I believe in transparent interfaces. Design should guide and assist, never deceive or manipulate the user for short-term metrics.
-                    </p>
-                </div>
-                <div class="md:border-l-2 border-brand-black md:pl-10">
-                     <h3 class="text-2xl font-bold mb-4">Continuous Iteration</h3>
-                     <p class="text-base font-medium leading-relaxed">
-                        A digital product is never "done." I advocate for a cycle of testing, learning, and refining to ensure long-term success.
-                     </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience & Education -->
-    <section class="py-32 bg-brand-gray-light section-reveal-trigger">
-        <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-4xl font-bold mb-16 text-center section-reveal">Work Experience</h2>
-                
-                <div class="space-y-6 section-reveal">
-                    <!-- Role 1 -->
-                    <div class="bg-white p-8 rounded-2xl hover:shadow-lg transition-shadow">
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
-                            <div>
-                                <h3 class="text-2xl font-bold text-brand-black">Co Founder & Lead Design Engineer</h3>
-                                <p class="text-gray-500 font-medium">Ambitionix Ltd. <span class="text-xs text-gray-400">• Dhaka, Bangladesh</span></p>
-                            </div>
-                            <span class="px-4 py-2 bg-brand-yellow text-brand-black rounded-full text-xs font-bold uppercase tracking-widest">Jan 2025 - Present</span>
-                        </div>
-                        <p class="text-gray-600 font-medium leading-relaxed text-sm">
-                            Co-founding and directing the product design engineering lifecycle. Architecting unified design systems across Figma and codebases, establishing scalable token architectures, and defining high-converting UX standards. Leading multi-disciplinary teams, steering product roadmaps, and delivering intuitive, production-grade applications.
-                        </p>
-                    </div>
-
-                    <!-- Role 2 -->
-                    <div class="bg-white p-8 rounded-2xl hover:shadow-lg transition-shadow">
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
-                            <div>
-                                <h3 class="text-2xl font-bold text-brand-black">UI/UX Designer</h3>
-                                <p class="text-gray-500 font-medium">Syntax Solutions Ltd. <span class="text-xs text-gray-400">• Dhaka, Bangladesh</span></p>
-                            </div>
-                            <span class="px-4 py-2 bg-brand-gray-light rounded-full text-xs font-bold uppercase tracking-widest text-brand-black">April 2024 - Present</span>
-                        </div>
-                        <p class="text-gray-600 font-medium leading-relaxed text-sm">
-                            Leading innovation for Nasir Group by crafting user-focused digital solutions. Contributed to product design using Figma, creating intuitive mobile apps and responsive websites. Designing engaging user interfaces, collaborating with cross-functional teams, gathering requirements, and delivering projects aligned with business needs.
-                        </p>
-                    </div>
-
-                    <!-- Role 3 -->
-                    <div class="bg-white p-8 rounded-2xl hover:shadow-lg transition-shadow">
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
-                            <div>
-                                <h3 class="text-2xl font-bold text-brand-black">UI/UX Designer</h3>
-                                <p class="text-gray-500 font-medium">Kaicom Solutions Ltd. <span class="text-xs text-gray-400">• Dhaka, Bangladesh</span></p>
-                            </div>
-                            <span class="px-4 py-2 bg-brand-gray-light rounded-full text-xs font-bold uppercase tracking-widest text-brand-black">May 2022 – November 2023</span>
-                        </div>
-                        <p class="text-gray-600 font-medium leading-relaxed text-sm">
-                            Specializing in Information Technology and Services. Focused on product design using Figma, creating mobile apps and responsive websites. Collaborated closely with team members, participated in client meetings, gathered requirements, and delivered user-friendly solutions aligned with project goals.
-                        </p>
-                    </div>
-
-                    <!-- Role 4 -->
-                    <div class="bg-white p-8 rounded-2xl hover:shadow-lg transition-shadow">
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
-                            <div>
-                                <h3 class="text-2xl font-bold text-brand-black">UI/UX Designer & Frontend Developer</h3>
-                                <p class="text-gray-500 font-medium">Qproco Ltd. <span class="text-xs text-gray-400">• Remote</span></p>
-                            </div>
-                            <span class="px-4 py-2 bg-brand-gray-light rounded-full text-xs font-bold uppercase tracking-widest text-brand-black">September 2021 – April 2024</span>
-                        </div>
-                        <p class="text-gray-600 font-medium leading-relaxed text-sm">
-                            Specializing in global online marketplaces with eCommerce stores in Bangladesh and Poland. Worked as UI/UX Designer and Front-End Developer, focusing on Figma product design and responsive front-end solutions using Vue.js and Nuxt.js.
-                        </p>
-                    </div>
-
-                    <!-- Role 5 -->
-                    <div class="bg-white p-8 rounded-2xl hover:shadow-lg transition-shadow">
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
-                            <div>
-                                <h3 class="text-2xl font-bold text-brand-black">UI/UX Designer & Frontend Developer</h3>
-                                <p class="text-gray-500 font-medium">Makeup world BD <span class="text-xs text-gray-400">• Dhaka, Bangladesh</span></p>
-                            </div>
-                            <span class="px-4 py-2 bg-brand-gray-light rounded-full text-xs font-bold uppercase tracking-widest text-brand-black">May 2020 – August 2021</span>
-                        </div>
-                        <p class="text-gray-600 font-medium leading-relaxed text-sm">
-                            Led product design using Figma and Adobe XD for cosmetics and makeup eCommerce. Designed mobile apps, web assets, and responsive features, implementing them with Vue.js and Nuxt.js.
-                        </p>
-                    </div>
-
-                    <!-- Role 6 -->
-                    <div class="bg-white p-8 rounded-2xl hover:shadow-lg transition-shadow">
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
-                            <div>
-                                <h3 class="text-2xl font-bold text-brand-black">Web Designer & Developer</h3>
-                                <p class="text-gray-500 font-medium">Nogor Solutions Limited <span class="text-xs text-gray-400">• Dhaka, Bangladesh</span></p>
-                            </div>
-                            <span class="px-4 py-2 bg-brand-gray-light rounded-full text-xs font-bold uppercase tracking-widest text-brand-black">October 2016 – May 2020</span>
-                        </div>
-                        <p class="text-gray-600 font-medium leading-relaxed text-sm">
-                            Worked on product design using Figma, Adobe XD, and Photoshop. Developed responsive websites using CSS3, SASS, LESS, HTML5, Laravel, PHP, JavaScript, and Vue.js.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Education & Certification -->
-                <div class="mt-20 grid md:grid-cols-2 gap-8 section-reveal">
-                    <div class="bg-white p-8 rounded-2xl">
-                        <h3 class="text-xs font-bold uppercase tracking-widest text-brand-yellow mb-2">Education</h3>
-                        <h4 class="text-xl font-bold text-brand-black">Bsc in Computer Science & Engineering</h4>
-                        <p class="text-gray-500 text-sm font-medium mt-1">Daffodils International University - Dhaka, Bangladesh</p>
-                        <p class="text-gray-400 text-xs mt-2 font-bold uppercase">October 2019 – January 2022</p>
-                    </div>
-
-                    <div class="bg-white p-8 rounded-2xl">
-                        <h3 class="text-xs font-bold uppercase tracking-widest text-brand-yellow mb-2">Course & Certificate</h3>
-                        <h4 class="text-xl font-bold text-brand-black">Diploma in UX-UI Design</h4>
-                        <p class="text-gray-500 text-sm font-medium mt-1">Userhub - Dhaka, Bangladesh</p>
-                        <p class="text-gray-400 text-xs mt-2 font-bold uppercase">December 2021 – April 2022</p>
-                    </div>
-                </div>
-                
-                <div class="text-center mt-12 section-reveal">
-                    <a href="./assets/doc/tohidul-islam-resume.pdf" target="_blank" download class="inline-flex items-center font-bold text-brand-link-red text-lg hover:opacity-80 transition-opacity">
-                        Download Resume <i class="fa-solid fa-download ml-2 text-sm"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 8. FOOTER -->
+    
+<main id="main-content" tabindex="-1">
+<figure class="sf-cover"><img src="./assets/image/works/studyfound-cover-v2.png" width="1586" height="992" fetchpriority="high" alt="StudyFound concept presentation of desktop program discovery and mobile saved programs"><figcaption>StudyFound · AI-generated concept cover, inspired by the supplied brand artwork.</figcaption></figure>
+<div class="sf-index"><nav class="case-container case-jump" aria-label="Case study sections"><a href="#overview">Overview</a><a href="#journey">Student journey</a><a href="#discovery">Design decisions</a><a href="#system">Delivery</a><a href="#outcome">Outcome</a></nav></div>
+<section id="overview" class="case-section"><div class="case-container sf-split"><div><span class="sf-label">The challenge</span><h2>A big life decision.<br>Too many disconnected steps.</h2></div><div><p class="case-lead">Finding a program is only the beginning. Students also need to understand requirements, prepare documents, find funding, and manage deadlines.</p><p>StudyFound brings these tasks into an agent-free platform so students can manage their study-abroad journey independently.</p><div class="sf-decision"><h3>My contribution</h3><p>As Lead UI/UX Designer, I shaped product strategy, information architecture, end-to-end flows, responsive interfaces, reusable components, prototypes, and developer handoff.</p></div></div></div></section>
+<section id="journey" class="case-section sf-dark"><div class="case-container"><span class="sf-label">The experience strategy</span><h2>One journey.<br>A clear next step at every stage.</h2><p>I connected discovery, preparation, and application management around student progress. Each stage answers: where am I, what do I need, and what comes next?</p><ol class="sf-journey"><li><span>01</span><strong>Discover</strong><p>Search and filter programs.</p></li><li><span>02</span><strong>Evaluate</strong><p>Understand fit and requirements.</p></li><li><span>03</span><strong>Shortlist</strong><p>Save options to revisit.</p></li><li><span>04</span><strong>Prepare</strong><p>Gather and write documents.</p></li><li><span>05</span><strong>Apply</strong><p>Work through requirements.</p></li><li><span>06</span><strong>Track</strong><p>Follow progress and deadlines.</p></li></ol></div></section>
+<section id="discovery" class="case-section"><div class="case-container sf-split"><div><span class="sf-label">Design decision / 01</span><h2>Make programs easier to find. And easier to understand.</h2><p>I organized discovery around country, university, degree level, and field of study. Program details then follow a consistent reading order.</p><div class="sf-decision"><h3>Why this structure?</h3><p>Students need enough information to assess a program without facing every requirement at once. Progressive disclosure keeps exploration manageable and gives detailed information a predictable home.</p></div></div><figure class="sf-visual"><span class="sf-label">Program information architecture</span><ol class="sf-detail-list"><li>Overview</li><li>How to Apply</li><li>Requirements</li><li>Scholarships</li><li>Curriculum</li></ol><figcaption class="sf-note">Reading order from the project brief. A workflow summary, not a product screenshot.</figcaption></figure></div></section>
+<section id="applications" class="case-section sf-soft"><div class="case-container sf-split"><figure class="sf-visual"><span class="sf-label">Application workspace</span><div class="sf-workspace"><div><strong>Programs</strong><span>Saved opportunities</span></div><div><strong>Requirements</strong><span>What to prepare</span></div><div><strong>Documents</strong><span>Application materials</span></div><div><strong>Progress</strong><span>Status and deadlines</span></div></div><figcaption class="sf-note">The connected areas of the application manager.</figcaption></figure><div><span class="sf-label">Design decision / 02</span><h2>Turn a shortlist into a plan.</h2><p>Shortlisting lets students save interesting programs without committing immediately. The application manager connects those choices with requirements, documents, deadlines, and progress.</p><div class="sf-decision"><h3>Why connect these tasks?</h3><p>The design goal was to replace scattered bookmarks, notes, and spreadsheets with a structured workspace that makes the next action visible.</p></div></div></div></section>
+<section id="ai-tools" class="case-section"><div class="case-container sf-split"><div><span class="sf-label">Design decision / 03</span><h2>Guide the writing.<br>Keep the student in control.</h2><p>In the Resume Builder, I separated content creation from presentation: guided inputs come before AI enhancement, customization, preview, and export.</p><p>For the SOP Builder, structured questions about background, motivation, experience, and goals give students a starting point for generating, editing, and reviewing their story.</p></div><div class="sf-visual"><blockquote class="sf-quote">“AI should assist the student’s story—not replace it.”</blockquote><ol class="sf-detail-list" aria-label="Resume workflow"><li>Enter information</li><li>AI enhancement</li><li>Customize</li><li>Preview</li><li>Export</li></ol></div></div></section>
+<section id="system" class="case-section sf-dark"><div class="case-container"><span class="sf-label">Design system & delivery</span><h2>Consistency beyond a single screen.</h2><p>I built reusable patterns across discovery, applications, and AI tools, then worked with product and engineering to translate the designs into implementation.</p><div class="sf-delivery"><article><h3>Reusable foundations</h3><p>Typography, color, spacing, buttons, forms, cards, navigation, filters, and modals.</p></article><article><h3>Complete interactions</h3><p>Progress, statuses, contextual guidance, and empty, loading, success, and error states.</p></article><article><h3>Responsive delivery</h3><p>Reprioritized content for smaller screens, documented behavior, reviewed implementation, and refined designs around technical constraints.</p></article></div></div></section>
+<section id="outcome" class="case-section case-yellow"><div class="case-container sf-split"><div><span class="sf-label">The outcome</span><h2>A connected self-application experience.</h2></div><div><p class="case-lead">Discovery, shortlisting, preparation, AI documents, scholarships, and application management come together in one product experience.</p><p>My contribution was the structure and visual system connecting these workflows. This case study describes the design work and intended experience; measured usability or business outcomes are not reported.</p><a class="sf-product-link" href="https://studyfound.com" target="_blank" rel="noopener noreferrer">Visit StudyFound ↗<span class="sr-only"> (opens in a new tab)</span></a></div></div></section>
+<section class="case-section"><div class="case-container"><span class="sf-label">Continue exploring</span><a class="case-next" href="work-ed-ai.html">ED AI — Program discovery ↗</a><a class="case-next" href="case-studies.html">View all selected work ↗</a></div></section>
+</main>
+<!-- 8. FOOTER -->
     <footer id="contact">
         <!-- Dark CTA -->
         <div class="bg-brand-footer-dark text-white py-24 section-reveal-trigger">
@@ -587,7 +369,7 @@
                             <li><a href="our-services.html" class="hover:underline">Services</a></li>
                             <li><a href="pricing.html" class="hover:underline">Pricing</a></li>
                             <li><a href="case-studies.html" class="hover:underline">Case Studies</a></li>
-                            <li><a href="about-us.html" class="hover:underline">About me</a></li>
+                            <li><a href="about-us.html" class="hover:underline">About</a></li>
                             <li><a href="contact-us.html" class="hover:underline">Contact</a></li>
                         </ul>
                     </div>
@@ -684,11 +466,11 @@
                             });
                         }
                     });
+
+                    
                 }
             }
-
             // 4. Navbar Background Logic (Dark Hero)
-            const navbar = document.getElementById('navbar');
             const navContainer = document.getElementById('nav-container');
             const navLogo = document.getElementById('nav-logo');
             const navLinks = document.getElementById('nav-links');
@@ -699,31 +481,23 @@
                 if (window.scrollY > 100) {
                     navContainer.classList.add('bg-white/95', 'shadow-sm', 'text-brand-black', 'py-3');
                     navContainer.classList.remove('text-white');
-                    
                     navLogo.classList.remove('text-white');
                     navLogo.classList.add('text-brand-black');
-                    
                     navLinks.classList.remove('text-white');
                     navLinks.classList.add('text-brand-black');
-                    
                     navBtn.classList.remove('border-white/50', 'hover:bg-white', 'hover:text-black');
                     navBtn.classList.add('border-brand-black/20', 'hover:bg-brand-black', 'hover:text-white');
-                    
                     navToggle.classList.remove('text-white');
                     navToggle.classList.add('text-brand-black');
                 } else {
                     navContainer.classList.remove('bg-white/95', 'shadow-sm', 'text-brand-black', 'py-3');
                     navContainer.classList.add('text-white');
-                    
                     navLogo.classList.add('text-white');
                     navLogo.classList.remove('text-brand-black');
-                    
                     navLinks.classList.add('text-white');
                     navLinks.classList.remove('text-brand-black');
-                    
                     navBtn.classList.add('border-white/50', 'hover:bg-white', 'hover:text-black');
                     navBtn.classList.remove('border-brand-black/20', 'hover:bg-brand-black', 'hover:text-white');
-                    
                     navToggle.classList.add('text-white');
                     navToggle.classList.remove('text-brand-black');
                 }
