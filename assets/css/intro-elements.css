@@ -1,0 +1,33 @@
+/* Lightweight dimensional accents; the video stays above all decoration. */
+.intro-scene { position:relative; overflow:hidden; padding-bottom:64px; }
+.intro-stage { position:relative; isolation:isolate; padding:36px 0 24px; }
+.intro-stage video { position:relative; z-index:2; box-shadow:0 24px 60px -30px #15152566; }
+.intro-decoration { position:absolute; pointer-events:none; user-select:none; z-index:1; animation:intro-float 8s ease-in-out infinite; }
+.intro-ring { width:150px; height:150px; left:-100px; top:25%; --tilt:-24deg; animation-delay:-3s; filter:drop-shadow(0 16px 12px #086db72b); }
+.intro-ring::before { content:''; display:block; width:100%; height:100%; border-radius:50%; background:conic-gradient(from 35deg,#b1f5ff,#00b8ea 24%,#0753a8 52%,#018dda 75%,#b1f5ff); mask:radial-gradient(circle,transparent 38%,#000 40%); -webkit-mask:radial-gradient(circle,transparent 38%,#000 40%); box-shadow:inset 5px 7px 12px #c9faffb3,inset -8px -10px 18px #073b8999; transform:perspective(500px) rotateY(32deg) rotateX(18deg); }
+.intro-figma { right:-46px; top:-38px; width:112px; height:124px; --tilt:14deg; animation-duration:9s; z-index:3; }
+.intro-glass { display:grid; place-content:center; width:100%; height:100%; border-radius:28px; background:linear-gradient(135deg,#fff,#ffffffa6 40%,#dff7fc9c); border:2px solid #fff; box-shadow:inset 0 0 0 2px #d8e4ed,5px 7px 0 #d4e5ea70,0 20px 26px -16px #485e8860; transform:perspective(400px) rotateY(-16deg) rotateX(8deg); }
+.intro-figma-mark { display:grid; grid-template-columns:repeat(2,24px); grid-template-rows:repeat(3,24px); filter:drop-shadow(3px 4px 2px #3b32662b); }
+.intro-figma-mark i { box-shadow:inset 3px 3px 5px #ffffff40; }
+.intro-figma-mark i:nth-child(1) { background:#f65a4c; border-radius:50% 0 0 50%; }
+.intro-figma-mark i:nth-child(2) { background:#ff9c81; border-radius:0 50% 50% 0; }
+.intro-figma-mark i:nth-child(3) { background:#a259ff; border-radius:50% 0 0 50%; }
+.intro-figma-mark i:nth-child(4) { background:#05bcf2; border-radius:50%; }
+.intro-figma-mark i:nth-child(5) { background:#00c98b; border-radius:50% 0 50% 50%; }
+.intro-spark { left:-45px; bottom:-36px; width:104px; height:126px; --tilt:-12deg; animation-duration:10s; z-index:1; filter:drop-shadow(6px 15px 10px #a06ae92e); }
+.intro-spark svg { width:100%; height:100%; }
+.intro-orb { right:-66px; bottom:14%; width:94px; height:94px; --tilt:0deg; animation-delay:-5s; border-radius:50%; background:radial-gradient(circle at 30% 25%,#fff9c7,#ffe662 28%,#ffd100 48%,#bd8500 82%); box-shadow:inset -5px -7px 12px #93640035,0 18px 24px -12px #be8e0045; }
+@keyframes intro-float { 0%,100% { transform:translateY(0) rotate(var(--tilt)); } 50% { transform:translateY(-14px) rotate(calc(var(--tilt) + 5deg)); } }
+@media(max-width:1200px) { .intro-stage { margin-inline:36px; } .intro-ring { left:-68px; width:116px; height:116px; } .intro-orb { right:-48px; width:76px; height:76px; } }
+@media(max-width:640px) {
+ .intro-scene { padding-bottom:36px; }
+ .intro-stage { margin-inline:8px; padding-top:50px; }
+ .intro-figma { width:65px; height:72px; right:0; top:-12px; }
+ .intro-glass { border-radius:17px; }
+ .intro-figma-mark { grid-template-columns:repeat(2,15px); grid-template-rows:repeat(3,15px); }
+ .intro-ring { width:68px; height:68px; left:-38px; top:40%; }
+ .intro-spark { width:54px; height:64px; left:-18px; bottom:-14px; }
+ .intro-orb { width:48px; height:48px; right:-30px; bottom:28%; }
+}
+@media(prefers-reduced-motion:reduce) { .intro-decoration { animation:none; transform:rotate(var(--tilt)); } }
+[data-motion-paused] .intro-decoration { animation-play-state:paused; }

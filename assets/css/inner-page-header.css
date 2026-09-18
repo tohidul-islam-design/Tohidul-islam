@@ -1,14 +1,56 @@
-/* Shared background for the site's inner-page hero headers. */
+/* Shared layout and background for every inner-page header. */
 .inner-page-header {
+    padding: 120px 24px 100px;
+    text-align: center;
     background-color: #150303;
-    background-image:
-        linear-gradient(90deg, rgba(5, 5, 5, 0.65), rgba(5, 5, 5, 0.3)),
-        url('../image/inner-header-background.png');
+    background-image: linear-gradient(90deg, rgba(5,5,5,.65), rgba(5,5,5,.3)), url('../image/inner-header-background.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
+    isolation: isolate;
 }
+
+.inner-page-header .max-w-5xl,
+.inner-page-header p {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.inner-page-header .max-w-5xl > .flex {
+    justify-content: center;
+}
+
+.page-breadcrumb { margin-bottom: 28px; }
+.page-breadcrumb ol { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 12px; list-style: none; padding: 0; margin: 0; }
+.page-breadcrumb li { display: inline-flex; align-items: center; gap: 12px; font-size: 14px; line-height: 1.6; color: #e5e5e5; }
+.page-breadcrumb li + li::before { content: ''; width: 6px; height: 6px; flex-shrink: 0; border-top: 1px solid #aaa; border-right: 1px solid #aaa; transform: rotate(45deg); }
+.page-breadcrumb a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
+.page-breadcrumb a:hover { color: #ffd100; text-decoration: underline; text-underline-offset: 4px; }
+.page-breadcrumb [aria-current="page"] { color: #ffd100; overflow-wrap: anywhere; }
+.page-breadcrumb a:focus-visible { outline: 2px solid #ffd100 !important; outline-offset: 4px; border-radius: 3px; }
 
 .inner-page-header .text-gray-400 {
     color: #d1d5db;
+}
+
+/* Header spacing lives here, rather than in individual page templates. */
+.inner-page-header > :is(.container, .offer-wrap) {
+    width: 100%;
+    max-width: 1160px;
+    padding-inline: 0;
+    margin-inline: auto;
+}
+.inner-page-header h1 { margin: 0 0 24px; }
+.inner-page-header p { margin-block: 0; }
+.inner-page-header .page-breadcrumb { margin: 0 0 28px; }
+body .inner-page-header .case-meta {
+    margin: 40px auto 0;
+    padding-block: 24px;
+    gap: 24px 48px;
+}
+@media (max-width: 760px) {
+    .inner-page-header { padding: 100px 16px 88px; }
+    .inner-page-header .page-breadcrumb { margin-bottom: 24px; }
+    body .inner-page-header .case-meta { gap: 24px 16px; margin-top: 32px; }
 }

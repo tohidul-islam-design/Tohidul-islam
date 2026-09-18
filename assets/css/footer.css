@@ -1,0 +1,14 @@
+/* Keep the floating navigation clearance inside the footer background. */
+body:has(#navbar) { padding-bottom: 0; }
+footer#contact {
+    background: #050505 url('../image/footer-background.jpg') center / cover no-repeat;
+    color: #fff;
+    padding-bottom: calc(100px + env(safe-area-inset-bottom, 0px));
+}
+footer#contact > div { background: transparent; color: #fff; }
+footer#contact > div:first-child { background: rgba(0, 0, 0, .22); border-bottom: 1px solid rgba(255, 255, 255, .16); }
+footer#contact .border-black\/10, footer#contact .border-black\/20 { border-color: rgba(255, 255, 255, .2); }
+footer#contact a:focus-visible { outline: 2px solid #ffd100; outline-offset: 4px; }
+footer#contact .text-black\/60 { color: #d1d1d1; }
+footer#contact .bg-black\/10 { background-color: rgba(255, 255, 255, .2); }
+footer#contact a.hover\:text-black:hover { color: #ffd100; }

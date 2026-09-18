@@ -1,45 +1,87 @@
-#nav-toggle {
-    min-width: 44px;
-    min-height: 44px;
+/* Shared floating navigation; ID selectors override legacy scroll color classes. */
+html { scroll-padding-bottom: 110px; }
+body:has(#navbar) { padding-bottom: calc(100px + env(safe-area-inset-bottom, 0px)); }
+.site-brand { position: absolute; top: 28px; left: 50%; transform: translateX(-50%); z-index: 40; }
+.site-brand #nav-logo { display: flex; }
+.site-brand #nav-logo .logo-white { display: block !important; }
+.site-brand #nav-logo .logo-black { display: none !important; }
+#navbar {
+    position: fixed; top: auto; bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+    left: 50%; width: min(720px, calc(100% - 32px)); padding: 0;
+    transform: translateX(-50%); z-index: 100; transition: none;
+    isolation: isolate;
 }
-
-#nav-toggle:focus-visible,
-#nav-links a:focus-visible {
-    outline: 2px solid #FFD100;
-    outline-offset: 4px;
+/* Full-width bottom blur, fading into the page above the floating pill. */
+#navbar::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: calc(-24px - env(safe-area-inset-bottom, 0px));
+    width: 100vw;
+    height: calc(150px + env(safe-area-inset-bottom, 0px));
+    transform: translateX(-50%);
+    z-index: -1;
+    border: 0;
+    background: transparent;
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    -webkit-mask-image: linear-gradient(to top, #000 0%, #000 10%, rgba(0,0,0,.8) 40%, rgba(0,0,0,.5) 80%, transparent 100%);
+    mask-image: linear-gradient(to top, #000 0%, #000 10%, rgba(0,0,0,.8) 40%, rgba(0,0,0,.5) 80%, transparent 100%);
+    pointer-events: none;
 }
-
+#nav-container {
+    position: relative; display: flex; width: 100%; max-width: none; padding: 7px;
+    border: 1px solid rgba(255, 209, 0, 0.25); border-radius: 999px;
+    background: rgba(12, 12, 12, 0.96); color: #fff;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); transition: none;
+}
+#nav-links { display: flex; align-items: center; gap: 4px; width: 100%; color: #fff; }
+#nav-links > a {
+    display: flex; align-items: center; justify-content: center; flex: 1 1 0;
+    min-height: 54px; padding: 12px 14px; border-radius: 999px; color: #e8e8e8;
+    font-size: 14px; font-weight: 500; white-space: nowrap;
+    transition: color 180ms ease, background 180ms ease;
+}
+#nav-links > a:hover, #nav-links > a[aria-current="page"] { color: #ffd100; background: rgba(255, 255, 255, 0.07); }
+#nav-links #nav-btn, #nav-container .nav-mobile-contact {
+    flex: 1.35 1 0; display: flex; align-items: center; justify-content: center; gap: 12px;
+    min-height: 54px; padding: 12px 20px; border: 1px solid #ffd100; border-radius: 999px;
+    background: #ffd100; color: #111; font-size: 14px; font-weight: 600;
+    text-transform: none; letter-spacing: 0; white-space: nowrap;
+}
+#nav-links #nav-btn:hover, #nav-container .nav-mobile-contact:hover { background: #ffe16b; color: #111; }
+#navbar .btn-arrow-box { width: auto; height: auto; margin: 0; background: transparent; color: inherit; transform: none; }
+#navbar .btn-arrow-box i { font-size: 14px; }
+#nav-container .nav-mobile-contact, #nav-toggle { display: none; }
+#navbar a:focus-visible, #nav-toggle:focus-visible, .site-brand a:focus-visible { outline: 2px solid #ffd100; outline-offset: 4px; }
+@media (max-width: 1199px) {
+    body:has(#navbar) #floating-contact-widget { bottom: calc(102px + env(safe-area-inset-bottom, 0px)); }
+    body:has(#nav-links.is-open) #floating-contact-widget { visibility: hidden; }
+}
 @media (max-width: 767px) {
-    #nav-container { position: relative; }
-
+    #navbar { width: min(380px, calc(100% - 36px)); bottom: calc(20px + env(safe-area-inset-bottom, 0px)); }
+    #navbar::before { bottom: calc(-20px - env(safe-area-inset-bottom, 0px)); }
+    #nav-container { gap: 8px; padding: 6px; border-radius: 999px; }
+    #nav-container .nav-mobile-contact { display: flex; min-height: 48px; }
+    #nav-toggle {
+        display: flex; align-items: center; justify-content: center; gap: 12px;
+        min-width: 112px; min-height: 48px; padding: 12px 16px; border-radius: 999px; color: #fff; font-size: 14px;
+    }
+    #nav-toggle:hover, #nav-toggle[aria-expanded="true"] { background: #292929; }
     #nav-links {
-        display: none;
-        position: absolute;
-        top: calc(100% + 12px);
-        left: 16px;
-        right: 16px;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 4px;
-        padding: 16px;
-        max-height: calc(100dvh - 140px);
-        overflow-y: auto;
-        overscroll-behavior: contain;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        border-radius: 20px;
-        background: #151515;
-        color: #fff;
-        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+        display: none; position: absolute; bottom: calc(100% + 10px); left: 0; right: 0;
+        width: auto; flex-direction: column; align-items: stretch; gap: 4px; padding: 10px;
+        max-height: calc(100dvh - 115px - env(safe-area-inset-bottom, 0px));
+        overflow-y: auto; overscroll-behavior: contain;
+        border: 1px solid rgba(255, 209, 0, 0.2); border-radius: 18px; background: #111;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
     }
-
     #nav-links.is-open { display: flex; }
-    #nav-links > a { padding: 14px 16px; }
-    #nav-links > a:hover { background: rgba(255, 255, 255, 0.08); }
-    #nav-links #nav-btn {
-        margin-top: 8px;
-        justify-content: space-between;
-        border-color: rgba(255, 255, 255, 0.5);
-        color: #fff;
-    }
-    #nav-links #nav-btn:hover { background: #333; }
+    #nav-links > a { flex: none; justify-content: flex-start; min-height: 48px; }
+    #nav-links #nav-btn { display: none; }
 }
+@media (prefers-reduced-motion: reduce) {
+    #navbar *, .site-brand * { transition: none !important; }
+}
+

@@ -1,0 +1,45 @@
+/* Device showcase sits over the video and its bottom fade. */
+#home-hero { padding-top: clamp(130px, 16vh, 180px); background: #080b09; }
+#home-hero > video { height: 100%; }
+#home-hero > .max-w-5xl { margin-top: 0; }
+#home-hero .hero-cta-outline .btn-arrow-box { background: transparent; color: #fff; }
+#home-hero .showcase-wrap {
+    flex: none;
+    width: calc(100% + 3rem);
+    margin-top: 56px;
+    padding-top: 20px;
+    background: linear-gradient(180deg, transparent, rgba(5, 8, 6, .75) 55%, #080b09);
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    text-align: left;
+    color: #fff;
+    scroll-padding-inline: 24px;
+}
+#hero-showcase .showcase-track { width: max-content; min-width: 100%; padding: 24px 24px 40px; gap: 28px; }
+#hero-showcase .device { flex-shrink: 0; box-shadow: 0 20px 45px rgba(0, 0, 0, .4); }
+#hero-showcase, #hero-showcase .device { cursor: grab; user-select: none; }
+#hero-showcase.is-dragging, #hero-showcase.is-dragging .device { cursor: grabbing; }
+#hero-showcase .device img { pointer-events: none; }
+#hero-showcase:focus-visible { outline: 2px solid #ffd100; outline-offset: -4px; }
+#hero-showcase a:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+@media (max-width: 767px) {
+    #home-hero { padding-top: 130px; }
+    #home-hero .showcase-wrap { margin-top: 36px; }
+    #hero-showcase .showcase-track { gap: 16px; padding: 20px 16px 28px; }
+    #hero-showcase .device h3 { font-size: 24px; line-height: 1.15; }
+    #hero-showcase .device p { font-size: 11px; }
+}
+
+/* Real project artwork, clipped inside the desktop and phone bezels. */
+#home-hero .showcase-wrap { scrollbar-width: none; }
+#hero-showcase::-webkit-scrollbar { display: none; }
+#hero-showcase .device { position: relative; overflow: hidden; background: #fff; box-sizing: border-box; height: 335px; }
+#hero-showcase .device-desktop { width: 500px; border: 10px solid #2a2d2b; border-radius: 28px; }
+#hero-showcase .device-phone { width: 170px; border: 8px solid #353836; border-radius: 34px; }
+#hero-showcase .device img { display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: center top; }
+#hero-showcase .device-phone img { position: absolute; object-fit: fill; }
+@media (max-width: 767px) {
+    #hero-showcase .device-desktop { width: 390px; border-width: 8px; border-radius: 24px; }
+}

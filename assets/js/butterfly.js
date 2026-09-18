@@ -3,7 +3,7 @@
  * Features:
  * - Fixed bottom-right positioning
  * - Floating WhatsApp icon button with tooltip, badge, pulse effect, and direct link
- * - Butterfly positioned directly above the WhatsApp button
+ * - Butterfly independently positioned at bottom left; WhatsApp stays right
  * - Smooth scroll-reveal for butterfly (scroll-to-top feature on click)
  * - Persistent entrance for WhatsApp button
  * - Seamless responsive positioning across mobile, tablet, and desktop
@@ -21,6 +21,8 @@
     } else if (window.location.pathname.includes('portfolio-projects')) {
         butterflyImgSrc = '../assets/image/butterfly.gif';
     }
+
+    const chatImgSrc = butterflyImgSrc.replace('butterfly.gif', 'chat-monogram.png');
 
     // Inject styles
     const styleEl = document.createElement('style');
@@ -63,8 +65,14 @@
             transform: translateY(20px) scale(0.85);
             transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             cursor: pointer;
-            position: relative;
+            position: fixed;
+            left: 16px;
+            bottom: calc(20px + env(safe-area-inset-bottom, 0px));
         }
+
+        @media (min-width: 640px) { #floating-butterfly { left: 24px; bottom: calc(28px + env(safe-area-inset-bottom, 0px)); } }
+        @media (min-width: 1024px) { #floating-butterfly { left: 32px; bottom: calc(36px + env(safe-area-inset-bottom, 0px)); } }
+        @media (max-width: 1023px) { body:has(#navbar) #floating-butterfly { bottom: calc(108px + env(safe-area-inset-bottom, 0px)); } }
 
         #floating-butterfly.is-visible {
             opacity: 1;
@@ -99,9 +107,9 @@
         /* Butterfly Tooltip */
         .butterfly-tooltip {
             position: absolute;
-            right: calc(100% + 12px);
+            left: calc(100% + 12px);
             top: 50%;
-            transform: translateY(-50%) translateX(8px);
+            transform: translateY(-50%) translateX(0);
             background: #050505;
             color: #ffffff;
             font-size: 11px;
@@ -111,7 +119,7 @@
             padding: 6px 12px;
             border-radius: 9999px;
             white-space: nowrap;
-            opacity: 0;
+            opacity: 1;
             pointer-events: none;
             transition: opacity 0.25s ease, transform 0.25s ease;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
@@ -121,12 +129,12 @@
         .butterfly-tooltip::after {
             content: '';
             position: absolute;
-            left: 100%;
+            right: 100%;
             top: 50%;
             transform: translateY(-50%);
             border-width: 5px;
             border-style: solid;
-            border-color: transparent transparent transparent #050505;
+            border-color: transparent #050505 transparent transparent;
         }
 
         #floating-butterfly:hover .butterfly-tooltip {
@@ -143,10 +151,10 @@
             justify-content: center;
             width: 52px;
             height: 52px;
-            background: #25D366;
+            background: #ffffff;
             color: #ffffff;
             border-radius: 50%;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.45), 0 4px 10px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 10px 25px rgba(255, 209, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0.15);
             transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease, background-color 0.3s ease;
             text-decoration: none;
             cursor: pointer;
@@ -161,8 +169,8 @@
 
         #floating-whatsapp-btn:hover {
             transform: scale(1.08) translateY(-3px);
-            background: #20ba5a;
-            box-shadow: 0 14px 30px rgba(37, 211, 102, 0.55), 0 6px 14px rgba(0, 0, 0, 0.2);
+            background: #ffffff;
+            box-shadow: 0 14px 30px rgba(255, 209, 0, 0.40), 0 6px 14px rgba(0, 0, 0, 0.2);
             color: #ffffff;
         }
 
@@ -190,7 +198,7 @@
             position: absolute;
             inset: -4px;
             border-radius: 50%;
-            border: 2px solid #25D366;
+            border: 2px solid #ffd100;
             opacity: 0.7;
             animation: whatsappPulse 2.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
             pointer-events: none;
@@ -211,25 +219,25 @@
             }
         }
 
-        /* Online Status Green Indicator */
-        .whatsapp-status-dot {
-            position: absolute;
-            top: 2px;
-            right: 2px;
-            width: 13px;
-            height: 13px;
-            background-color: #10B981;
-            border: 2.5px solid #ffffff;
-            border-radius: 50%;
-            box-shadow: 0 0 6px rgba(16, 185, 129, 0.7);
+        .chat-monogram { display:block; width:100%; height:100%; object-fit:contain; border-radius:50%; }
+        .chat-badge {
+            position:absolute; right:-3px; bottom:-1px; width:24px; height:21px;
+            display:flex; align-items:center; justify-content:center;
+            border:2px solid #fff; border-radius:8px 8px 8px 2px;
+            background:#ffd100; color:#111; font-size:10px; font-weight:800; line-height:1; letter-spacing:1px;
         }
-
+        #floating-whatsapp-btn:focus-visible { outline:3px solid #ffd100; outline-offset:6px; }
+        #floating-whatsapp-btn:focus-visible .whatsapp-tooltip { opacity:1; transform:translateY(-50%); }
+        @media (prefers-reduced-motion: reduce) {
+            .whatsapp-pulse-ring { animation:none; }
+            #floating-whatsapp-btn { transition:none; }
+        }
         /* WhatsApp Tooltip on Hover */
         .whatsapp-tooltip {
             position: absolute;
             right: calc(100% + 14px);
             top: 50%;
-            transform: translateY(-50%) translateX(8px);
+            transform: translateY(-50%) translateX(0);
             background: #050505;
             color: #ffffff;
             font-size: 12px;
@@ -237,7 +245,7 @@
             padding: 8px 14px;
             border-radius: 9999px;
             white-space: nowrap;
-            opacity: 0;
+            opacity: 1;
             pointer-events: none;
             transition: opacity 0.25s ease, transform 0.25s ease;
             box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
@@ -274,10 +282,10 @@
     // Inner HTML with Butterfly on top and WhatsApp below it
     widget.innerHTML = `
         <!-- Floating Butterfly (Fly to top) -->
-        <div id="floating-butterfly" title="Fly to top" class="group select-none" role="button" aria-label="Scroll back to top">
-            <span class="butterfly-tooltip">Back to top ↑</span>
+        <button type="button" id="floating-butterfly" title="Fly to top" class="group select-none" aria-label="Scroll back to top">
+            <span class="butterfly-tooltip">Back to top â†‘</span>
             <img src="${butterflyImgSrc}" alt="Butterfly" class="butterfly-img w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain">
-        </div>
+        </button>
 
         <!-- Floating WhatsApp Button -->
         <a id="floating-whatsapp-btn" 
@@ -285,12 +293,12 @@
            target="_blank" 
            rel="noopener noreferrer" 
            aria-label="Chat with Tohidul on WhatsApp" 
-           title="Chat on WhatsApp">
+           title="Chat with me on WhatsApp">
             <div class="whatsapp-pulse-ring"></div>
-            <i class="fa-brands fa-whatsapp"></i>
-            <span class="whatsapp-status-dot"></span>
+            <img class="chat-monogram" src="${chatImgSrc}" width="52" height="52" alt="" aria-hidden="true">
+            <span class="chat-badge" aria-hidden="true">&#8226;&#8226;&#8226;</span>
             <span class="whatsapp-tooltip">
-                <i class="fa-brands fa-whatsapp text-emerald-400"></i> Chat with me
+                Chat with me
             </span>
         </a>
     `;
@@ -323,8 +331,14 @@
 
         // Click on butterfly to fly to top
         butterflyContainer.addEventListener('click', () => {
+            if (document.documentElement.hasAttribute('data-motion-paused')) {
+                window.scrollTo({top: 0, behavior: 'instant'});
+                document.querySelector('#nav-logo')?.focus({preventScroll: true});
+                return;
+            }
             if (isButterflyFlying) return;
             isButterflyFlying = true;
+            document.querySelector('#nav-logo')?.focus({preventScroll: true});
 
             // Smooth scroll to top using Lenis if active, or native smooth scroll
             if (window.lenis && typeof window.lenis.scrollTo === 'function') {
@@ -347,7 +361,7 @@
                 });
 
                 tl.to(butterflyContainer, {
-                    x: -25,
+                    x: 25,
                     y: -40,
                     rotation: -18,
                     scale: 1.15,
@@ -355,7 +369,7 @@
                     ease: "power1.out"
                 })
                 .to(butterflyContainer, {
-                    x: -70,
+                    x: 70,
                     y: -window.innerHeight * 0.65,
                     rotation: -32,
                     scale: 0.95,
@@ -363,7 +377,7 @@
                     ease: "power1.inOut"
                 })
                 .to(butterflyContainer, {
-                    x: -110,
+                    x: 110,
                     y: -window.innerHeight * 1.3,
                     rotation: -45,
                     opacity: 0,
@@ -373,7 +387,7 @@
                 });
             } else {
                 butterflyContainer.style.transition = 'transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease';
-                butterflyContainer.style.transform = 'translateY(-120vh) translateX(-80px) scale(0.7)';
+                butterflyContainer.style.transform = 'translateY(-120vh) translateX(80px) scale(0.7)';
                 butterflyContainer.style.opacity = '0';
                 setTimeout(() => {
                     butterflyContainer.style.transition = '';
