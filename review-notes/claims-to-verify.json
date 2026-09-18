@@ -1,0 +1,128 @@
+[
+  {
+    "project": "3gem",
+    "unverifiedClient": "3Gem Inc.",
+    "unverifiedTimeline": "5 Months",
+    "unverifiedYear": "2025",
+    "unverifiedClaims": [
+      {
+        "value": "+60%",
+        "label": "Workflow Efficiency"
+      },
+      {
+        "value": "500K+",
+        "label": "Enterprise Users"
+      },
+      {
+        "value": "99.9%",
+        "label": "Uptime Metric"
+      }
+    ],
+    "unverifiedResearch": "Over 70% of enterprise users struggled with disconnected tools and disparate data structures. Our primary goal was creating a unified architecture with zero latency."
+  },
+  {
+    "project": "ed-ai",
+    "unverifiedClient": "ED AI Global",
+    "unverifiedTimeline": "4 Months",
+    "unverifiedYear": "2025",
+    "unverifiedClaims": [
+      {
+        "value": "4.9",
+        "label": "User Rating"
+      },
+      {
+        "value": "120K+",
+        "label": "Students Guided"
+      },
+      {
+        "value": "75%",
+        "label": "Time Saved"
+      }
+    ],
+    "unverifiedResearch": "Students and counselors were spending dozens of hours manually verifying university prerequisites and document formats across multiple countries."
+  },
+  {
+    "project": "hopon-rider",
+    "unverifiedClient": "Hop On Inc.",
+    "unverifiedTimeline": "4 Months",
+    "unverifiedYear": "2025",
+    "unverifiedClaims": [
+      {
+        "value": "+45%",
+        "label": "User Retention"
+      },
+      {
+        "value": "2.5M",
+        "label": "Daily Active Users"
+      },
+      {
+        "value": "4.8",
+        "label": "App Store Rating"
+      }
+    ],
+    "unverifiedResearch": "Our research indicated that 65% of users struggled with navigation in existing competitor apps, particularly during high-stress commute times. The goal was to reduce the 'time to action' by 40% while maintaining a visually premium aesthetic."
+  },
+  {
+    "project": "studylity",
+    "unverifiedClient": "StudyLity Learning",
+    "unverifiedTimeline": "3 Months",
+    "unverifiedYear": "2025",
+    "unverifiedClaims": [
+      {
+        "value": "92%",
+        "label": "Completion Rate"
+      },
+      {
+        "value": "40K+",
+        "label": "Active Learners"
+      },
+      {
+        "value": "4.9",
+        "label": "User Rating"
+      }
+    ],
+    "unverifiedResearch": "Consolidating learning materials and schedule tracking into a focused, distraction-free interface required deeply streamlined UI workflows."
+  },
+  {
+    "project": "vivid-customs",
+    "unverifiedClient": "Vivid Customs",
+    "unverifiedTimeline": "3 Months",
+    "unverifiedYear": "2025",
+    "unverifiedClaims": [
+      {
+        "value": "+55%",
+        "label": "Conversion Lift"
+      },
+      {
+        "value": "10K+",
+        "label": "Designs Created"
+      },
+      {
+        "value": "99%",
+        "label": "Print Accuracy"
+      }
+    ],
+    "unverifiedResearch": "Bridging the gap between creative visual designs and factory print specifications required real-time interactive canvas tools."
+  },
+  {
+    "project": "brand-identity",
+    "unverifiedClient": "Global Brands",
+    "unverifiedTimeline": "2 Months",
+    "unverifiedYear": "2025",
+    "unverifiedClaims": [
+      {
+        "value": "100%",
+        "label": "Brand Alignment"
+      },
+      {
+        "value": "35+",
+        "label": "Brand Assets"
+      },
+      {
+        "value": "5.0",
+        "label": "Brand Score"
+      }
+    ],
+    "unverifiedResearch": "Creating a comprehensive, living design system that accommodates diverse digital platforms and physical packaging."
+  }
+]

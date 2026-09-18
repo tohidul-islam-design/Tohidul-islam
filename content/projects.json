@@ -1,0 +1,347 @@
+[
+  {
+    "id": 2,
+    "slug": "studyfound",
+    "title": "Study Found",
+    "designSystem": "Reusable UI components",
+    "category": "Web / SaaS",
+    "role": "Lead UI/UX Designer",
+    "website": "https://studyfound.com",
+    "figmaLink": "",
+    "images": [
+      "./assets/image/works/studyfound-cover-v2.png"
+    ],
+    "context": "An agent-free study-abroad platform connecting program discovery, shortlisting, applications, scholarships, and AI document tools.",
+    "tabs": [
+      "saas"
+    ]
+  },
+  {
+    "id": 200,
+    "slug": "hopon-rider",
+    "title": "Hop On",
+    "designSystem": "Shared multi-service design system",
+    "category": "Web, App / SaaS",
+    "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
+    "images": [
+      "./assets/image/works/hopon1.jpg",
+      "./assets/image/works/hopon-app-flow.png",
+      "./assets/image/works/hopon-superapp.png"
+    ],
+    "context": "Leading UX across ride sharing, parcel delivery, food ordering, driver tools, and operations in Bangladesh.",
+    "role": "Lead UI/UX Designer",
+    "website": "https://hoponbd.com",
+    "tabs": [
+      "saas",
+      "appdesign"
+    ]
+  },
+  {
+    "id": 602,
+    "slug": "inclusive",
+    "images": [
+      "./assets/image/works/Inclusive-card-preview.png"
+    ],
+    "context": "Project details coming soon.",
+    "detailsPending": true,
+    "title": "Inclusive",
+    "category": "Web, App / SaaS",
+    "tabs": [
+      "saas",
+      "appdesign"
+    ]
+  },
+  {
+    "id": 603,
+    "slug": "decoraan",
+    "images": [
+      "./assets/image/works/decoraan-brandguide.jpg"
+    ],
+    "context": "Project details coming soon.",
+    "detailsPending": true,
+    "title": "Decoraan",
+    "category": "",
+    "tabs": []
+  },
+  {
+    "id": 6,
+    "slug": "vivid-customs",
+    "title": "Vivid Customs",
+    "designSystem": "Reusable UI & Vue.js components",
+    "category": "Custom Apparel / Fundraising",
+    "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
+    "images": [
+      "./assets/image/works/vivid-customs-card-preview.png",
+      "./assets/image/works/vivid-customs.png"
+    ],
+    "context": "Leading UX and Vue.js frontend development for custom apparel, product customization, fundraising, and campaign management.",
+    "role": "Lead UI/UX Designer & Frontend Developer",
+    "frontend": "Vue.js",
+    "website": "https://vividcustoms.com",
+    "tabs": []
+  },
+  {
+    "id": 5,
+    "slug": "ed-ai",
+    "title": "ED AI",
+    "designSystem": "Custom UI",
+    "category": "SaaS",
+    "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files?node-id=1-2594&t=92Su7LDNN0qikFsP-1",
+    "images": [
+      "./assets/image/works/ed-ai2.jpg",
+      "./assets/image/works/edai-features.jpg",
+      "./assets/image/works/ed-ai1.jpg",
+      "./assets/image/works/ed-ai.jpg"
+    ],
+    "context": "ED AI is an AI-driven university admissions copilot streamlining application processes for students and counselors.",
+    "tabs": [
+      "saas"
+    ]
+  },
+  {
+    "id": 1,
+    "slug": "3gem",
+    "title": "3Gem",
+    "designSystem": "Tailwind & Custom UI",
+    "category": "Enterprise / SaaS",
+    "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files?node-id=0-1&t=92Su7LDNN0qikFsP-1",
+    "images": [
+      "./assets/image/works/3gem3.jpg",
+      "./assets/image/works/3gem1.jpg",
+      "./assets/image/works/3gem2.jpg"
+    ],
+    "context": "3Gem is an enterprise digital transformation platform designed for large-scale corporate operations.",
+    "tabs": [
+      "saas"
+    ]
+  },
+  {
+    "id": 201,
+    "slug": "tms",
+    "title": "TMS (Transport Manager)",
+    "designSystem": "Custom UI",
+    "category": "Logistics / Operations",
+    "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files?node-id=18-8132&t=92Su7LDNN0qikFsP-1",
+    "images": [
+      "https://ar-tanveer-portfolio.vercel.app/TMS-1.webp",
+      "https://ar-tanveer-portfolio.vercel.app/TMS-2.webp"
+    ],
+    "context": "TMS is a logistics operations platform designed to streamline fleet management and cargo tracking.",
+    "tabs": [
+      "appdesign"
+    ]
+  },
+  {
+    "id": 206,
+    "slug": "studylity",
+    "title": "StudyLity",
+    "designSystem": "Custom UI",
+    "category": "App / SaaS",
+    "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files?node-id=18-12438&t=92Su7LDNN0qikFsP-1",
+    "images": [
+      "./assets/image/works/studylity1.png",
+      "./assets/image/works/studylity2.png"
+    ],
+    "context": "StudyLity is an EdTech application helping students manage study schedules and track progress.",
+    "tabs": [
+      "saas",
+      "appdesign"
+    ]
+  },
+  {
+    "id": 104,
+    "slug": "kina-becha",
+    "title": "Kina Becha E-commerce",
+    "designSystem": "Minimalist UI",
+    "category": "SaaS",
+    "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
+    "images": [
+      "https://ar-tanveer-portfolio.vercel.app/KinaBecha.webp"
+    ],
+    "context": "Vibrant Bengali e-commerce landing page concept focused on local product discovery and online shopping.",
+    "tabs": [
+      "saas",
+      "landing"
+    ]
+  },
+  {
+    "id": 105,
+    "slug": "maxshelf-retail",
+    "title": "Maxshelf",
+    "designSystem": "Retail UI",
+    "category": "Retail / POS",
+    "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
+    "images": [
+      "https://ar-tanveer-portfolio.vercel.app/MaxShelf-Retail.webp"
+    ],
+    "context": "Retail management SaaS landing page designed to attract store owners looking to digitize inventory.",
+    "tabs": [
+      "landing"
+    ]
+  },
+  {
+    "id": 107,
+    "slug": "polock-interior",
+    "title": "Polok Interior",
+    "designSystem": "Luxury UI",
+    "category": "Interior Design",
+    "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
+    "images": [
+      "https://ar-tanveer-portfolio.vercel.app/PolockInterior.webp"
+    ],
+    "context": "Polock Interior is a high-end landing page for a premium interior design studio.",
+    "tabs": [
+      "landing"
+    ]
+  },
+  {
+    "id": 110,
+    "slug": "silk-route",
+    "title": "Silk Route",
+    "designSystem": "Editorial UI",
+    "category": "E-Commerce / Fashion",
+    "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
+    "images": [
+      "https://ar-tanveer-portfolio.vercel.app/SilkRoute.webp"
+    ],
+    "context": "Fashion e-commerce landing page inspired by the elegance of South Asian textile traditions.",
+    "tabs": [
+      "landing"
+    ]
+  },
+  {
+    "id": 613,
+    "slug": "basis",
+    "images": [],
+    "context": "Project details coming soon.",
+    "detailsPending": true,
+    "title": "Basis",
+    "category": "",
+    "tabs": []
+  },
+  {
+    "id": 614,
+    "slug": "studyfound-dashboard",
+    "images": [],
+    "context": "Project details coming soon.",
+    "detailsPending": true,
+    "title": "Study Found Dashboard",
+    "category": "Dashboard",
+    "tabs": [
+      "dashboards"
+    ]
+  },
+  {
+    "id": 615,
+    "slug": "inclusive-dashboard",
+    "images": [],
+    "context": "Project details coming soon.",
+    "detailsPending": true,
+    "title": "Inclusive Dashboard",
+    "category": "Dashboard",
+    "tabs": [
+      "dashboards"
+    ]
+  },
+  {
+    "id": 616,
+    "slug": "hopon-dashboard",
+    "images": [],
+    "context": "Project details coming soon.",
+    "detailsPending": true,
+    "title": "Hop On Dashboard",
+    "category": "Dashboard",
+    "tabs": [
+      "dashboards"
+    ]
+  },
+  {
+    "id": 617,
+    "slug": "ed-ai-dashboard",
+    "images": [],
+    "context": "Project details coming soon.",
+    "detailsPending": true,
+    "title": "ED AI Dashboard",
+    "category": "Dashboard",
+    "tabs": [
+      "dashboards"
+    ]
+  },
+  {
+    "id": 618,
+    "slug": "dating-app",
+    "images": [],
+    "context": "Project details coming soon.",
+    "detailsPending": true,
+    "title": "Dating App",
+    "category": "App",
+    "tabs": [
+      "appdesign"
+    ]
+  },
+  {
+    "id": 112,
+    "slug": "everything4logistics",
+    "title": "Everything4Logistics B2B",
+    "designSystem": "Custom UI",
+    "category": "Logistics / B2B",
+    "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
+    "images": [
+      "https://ar-tanveer-portfolio.vercel.app/vibe/Everything4logistics.webp"
+    ],
+    "context": "B2B logistics platform landing page designed to serve freight operators and supply chain managers.",
+    "tabs": [
+      "landing"
+    ]
+  },
+  {
+    "id": 103,
+    "slug": "jeff-sutherland",
+    "title": "Jeff Sutherland Landing",
+    "designSystem": "Custom UI",
+    "category": "Personal Brand",
+    "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
+    "images": [
+      "https://ar-tanveer-portfolio.vercel.app/JeffLanding.webp"
+    ],
+    "context": "A personal branding landing page for Jeff Sutherland — speaker, author, and co-creator of Scrum."
+  },
+  {
+    "id": 401,
+    "slug": "brand-identity",
+    "title": "Brand Identity Manual",
+    "designSystem": "Brand Guidelines",
+    "category": "Identity / Branding",
+    "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
+    "images": [
+      "./assets/image/works/decoraan-brandguide.jpg",
+      "./assets/image/works/maxshelf-brandguide.jpg",
+      "./assets/image/works/polok-brandguide.jpg"
+    ],
+    "context": "A visual identity presentation including logo design, color theory, and typography guidelines."
+  },
+  {
+    "id": 402,
+    "slug": "marketing-design",
+    "title": "Marketing & Digital Assets",
+    "designSystem": "Marketing Guidelines",
+    "category": "Marketing / Digital Assets",
+    "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
+    "images": [
+      "./assets/image/works/polok-brandguide.jpg"
+    ],
+    "context": "promotional graphic banners, commercial posters, and digital asset templates."
+  },
+  {
+    "id": 403,
+    "slug": "packaging-print",
+    "title": "Packaging & Print Design",
+    "designSystem": "Print Specs",
+    "category": "Packaging / Print Design",
+    "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
+    "images": [
+      "./assets/image/works/maxshelf-brandguide.jpg"
+    ],
+    "context": "custom product packaging layouts, bottle labels, and merchandise prints."
+  }
+]
