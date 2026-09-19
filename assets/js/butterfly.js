@@ -282,8 +282,8 @@
     // Inner HTML with Butterfly on top and WhatsApp below it
     widget.innerHTML = `
         <!-- Floating Butterfly (Fly to top) -->
-        <button type="button" id="floating-butterfly" title="Fly to top" class="group select-none" aria-label="Scroll back to top">
-            <span class="butterfly-tooltip">Back to top â†‘</span>
+        <button type="button" id="floating-butterfly" class="group select-none" aria-label="Scroll back to top">
+            
             <img src="${butterflyImgSrc}" alt="Butterfly" class="butterfly-img w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain">
         </button>
 
@@ -292,14 +292,11 @@
            href="https://wa.me/8801760149575?text=Hello%20Tohidul,%20I%20would%20like%20to%20discuss%20a%20project!" 
            target="_blank" 
            rel="noopener noreferrer" 
-           aria-label="Chat with Tohidul on WhatsApp" 
-           title="Chat with me on WhatsApp">
+           aria-label="Chat with Tohidul on WhatsApp">
             <div class="whatsapp-pulse-ring"></div>
             <img class="chat-monogram" src="${chatImgSrc}" width="52" height="52" alt="" aria-hidden="true">
             <span class="chat-badge" aria-hidden="true">&#8226;&#8226;&#8226;</span>
-            <span class="whatsapp-tooltip">
-                Chat with me
-            </span>
+            
         </a>
     `;
 
@@ -340,12 +337,22 @@
             isButterflyFlying = true;
             document.querySelector('#nav-logo')?.focus({preventScroll: true});
 
-            // Smooth scroll to top using Lenis if active, or native smooth scroll
-            if (window.lenis && typeof window.lenis.scrollTo === 'function') {
-                window.lenis.scrollTo(0, {
-                    duration: 1.5,
-                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+            // Drive scrolling explicitly so scroll-trigger refreshes cannot cancel
+            // a browser-native smooth scroll halfway through the flight.
+            if (typeof gsap !== 'undefined') {
+                const position = { y: window.scrollY };
+                const scrollTween = gsap.to(position, {
+                    y: 0, duration: 1.1, ease: 'power2.inOut',
+                    onUpdate: () => window.scrollTo({ top: position.y, behavior: 'instant' }),
+                    onComplete: cleanupScroll
                 });
+                function cancelScroll() { scrollTween.kill(); cleanupScroll(); }
+                function cleanupScroll() {
+                    window.removeEventListener('wheel', cancelScroll);
+                    window.removeEventListener('touchstart', cancelScroll);
+                }
+                window.addEventListener('wheel', cancelScroll, {passive: true});
+                window.addEventListener('touchstart', cancelScroll, {passive: true});
             } else {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }

@@ -1,0 +1,9 @@
+/* Content is visible by default, including when animation libraries are unavailable. */
+.scroll-reveal { opacity:1; transform:none; }
+img.media-loading { background:linear-gradient(100deg,#e8e8e5 20%,#faf9f2 40%,#e8e8e5 60%); background-size:240% 100%; animation:media-shimmer 1.6s ease-in-out infinite; }
+@keyframes media-shimmer { from { background-position:100% 0; } to { background-position:-100% 0; } }
+@media(prefers-reduced-motion:reduce) {
+ img.media-loading { animation:none; }
+ .hero-anim { opacity:1 !important; transform:none !important; }
+}
+@media print { .scroll-reveal { opacity:1 !important; transform:none !important; } img.media-loading { animation:none; } }

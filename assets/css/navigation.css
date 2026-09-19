@@ -1,5 +1,11 @@
 /* Shared floating navigation; ID selectors override legacy scroll color classes. */
 html { scroll-padding-bottom: 110px; }
+.page-transition { position:fixed; inset:0; z-index:100000; background:#050505; display:grid; place-items:center; opacity:0; visibility:hidden; pointer-events:none; transition:opacity .35s ease-in-out, visibility 0s .35s; }
+.page-transition.is-leaving { opacity:1; visibility:visible; pointer-events:auto; transition-delay:0s; }
+.page-transition-indicator { width:44px; height:44px; border:2px solid #ffffff26; border-top-color:#ffd100; border-radius:50%; }
+.page-transition.is-leaving .page-transition-indicator { animation:page-transition-spin .7s linear infinite; }
+@keyframes page-transition-spin { to { transform:rotate(360deg); } }
+@media(prefers-reduced-motion:reduce) { .page-transition { display:none; } }
 body:has(#navbar) { padding-bottom: calc(100px + env(safe-area-inset-bottom, 0px)); }
 .site-brand { position: absolute; top: 28px; left: 50%; transform: translateX(-50%); z-index: 40; }
 .site-brand #nav-logo { display: flex; }

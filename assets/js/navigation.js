@@ -77,3 +77,42 @@
         if (desktop.matches && focusWasOnToggle) links.querySelector('a')?.focus();
     });
 })();
+
+// Animate same-tab menu navigation, then let the destination's page loader run.
+(() => {
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+    const curtain = document.createElement('div');
+    curtain.className = 'page-transition';
+    curtain.setAttribute('aria-hidden', 'true');
+    const indicator = document.createElement('span');
+    indicator.className = 'page-transition-indicator';
+    curtain.append(indicator);
+    document.body.append(curtain);
+    let pending = false;
+    let navigationTimer;
+    let recoveryTimer;
+    function reset() {
+        clearTimeout(navigationTimer);
+        clearTimeout(recoveryTimer);
+        pending = false;
+        curtain.classList.remove('is-leaving');
+    }
+    window.addEventListener('pageshow', reset);
+    document.addEventListener('click', event => {
+        const link = event.target.closest?.('#navbar a, .site-brand a');
+        if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || link.hasAttribute('download') || (link.target && link.target !== '_self')) return;
+        const destination = new URL(link.href, location.href);
+        if (destination.origin !== location.origin || !['http:', 'https:', 'file:'].includes(destination.protocol)) return;
+        if (destination.pathname === location.pathname && destination.search === location.search) return;
+        if (reducedMotion.matches) return;
+        event.preventDefault();
+        if (pending) return;
+        pending = true;
+        curtain.classList.add('is-leaving');
+        navigationTimer = setTimeout(() => {
+            location.assign(destination.href);
+            // Recover if the browser cancels navigation or the next page stalls.
+            recoveryTimer = setTimeout(reset, 5000);
+        }, 350);
+    });
+})();
