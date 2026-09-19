@@ -221,11 +221,13 @@
         }
     </style>
     <link rel="stylesheet" href="./assets/css/inner-page-header.css?v=20260918g">
-    <link rel="stylesheet" href="./assets/css/navigation.css?v=20260918k">
-    <script src="./assets/js/navigation.js?v=20260918e" defer></script>
+    <link rel="stylesheet" href="./assets/css/navigation.css?v=20260919c">
+    <script src="./assets/js/navigation.js?v=20260919c" defer></script>
     <link rel="stylesheet" href="./assets/css/footer.css">
 <link rel="stylesheet" href="./assets/css/portfolio-clarity.css?v=20260918">
 <script src="./assets/js/portfolio-accessibility.js?v=20260918b" defer></script>
+<link rel="stylesheet" href="./assets/css/page-motion.css?v=20260919a">
+<script src="./assets/js/page-motion.js?v=20260919a" defer></script>
 </head>
 <body class="overflow-x-hidden">
 <!-- Preloader with Butterfly -->
@@ -294,12 +296,12 @@
     </header>
 
     <!-- Contact Content Section -->
-    <section class="py-24 bg-white section-reveal-trigger">
+    <section class="py-24 bg-white scroll-reveal-group">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-12 gap-16">
                 
                 <!-- Contact Info (Left) -->
-                <div class="md:col-span-4 space-y-12 section-reveal">
+                <div class="md:col-span-4 space-y-12 scroll-reveal">
                     <div>
                         <h3 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Email Details</h3>
                         <a href="mailto:tohidul.islam2016@gmail.com" class="text-xl sm:text-2xl font-bold text-brand-black hover:text-brand-link-red transition-colors break-all">tohidul.islam2016@gmail.com</a>
@@ -326,7 +328,7 @@
                 </div>
 
                 <!-- Contact Form (Right) -->
-                <div class="md:col-span-8 section-reveal">
+                <div class="md:col-span-8 scroll-reveal">
                     <form id="contact-form" action="https://formsubmit.co/tohidul.islam2016@gmail.com" method="POST" class="space-y-8">
                         <!-- FormSubmit Configuration -->
                         <input type="hidden" name="_subject" value="New Inquiry from Portfolio Contact Form">
@@ -344,14 +346,34 @@
                             </div>
                         </div>
 
-                        <div class="group">
-                            <label for="contact-project_type" class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Project Type</label>
-                            <select name="project_type" id="contact-project_type" class="form-input w-full bg-transparent border-b border-gray-200 py-4 text-xl font-medium text-brand-black transition-colors focus:border-brand-yellow appearance-none cursor-pointer outline-none">
-                                <option value="UI/UX Design">UI/UX Design</option>
-                                <option value="Web Development">Web Development</option>
-                                <option value="Brand Identity">Brand Identity</option>
-                                <option value="Other">Other</option>
-                            </select>
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="group">
+                                <label for="contact-project_type" class="block text-xs font-bold uppercase tracking-widest text-gray-600 mb-2">Service *</label>
+                                <select name="project_type" id="contact-project_type" required class="form-input w-full bg-transparent border-b border-gray-200 py-4 text-lg font-medium text-brand-black focus:border-brand-yellow cursor-pointer">
+                                    <option value="" disabled selected>Select your service</option>
+                                    <option value="UI/UX Design">UI/UX Design</option>
+                                    <option value="Web Design">Web Design</option>
+                                    <option value="Mobile App Design">Mobile App Design</option>
+                                    <option value="SaaS Design">SaaS Design</option>
+                                    <option value="Web Development">Web Development</option>
+                                    <option value="Design Systems">Design Systems</option>
+                                    <option value="Brand Identity">Logo &amp; Brand Identity</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="group">
+                                <label for="contact-budget" class="block text-xs font-bold uppercase tracking-widest text-gray-600 mb-2">Project Budget</label>
+                                <select name="project_budget" id="contact-budget" class="form-input w-full bg-transparent border-b border-gray-200 py-4 text-lg font-medium text-brand-black focus:border-brand-yellow cursor-pointer" aria-describedby="budget-currency">
+                                    <option value="" selected>Select your budget range</option>
+                                    <option value="Under $1,000 USD">Under $1,000</option>
+                                    <option value="$1,000 - $2,499 USD">$1,000 – $2,499</option>
+                                    <option value="$2,500 - $4,999 USD">$2,500 – $4,999</option>
+                                    <option value="$5,000 - $9,999 USD">$5,000 – $9,999</option>
+                                    <option value="$10,000+ USD">$10,000+</option>
+                                    <option value="Not sure yet">Not sure yet</option>
+                                </select>
+                                <p id="budget-currency" class="text-xs text-gray-500 mt-2">All ranges in USD. An estimate is fine.</p>
+                            </div>
                         </div>
 
                         <div class="group">
@@ -378,14 +400,14 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="bg-brand-gray-light py-24 section-reveal-trigger">
+    <section class="bg-brand-gray-light py-24 scroll-reveal-group">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-12 gap-12">
-                <div class="md:col-span-4 section-reveal">
+                <div class="md:col-span-4 scroll-reveal">
                     <h2 class="text-4xl font-bold mb-6">Frequently Asked Questions</h2>
                     <p class="text-gray-500">Can't find what you're looking for? Email me directly.</p>
                 </div>
-                <div class="md:col-span-8 space-y-4 section-reveal">
+                <div class="md:col-span-8 space-y-4 scroll-reveal">
                     <!-- FAQ Item 1 -->
                     <details class="bg-white rounded-2xl p-8 hover:shadow-md transition-all group"><summary class="flex justify-between items-center">
                             <h3 class="text-xl font-bold text-brand-black">What is your typical process?</h3>
@@ -423,8 +445,8 @@
    <!-- 8. FOOTER -->
     <footer id="contact">
         <!-- Dark CTA -->
-        <div class="bg-brand-footer-dark text-white py-24 section-reveal-trigger">
-            <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-10 section-reveal">
+        <div class="bg-brand-footer-dark text-white py-24 scroll-reveal-group">
+            <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-10 scroll-reveal">
                 <h2 class="text-3xl md:text-4xl font-bold max-w-3xl leading-tight">
                     To learn more about how my unique approach can help your business <span class="text-brand-yellow">grow through design</span> contact me
                 </h2>
@@ -624,7 +646,7 @@
                                     <p class="font-bold text-amber-900">⚠️ Local file testing notice (file://):</p>
                                     <p class="text-amber-800 text-xs leading-relaxed">FormSubmit requires the page to be opened through a local web server (like VS Code <strong>Live Server</strong> or <code class="bg-amber-200/60 px-1 py-0.5 rounded">npx serve</code>) or on a live published website. It cannot submit directly from a raw <code class="bg-amber-200/60 px-1 py-0.5 rounded">file:///</code> path for security reasons.</p>
                                     <p class="pt-2">
-                                        <a href="mailto:tohidul.islam2016@gmail.com?subject=${encodeURIComponent('Inquiry: ' + (data.project_type || 'Portfolio'))}&body=${encodeURIComponent('Name: ' + data.name + '\nEmail: ' + data.email + '\n\nMessage:\n' + data.message)}" class="inline-flex items-center gap-2 px-4 py-2 bg-amber-200 hover:bg-amber-300 text-amber-950 font-bold rounded-full text-xs transition-colors">
+                                        <a href="mailto:tohidul.islam2016@gmail.com?subject=${encodeURIComponent('Inquiry: ' + (data.project_type || 'Portfolio'))}&body=${encodeURIComponent('Name: ' + data.name + '\nEmail: ' + data.email + '\nService: ' + data.project_type + '\nBudget: ' + (data.project_budget || 'Not specified') + '\n\nMessage:\n' + data.message)}" class="inline-flex items-center gap-2 px-4 py-2 bg-amber-200 hover:bg-amber-300 text-amber-950 font-bold rounded-full text-xs transition-colors">
                                             <span>Send directly via your email app</span> &rarr;
                                         </a>
                                     </p>
@@ -691,7 +713,7 @@
         });
     </script>
     <!-- Global Floating Butterfly Component -->
-    <script src="./assets/js/butterfly.js?v=20260918h"></script>
+    <script src="./assets/js/butterfly.js?v=20260919b"></script>
 <script src="./assets/js/quote-context.js" defer></script>
 </body>
 </html>

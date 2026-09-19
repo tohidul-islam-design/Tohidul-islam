@@ -311,13 +311,15 @@
         }
 
     </style>
-    <link rel="stylesheet" href="./assets/css/navigation.css?v=20260918k">
+    <link rel="stylesheet" href="./assets/css/navigation.css?v=20260919c">
     <link rel="stylesheet" href="./assets/css/hero-showcase.css?v=20260918c">
     <script src="./assets/js/hero-showcase.js?v=20260918c" defer></script>
-    <script src="./assets/js/navigation.js?v=20260918e" defer></script>
+    <script src="./assets/js/navigation.js?v=20260919c" defer></script>
     <link rel="stylesheet" href="./assets/css/footer.css">
 <link rel="stylesheet" href="./assets/css/portfolio-clarity.css?v=20260918c">
 <script src="./assets/js/portfolio-accessibility.js?v=20260918b" defer></script>
+<link rel="stylesheet" href="./assets/css/page-motion.css?v=20260919a">
+<script src="./assets/js/page-motion.js?v=20260919a" defer></script>
 </head>
 <body class="overflow-x-hidden">
 <!-- Preloader with Butterfly -->
@@ -416,9 +418,9 @@
 
 
     <!-- 3. MY RECENT WORK (DRAG SLIDER) -->
-    <section class="py-20 md:py-28 bg-white border-b border-gray-100 overflow-hidden section-reveal-trigger" id="recent-works" tabindex="-1">
+    <section class="py-20 md:py-28 bg-white border-b border-gray-100 overflow-hidden scroll-reveal-group" id="recent-works" tabindex="-1">
         <div class="container mx-auto px-6 mb-8 md:mb-10">
-            <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 section-reveal">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 scroll-reveal">
                 <div>
                     <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-yellow/25 text-brand-black font-bold text-xs uppercase tracking-wider mb-4 border border-brand-yellow/50">
                         <span class="w-2 h-2 rounded-full bg-brand-yellow animate-pulse"></span> Selected Projects
@@ -447,7 +449,7 @@
         </div>
 
         <!-- Drag Slider Swiper Container (Left-aligned with container) -->
-        <div class="container mx-auto px-6 section-reveal select-none" id="recent-work-wrapper">
+        <div class="container mx-auto px-6 scroll-reveal select-none" id="recent-work-wrapper">
             <div class="swiper recent-work-swiper">
                 <div class="swiper-wrapper items-center">
                     
@@ -676,20 +678,20 @@
     </section>
 
     <!-- 2. THE APPROACH (Yellow) -->
-    <section id="approach" class="bg-brand-yellow text-brand-black py-24 md:py-32 section-reveal-trigger">
+    <section id="approach" class="bg-brand-yellow text-brand-black py-24 md:py-32 scroll-reveal-group">
         <div class="container mx-auto px-6">
-            <div class="max-w-5xl mb-24 section-reveal">
+            <div class="max-w-5xl mb-24 scroll-reveal">
                 <p class="text-3xl md:text-5xl font-bold leading-tight">
                     Using the latest design tools, my own industry expertise, and access to global design standards, I deliver interfaces that go deeper than ever before.
                 </p>
             </div>
 
-            <h2 class="text-sm md:text-base font-extrabold uppercase tracking-[0.2em] text-brand-black mb-10 section-reveal flex items-center gap-2.5">
+            <h2 class="text-sm md:text-base font-extrabold uppercase tracking-[0.2em] text-brand-black mb-10 scroll-reveal flex items-center gap-2.5">
                 <span class="w-6 h-[2px] bg-brand-black"></span>
                 Approach
             </h2>
 
-            <div class="grid md:grid-cols-3 gap-12 mb-16 section-reveal">
+            <div class="grid md:grid-cols-3 gap-12 mb-16 scroll-reveal">
                 <div class="pr-6">
                     <h3 class="text-2xl font-bold mb-4">User-Centric Focus</h3>
                     <p class="text-base font-medium leading-relaxed">
@@ -710,7 +712,7 @@
                 </div>
             </div>
 
-            <a href="our-services.html#approach" class="section-reveal btn-hover inline-flex items-center bg-black text-white pl-8 pr-2 py-2 rounded-full font-bold text-sm transition-transform hover:-translate-y-1">
+            <a href="our-services.html#approach" class="scroll-reveal btn-hover inline-flex items-center bg-black text-white pl-8 pr-2 py-2 rounded-full font-bold text-sm transition-transform hover:-translate-y-1">
                 More about my approach
                 <div class="btn-arrow-box bg-brand-yellow text-black">
                     <i class="fa-solid fa-arrow-right text-[12px]"></i>
@@ -719,11 +721,11 @@
         </div>
     </section>
     <!-- 4. SERVICES (6 Cards) -->
-    <section id="services" class="py-32 bg-brand-gray-light section-reveal-trigger">
+    <section id="services" class="py-32 bg-brand-gray-light scroll-reveal-group">
         <div class="container mx-auto px-6">
-            <h2 class="text-6xl md:text-7xl font-bold mb-16 tracking-tight text-brand-black section-reveal">Services.</h2>
+            <h2 class="text-6xl md:text-7xl font-bold mb-16 tracking-tight text-brand-black scroll-reveal">Services.</h2>
             
-            <div class="grid md:grid-cols-3 gap-8 section-reveal">
+            <div class="grid md:grid-cols-3 gap-8 scroll-reveal">
                 <!-- Service 1 -->
                 <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col group hover:-translate-y-1">
                     <div class="h-56 overflow-hidden">
@@ -819,9 +821,9 @@
     </section>
 
     <!-- 5. BESPOKE PROJECTS -->
-    <section class="py-32 bg-brand-gray-light section-reveal-trigger">
+    <section class="py-32 bg-brand-gray-light scroll-reveal-group">
         <div class="container mx-auto px-6">
-            <div class="max-w-4xl section-reveal">
+            <div class="max-w-4xl scroll-reveal">
                 <h2 class="text-5xl font-bold mb-6 text-gray-500 tracking-tight">Any other bespoke projects</h2>
                 <p class="text-3xl text-brand-black mb-10 leading-snug font-bold">
                     Don’t see what you are looking for above, or have a unique and custom brief? Get in touch with me to discuss how I can design a solution for your specific objectives.
@@ -837,7 +839,7 @@
     
 
     <!-- 7. MEET THE EXPERT -->
-    <section id="about" class="relative py-32 flex items-center min-h-[600px] section-reveal-trigger">
+    <section id="about" class="relative py-32 flex items-center min-h-[600px] scroll-reveal-group">
         <div class="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop" 
                  alt="Team meeting" 
@@ -845,7 +847,7 @@
             <div class="absolute inset-0 bg-black/60"></div>
         </div>
 
-        <div class="container mx-auto px-6 relative z-10 text-white section-reveal">
+        <div class="container mx-auto px-6 relative z-10 text-white scroll-reveal">
             <div class="max-w-2xl">
                 <h2 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
                     Meet your dedicated <br>
@@ -868,8 +870,8 @@
     <!-- 8. FOOTER -->
     <footer id="contact">
         <!-- Dark CTA -->
-        <div class="bg-brand-footer-dark text-white py-24 section-reveal-trigger">
-            <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-10 section-reveal">
+        <div class="bg-brand-footer-dark text-white py-24 scroll-reveal-group">
+            <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-10 scroll-reveal">
                 <h2 class="text-3xl md:text-4xl font-bold max-w-3xl leading-tight">
                     To learn more about how my unique approach can help your business <span class="text-brand-yellow">grow through design</span> contact me
                 </h2>
@@ -1195,6 +1197,6 @@
         });
     </script>
     <!-- Global Floating Butterfly Component -->
-    <script src="./assets/js/butterfly.js?v=20260918h"></script>
+    <script src="./assets/js/butterfly.js?v=20260919b"></script>
 </body>
 </html>
