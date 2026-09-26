@@ -224,14 +224,18 @@
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        /* Filter Active State */
-        .filter-btn.active {
+        /* Current work section */
+        .work-tab-btn[aria-current="location"] {
             background-color: #050505;
             color: #ffffff;
         }
+        .work-tab-btn[aria-current="location"] .tab-count {
+            background-color: #FFD100;
+            color: #050505;
+        }
     </style>
     <link rel="stylesheet" href="./assets/css/inner-page-header.css?v=20260918g">
-    <link rel="stylesheet" href="./assets/css/navigation.css?v=20260919c">
+    <link rel="stylesheet" href="./assets/css/navigation.css?v=20260927b">
     <script src="./assets/js/navigation.js?v=20260919c" defer></script>
     <link rel="stylesheet" href="./assets/css/footer.css">
 <link rel="stylesheet" href="./assets/css/portfolio-clarity.css?v=20260918">
@@ -302,6 +306,7 @@
                     A comprehensive showcase of SaaS platforms, App Designs, Dashboards, Landing Pages, Visual Designs, and Live Web Projects.
                 </p>
             </div>
+
         </div>
     </header>
 
@@ -309,31 +314,27 @@
     <div class="bg-white/95 backdrop-blur-md border-b border-gray-100 py-4 sticky top-0 z-40" id="filter-bar">
         <div class="container mx-auto px-6 overflow-x-auto hide-scrollbar">
             <div class="flex gap-2 min-w-max select-none" id="work-tab-buttons">
-                <button onclick="filterWorks('all')" data-tab="all" class="work-tab-btn px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 bg-brand-black text-white shadow-md flex items-center gap-2">
-                    <span>All Works</span>
-                    <span class="tab-count bg-white/20 text-white text-[10px] px-2 py-0.5 rounded-full font-extrabold">0</span>
-                </button>
-                <button onclick="filterWorks('saas')" data-tab="saas" class="work-tab-btn px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 bg-gray-100 text-gray-600 hover:bg-gray-200 flex items-center gap-2">
+                <button onclick="scrollToWorkSection('saas')" data-tab="saas" class="work-tab-btn px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 bg-gray-100 text-gray-600 hover:bg-gray-200 flex items-center gap-2">
                     <span>SaaS Projects</span>
                     <span class="tab-count bg-gray-200 text-gray-700 text-[10px] px-2 py-0.5 rounded-full font-extrabold">0</span>
                 </button>
-                <button onclick="filterWorks('appdesign')" data-tab="appdesign" class="work-tab-btn px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 bg-gray-100 text-gray-600 hover:bg-gray-200 flex items-center gap-2">
+                <button onclick="scrollToWorkSection('appdesign')" data-tab="appdesign" class="work-tab-btn px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 bg-gray-100 text-gray-600 hover:bg-gray-200 flex items-center gap-2">
                     <span>App Design</span>
                     <span class="tab-count bg-gray-200 text-gray-700 text-[10px] px-2 py-0.5 rounded-full font-extrabold">0</span>
                 </button>
-                <button onclick="filterWorks('dashboards')" data-tab="dashboards" class="work-tab-btn px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 bg-gray-100 text-gray-600 hover:bg-gray-200 flex items-center gap-2">
+                <button onclick="scrollToWorkSection('dashboards')" data-tab="dashboards" class="work-tab-btn px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 bg-gray-100 text-gray-600 hover:bg-gray-200 flex items-center gap-2">
                     <span>Dashboards</span>
                     <span class="tab-count bg-gray-200 text-gray-700 text-[10px] px-2 py-0.5 rounded-full font-extrabold">0</span>
                 </button>
-                <button onclick="filterWorks('landing')" data-tab="landing" class="work-tab-btn px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 bg-gray-100 text-gray-600 hover:bg-gray-200 flex items-center gap-2">
+                <button onclick="scrollToWorkSection('landing')" data-tab="landing" class="work-tab-btn px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 bg-gray-100 text-gray-600 hover:bg-gray-200 flex items-center gap-2">
                     <span>Landing Pages</span>
                     <span class="tab-count bg-gray-200 text-gray-700 text-[10px] px-2 py-0.5 rounded-full font-extrabold">0</span>
                 </button>
-                <button onclick="filterWorks('visual')" data-tab="visual" class="work-tab-btn px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 bg-gray-100 text-gray-600 hover:bg-gray-200 flex items-center gap-2">
+                <button onclick="scrollToWorkSection('visual')" data-tab="visual" class="work-tab-btn px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 bg-gray-100 text-gray-600 hover:bg-gray-200 flex items-center gap-2">
                     <span>Visual Design</span>
                     <span class="tab-count bg-gray-200 text-gray-700 text-[10px] px-2 py-0.5 rounded-full font-extrabold">0</span>
                 </button>
-                <button onclick="filterWorks('vibecode')" data-tab="vibecode" class="work-tab-btn px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 bg-gray-100 text-gray-600 hover:bg-gray-200 flex items-center gap-2">
+                <button onclick="scrollToWorkSection('vibecode')" data-tab="vibecode" class="work-tab-btn px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 bg-gray-100 text-gray-600 hover:bg-gray-200 flex items-center gap-2">
                     <span>Live Vibe Code</span>
                     <span class="tab-count bg-gray-200 text-gray-700 text-[10px] px-2 py-0.5 rounded-full font-extrabold">0</span>
                 </button>
@@ -805,7 +806,6 @@
         // --- Function to update tab badge counters ---
         function updateTabCounters() {
           const counts = {
-            all: selectedProjects.length + additionalProjects.length + visualProjects.length + vibeCodeProjects.length,
             saas: saasProjects.length,
             appdesign: appDesignProjects.length,
             dashboards: dashboardProjects.length,
@@ -823,27 +823,89 @@
           });
         }
 
-        // --- Filter Function ---
-        function filterWorks(tab) {
+        // Keep every category visible; navigation buttons only scroll.
+        function initWorkSectionTracking() {
+          const buttons = [...document.querySelectorAll('.work-tab-btn')];
+          const sections = buttons.map(button => document.getElementById('works-' + button.dataset.tab));
+          const filterBar = document.getElementById('filter-bar');
+          const tabViewport = document.getElementById('work-tab-buttons').parentElement;
+          let activeIndex = -1;
+          let pendingFrame = false;
+          function update() {
+            pendingFrame = false;
+            const threshold = filterBar.offsetHeight + 25;
+            let nextIndex = 0;
+            sections.forEach((section, index) => {
+              if (section && section.getBoundingClientRect().top <= threshold) nextIndex = index;
+            });
+            if (nextIndex === activeIndex) return;
+            activeIndex = nextIndex;
+            buttons.forEach((button, index) => {
+              if (index === activeIndex) button.setAttribute('aria-current', 'location');
+              else button.removeAttribute('aria-current');
+            });
+            // Reveal the current tab horizontally on small screens without moving the page.
+            const buttonRect = buttons[activeIndex].getBoundingClientRect();
+            const viewportRect = tabViewport.getBoundingClientRect();
+            if (buttonRect.left < viewportRect.left) tabViewport.scrollLeft += buttonRect.left - viewportRect.left;
+            else if (buttonRect.right > viewportRect.right) tabViewport.scrollLeft += buttonRect.right - viewportRect.right;
+          }
+          function scheduleUpdate() {
+            if (pendingFrame) return;
+            pendingFrame = true;
+            requestAnimationFrame(update);
+          }
+          window.addEventListener('scroll', scheduleUpdate, { passive: true });
+          window.addEventListener('resize', scheduleUpdate);
+          window.addEventListener('load', scheduleUpdate, { once: true });
+          if (typeof ResizeObserver !== 'undefined') {
+            const observer = new ResizeObserver(scheduleUpdate);
+            sections.forEach(section => { if (section) observer.observe(section); });
+          }
+          update();
+        }
+
+        let cancelWorkScroll = () => {};
+        function scrollToWorkSection(tab) {
+          cancelWorkScroll();
+          const section = document.getElementById('works-' + tab);
+          if (!section) return;
+          const filterBar = document.getElementById('filter-bar');
+          const start = window.scrollY;
+          const destination = () => Math.max(0, section.getBoundingClientRect().top
+            + window.scrollY - filterBar.offsetHeight - 24);
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            window.scrollTo({ top: destination(), behavior: 'instant' });
+            return;
+          }
+
+          // Explicit frames keep ScrollTrigger refreshes from cancelling native smooth scrolling.
+          let frame;
+          let startedAt;
+          const stop = () => {
+            cancelAnimationFrame(frame);
+            window.removeEventListener('wheel', stop);
+            window.removeEventListener('touchstart', stop);
+            window.removeEventListener('keydown', stop);
+          };
+          cancelWorkScroll = stop;
+          window.addEventListener('wheel', stop, { passive: true });
+          window.addEventListener('touchstart', stop, { passive: true });
+          window.addEventListener('keydown', stop);
+          const step = (time) => {
+            if (startedAt === undefined) startedAt = time;
+            const progress = Math.min((time - startedAt) / 800, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            window.scrollTo({ top: start + (destination() - start) * eased, behavior: 'instant' });
+            if (progress < 1) frame = requestAnimationFrame(step);
+            else stop();
+          };
+          frame = requestAnimationFrame(step);
+        }
+
+        function renderWorks() {
           updateTabCounters();
-
-          // Update active button styling
-          document.querySelectorAll('.work-tab-btn').forEach(btn => {
-            const countBadge = btn.querySelector('.tab-count');
-            btn.setAttribute('aria-pressed', String(btn.getAttribute('data-tab') === tab));
-            if (btn.getAttribute('data-tab') === tab) {
-              btn.className = "work-tab-btn px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 bg-brand-black text-white shadow-md flex items-center gap-2";
-              if (countBadge) countBadge.className = "tab-count bg-brand-yellow text-black text-[10px] px-2 py-0.5 rounded-full font-extrabold";
-            } else {
-              btn.className = "work-tab-btn px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 bg-gray-100 text-gray-600 hover:bg-gray-200 flex items-center gap-2";
-              if (countBadge) countBadge.className = "tab-count bg-gray-200 text-gray-700 text-[10px] px-2 py-0.5 rounded-full font-extrabold";
-            }
-          });
-
           const grid = document.getElementById('works-grid');
-          grid.style.opacity = '0';
-          grid.style.transform = 'translateY(15px)';
-
           const renderCard = (item) => {
             if (item.detailsPending) {
               return `<article class="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col">
@@ -892,27 +954,18 @@
             `;
           };
 
-          setTimeout(() => {
-            const tabTitles = {
-              saas: "SaaS Projects",
-              appdesign: "App Design",
-              dashboards: "Dashboards",
-              landing: "Landing Pages",
-              visual: "Visual Design",
-              vibecode: "Live Vibe Code"
-            };
 
-            if (tab === 'all') {
-              const categories = [
-                { title: "Selected Work", items: selectedProjects },
-                { title: "More Work", items: additionalProjects },
-                { title: "Visual Design", items: visualProjects },
-                { title: "Live Vibe Code", items: vibeCodeProjects }
-              ];
-
-              grid.className = "space-y-20 transition-all duration-500";
+          const categories = [
+            { key: 'saas', title: 'SaaS Projects', items: saasProjects },
+            { key: 'appdesign', title: 'App Design', items: appDesignProjects },
+            { key: 'dashboards', title: 'Dashboards', items: dashboardProjects },
+            { key: 'landing', title: 'Landing Pages', items: landingProjects },
+            { key: 'visual', title: 'Visual Design', items: visualProjects },
+            { key: 'vibecode', title: 'Live Vibe Code', items: vibeCodeProjects }
+          ];
+          grid.className = 'space-y-20';
               grid.innerHTML = categories.map(cat => `
-                <div class="section-group">
+                <div id="works-${cat.key}" class="section-group">
                   <div class="flex items-center justify-between border-b border-gray-200 pb-4 mb-8">
                     <h2 class="text-2xl md:text-3xl font-bold text-brand-black flex items-center gap-3">
                       <span class="w-3.5 h-3.5 bg-brand-yellow rounded-full"></span>
@@ -925,46 +978,18 @@
                   </div>
                 </div>
               `).join('');
-            } else {
-              let list = [];
-              if (tab === 'saas') list = saasProjects;
-              else if (tab === 'appdesign') list = appDesignProjects;
-              else if (tab === 'dashboards') list = dashboardProjects;
-              else if (tab === 'landing') list = landingProjects;
-              else if (tab === 'visual') list = visualProjects;
-              else if (tab === 'vibecode') list = vibeCodeProjects;
+          if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+          initWorkSectionTracking();
+        }
 
-              grid.className = "space-y-12 transition-all duration-500";
-              grid.innerHTML = `
-                <div class="section-group">
-                  <div class="flex items-center justify-between border-b border-gray-200 pb-4 mb-8">
-                    <h2 class="text-2xl md:text-3xl font-bold text-brand-black flex items-center gap-3">
-                      <span class="w-3.5 h-3.5 bg-brand-yellow rounded-full"></span>
-                      ${tabTitles[tab] || 'Selected Works'}
-                    </h2>
-                    <span class="text-xs font-bold uppercase tracking-wider text-gray-400 bg-gray-100 px-3 py-1 rounded-full">${list.length} Projects</span>
-                  </div>
-                  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    ${list.map(renderCard).join('')}
-                  </div>
-                </div>
-              `;
-            }
-
-            grid.style.opacity = '1';
-            grid.style.transform = 'translateY(0)';
-            if (typeof ScrollTrigger !== 'undefined') {
-                setTimeout(() => {
-                    ScrollTrigger.refresh();
-                }, 100);
-            }
-          }, 200);
+        // Build destinations before waiting for remote images and fonts to finish loading.
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', renderWorks, { once: true });
+        } else {
+          renderWorks();
         }
 
         window.addEventListener('load', () => {
-            // Initial filter call to show All Works
-            filterWorks('all');
-
             // Remove Preloader
             const preloader = document.getElementById('preloader');
             if(preloader) {

@@ -311,9 +311,9 @@
         }
 
     </style>
-    <link rel="stylesheet" href="./assets/css/navigation.css?v=20260919c">
-    <link rel="stylesheet" href="./assets/css/hero-showcase.css?v=20260918c">
-    <script src="./assets/js/hero-showcase.js?v=20260918c" defer></script>
+    <link rel="stylesheet" href="./assets/css/navigation.css?v=20260927b">
+    <link rel="stylesheet" href="./assets/css/hero-showcase.css?v=20260927c">
+    <script src="./assets/js/hero-showcase.js?v=20260927c" defer></script>
     <script src="./assets/js/navigation.js?v=20260919c" defer></script>
     <link rel="stylesheet" href="./assets/css/footer.css">
 <link rel="stylesheet" href="./assets/css/portfolio-clarity.css?v=20260918c">
@@ -377,8 +377,8 @@
             <source src="./assets/video/hero-background.mp4" type="video/mp4">
         </video>
 
-        <!-- Dark Overlay -->
-        <div class="absolute inset-0 bg-black/40 z-0"></div>
+        <!-- Black fade anchored to the bottom of the hero -->
+        <div class="hero-bottom-overlay" aria-hidden="true"></div>
         
         <!-- Content -->
         <div class="max-w-5xl mx-auto mt-20 md:mt-0 relative z-10 px-4">
@@ -401,17 +401,19 @@
             </div>
         </div>
 
+      <div class="hero-showcase-dock">
       <div id="hero-showcase" class="showcase-wrap relative z-10" role="region" aria-label="Product design showcase" tabindex="0" data-lenis-prevent>
         <div class="showcase-track flex items-end">
-          <a class="device device-desktop" href="work-hopon-rider.html" aria-label="View HopOn — Ride, Delivery & Food"><img src="./assets/image/works/hopon-superapp.png" alt="HopOn super app website and mobile design" draggable="false" decoding="async"></a>
-          <a class="device device-phone" href="work-hopon-rider.html" aria-label="View HopOn — Ride, Delivery & Food"><img src="./assets/image/works/hopon-superapp.png" alt="HopOn ride booking app" draggable="false" decoding="async" style="width:825.8064516129032%;height:204.1522491349481%;left:-562.0967741935484%;top:-76.8166089965398%"></a>
-          <a class="device device-desktop" href="work-ed-ai.html" aria-label="View ED AI Admissions Copilot"><img src="./assets/image/works/ed-ai-card-preview.png" alt="ED AI university discovery website" draggable="false" decoding="async"></a>
-          <a class="device device-phone" href="work-ed-ai.html" aria-label="View ED AI Admissions Copilot"><img src="./assets/image/works/ed-ai-card-preview.png" alt="ED AI mobile admissions experience" draggable="false" decoding="async" style="width:620.3065134099618%;height:173.08377896613192%;left:-483.9080459770115%;top:-44.38502673796791%"></a>
-          <a class="device device-desktop" href="work-vivid-customs.html" aria-label="View Vivid Customs"><img src="./assets/image/works/vivid-customs-card-preview.png" alt="Vivid Customs apparel storefront" draggable="false" decoding="async"></a>
-          <a class="device device-phone" href="work-ed-ai.html" aria-label="View ED AI Admissions Copilot"><img src="./assets/image/works/ed-ai-card-preview.png" alt="ED AI mobile program discovery" draggable="false" decoding="async" style="width:620.3065134099618%;height:173.08377896613192%;left:-483.9080459770115%;top:-44.38502673796791%"></a>
-          <a class="device device-desktop" href="work-brand-identity.html" aria-label="View Brand Identity Manual"><img src="./assets/image/works/decoraan-brandguide.jpg" alt="Decoraan brand identity and visual guidelines" draggable="false" decoding="async"></a>
-          <a class="device device-phone" href="work-ed-ai.html" aria-label="View ED AI Admissions Copilot"><img src="./assets/image/works/ed-ai-card-preview.png" alt="ED AI mobile university discovery" draggable="false" decoding="async" style="width:620.3065134099618%;height:173.08377896613192%;left:-483.9080459770115%;top:-44.38502673796791%"></a>
+          <a class="device device-desktop" href="work-hopon-rider.html" aria-label="View HopOn — Ride, Delivery & Food"><span class="device-bezel"><span class="device-screen"><img class="screen-hopon" src="./assets/image/works/hopon-superapp.png" alt="HopOn super app website and mobile design" draggable="false" decoding="async"></span></span></a>
+          <a class="device device-phone" href="work-hopon-rider.html" aria-label="View HopOn — Ride, Delivery & Food"><span class="device-bezel"><span class="device-screen"><img src="./assets/image/works/hopon-superapp.png" alt="HopOn ride booking app" draggable="false" decoding="async" style="width:825.8064516129032%;height:204.1522491349481%;left:-562.0967741935484%;top:-76.8166089965398%"></span></span></a>
+          <a class="device device-desktop" href="work-ed-ai.html" aria-label="View ED AI Admissions Copilot"><span class="device-bezel"><span class="device-screen"><img class="screen-edai" src="./assets/image/works/ed-ai-card-preview.png" alt="ED AI university discovery website" draggable="false" decoding="async"></span></span></a>
+          <a class="device device-phone" href="work-ed-ai.html" aria-label="View ED AI Admissions Copilot"><span class="device-bezel"><span class="device-screen"><img src="./assets/image/works/ed-ai-card-preview.png" alt="ED AI mobile admissions experience" draggable="false" decoding="async" style="width:620.3065134099618%;height:173.08377896613192%;left:-483.9080459770115%;top:-44.38502673796791%"></span></span></a>
+          <a class="device device-desktop" href="work-vivid-customs.html" aria-label="View Vivid Customs"><span class="device-bezel"><span class="device-screen"><img src="./assets/image/works/vivid-customs-card-preview.png" alt="Vivid Customs apparel storefront" draggable="false" decoding="async"></span></span></a>
+          <a class="device device-phone" href="work-ed-ai.html" aria-label="View ED AI Admissions Copilot"><span class="device-bezel"><span class="device-screen"><img src="./assets/image/works/ed-ai-card-preview.png" alt="ED AI mobile program discovery" draggable="false" decoding="async" style="width:620.3065134099618%;height:173.08377896613192%;left:-483.9080459770115%;top:-44.38502673796791%"></span></span></a>
+          <a class="device device-desktop" href="work-brand-identity.html" aria-label="View Brand Identity Manual"><span class="device-bezel"><span class="device-screen"><img src="./assets/image/works/decoraan-brandguide.jpg" alt="Decoraan brand identity and visual guidelines" draggable="false" decoding="async"></span></span></a>
+          <a class="device device-phone" href="work-ed-ai.html" aria-label="View ED AI Admissions Copilot"><span class="device-bezel"><span class="device-screen"><img src="./assets/image/works/ed-ai-card-preview.png" alt="ED AI mobile university discovery" draggable="false" decoding="async" style="width:620.3065134099618%;height:173.08377896613192%;left:-483.9080459770115%;top:-44.38502673796791%"></span></span></a>
         </div>
+      </div>
       </div>
     </header>
 
@@ -427,7 +429,7 @@
                     </div>
                     <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight text-brand-black mb-4">My Recent Work.</h2>
                     <p class="text-gray-500 max-w-xl text-base md:text-lg font-medium leading-relaxed">
-                        Selected interface and product design work, with a closer look at ED AI’s program discovery experience.
+                        Explore StudyFound, HopOn, Vivid Customs, StudyLity, and more — spanning SaaS platforms, mobile apps, and web experiences.
                     </p>
                 </div>
                 
@@ -453,10 +455,185 @@
             <div class="swiper recent-work-swiper">
                 <div class="swiper-wrapper items-center">
                     
-                    <!-- Slide 1: 3Gem Digital Platform -->
+                    <!-- Slide 1: StudyFound -->
+                    <div class="swiper-slide">
+                        <a href="work-studyfound.html" class="block group relative work-card-inner rounded-3xl overflow-hidden h-[430px] md:h-[500px] bg-brand-black shadow-md">
+                            <img loading="lazy" decoding="async" src="./assets/image/works/studyfound-cover-v2.png" alt="StudyFound" class="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/10 transition-opacity duration-300"></div>
+                            
+                            <!-- Badges (Top) -->
+                            <div class="absolute top-6 left-6 right-6 flex items-center justify-between z-10">
+                                <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/25 text-white text-xs font-bold tracking-wide">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-yellow"></span>
+                                    EdTech / Study Abroad
+                                </div>
+                                <span class="px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white/90 text-xs font-semibold">
+                                    Product Design
+                                </span>
+                            </div>
+
+                            <!-- Content Overlay (Bottom) -->
+                            <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-10">
+                                <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2 tracking-tight group-hover:text-brand-yellow transition-colors">
+                                    StudyFound
+                                </h3>
+                                <p class="text-white/80 text-sm md:text-base leading-relaxed line-clamp-2 mb-6 max-w-lg">
+                                    An agent-free study-abroad platform connecting program discovery, applications, scholarships, and AI document tools.
+                                </p>
+                                <div class="inline-flex items-center btn-hover text-xs md:text-sm font-bold tracking-wide text-white bg-white/15 hover:bg-white hover:text-black border border-white/25 backdrop-blur-md pl-6 pr-2 py-2 rounded-full transition-all duration-300">
+                                    <span>Explore Case Study</span>
+                                    <div class="btn-arrow-box bg-brand-yellow text-black">
+                                        <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Slide 2: HopOn — Ride, Delivery &amp; Food -->
+                    <div class="swiper-slide">
+                        <a href="work-hopon-rider.html" class="block group relative work-card-inner rounded-3xl overflow-hidden h-[430px] md:h-[500px] bg-brand-black shadow-md">
+                            <img loading="lazy" decoding="async" src="./assets/image/works/hopon-superapp.png" alt="HopOn — Ride, Delivery &amp; Food" class="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/10 transition-opacity duration-300"></div>
+                            
+                            <!-- Badges (Top) -->
+                            <div class="absolute top-6 left-6 right-6 flex items-center justify-between z-10">
+                                <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/25 text-white text-xs font-bold tracking-wide">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-yellow"></span>
+                                    Mobility / Super App
+                                </div>
+                                <span class="px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white/90 text-xs font-semibold">
+                                    Web &amp; Mobile UX
+                                </span>
+                            </div>
+
+                            <!-- Content Overlay (Bottom) -->
+                            <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-10">
+                                <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2 tracking-tight group-hover:text-brand-yellow transition-colors">
+                                    HopOn — Ride, Delivery &amp; Food
+                                </h3>
+                                <p class="text-white/80 text-sm md:text-base leading-relaxed line-clamp-2 mb-6 max-w-lg">
+                                    Connected experiences for ride sharing, parcel delivery, food ordering, driver tools, and operations.
+                                </p>
+                                <div class="inline-flex items-center btn-hover text-xs md:text-sm font-bold tracking-wide text-white bg-white/15 hover:bg-white hover:text-black border border-white/25 backdrop-blur-md pl-6 pr-2 py-2 rounded-full transition-all duration-300">
+                                    <span>Explore Case Study</span>
+                                    <div class="btn-arrow-box bg-brand-yellow text-black">
+                                        <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Slide 3: Vivid Customs -->
+                    <div class="swiper-slide">
+                        <a href="work-vivid-customs.html" class="block group relative work-card-inner rounded-3xl overflow-hidden h-[430px] md:h-[500px] bg-brand-black shadow-md">
+                            <img loading="lazy" decoding="async" src="./assets/image/works/vivid-customs-card-preview.png" alt="Vivid Customs" class="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/10 transition-opacity duration-300"></div>
+                            
+                            <!-- Badges (Top) -->
+                            <div class="absolute top-6 left-6 right-6 flex items-center justify-between z-10">
+                                <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/25 text-white text-xs font-bold tracking-wide">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-yellow"></span>
+                                    Custom Apparel / Commerce
+                                </div>
+                                <span class="px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white/90 text-xs font-semibold">
+                                    UX &amp; Vue.js
+                                </span>
+                            </div>
+
+                            <!-- Content Overlay (Bottom) -->
+                            <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-10">
+                                <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2 tracking-tight group-hover:text-brand-yellow transition-colors">
+                                    Vivid Customs
+                                </h3>
+                                <p class="text-white/80 text-sm md:text-base leading-relaxed line-clamp-2 mb-6 max-w-lg">
+                                    UX and frontend development for custom apparel, product customization, fundraising, and campaign management.
+                                </p>
+                                <div class="inline-flex items-center btn-hover text-xs md:text-sm font-bold tracking-wide text-white bg-white/15 hover:bg-white hover:text-black border border-white/25 backdrop-blur-md pl-6 pr-2 py-2 rounded-full transition-all duration-300">
+                                    <span>Explore Case Study</span>
+                                    <div class="btn-arrow-box bg-brand-yellow text-black">
+                                        <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Slide 4: StudyLity -->
+                    <div class="swiper-slide">
+                        <a href="work-studylity.html" class="block group relative work-card-inner rounded-3xl overflow-hidden h-[430px] md:h-[500px] bg-brand-black shadow-md">
+                            <img loading="lazy" decoding="async" src="./assets/image/works/studylity1.png" alt="StudyLity" class="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/10 transition-opacity duration-300"></div>
+                            
+                            <!-- Badges (Top) -->
+                            <div class="absolute top-6 left-6 right-6 flex items-center justify-between z-10">
+                                <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/25 text-white text-xs font-bold tracking-wide">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-yellow"></span>
+                                    EdTech / Mobile
+                                </div>
+                                <span class="px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white/90 text-xs font-semibold">
+                                    Study Planning
+                                </span>
+                            </div>
+
+                            <!-- Content Overlay (Bottom) -->
+                            <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-10">
+                                <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2 tracking-tight group-hover:text-brand-yellow transition-colors">
+                                    StudyLity
+                                </h3>
+                                <p class="text-white/80 text-sm md:text-base leading-relaxed line-clamp-2 mb-6 max-w-lg">
+                                    An EdTech application helping students organize study schedules and track their progress.
+                                </p>
+                                <div class="inline-flex items-center btn-hover text-xs md:text-sm font-bold tracking-wide text-white bg-white/15 hover:bg-white hover:text-black border border-white/25 backdrop-blur-md pl-6 pr-2 py-2 rounded-full transition-all duration-300">
+                                    <span>Explore Case Study</span>
+                                    <div class="btn-arrow-box bg-brand-yellow text-black">
+                                        <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Slide 5: ED AI Admissions Copilot -->
+                    <div class="swiper-slide">
+                        <a href="work-ed-ai.html" class="block group relative work-card-inner rounded-3xl overflow-hidden h-[430px] md:h-[500px] bg-brand-black shadow-md">
+                            <img loading="lazy" decoding="async" src="./assets/image/works/ed-ai-card-preview.png" alt="ED AI Admissions Copilot" class="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/10 transition-opacity duration-300"></div>
+                            
+                            <!-- Badges (Top) -->
+                            <div class="absolute top-6 left-6 right-6 flex items-center justify-between z-10">
+                                <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/25 text-white text-xs font-bold tracking-wide">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-yellow"></span>
+                                    EdTech / AI SaaS
+                                </div>
+                                <span class="px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white/90 text-xs font-semibold">
+                                    Admissions Copilot
+                                </span>
+                            </div>
+
+                            <!-- Content Overlay (Bottom) -->
+                            <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-10">
+                                <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2 tracking-tight group-hover:text-brand-yellow transition-colors">
+                                    ED AI Admissions Copilot
+                                </h3>
+                                <p class="text-white/80 text-sm md:text-base leading-relaxed line-clamp-2 mb-6 max-w-lg">
+                                    Helping students discover university programs and understand the next steps toward applying.
+                                </p>
+                                <div class="inline-flex items-center btn-hover text-xs md:text-sm font-bold tracking-wide text-white bg-white/15 hover:bg-white hover:text-black border border-white/25 backdrop-blur-md pl-6 pr-2 py-2 rounded-full transition-all duration-300">
+                                    <span>Explore Case Study</span>
+                                    <div class="btn-arrow-box bg-brand-yellow text-black">
+                                        <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Slide 6: 3Gem Digital Platform -->
                     <div class="swiper-slide">
                         <a href="work-3gem.html" class="block group relative work-card-inner rounded-3xl overflow-hidden h-[430px] md:h-[500px] bg-brand-black shadow-md">
-                            <img src="./assets/image/works/3gem.jpg" alt="3Gem Digital Platform" class="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105">
+                            <img loading="lazy" decoding="async" src="./assets/image/works/3gem.jpg" alt="3Gem Digital Platform" class="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/10 transition-opacity duration-300"></div>
                             
                             <!-- Badges (Top) -->
@@ -466,7 +643,7 @@
                                     Enterprise / SaaS
                                 </div>
                                 <span class="px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white/90 text-xs font-semibold">
-                                    Tailwind & Custom UI
+                                    Tailwind &amp; Custom UI
                                 </span>
                             </div>
 
@@ -488,160 +665,30 @@
                         </a>
                     </div>
 
-                    <!-- Slide 2: ED AI Admissions Copilot -->
+                    <!-- Slide 7: MaxShelf Retail POS -->
                     <div class="swiper-slide">
-                        <a href="work-ed-ai.html" class="block group relative work-card-inner rounded-3xl overflow-hidden h-[430px] md:h-[500px] bg-brand-black shadow-md">
-                            <img src="./assets/image/works/ed-ai.jpg" alt="ED AI Admissions Copilot" class="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105">
+                        <a href="work-maxshelf-retail.html" class="block group relative work-card-inner rounded-3xl overflow-hidden h-[430px] md:h-[500px] bg-brand-black shadow-md">
+                            <img loading="lazy" decoding="async" src="./assets/image/works/maxshelf-card-preview.png" alt="MaxShelf Retail POS" class="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/10 transition-opacity duration-300"></div>
                             
+                            <!-- Badges (Top) -->
                             <div class="absolute top-6 left-6 right-6 flex items-center justify-between z-10">
                                 <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/25 text-white text-xs font-bold tracking-wide">
                                     <span class="w-1.5 h-1.5 rounded-full bg-brand-yellow"></span>
-                                    EdTech / AI SaaS
+                                    Retail / POS
                                 </div>
                                 <span class="px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white/90 text-xs font-semibold">
-                                    AI Copilot
+                                    SaaS Landing Page
                                 </span>
                             </div>
 
+                            <!-- Content Overlay (Bottom) -->
                             <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-10">
                                 <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2 tracking-tight group-hover:text-brand-yellow transition-colors">
-                                    ED AI Admissions Copilot
+                                    MaxShelf Retail POS
                                 </h3>
                                 <p class="text-white/80 text-sm md:text-base leading-relaxed line-clamp-2 mb-6 max-w-lg">
-                                    Helping students find programs and understand the next steps toward applying.
-                                </p>
-                                <div class="inline-flex items-center btn-hover text-xs md:text-sm font-bold tracking-wide text-white bg-white/15 hover:bg-white hover:text-black border border-white/25 backdrop-blur-md pl-6 pr-2 py-2 rounded-full transition-all duration-300">
-                                    <span>Explore Case Study</span>
-                                    <div class="btn-arrow-box bg-brand-yellow text-black">
-                                        <i class="fa-solid fa-arrow-right text-[11px]"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <!-- Slide 3: HopOn — Ride, Delivery & Food -->
-                    <div class="swiper-slide">
-                        <a href="work-hopon-rider.html" class="block group relative work-card-inner rounded-3xl overflow-hidden h-[430px] md:h-[500px] bg-brand-black shadow-md">
-                            <img src="./assets/image/works/hopon1.jpg" alt="HopOn — Ride, Delivery & Food" class="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/10 transition-opacity duration-300"></div>
-                            
-                            <div class="absolute top-6 left-6 right-6 flex items-center justify-between z-10">
-                                <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/25 text-white text-xs font-bold tracking-wide">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-yellow"></span>
-                                    Logistics / Super App
-                                </div>
-                                <span class="px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white/90 text-xs font-semibold">
-                                    Mobile Ecosystem
-                                </span>
-                            </div>
-
-                            <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-10">
-                                <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2 tracking-tight group-hover:text-brand-yellow transition-colors">
-                                    HopOn — Ride, Delivery & Food
-                                </h3>
-                                <p class="text-white/80 text-sm md:text-base leading-relaxed line-clamp-2 mb-6 max-w-lg">
-                                    Leading UX across ride sharing, parcel delivery, food ordering, driver tools, and operations in Bangladesh.
-                                </p>
-                                <div class="inline-flex items-center btn-hover text-xs md:text-sm font-bold tracking-wide text-white bg-white/15 hover:bg-white hover:text-black border border-white/25 backdrop-blur-md pl-6 pr-2 py-2 rounded-full transition-all duration-300">
-                                    <span>Explore Case Study</span>
-                                    <div class="btn-arrow-box bg-brand-yellow text-black">
-                                        <i class="fa-solid fa-arrow-right text-[11px]"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <!-- Slide 4: Vivid Customs -->
-                    <div class="swiper-slide">
-                        <a href="work-vivid-customs.html" class="block group relative work-card-inner rounded-3xl overflow-hidden h-[430px] md:h-[500px] bg-brand-black shadow-md">
-                            <img src="./assets/image/works/vivid-customs-card-preview.png" alt="Vivid Customs" class="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/10 transition-opacity duration-300"></div>
-                            
-                            <div class="absolute top-6 left-6 right-6 flex items-center justify-between z-10">
-                                <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/25 text-white text-xs font-bold tracking-wide">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-yellow"></span>
-                                    E-Commerce / SaaS
-                                </div>
-                                <span class="px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white/90 text-xs font-semibold">
-                                    Customizer UI
-                                </span>
-                            </div>
-
-                            <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-10">
-                                <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2 tracking-tight group-hover:text-brand-yellow transition-colors">
-                                    Vivid Customs
-                                </h3>
-                                <p class="text-white/80 text-sm md:text-base leading-relaxed line-clamp-2 mb-6 max-w-lg">
-                                    Leading UX and Vue.js frontend development for custom apparel, product customization, fundraising, and campaign management.
-                                </p>
-                                <div class="inline-flex items-center btn-hover text-xs md:text-sm font-bold tracking-wide text-white bg-white/15 hover:bg-white hover:text-black border border-white/25 backdrop-blur-md pl-6 pr-2 py-2 rounded-full transition-all duration-300">
-                                    <span>Explore Case Study</span>
-                                    <div class="btn-arrow-box bg-brand-yellow text-black">
-                                        <i class="fa-solid fa-arrow-right text-[11px]"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <!-- Slide 5: DRIVE SaaS Dashboard -->
-                    <div class="swiper-slide">
-                        <a href="work-drive-dashboard.html" class="block group relative work-card-inner rounded-3xl overflow-hidden h-[430px] md:h-[500px] bg-brand-black shadow-md">
-                            <img src="https://ar-tanveer-portfolio.vercel.app/drive1.webp" alt="DRIVE SaaS Dashboard" class="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/10 transition-opacity duration-300"></div>
-                            
-                            <div class="absolute top-6 left-6 right-6 flex items-center justify-between z-10">
-                                <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/25 text-white text-xs font-bold tracking-wide">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-yellow"></span>
-                                    Dashboard / Analytics
-                                </div>
-                                <span class="px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white/90 text-xs font-semibold">
-                                    Material UI
-                                </span>
-                            </div>
-
-                            <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-10">
-                                <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2 tracking-tight group-hover:text-brand-yellow transition-colors">
-                                    DRIVE SaaS Dashboard
-                                </h3>
-                                <p class="text-white/80 text-sm md:text-base leading-relaxed line-clamp-2 mb-6 max-w-lg">
-                                    Data-heavy project management ecosystem built for rapid tracking, team velocity, and executive insights.
-                                </p>
-                                <div class="inline-flex items-center btn-hover text-xs md:text-sm font-bold tracking-wide text-white bg-white/15 hover:bg-white hover:text-black border border-white/25 backdrop-blur-md pl-6 pr-2 py-2 rounded-full transition-all duration-300">
-                                    <span>Explore Case Study</span>
-                                    <div class="btn-arrow-box bg-brand-yellow text-black">
-                                        <i class="fa-solid fa-arrow-right text-[11px]"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <!-- Slide 6: StudyLity EdTech -->
-                    <div class="swiper-slide">
-                        <a href="work-studylity.html" class="block group relative work-card-inner rounded-3xl overflow-hidden h-[430px] md:h-[500px] bg-brand-black shadow-md">
-                            <img src="./assets/image/works/studylity1.png" alt="StudyLity EdTech App" class="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/10 transition-opacity duration-300"></div>
-                            
-                            <div class="absolute top-6 left-6 right-6 flex items-center justify-between z-10">
-                                <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/25 text-white text-xs font-bold tracking-wide">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-yellow"></span>
-                                    EdTech / Mobile
-                                </div>
-                                <span class="px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white/90 text-xs font-semibold">
-                                    Schedule AI
-                                </span>
-                            </div>
-
-                            <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-10">
-                                <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2 tracking-tight group-hover:text-brand-yellow transition-colors">
-                                    StudyLity EdTech Platform
-                                </h3>
-                                <p class="text-white/80 text-sm md:text-base leading-relaxed line-clamp-2 mb-6 max-w-lg">
-                                    Interactive academic schedule planner and gamified learning routine companion for students worldwide.
+                                    A retail management SaaS landing page for store owners looking to digitize inventory.
                                 </p>
                                 <div class="inline-flex items-center btn-hover text-xs md:text-sm font-bold tracking-wide text-white bg-white/15 hover:bg-white hover:text-black border border-white/25 backdrop-blur-md pl-6 pr-2 py-2 rounded-full transition-all duration-300">
                                     <span>Explore Case Study</span>
@@ -662,10 +709,10 @@
             <div class="flex flex-col sm:flex-row items-center justify-between gap-6 pt-6 border-t border-gray-100">
                 <div class="flex items-center gap-6">
                     <div class="slider-progress-track">
-                        <div id="recent-work-progress-fill" class="slider-progress-fill w-[16.6%]"></div>
+                        <div id="recent-work-progress-fill" class="slider-progress-fill" style="width:14.2857%"></div>
                     </div>
                     <div class="text-xs font-bold text-gray-400 tracking-wider">
-                        <span id="recent-work-current-idx" class="text-brand-black text-sm">01</span> / <span id="recent-work-total-idx">06</span>
+                        <span id="recent-work-current-idx" class="text-brand-black text-sm">01</span> / <span id="recent-work-total-idx">07</span>
                     </div>
                 </div>
 
@@ -1051,7 +1098,7 @@
 
             // 6. Initialize My Recent Work Drag Slider (Swiper)
             if (typeof Swiper !== 'undefined') {
-                const totalSlides = 6;
+                const totalSlides = document.querySelectorAll('.recent-work-swiper .swiper-slide').length;
                 const counterCurrent = document.getElementById('recent-work-current-idx');
                 const counterTotal = document.getElementById('recent-work-total-idx');
                 const progressFill = document.getElementById('recent-work-progress-fill');
