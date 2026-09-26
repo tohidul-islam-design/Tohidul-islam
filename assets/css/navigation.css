@@ -11,6 +11,8 @@ body:has(#navbar) { padding-bottom: calc(100px + env(safe-area-inset-bottom, 0px
 .site-brand #nav-logo { display: flex; }
 .site-brand #nav-logo .logo-white { display: block !important; }
 .site-brand #nav-logo .logo-black { display: none !important; }
+/* Hide the legacy logo immediately, before navigation.js moves it to the page header. */
+#navbar #nav-logo { display: none !important; }
 #navbar {
     position: fixed; top: auto; bottom: calc(24px + env(safe-area-inset-bottom, 0px));
     left: 50%; width: min(720px, calc(100% - 32px)); padding: 0;
@@ -41,6 +43,40 @@ body:has(#navbar) { padding-bottom: calc(100px + env(safe-area-inset-bottom, 0px
     background: rgba(12, 12, 12, 0.96); color: #fff;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); transition: none;
+}
+/* Synchronized light and fading trail follow the responsive pill outline. */
+@supports (offset-path: inset(0 round 999px)) {
+    #nav-container::before, #nav-container::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        offset-path: inset(0 round 999px);
+        offset-rotate: auto;
+        animation: nav-border-orbit 8s linear infinite;
+        pointer-events: none;
+        z-index: 2;
+    }
+    #nav-container::before {
+        width: 24px;
+        height: 3px;
+        border-radius: 999px;
+        offset-anchor: 100% 50%;
+        background: linear-gradient(90deg, transparent, rgba(255, 209, 0, .25) 35%, #ffd100);
+        filter: drop-shadow(0 0 4px rgba(255, 209, 0, .65));
+    }
+    #nav-container::after {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        offset-anchor: center;
+        background: #fffbe0;
+        box-shadow: 0 0 3px 1px #fff0a3, 0 0 8px 3px rgba(255, 209, 0, .75), 0 0 20px 6px rgba(255, 209, 0, .22);
+    }
+}
+@keyframes nav-border-orbit {
+    from { offset-distance: 0%; }
+    to { offset-distance: 100%; }
 }
 #nav-links { display: flex; align-items: center; gap: 4px; width: 100%; color: #fff; }
 #nav-links > a {
@@ -89,5 +125,7 @@ body:has(#navbar) { padding-bottom: calc(100px + env(safe-area-inset-bottom, 0px
 }
 @media (prefers-reduced-motion: reduce) {
     #navbar *, .site-brand * { transition: none !important; }
+    #nav-container::before, #nav-container::after { animation: none; }
+    #nav-container::before { display: none; }
 }
 

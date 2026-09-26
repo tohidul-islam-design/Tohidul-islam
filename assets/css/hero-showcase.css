@@ -1,14 +1,16 @@
 /* Device showcase sits over the video and its bottom fade. */
-#home-hero { padding-top: clamp(130px, 16vh, 180px); background: #080b09; }
+#home-hero { padding-top: clamp(130px, 16vh, 180px); padding-bottom:475px; background: #080b09; }
+#home-hero .hero-showcase-dock { position:absolute; bottom:0; left:0; width:100%; z-index:10; }
+#home-hero .hero-bottom-overlay { position:absolute; bottom:0; left:0; width:100%; height:70%; background:linear-gradient(to bottom,transparent,rgba(0,0,0,.7) 60%,#080b09); pointer-events:none; z-index:0; }
 #home-hero > video { height: 100%; }
 #home-hero > .max-w-5xl { margin-top: 0; }
 #home-hero .hero-cta-outline .btn-arrow-box { background: transparent; color: #fff; }
-#home-hero .showcase-wrap {
+#hero-showcase.showcase-wrap {
     flex: none;
-    width: calc(100% + 3rem);
-    margin-top: 56px;
+    width: 100%;
+    margin-top: 0;
     padding-top: 20px;
-    background: linear-gradient(180deg, transparent, rgba(5, 8, 6, .75) 55%, #080b09);
+    background: transparent;
     overflow-x: auto;
     overflow-y: hidden;
     overscroll-behavior-x: contain;
@@ -25,21 +27,33 @@
 #hero-showcase:focus-visible { outline: 2px solid #ffd100; outline-offset: -4px; }
 #hero-showcase a:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
 @media (max-width: 767px) {
-    #home-hero { padding-top: 130px; }
-    #home-hero .showcase-wrap { margin-top: 36px; }
+    #home-hero { padding-top: 130px; padding-bottom:384px; }
     #hero-showcase .showcase-track { gap: 16px; padding: 20px 16px 28px; }
     #hero-showcase .device h3 { font-size: 24px; line-height: 1.15; }
     #hero-showcase .device p { font-size: 11px; }
 }
 
-/* Real project artwork, clipped inside the desktop and phone bezels. */
-#home-hero .showcase-wrap { scrollbar-width: none; }
+/* Realistic iPad and iPhone frames in the homepage hero. */
 #hero-showcase::-webkit-scrollbar { display: none; }
-#hero-showcase .device { position: relative; overflow: hidden; background: #fff; box-sizing: border-box; height: 335px; }
-#hero-showcase .device-desktop { width: 500px; border: 10px solid #2a2d2b; border-radius: 28px; }
-#hero-showcase .device-phone { width: 170px; border: 8px solid #353836; border-radius: 34px; }
+#hero-showcase .device { position:relative; display:block; box-sizing:border-box; height:335px; padding:3px; background:linear-gradient(130deg,#b2b4b5,#414346 20%,#17191b 48%,#777a7d 78%,#c7c9ca); box-shadow:0 24px 40px -14px #000,0 0 0 1px #b3b5b666; }
+#hero-showcase .device-desktop { width:479px; border-radius:28px; }
+#hero-showcase .device-phone { width:161px; border-radius:32px; }
+#hero-showcase .device-bezel { position:relative; display:block; width:100%; height:100%; box-sizing:border-box; padding:14px; border-radius:inherit; background:#090a0c; }
+#hero-showcase .device-screen { position:relative; display:block; width:100%; height:100%; overflow:hidden; border-radius:13px; background:#fff; }
+#hero-showcase .device-screen::after { content:''; position:absolute; inset:0; pointer-events:none; background:linear-gradient(125deg,#ffffff0d,transparent 40%); }
+#hero-showcase .device-desktop .device-bezel::before { content:''; position:absolute; left:50%; top:4px; width:5px; height:5px; border-radius:50%; background:radial-gradient(circle at 35% 35%,#31587b,#10141e 65%); transform:translateX(-50%); }
+#hero-showcase .device-phone .device-bezel { padding:5px; }
+#hero-showcase .device-phone .device-screen { border-radius:24px; }
+#hero-showcase .device-phone .device-bezel::before { content:''; position:absolute; top:12px; left:34%; width:32%; height:12px; z-index:2; border-radius:999px; background:#050505; box-shadow:inset -4px 0 3px #18212b; }
+#hero-showcase .device-phone::before { content:''; position:absolute; left:-2px; top:25%; width:2px; height:14%; border-radius:2px 0 0 2px; background:#919496; box-shadow:0 -21px #919496; }
+#hero-showcase .device-phone::after { content:''; position:absolute; right:-2px; top:28%; width:2px; height:17%; border-radius:0 2px 2px 0; background:#919496; }
 #hero-showcase .device img { display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: center top; }
 #hero-showcase .device-phone img { position: absolute; object-fit: fill; }
+#hero-showcase .device-desktop .screen-hopon { position:absolute; object-fit:fill; width:242.08%; height:197.99%; left:-64.54%; top:-61.07%; }
+#hero-showcase .device-desktop .screen-edai { position:absolute; object-fit:fill; width:174.09%; height:151.72%; left:-28.49%; top:-14.69%; }
 @media (max-width: 767px) {
-    #hero-showcase .device-desktop { width: 390px; border-width: 8px; border-radius: 24px; }
+    #hero-showcase .device { height:280px; }
+    #hero-showcase .device-desktop { width:400px; border-radius:24px; }
+    #hero-showcase .device-phone { width:135px; border-radius:28px; }
+    #hero-showcase .device-phone .device-screen { border-radius:20px; }
 }

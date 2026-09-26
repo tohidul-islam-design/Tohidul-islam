@@ -48,9 +48,11 @@
 .plan-card ul { border-top:1px solid #3d3d3d; padding-top:18px; flex:1; }
 .plan-card li { color:#ddd; font-size:.95rem; }
 .plan-card li::before { color:#ffd100; }
-.plan-card .offer-button { width:100%; }
+.plan-card .offer-button { width:100%; transition:background-color .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease; }
 .plan-card .offer-button.outline { color:#fff; }
-.plan-card .offer-button.outline:hover { color:#111; }
+.plan-card .offer-button.outline:hover, .plan-card .offer-button.outline:focus-visible { color:#111; background:#ffd100; border-color:#ffd100; box-shadow:0 4px 20px rgba(255,209,0,.15); }
+.plan-card .offer-button:focus-visible { outline:2px solid #fff; outline-offset:4px; }
+@media(prefers-reduced-motion:reduce) { .plan-card .offer-button { transition:none; } }
 .plan-card .plan-price { color:#fff; }
 .pricing-note { font-size:.9rem !important; max-width:850px !important; margin:28px auto 0 !important; text-align:center; }
 .quote-steps { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; margin:40px 0 0; }
