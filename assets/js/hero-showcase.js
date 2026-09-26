@@ -4,6 +4,9 @@
  const track = viewport.querySelector('.showcase-track');
  if (!track || !track.children.length) return;
  const preference = matchMedia('(prefers-reduced-motion: reduce)');
+ let hovered = false;
+ viewport.addEventListener('mouseenter', () => { hovered = true; });
+ viewport.addEventListener('mouseleave', () => { hovered = false; });
  const originals = Array.from(track.children);
  originals.forEach(card => {
   const copy = card.cloneNode(true);
@@ -74,7 +77,7 @@
   const elapsed = previous ? Math.min(now - previous, 50) : 0;
   previous = now;
   const keyboardFocused = viewport.matches(':focus-visible') || !!viewport.querySelector(':focus-visible');
-  if (!preference.matches && !keyboardFocused && !touching && visible && !document.hidden && now >= resumeAt && distance > 0) {
+  if (!preference.matches && !hovered && !keyboardFocused && !touching && visible && !document.hidden && now >= resumeAt && distance > 0) {
    position = (position + elapsed * .035) % distance;
    viewport.scrollLeft = position;
   } else position = viewport.scrollLeft;
