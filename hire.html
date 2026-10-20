@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hire me | Tohidul Islam</title>
+    <meta name="description" content="Tohidul Islam: Product Designer, UI/UX Designer and Frontend Developer since 2016. Open to full-time roles in Germany, Finland and Australia.">
+    
+    <!-- Tailwind CSS -->
+    <script src="./assets/js/tailwind-runtime.js"></script>
+    
+    <!-- Fonts: Indivisible (Primary) & Outfit (Fallback) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- GSAP & Lenis -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+    <script>
+        if (typeof tailwind !== 'undefined') tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"indivisible"', '"Outfit"', 'sans-serif'],
+                        display: ['"indivisible"', '"Outfit"', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-black': '#050505',
+                        'brand-yellow': '#FFD100',
+                        'brand-orange': '#FF5733',
+                        'brand-link-red': '#E85C41',
+                        'brand-gray-light': '#F4F4F4',
+                        'brand-footer-dark': '#1d1d1b',
+                    },
+                    fontSize: {
+                        'giant': 'clamp(3rem, 8vw, 6.5rem)',
+                        'mega': 'clamp(2.5rem, 5vw, 4.5rem)',
+                    },
+                    letterSpacing: {
+                        'tightest': '-0.03em',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Dynamic Navbar Logo */
+        #nav-logo .logo-black { display: none !important; }
+        #nav-logo .logo-white { display: block !important; }
+        #nav-logo.text-brand-black .logo-black { display: block !important; }
+        #nav-logo.text-brand-black .logo-white { display: none !important; }
+
+        /* Core Setup */
+        body {
+            background-color: #ffffff;
+            color: #050505;
+            font-family: "indivisible", "Outfit", sans-serif;
+            cursor: default;
+        }
+
+        /* Lenis Smooth Scroll */
+        html.lenis, html.lenis body { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto !important; }
+        .lenis.lenis-stopped { overflow: hidden; }
+
+        /* Custom Utilities */
+        .img-zoom-container { overflow: hidden; }
+        .img-zoom-container img { transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
+        .group:hover .img-zoom-container img { transform: scale(1.05); }
+
+                /* Preloader */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at center, #18181b 0%, #09090b 100%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .preloader-butterfly-wrap {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .butterfly-glow {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle, rgba(255, 209, 0, 0.28) 0%, rgba(232, 92, 65, 0.12) 50%, transparent 75%);
+            border-radius: 50%;
+            filter: blur(20px);
+            animation: butterfly-pulse-glow 2.6s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+
+        @keyframes butterfly-pulse-glow {
+            0% { transform: scale(0.85); opacity: 0.55; }
+            100% { transform: scale(1.3); opacity: 1; }
+        }
+
+        .butterfly-loader-img {
+            width: 110px;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 16px rgba(255, 209, 0, 0.3));
+            animation: butterfly-hover-float 2.8s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes butterfly-hover-float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg) scale(1);
+            }
+            30% {
+                transform: translateY(-8px) rotate(2deg) scale(1.03);
+            }
+            70% {
+                transform: translateY(-14px) rotate(-2deg) scale(1.05);
+            }
+        }
+
+        .butterfly-ground-shadow {
+            width: 70px;
+            height: 12px;
+            background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 75%);
+            border-radius: 50%;
+            margin-top: 10px;
+            animation: butterfly-shadow-scale 2.8s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes butterfly-shadow-scale {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.65;
+            }
+            70% {
+                transform: scale(0.65);
+                opacity: 0.25;
+            }
+        }
+
+        .loader-bar-wrap {
+            width: 140px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 9999px;
+            overflow: hidden;
+            position: relative;
+            margin-top: 14px;
+        }
+
+        .loader-bar-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 40%;
+            background: linear-gradient(90deg, transparent, #FFD100, #E85C41);
+            border-radius: 9999px;
+            animation: loader-slide 1.6s ease-in-out infinite;
+        }
+
+        @keyframes loader-slide {
+            0% { left: -40%; }
+            100% { left: 100%; }
+        }
+
+        /* 3Gem Style Buttons */
+        .btn-arrow-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background-color: #FFD100;
+            border-radius: 50%;
+            margin-left: 16px;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            color: #050505;
+        }
+        .btn-hover:hover .btn-arrow-box {
+            transform: translateX(4px) rotate(-45deg);
+        }
+        
+        /* Navbar specific arrow adjustment */
+        .nav-btn-hover .btn-arrow-box {
+            width: 24px;
+            height: 24px;
+            margin-left: 10px;
+            border-radius: 50%;
+        }
+        .nav-btn-hover:hover .btn-arrow-box {
+             transform: translateX(2px);
+        }
+
+        /* Scroll Reveal Utility */
+        .section-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+    </style>
+    <link rel="stylesheet" href="./assets/css/inner-page-header.css?v=20260918g">
+    <link rel="stylesheet" href="./assets/css/navigation.css?v=20260927b">
+    <script src="./assets/js/navigation.js?v=20260919c" defer></script>
+    <link rel="stylesheet" href="./assets/css/footer.css">
+<link rel="stylesheet" href="./assets/css/portfolio-clarity.css?v=20260918">
+<script src="./assets/js/portfolio-accessibility.js?v=20260918b" defer></script>
+<link rel="stylesheet" href="./assets/css/services-pricing.css?v=20260927a">
+<link rel="stylesheet" href="./assets/css/page-motion.css?v=20260919a">
+<script src="./assets/js/page-motion.js?v=20260919a" defer></script>
+</head>
+<body class="offer-page overflow-x-hidden">
+<!-- Preloader with Butterfly -->
+    <div id="preloader">
+        <div class="preloader-butterfly-wrap">
+            <div class="butterfly-glow"></div>
+            <img src="./assets/image/butterfly.gif" alt="Loading" class="butterfly-loader-img">
+            <div class="butterfly-ground-shadow"></div>
+        </div>
+        <div class="mt-6 text-center z-10">
+            <p class="text-xs md:text-sm font-bold uppercase tracking-[0.25em] text-white/95">Services.</p>
+            <div class="loader-bar-wrap mx-auto">
+                <div class="loader-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 top-0 left-0 transition-all duration-500 pt-6" id="navbar">
+        <div class="container mx-auto px-6 md:px-12 flex justify-between items-center p-4 rounded-full transition-all duration-500" id="nav-container">
+            <!-- Logo -->
+            <a href="index.html" class="text-white flex items-center transition-colors focus:outline-none" id="nav-logo" aria-label="Tohidul Islam">
+                <img src="./assets/image/logo-white.png" alt="Tohidul Islam" class="h-8 md:h-9 w-auto object-contain transition-transform hover:scale-105 duration-300 logo-white">
+                <img src="./assets/image/logo-black.png" alt="Tohidul Islam" class="h-8 md:h-9 w-auto object-contain transition-transform hover:scale-105 duration-300 logo-black">
+            </a>
+            
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-white" id="nav-links"><a href="our-services.html" class="hover:text-brand-yellow transition-colors">Services</a><a href="case-studies.html" class="hover:text-brand-yellow transition-colors">My Works</a><a href="pricing.html" class="hover:text-brand-yellow transition-colors">Pricing</a><a href="about-us.html" class="hover:text-brand-yellow transition-colors">About me</a><a href="hire.html" class="hover:text-brand-yellow transition-colors">Hire me</a>
+                
+                
+                
+                
+                
+                <!-- Contact Button -->
+                <a href="contact-us.html" class="nav-btn-hover flex items-center px-6 py-2.5 border border-white/50 rounded-full text-xs font-bold uppercase tracking-wide hover:bg-white hover:text-black transition-all group" id="nav-btn">
+                    Let's Talk
+                    <div class="btn-arrow-box">
+                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Mobile Toggle -->
+            <button class="md:hidden text-white text-xl" id="nav-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="inner-page-header text-white"><div class="offer-wrap"><nav class="page-breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><span aria-current="page">Hire me</span></li></ol></nav><h1 class="font-bold">A product designer<br>who also codes<span class="text-brand-yellow">.</span></h1><p>Product Designer, UI/UX Designer and Frontend Developer, working since 2016. Based in Dhaka, Bangladesh and open to full-time roles in Germany, Finland and Australia.</p></div></header>
+<style>
+.hire-facts{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:8px}
+.hire-facts article{border-top:2px solid #ffd100;padding-top:20px}
+.hire-facts h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;color:#626262;margin-bottom:10px}
+.hire-facts p{margin:0;color:#111;font-weight:600;line-height:1.5}
+.hire-skills{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.hire-skills ul{display:flex;flex-wrap:wrap;gap:8px}
+.hire-skills li{padding:6px 12px;border:1px solid #d6d6d0;border-radius:999px;font-size:.9rem;background:#fff}
+.hire-timeline{list-style:none;padding:0;margin:0}
+.hire-timeline li{display:grid;grid-template-columns:180px 1fr;gap:24px;padding:24px 0;border-top:1px solid #e3e3de}
+.hire-when{font-weight:700;color:#111;font-size:.95rem}
+.hire-timeline h3{margin-bottom:4px}
+.hire-org{font-weight:600;color:#111 !important;margin-bottom:8px !important}
+.hire-timeline p{margin-bottom:0}
+.hire-work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.hire-work{display:block;border-radius:20px;overflow:hidden;background:#111;color:#fff;transition:transform .3s}
+.hire-work:hover{transform:translateY(-4px)}
+.hire-work img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;display:block}
+.hire-work span{display:block;padding:18px 22px;font-size:.92rem;color:#cfcfcf}
+.hire-work strong{display:block;color:#fff;font-size:1.2rem;margin-bottom:4px}
+.hire-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+@media(max-width:760px){.hire-facts,.hire-skills,.hire-work-grid{grid-template-columns:1fr}.hire-timeline li{grid-template-columns:1fr;gap:6px}}
+</style>
+<main id="main-content" tabindex="-1">
+<section class="offer-section"><div class="offer-wrap"><span class="offer-label">At a glance</span>
+<div class="hire-facts">
+<article><h3>Roles</h3><p>Product Designer<br>UI/UX Designer<br>Frontend Developer</p></article>
+<article><h3>Experience</h3><p>Web design &amp; development since 2016<br>UI/UX design since 2018</p></article>
+<article><h3>Education</h3><p>B.Sc. Computer Science &amp; Engineering, Daffodil International University<br>Diploma in UX-UI Design, Userhub</p></article>
+<article><h3>Location</h3><p>Dhaka, Bangladesh<br>Open to relocation and remote work</p></article>
+</div>
+<div class="hire-actions" style="margin-top:40px"><a class="offer-button" href="resume.html">View &amp; download CV ↗</a><a class="offer-button outline" href="https://www.linkedin.com/in/tohidul-islam-design/" target="_blank" rel="noopener">LinkedIn ↗</a><a class="offer-button outline" href="mailto:tohidul.islam2016@gmail.com?subject=Job%20opportunity">Email me ↗</a></div>
+</div></section>
+<section class="offer-section offer-soft"><div class="offer-wrap"><span class="offer-label">Skills</span><h2>What I bring to a product team.</h2>
+<div class="hire-skills">
+<div><h3>Product &amp; UX design</h3><ul><li>Product design</li><li>User flows</li><li>Information architecture</li><li>Wireframing</li><li>Prototyping</li><li>Design systems</li><li>Figma</li><li>Developer handoff</li></ul></div>
+<div><h3>Frontend development</h3><ul><li>HTML</li><li>CSS / Tailwind</li><li>JavaScript</li><li>TypeScript</li><li>Vue 3 / Nuxt</li><li>React</li><li>Angular</li><li>GSAP</li><li>Three.js</li></ul></div>
+<div><h3>Ways of working</h3><ul><li>Requirements gathering</li><li>Cross-functional teams</li><li>Client meetings</li><li>Remote collaboration</li><li>Bangla</li><li>English</li></ul></div>
+</div></div></section>
+<section class="offer-section"><div class="offer-wrap"><span class="offer-label">Experience</span><h2>Work history.</h2><ol class="hire-timeline"><li><div class="hire-when">Jan 2025 – Present</div><div><h3>Co-Founder &amp; Lead Design Engineer</h3><p class="hire-org">Ambitionix Ltd. · Dhaka, Bangladesh</p><p>Leads product design and design engineering: design systems across Figma and code, design tokens, product roadmaps and multi-disciplinary teams.</p></div></li><li><div class="hire-when">Apr 2024 – Present</div><div><h3>UI/UX Designer</h3><p class="hire-org">Syntax Solutions Ltd. · Dhaka, Bangladesh</p><p>Designs mobile apps and responsive websites for Nasir Group in Figma, working with cross-functional teams from requirements to delivery.</p></div></li><li><div class="hire-when">May 2022 – Nov 2023</div><div><h3>UI/UX Designer</h3><p class="hire-org">Kaicom Solutions Ltd. · Dhaka, Bangladesh</p><p>Product design for mobile apps and responsive websites; client meetings and requirements gathering.</p></div></li><li><div class="hire-when">Sep 2021 – Apr 2024</div><div><h3>UI/UX Designer &amp; Frontend Developer</h3><p class="hire-org">Qproco Ltd. · Remote</p><p>Product design in Figma and responsive frontend builds in Vue.js and Nuxt.js for eCommerce stores in Bangladesh and Poland.</p></div></li><li><div class="hire-when">May 2020 – Aug 2021</div><div><h3>UI/UX Designer &amp; Frontend Developer</h3><p class="hire-org">Makeup World BD · Dhaka, Bangladesh</p><p>Led product design for a cosmetics eCommerce business in Figma and Adobe XD and built it with Vue.js and Nuxt.js.</p></div></li><li><div class="hire-when">Oct 2016 – May 2020</div><div><h3>Web Designer &amp; Developer</h3><p class="hire-org">Nogor Solutions Limited · Dhaka, Bangladesh</p><p>Designed web assets and built responsive websites with HTML5, CSS3/SASS, JavaScript, Vue.js, Laravel and PHP.</p></div></li></ol>
+<div class="hire-actions" style="margin-top:32px"><a class="offer-button outline" href="about-us.html">More about me ↗</a></div></div></section>
+<section class="offer-section offer-soft"><div class="offer-wrap"><span class="offer-label">Selected work</span><h2>Case studies for hiring teams.</h2><div class="hire-work-grid"><a class="hire-work" href="work-studyfound.html"><img loading="lazy" decoding="async" src="./assets/image/works/Studyfound-card-preview.png" alt="StudyFound preview"><span><strong>StudyFound</strong>Lead UI/UX Designer · EdTech SaaS</span></a><a class="hire-work" href="work-vivid-customs.html"><img loading="lazy" decoding="async" src="./assets/image/works/vivid-customs-card-preview.png" alt="Vivid Customs preview"><span><strong>Vivid Customs</strong>UX &amp; Vue.js frontend · Commerce</span></a><a class="hire-work" href="work-hopon-rider.html"><img loading="lazy" decoding="async" src="./assets/image/works/hopon-superapp.png" alt="HopOn preview"><span><strong>HopOn</strong>Web &amp; mobile UX · Super app</span></a><a class="hire-work" href="work-ed-ai.html"><img loading="lazy" decoding="async" src="./assets/image/works/ed-ai-card-preview.png" alt="ED AI Admissions Copilot preview"><span><strong>ED AI Admissions Copilot</strong>Product design · AI SaaS</span></a></div>
+<div class="hire-actions" style="margin-top:32px"><a class="offer-button outline" href="case-studies.html">All case studies ↗</a></div></div></section>
+</main>
+<footer id="contact">
+        <!-- Dark CTA -->
+        <div class="bg-brand-footer-dark text-white py-24 scroll-reveal-group">
+            <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-10 scroll-reveal">
+                <h2 class="text-3xl md:text-4xl font-bold max-w-3xl leading-tight">
+                    Have a product that feels hard to use? <span class="text-brand-yellow">Let’s talk.</span>
+                </h2>
+                
+                <a href="mailto:tohidul.islam2016@gmail.com" class="flex items-center gap-4 text-2xl font-bold hover:opacity-80 transition-opacity whitespace-nowrap">
+                    Get in touch
+                    <div class="w-12 h-12 bg-brand-yellow text-black flex items-center justify-center rounded-full text-base">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Yellow Links -->
+        <div class="bg-brand-yellow text-brand-black pt-20 pb-12">
+            <div class="container mx-auto px-6">
+                <div class="mb-16">
+                    <div class="mb-4">
+                        <a href="index.html" class="inline-block transition-transform hover:scale-105 duration-300" aria-label="Tohidul Islam">
+                            <img src="./assets/image/logo-white.png" alt="Tohidul Islam" class="h-10 md:h-12 w-auto object-contain">
+                        </a>
+                    </div>
+                    <h3 class="text-5xl font-bold">Act on design.</h3>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-20">
+                    <div>
+                        <h4 class="font-bold mb-6 text-sm">Pages</h4>
+                        <ul class="space-y-3 text-sm font-medium">
+                            <li><a href="index.html" class="hover:underline">Home</a></li>
+                            <li><a href="our-services.html" class="hover:underline">Services</a></li>
+                            <li><a href="pricing.html" class="hover:underline">Pricing</a></li>
+                            <li><a href="case-studies.html" class="hover:underline">Case Studies</a></li>
+                            <li><a href="about-us.html" class="hover:underline">About</a></li>
+                            <li><a href="hire.html" class="hover:underline">Hire me</a></li>
+                            <li><a href="contact-us.html" class="hover:underline">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-6 text-sm">Services</h4>
+                         <ul class="space-y-3 text-sm font-medium">
+                            <li><a href="our-services.html" class="hover:underline">UI Design</a></li>
+                            <li><a href="our-services.html" class="hover:underline">Web Development</a></li>
+                            <li><a href="our-services.html" class="hover:underline">Design Systems</a></li>
+                            <li><a href="our-services.html" class="hover:underline">UX Research</a></li>
+                            <li><a href="our-services.html" class="hover:underline">Prototyping</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-6 text-sm">Find me</h4>
+                        <p class="text-sm font-medium leading-relaxed">
+                            Dhaka, Bangladesh<br>
+                            Available Remote Globally
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-6 text-sm">Follow me online</h4>
+                        <ul class="space-y-3 text-sm font-medium">
+                            <li><a href="https://www.linkedin.com/in/tohidul-islam-design/" target="_blank" rel="noopener noreferrer" class="hover:underline">LinkedIn</a></li>
+                            <li><a href="https://www.behance.net/touhidislam-design" target="_blank" rel="noopener noreferrer" class="hover:underline">Behance</a></li>
+                            <li><a href="https://dribbble.com/tohidul-islam-design" target="_blank" rel="noopener noreferrer" class="hover:underline">Dribbble</a></li>
+                            <li><a href="https://github.com/tohidul-islam-design" target="_blank" rel="noopener noreferrer" class="hover:underline">GitHub</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="w-full h-px bg-black/10 mb-8"></div>
+
+                <div class="flex flex-col md:flex-row justify-between text-[11px] font-medium text-black/60 uppercase tracking-wide">
+                    <p>&copy; 2026 Tohidul Islam. All rights reserved.</p>
+                    <div class="flex gap-6 mt-4 md:mt-0">
+                        
+                        
+                        <span>Website by Tohidul</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        window.addEventListener('load', () => {
+            // 1. Remove Preloader
+            const preloader = document.getElementById('preloader');
+            if(preloader) {
+                if (typeof gsap !== 'undefined') {
+                    gsap.to("#preloader", {
+                        opacity: 0,
+                        duration: 0.5,
+                        delay: 0.5,
+                        onComplete: () => preloader.style.display = 'none'
+                    });
+                } else {
+                    preloader.style.display = 'none';
+                }
+            }
+
+            // 2. Animate Hero Elements
+            if (typeof gsap !== 'undefined') {
+                gsap.to(".hero-anim", {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1,
+                    stagger: 0.2,
+                    ease: "power3.out",
+                    delay: 0.8
+                });
+
+                // 3. Scroll Reveal for Sections
+                if (typeof ScrollTrigger !== 'undefined') {
+                    gsap.registerPlugin(ScrollTrigger);
+                    
+                    const sections = document.querySelectorAll('.section-reveal-trigger');
+                    sections.forEach(section => {
+                        const elems = section.querySelectorAll('.section-reveal');
+                        if(elems.length > 0) {
+                            gsap.to(elems, {
+                                y: 0,
+                                opacity: 1,
+                                duration: 1,
+                                stagger: 0.15,
+                                ease: "power3.out",
+                                scrollTrigger: {
+                                    trigger: section,
+                                    start: "top 80%",
+                                    toggleActions: "play none none reverse"
+                                }
+                            });
+                        }
+                    });
+                }
+            }
+
+            // 4. Navbar Background Logic (Dark Hero)
+            const navbar = document.getElementById('navbar');
+            const navContainer = document.getElementById('nav-container');
+            const navLogo = document.getElementById('nav-logo');
+            const navLinks = document.getElementById('nav-links');
+            const navBtn = document.getElementById('nav-btn');
+            const navToggle = document.getElementById('nav-toggle');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    navContainer.classList.add('bg-white/95', 'shadow-sm', 'text-brand-black', 'py-3');
+                    navContainer.classList.remove('text-white');
+                    
+                    navLogo.classList.remove('text-white');
+                    navLogo.classList.add('text-brand-black');
+                    
+                    navLinks.classList.remove('text-white');
+                    navLinks.classList.add('text-brand-black');
+                    
+                    navBtn.classList.remove('border-white/50', 'hover:bg-white', 'hover:text-black');
+                    navBtn.classList.add('border-brand-black/20', 'hover:bg-brand-black', 'hover:text-white');
+                    
+                    navToggle.classList.remove('text-white');
+                    navToggle.classList.add('text-brand-black');
+                } else {
+                    navContainer.classList.remove('bg-white/95', 'shadow-sm', 'text-brand-black', 'py-3');
+                    navContainer.classList.add('text-white');
+                    
+                    navLogo.classList.add('text-white');
+                    navLogo.classList.remove('text-brand-black');
+                    
+                    navLinks.classList.add('text-white');
+                    navLinks.classList.remove('text-brand-black');
+                    
+                    navBtn.classList.add('border-white/50', 'hover:bg-white', 'hover:text-black');
+                    navBtn.classList.remove('border-brand-black/20', 'hover:bg-brand-black', 'hover:text-white');
+                    
+                    navToggle.classList.add('text-white');
+                    navToggle.classList.remove('text-brand-black');
+                }
+            });
+
+            // Native scrolling keeps browser and keyboard behavior predictable.
+        });
+    </script>
+    <!-- Global Floating Butterfly Component -->
+    <script src="./assets/js/butterfly.js?v=20260919b"></script>
+</body>
+</html>
