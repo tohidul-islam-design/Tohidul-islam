@@ -123,8 +123,8 @@
     "category": "Logistics / Operations",
     "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files?node-id=18-8132&t=92Su7LDNN0qikFsP-1",
     "images": [
-      "https://ar-tanveer-portfolio.vercel.app/TMS-1.webp",
-      "https://ar-tanveer-portfolio.vercel.app/TMS-2.webp"
+      "./assets/image/works/shared/TMS-1.webp",
+      "./assets/image/works/shared/TMS-2.webp"
     ],
     "context": "TMS is a logistics operations platform designed to streamline fleet management and cargo tracking.",
     "tabs": [
@@ -156,7 +156,7 @@
     "category": "SaaS",
     "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
     "images": [
-      "https://ar-tanveer-portfolio.vercel.app/KinaBecha.webp"
+      "./assets/image/works/shared/KinaBecha.webp"
     ],
     "context": "Vibrant Bengali e-commerce landing page concept focused on local product discovery and online shopping.",
     "tabs": [
@@ -172,7 +172,7 @@
     "category": "Retail / POS",
     "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
     "images": [
-      "https://ar-tanveer-portfolio.vercel.app/MaxShelf-Retail.webp"
+      "./assets/image/works/shared/MaxShelf-Retail.webp"
     ],
     "context": "Retail management SaaS landing page designed to attract store owners looking to digitize inventory.",
     "tabs": [
@@ -187,7 +187,7 @@
     "category": "Interior Design",
     "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
     "images": [
-      "https://ar-tanveer-portfolio.vercel.app/PolockInterior.webp"
+      "./assets/image/works/shared/PolockInterior.webp"
     ],
     "context": "Polock Interior is a high-end landing page for a premium interior design studio.",
     "tabs": [
@@ -202,7 +202,7 @@
     "category": "E-Commerce / Fashion",
     "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
     "images": [
-      "https://ar-tanveer-portfolio.vercel.app/SilkRoute.webp"
+      "./assets/image/works/shared/SilkRoute.webp"
     ],
     "context": "Fashion e-commerce landing page inspired by the elegance of South Asian textile traditions.",
     "tabs": [
@@ -287,7 +287,7 @@
     "category": "Logistics / B2B",
     "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
     "images": [
-      "https://ar-tanveer-portfolio.vercel.app/vibe/Everything4logistics.webp"
+      "./assets/image/works/shared/vibe/Everything4logistics.webp"
     ],
     "context": "B2B logistics platform landing page designed to serve freight operators and supply chain managers.",
     "tabs": [
@@ -302,7 +302,7 @@
     "category": "Personal Brand",
     "figmaLink": "https://www.figma.com/design/W2rsVN4BgxMgtimRKQTbNg/Design-Demo-Files",
     "images": [
-      "https://ar-tanveer-portfolio.vercel.app/JeffLanding.webp"
+      "./assets/image/works/shared/JeffLanding.webp"
     ],
     "context": "A personal branding landing page for Jeff Sutherland — speaker, author, and co-creator of Scrum."
   },
