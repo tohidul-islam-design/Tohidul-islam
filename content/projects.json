@@ -17,6 +17,25 @@
     ]
   },
   {
+    "id": 250,
+    "slug": "bunon",
+    "title": "Bunon",
+    "designSystem": "Bilingual storefront + admin",
+    "category": "Web / eCommerce",
+    "role": "Design and frontend development",
+    "website": "https://bunon-beryl.vercel.app/",
+    "figmaLink": "",
+    "images": [
+      "./assets/image/works/bunon/bunon-home.webp",
+      "./assets/image/works/bunon/bunon-shop.webp",
+      "./assets/image/works/bunon/bunon-product.webp"
+    ],
+    "context": "A bilingual online store and store-management system for a Bangladeshi clothing brand, built with Vue 3 and Supabase.",
+    "tabs": [
+      "saas"
+    ]
+  },
+  {
     "id": 200,
     "slug": "hopon-rider",
     "title": "Hop On",

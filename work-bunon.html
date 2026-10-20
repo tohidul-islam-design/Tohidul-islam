@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bunon Storefront &amp; Admin | Tohidul Islam</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="./assets/js/tailwind-runtime.js"></script>
+    
+    <!-- Fonts: Indivisible (Primary) & Outfit (Fallback) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Swiper CSS & JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- GSAP & Lenis -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+    <script>
+        if (typeof tailwind !== 'undefined') tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"indivisible"', '"Outfit"', 'sans-serif'],
+                        display: ['"indivisible"', '"Outfit"', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-black': '#050505',
+                        'brand-yellow': '#FFD100',
+                        'brand-orange': '#FF5733',
+                        'brand-link-red': '#E85C41',
+                        'brand-gray-light': '#F4F4F4',
+                        'brand-footer-dark': '#1d1d1b',
+                    },
+                    fontSize: {
+                        'giant': 'clamp(3rem, 8vw, 6.5rem)',
+                        'mega': 'clamp(2.5rem, 5vw, 4.5rem)',
+                    },
+                    letterSpacing: {
+                        'tightest': '-0.03em',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Dynamic Navbar Logo */
+        #nav-logo .logo-black { display: none !important; }
+        #nav-logo .logo-white { display: block !important; }
+        #nav-logo.text-brand-black .logo-black { display: block !important; }
+        #nav-logo.text-brand-black .logo-white { display: none !important; }
+
+        /* Core Setup */
+        body {
+            background-color: #ffffff;
+            color: #050505;
+            font-family: "indivisible", "Outfit", sans-serif;
+            cursor: default;
+        }
+
+        /* Lenis Smooth Scroll */
+        html.lenis, html.lenis body { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto !important; }
+        .lenis.lenis-stopped { overflow: hidden; }
+
+        /* Custom Utilities */
+        .img-zoom-container { overflow: hidden; }
+        .img-zoom-container img { transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
+        .group:hover .img-zoom-container img { transform: scale(1.05); }
+
+                /* Preloader */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at center, #18181b 0%, #09090b 100%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .preloader-butterfly-wrap {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .butterfly-glow {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle, rgba(255, 209, 0, 0.28) 0%, rgba(232, 92, 65, 0.12) 50%, transparent 75%);
+            border-radius: 50%;
+            filter: blur(20px);
+            animation: butterfly-pulse-glow 2.6s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+
+        @keyframes butterfly-pulse-glow {
+            0% { transform: scale(0.85); opacity: 0.55; }
+            100% { transform: scale(1.3); opacity: 1; }
+        }
+
+        .butterfly-loader-img {
+            width: 110px;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 16px rgba(255, 209, 0, 0.3));
+            animation: butterfly-hover-float 2.8s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes butterfly-hover-float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg) scale(1);
+            }
+            30% {
+                transform: translateY(-8px) rotate(2deg) scale(1.03);
+            }
+            70% {
+                transform: translateY(-14px) rotate(-2deg) scale(1.05);
+            }
+        }
+
+        .butterfly-ground-shadow {
+            width: 70px;
+            height: 12px;
+            background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 75%);
+            border-radius: 50%;
+            margin-top: 10px;
+            animation: butterfly-shadow-scale 2.8s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes butterfly-shadow-scale {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.65;
+            }
+            70% {
+                transform: scale(0.65);
+                opacity: 0.25;
+            }
+        }
+
+        .loader-bar-wrap {
+            width: 140px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 9999px;
+            overflow: hidden;
+            position: relative;
+            margin-top: 14px;
+        }
+
+        .loader-bar-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 40%;
+            background: linear-gradient(90deg, transparent, #FFD100, #E85C41);
+            border-radius: 9999px;
+            animation: loader-slide 1.6s ease-in-out infinite;
+        }
+
+        @keyframes loader-slide {
+            0% { left: -40%; }
+            100% { left: 100%; }
+        }
+
+        /* 3Gem Style Buttons */
+        .btn-arrow-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background-color: #FFD100;
+            border-radius: 50%;
+            margin-left: 16px;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            color: #050505;
+        }
+        .btn-hover:hover .btn-arrow-box {
+            transform: translateX(4px) rotate(-45deg);
+        }
+        
+        /* Navbar specific arrow adjustment */
+        .nav-btn-hover .btn-arrow-box {
+            width: 24px;
+            height: 24px;
+            margin-left: 10px;
+            border-radius: 50%;
+        }
+        .nav-btn-hover:hover .btn-arrow-box {
+             transform: translateX(2px);
+        }
+
+        /* Scroll Reveal Utility */
+        .section-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+            /* Full-Width Project Hero Swiper */
+        .project-hero-swiper {
+            width: 100%;
+            height: 100%;
+        }
+        .project-hero-swiper .swiper-slide {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #050505;
+        }
+        .project-hero-swiper .swiper-pagination-bullet {
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.45);
+            opacity: 1;
+            border-radius: 9999px;
+            transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+            margin: 0 !important;
+            cursor: pointer;
+        }
+        .project-hero-swiper .swiper-pagination-bullet-active {
+            background: #FFD100 !important;
+            width: 26px;
+            border-radius: 9999px;
+        }
+    </style>
+    <link rel="stylesheet" href="./assets/css/inner-page-header.css?v=20260918g">
+    <link rel="stylesheet" href="./assets/css/navigation.css?v=20260927b">
+    <script src="./assets/js/navigation.js?v=20260919c" defer></script>
+    <link rel="stylesheet" href="./assets/css/footer.css">
+<link rel="stylesheet" href="./assets/css/portfolio-clarity.css?v=20260918">
+<script src="./assets/js/portfolio-accessibility.js?v=20260918b" defer></script>
+<link rel="stylesheet" href="./assets/css/page-motion.css?v=20260919a">
+<script src="./assets/js/page-motion.js?v=20260919a" defer></script>
+</head>
+<body class="overflow-x-hidden">
+<!-- Preloader with Butterfly -->
+    <div id="preloader">
+        <div class="preloader-butterfly-wrap">
+            <div class="butterfly-glow"></div>
+            <img src="./assets/image/butterfly.gif" alt="Loading" class="butterfly-loader-img">
+            <div class="butterfly-ground-shadow"></div>
+        </div>
+        <div class="mt-6 text-center z-10">
+            <p class="text-xs md:text-sm font-bold uppercase tracking-[0.25em] text-white/95">Bunon.</p>
+            <div class="loader-bar-wrap mx-auto">
+                <div class="loader-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 top-0 left-0 transition-all duration-500 pt-6" id="navbar">
+        <div class="container mx-auto px-6 md:px-12 flex justify-between items-center p-4 rounded-full transition-all duration-500" id="nav-container">
+            <!-- Logo -->
+            <a href="index.html" class="text-white flex items-center transition-colors focus:outline-none" id="nav-logo" aria-label="Tohidul Islam">
+                <img src="./assets/image/logo-white.png" alt="Tohidul Islam" class="h-8 md:h-9 w-auto object-contain transition-transform hover:scale-105 duration-300 logo-white">
+                <img src="./assets/image/logo-black.png" alt="Tohidul Islam" class="h-8 md:h-9 w-auto object-contain transition-transform hover:scale-105 duration-300 logo-black">
+            </a>
+            
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-white" id="nav-links"><a href="our-services.html" class="hover:text-brand-yellow transition-colors">Services</a><a href="case-studies.html" class="hover:text-brand-yellow transition-colors">My Works</a><a href="pricing.html" class="hover:text-brand-yellow transition-colors">Pricing</a><a href="about-us.html" class="hover:text-brand-yellow transition-colors">About me</a><a href="hire.html" class="hover:text-brand-yellow transition-colors">Hire me</a>
+                
+                
+                
+                
+                
+                <!-- Contact Button -->
+                <a href="contact-us.html" class="nav-btn-hover flex items-center px-6 py-2.5 border border-white/50 rounded-full text-xs font-bold uppercase tracking-wide hover:bg-white hover:text-black transition-all group" id="nav-btn">
+                    Let's Talk
+                    <div class="btn-arrow-box">
+                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Mobile Toggle -->
+            <button class="md:hidden text-white text-xl" id="nav-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Project Hero -->
+    <header class="inner-page-header relative bg-brand-black text-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-5xl">
+                <nav class="page-breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><a href="case-studies.html">Selected Work</a></li><li><span aria-current="page">Bunon</span></li></ol></nav>
+                
+                
+                <h1 class="text-giant font-bold leading-[0.9] tracking-tightest mb-12 hero-anim opacity-0 translate-y-10">Bunon<span class="text-brand-yellow">.</span></h1>
+                
+                <p class="text-xl md:text-3xl text-gray-400 font-medium max-w-3xl leading-relaxed hero-anim opacity-0 translate-y-10">A bilingual online store and store-management system for a Bangladeshi clothing brand.</p>
+            </div>
+        </div>
+    </header>
+
+    <style>.bunon-list{list-style:disc;padding-left:1.25rem;margin:0 0 24px;max-width:70ch}.bunon-list li{margin-bottom:8px;line-height:1.7}.bunon-pair{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:720px}@media(max-width:640px){.bunon-pair{grid-template-columns:1fr}}</style><main id="main-content" tabindex="-1"><section id="overview" class="case-section "><div class="case-container"><h2>Project overview</h2><p class="case-lead">Bunon sells sarees, panjabis, three-pieces, shirts, T-shirts and kids’ wear across Bangladesh. I built the customer storefront and the back office the shop team uses to run sales, orders and the website.</p><dl class="case-meta"><div><dt>My role</dt><dd>Design and frontend development</dd></div><div><dt>Platform</dt><dd>Responsive web store + admin panel</dd></div><div><dt>Stack</dt><dd>Vue 3, Vite, Tailwind CSS, GSAP, Three.js, Supabase</dd></div><div><dt>Status</dt><dd>Live demo with a sample catalogue</dd></div></dl><p><a class="case-next" href="https://bunon-beryl.vercel.app/" target="_blank" rel="noopener">Visit the live site <span aria-hidden="true">↗</span></a></p></div></section><div class="case-container"><figure class="case-figure"><a href="./assets/image/works/bunon/bunon-home.webp" target="_blank" rel="noopener" aria-label="Open full-size image: Bunon homepage with video hero (new tab)"><img src="./assets/image/works/bunon/bunon-home.webp" alt="Bunon homepage with video hero" fetchpriority="high" decoding="async"></a><figcaption>Homepage: video hero, delivery promise and cash-on-delivery message up front. <a href="./assets/image/works/bunon/bunon-home.webp" target="_blank" rel="noopener">View full size <span class="sr-only">(new tab)</span> ↗</a></figcaption></figure></div>
+<section id="local" class="case-section "><div class="case-container"><h2>Built for how people shop in Bangladesh</h2><p>The store is designed around local buying habits rather than a generic template.</p><ul class="bunon-list"><li>Prices in ৳, with a Bangla/English switch that also changes the numerals.</li><li>Cash on delivery as the default, alongside bKash, Nagad and card options.</li><li>Separate delivery charges inside and outside Dhaka, plus a free-delivery threshold.</li><li>Checkout by mobile number, with a picker for all 64 districts.</li><li>WhatsApp chat, a bottom navigation bar on phones, and a size guide in inches and centimetres.</li></ul><figure class="case-figure"><a href="./assets/image/works/bunon/bunon-home-bangla.webp" target="_blank" rel="noopener" aria-label="Open full-size image: Bunon homepage in Bangla (new tab)"><img src="./assets/image/works/bunon/bunon-home-bangla.webp" alt="Bunon homepage in Bangla" loading="lazy" decoding="async"></a><figcaption>The same homepage after switching to Bangla. <a href="./assets/image/works/bunon/bunon-home-bangla.webp" target="_blank" rel="noopener">View full size <span class="sr-only">(new tab)</span> ↗</a></figcaption></figure></div></section>
+<section id="screens" class="case-section "><div class="case-container"><h2>The shopping flow</h2><p>Shop filters are saved in the URL, so a filtered view can be shared and the back button works as expected.</p><figure class="case-figure"><a href="./assets/image/works/bunon/bunon-shop.webp" target="_blank" rel="noopener" aria-label="Open full-size image: Bunon shop page with filters (new tab)"><img src="./assets/image/works/bunon/bunon-shop.webp" alt="Bunon shop page with filters" loading="lazy" decoding="async"></a><figcaption>Shop: category, size, offer and price filters with a sortable grid. <a href="./assets/image/works/bunon/bunon-shop.webp" target="_blank" rel="noopener">View full size <span class="sr-only">(new tab)</span> ↗</a></figcaption></figure><figure class="case-figure"><a href="./assets/image/works/bunon/bunon-product.webp" target="_blank" rel="noopener" aria-label="Open full-size image: Bunon product page (new tab)"><img src="./assets/image/works/bunon/bunon-product.webp" alt="Bunon product page" loading="lazy" decoding="async"></a><figcaption>Product page: size, quantity, delivery and care details, size guide. <a href="./assets/image/works/bunon/bunon-product.webp" target="_blank" rel="noopener">View full size <span class="sr-only">(new tab)</span> ↗</a></figcaption></figure><figure class="case-figure"><a href="./assets/image/works/bunon/bunon-checkout.webp" target="_blank" rel="noopener" aria-label="Open full-size image: Bunon checkout page (new tab)"><img src="./assets/image/works/bunon/bunon-checkout.webp" alt="Bunon checkout page" loading="lazy" decoding="async"></a><figcaption>Checkout: delivery details, district picker, promo code and order summary. <a href="./assets/image/works/bunon/bunon-checkout.webp" target="_blank" rel="noopener">View full size <span class="sr-only">(new tab)</span> ↗</a></figcaption></figure><div class="bunon-pair"><figure class="case-figure"><a href="./assets/image/works/bunon/bunon-home-mobile.webp" target="_blank" rel="noopener" aria-label="Open full-size image: Bunon homepage on a phone (new tab)"><img src="./assets/image/works/bunon/bunon-home-mobile.webp" alt="Bunon homepage on a phone" loading="lazy" decoding="async"></a><figcaption>Homepage on a phone. <a href="./assets/image/works/bunon/bunon-home-mobile.webp" target="_blank" rel="noopener">View full size <span class="sr-only">(new tab)</span> ↗</a></figcaption></figure><figure class="case-figure"><a href="./assets/image/works/bunon/bunon-shop-mobile.webp" target="_blank" rel="noopener" aria-label="Open full-size image: Bunon shop on a phone (new tab)"><img src="./assets/image/works/bunon/bunon-shop-mobile.webp" alt="Bunon shop on a phone" loading="lazy" decoding="async"></a><figcaption>Shop on a phone. <a href="./assets/image/works/bunon/bunon-shop-mobile.webp" target="_blank" rel="noopener">View full size <span class="sr-only">(new tab)</span> ↗</a></figcaption></figure></div></div></section>
+<section id="admin" class="case-section "><div class="case-container"><h2>Behind the storefront</h2><p>A role-based admin panel runs on Supabase, so owners, managers and staff each see what they need.</p><ul class="bunon-list"><li><strong>Dashboard and reports:</strong> sales by day, product, category, channel, payment and district, with CSV export.</li><li><strong>Point of sale:</strong> counter sales with sizes, promo codes, cash change and printable receipts.</li><li><strong>Orders and customers:</strong> online and in-store orders in one place, with one-click status steps.</li><li><strong>Catalogue and promotions:</strong> bilingual product names, photo uploads, and coupon rules by amount, percent, dates and usage.</li><li><strong>Website controller:</strong> pause online orders, edit the announcement bar and sale wording in both languages, and set delivery charges.</li><li><strong>Security:</strong> prices, delivery charges and promo codes are always calculated by the database, never trusted from the browser.</li></ul></div></section>
+<section id="evidence" class="case-section case-yellow"><div class="case-container"><h2>Scope &amp; evidence</h2><p>The live site is a working demo. Product photos come from Unsplash, the catalogue and prices are sample data, and online payment is not connected yet.</p><p>No usage or sales figures are reported here.</p></div></section>
+<section id="next-project" class="case-section "><div class="case-container"><h2>Continue exploring</h2><a class="case-next" href="work-vivid-customs.html">Vivid Customs <span aria-hidden="true">↗</span></a><a href="case-studies.html">Browse all work</a></div></section></main>
+<!-- 8. FOOTER -->
+    <footer id="contact">
+        <!-- Dark CTA -->
+        <div class="bg-brand-footer-dark text-white py-24 scroll-reveal-group">
+            <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-10 scroll-reveal">
+                <h2 class="text-3xl md:text-4xl font-bold max-w-3xl leading-tight">
+                    Have a product that feels hard to use? <span class="text-brand-yellow">Let’s talk.</span>
+                </h2>
+                
+                <a href="mailto:tohidul.islam2016@gmail.com" class="flex items-center gap-4 text-2xl font-bold hover:opacity-80 transition-opacity whitespace-nowrap">
+                    Get in touch
+                    <div class="w-12 h-12 bg-brand-yellow text-black flex items-center justify-center rounded-full text-base">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Yellow Links -->
+        <div class="bg-brand-yellow text-brand-black pt-20 pb-12">
+            <div class="container mx-auto px-6">
+                <div class="mb-16">
+                    <div class="mb-4">
+                        <a href="index.html" class="inline-block transition-transform hover:scale-105 duration-300" aria-label="Tohidul Islam">
+                            <img src="./assets/image/logo-white.png" alt="Tohidul Islam" class="h-10 md:h-12 w-auto object-contain">
+                        </a>
+                    </div>
+                    <h3 class="text-5xl font-bold">Act on design.</h3>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-20">
+                    <div>
+                        <h4 class="font-bold mb-6 text-sm">Pages</h4>
+                        <ul class="space-y-3 text-sm font-medium">
+                            <li><a href="index.html" class="hover:underline">Home</a></li>
+                            <li><a href="our-services.html" class="hover:underline">Services</a></li>
+                            <li><a href="pricing.html" class="hover:underline">Pricing</a></li>
+                            <li><a href="case-studies.html" class="hover:underline">Case Studies</a></li>
+                            <li><a href="about-us.html" class="hover:underline">About</a></li>
+                            <li><a href="hire.html" class="hover:underline">Hire me</a></li>
+                            <li><a href="contact-us.html" class="hover:underline">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-6 text-sm">Services</h4>
+                         <ul class="space-y-3 text-sm font-medium">
+                            <li><a href="our-services.html" class="hover:underline">UI Design</a></li>
+                            <li><a href="our-services.html" class="hover:underline">Web Development</a></li>
+                            <li><a href="our-services.html" class="hover:underline">Design Systems</a></li>
+                            <li><a href="our-services.html" class="hover:underline">UX Research</a></li>
+                            <li><a href="our-services.html" class="hover:underline">Prototyping</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-6 text-sm">Find me</h4>
+                        <p class="text-sm font-medium leading-relaxed">
+                            Dhaka, Bangladesh<br>
+                            Available Remote Globally
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-6 text-sm">Follow me online</h4>
+                        <ul class="space-y-3 text-sm font-medium">
+                            <li><a href="https://www.linkedin.com/in/tohidul-islam-design/" target="_blank" rel="noopener noreferrer" class="hover:underline">LinkedIn</a></li>
+                            <li><a href="https://www.behance.net/touhidislam-design" target="_blank" rel="noopener noreferrer" class="hover:underline">Behance</a></li>
+                            <li><a href="https://dribbble.com/tohidul-islam-design" target="_blank" rel="noopener noreferrer" class="hover:underline">Dribbble</a></li>
+                            <li><a href="https://github.com/tohidul-islam-design" target="_blank" rel="noopener noreferrer" class="hover:underline">GitHub</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="w-full h-px bg-black/10 mb-8"></div>
+
+                <div class="flex flex-col md:flex-row justify-between text-[11px] font-medium text-black/60 uppercase tracking-wide">
+                    <p>&copy; 2026 Tohidul Islam. All rights reserved.</p>
+                    <div class="flex gap-6 mt-4 md:mt-0">
+                        
+                        
+                        <span>Website by Tohidul</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        window.addEventListener('load', () => {
+            // 1. Remove Preloader
+            const preloader = document.getElementById('preloader');
+            if(preloader) {
+                if (typeof gsap !== 'undefined') {
+                    gsap.to("#preloader", {
+                        opacity: 0,
+                        duration: 0.5,
+                        delay: 0.5,
+                        onComplete: () => preloader.style.display = 'none'
+                    });
+                } else {
+                    preloader.style.display = 'none';
+                }
+            }
+
+            // 2. Animate Hero Elements
+            if (typeof gsap !== 'undefined') {
+                gsap.to(".hero-anim", {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1,
+                    stagger: 0.2,
+                    ease: "power3.out",
+                    delay: 0.8
+                });
+
+                // 3. Scroll Reveal for Sections
+                if (typeof ScrollTrigger !== 'undefined') {
+                    gsap.registerPlugin(ScrollTrigger);
+                    
+                    const sections = document.querySelectorAll('.section-reveal-trigger');
+                    sections.forEach(section => {
+                        const elems = section.querySelectorAll('.section-reveal');
+                        if(elems.length > 0) {
+                            gsap.to(elems, {
+                                y: 0,
+                                opacity: 1,
+                                duration: 1,
+                                stagger: 0.15,
+                                ease: "power3.out",
+                                scrollTrigger: {
+                                    trigger: section,
+                                    start: "top 80%",
+                                    toggleActions: "play none none reverse"
+                                }
+                            });
+                        }
+                    });
+
+                    
+                }
+            }
+            // 4. Navbar Background Logic (Dark Hero)
+            const navContainer = document.getElementById('nav-container');
+            const navLogo = document.getElementById('nav-logo');
+            const navLinks = document.getElementById('nav-links');
+            const navBtn = document.getElementById('nav-btn');
+            const navToggle = document.getElementById('nav-toggle');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    navContainer.classList.add('bg-white/95', 'shadow-sm', 'text-brand-black', 'py-3');
+                    navContainer.classList.remove('text-white');
+                    navLogo.classList.remove('text-white');
+                    navLogo.classList.add('text-brand-black');
+                    navLinks.classList.remove('text-white');
+                    navLinks.classList.add('text-brand-black');
+                    navBtn.classList.remove('border-white/50', 'hover:bg-white', 'hover:text-black');
+                    navBtn.classList.add('border-brand-black/20', 'hover:bg-brand-black', 'hover:text-white');
+                    navToggle.classList.remove('text-white');
+                    navToggle.classList.add('text-brand-black');
+                } else {
+                    navContainer.classList.remove('bg-white/95', 'shadow-sm', 'text-brand-black', 'py-3');
+                    navContainer.classList.add('text-white');
+                    navLogo.classList.add('text-white');
+                    navLogo.classList.remove('text-brand-black');
+                    navLinks.classList.add('text-white');
+                    navLinks.classList.remove('text-brand-black');
+                    navBtn.classList.add('border-white/50', 'hover:bg-white', 'hover:text-black');
+                    navBtn.classList.remove('border-brand-black/20', 'hover:bg-brand-black', 'hover:text-white');
+                    navToggle.classList.add('text-white');
+                    navToggle.classList.remove('text-brand-black');
+                }
+            });
+
+            // Native scrolling keeps browser and keyboard behavior predictable.
+        });
+    </script>
+    <!-- Global Floating Butterfly Component -->
+    <script src="./assets/js/butterfly.js?v=20260919b"></script>
+</body>
+</html>
