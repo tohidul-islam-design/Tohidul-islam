@@ -8,7 +8,7 @@
   const data = catalog[tab.dataset.service];
   tabs.forEach(button => { const active = button === tab; button.setAttribute('aria-selected', String(active)); button.tabIndex = active ? 0 : -1; });
   panel.setAttribute('aria-labelledby', tab.id);
-  document.getElementById('pricing-service-title').textContent = data.label + ' design';
+  document.getElementById('pricing-service-title').textContent = data.title || (data.label + ' design');
   document.getElementById('pricing-service-description').textContent = data.description;
   cards.replaceChildren(...data.plans.map((plan, i) => {
    const card = document.createElement('article');
@@ -23,6 +23,7 @@
    return card;
   }));
  }
+ if (location.hash === '#design-build') { const t = tabs.find(b => b.dataset.service === 'build'); if (t) select(t); }
  tabs.forEach((tab, index) => {
   tab.addEventListener('click', () => select(tab));
   tab.addEventListener('keydown', event => {
